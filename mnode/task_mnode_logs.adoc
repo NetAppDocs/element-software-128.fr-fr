@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_logs.html 
+summary: 'Vous pouvez récupérer les journaux des services exécutés sur le nœud de gestion à l"aide de l"API REST.' 
+keywords: netapp, element, management node, management services, mnode, logs 
+---
+= Récupération des journaux des services de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez récupérer les journaux des services exécutés sur le nœud de gestion à l'aide de l'API REST.  Vous pouvez extraire les journaux de tous les services publics ou spécifier des services particuliers et utiliser des paramètres de requête pour mieux définir les résultats renvoyés.
+
+.Ce dont vous aurez besoin
+* Votre version de cluster exécute le logiciel NetApp Element 11.3 ou une version ultérieure.
+* Vous avez déployé un nœud de gestion exécutant la version 11.3 ou ultérieure.
+
+
+.Étapes
+. Ouvrez l'interface utilisateur de l'API REST sur le nœud de gestion.
++
+** À partir des services de gestion 2.21.61 :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/4/
+----
+** Pour les services de gestion 2.20.69 ou antérieurs :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+
+
+. Sélectionnez *Autoriser* ou toute icône de verrouillage et procédez comme suit :
++
+.. Saisissez le nom d'utilisateur et le mot de passe du cluster.
+.. Saisissez l'identifiant client sous la forme mnode-client si cette valeur n'est pas déjà renseignée.
+.. Sélectionnez *Autoriser* pour démarrer une session.
+.. Ferme la fenêtre.
+
+
+. Sélectionnez *GET /logs*.
+. Sélectionnez *Essayer*.
+. Spécifiez les paramètres suivants :
++
+** `Lines`: Entrez le nombre de lignes que vous souhaitez que le journal renvoie.  Ce paramètre est un entier dont la valeur par défaut est 1000.
++
+
+TIP: Évitez de demander l'historique complet du contenu du journal en définissant le nombre de lignes sur 0.
+
+** `since`: Ajoute un horodatage ISO-8601 au point de départ des journaux de service.
++
+
+TIP: Utilisez une méthode raisonnable `since` paramètre lors de la collecte de journaux sur des périodes plus longues.
+
+** `service-name`: Veuillez saisir un nom de service.
++
+
+TIP: Utilisez le `GET /services` commande permettant de lister les services sur le nœud de gestion.
+
+** `stopped`: Définir sur `true` pour récupérer les journaux des services arrêtés.
+
+
+. Sélectionnez *Exécuter*.
+. Dans le corps de la réponse, sélectionnez *Télécharger* pour enregistrer la sortie du journal.
+
+
+[discrete]
+== Pour en savoir plus, consultez les informations disponibles.
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

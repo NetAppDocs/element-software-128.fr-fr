@@ -1,0 +1,138 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-dashboard.html 
+summary: Vous pouvez consulter les ressources de stockage sur le tableau de bord de contrôle du cloud hybride NetApp .  De plus, vous pouvez surveiller la capacité et les performances de stockage. 
+keywords: netapp, element, hcc, hybrid cloud control, storage, storage performance, capacity 
+---
+= Surveillez les ressources de stockage sur le tableau de bord de contrôle du cloud hybride
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avec le tableau de bord de contrôle du cloud hybride NetApp , vous pouvez visualiser toutes vos ressources de stockage en un coup d'œil.  De plus, vous pouvez surveiller la capacité et les performances de stockage.
+
+
+NOTE: Lors du premier lancement d'une nouvelle session NetApp Hybrid Cloud Control, le chargement de la vue Tableau de bord NetApp Hybrid Cloud Control peut être retardé si le nœud de gestion gère plusieurs clusters.  Le temps de chargement varie en fonction du nombre de clusters gérés activement par le nœud de gestion.  Pour les lancements suivants, vous bénéficierez de temps de chargement plus rapides.
+
+* <<Accédez au tableau de bord NetApp HCC>>
+* <<Surveiller les ressources de stockage>>
+* <<Surveiller la capacité de stockage>>
+* <<Surveiller les performances de stockage>>
+
+
+
+
+== Accédez au tableau de bord NetApp HCC
+
+. Ouvrez l'adresse IP du nœud de gestion dans un navigateur web. Par exemple:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants d'administrateur du cluster de stockage 100% flash SolidFire .
+. Consultez le tableau de bord de contrôle du cloud hybride.
+
+
+image::hcc_dashboard_all.PNG[Tableau de bord HCC]
+
+
+
+== Surveiller les ressources de stockage
+
+Utilisez le volet *Stockage* pour visualiser l'ensemble de votre environnement de stockage.  Vous pouvez surveiller le nombre de clusters de stockage, de nœuds de stockage et de volumes totaux.
+
+Pour afficher les détails, dans le volet Stockage, sélectionnez *Afficher les détails*.
+
+image::hcc_dashboard_storage_node_number.PNG[Vue de stockage]
+
+
+NOTE: Le nombre total de nœuds de stockage n'inclut pas les nœuds témoins des clusters de stockage à deux nœuds.  Les nœuds témoins sont inclus dans le nombre de nœuds indiqué dans la section détails de ce cluster.
+
+
+TIP: Pour consulter les données les plus récentes du cluster de stockage, utilisez la page Clusters de stockage, où l'interrogation est plus fréquente que sur le tableau de bord.
+
+
+
+== Surveiller la capacité de stockage
+
+Il est essentiel de surveiller la capacité de stockage de votre environnement.  Le volet Capacité de stockage vous permet de déterminer les gains d'efficacité de votre capacité de stockage avec ou sans les fonctionnalités de compression, de déduplication et d'allocation dynamique activées.
+
+Vous pouvez consulter l'espace de stockage physique total disponible dans votre cluster sur l'onglet *RAW*, et les informations concernant le stockage provisionné sur l'onglet *EFFECTIVE*.
+
+image::hcc_dashboard_storage_capacity_effective.png[Tableau de bord HCC > Volet Capacité de stockage]
+
+.Étapes
+. Sélectionnez l'onglet *RAW* pour afficher l'espace de stockage physique total utilisé et disponible dans votre cluster.
++
+Examinez les lignes verticales pour déterminer si votre capacité utilisée est inférieure à la capacité totale ou aux seuils d'avertissement, d'erreur ou critique.  Passez votre souris sur les lignes pour voir les détails.
+
++
+
+NOTE: Vous pouvez définir le seuil d'avertissement, qui est par défaut fixé à 3 % en dessous du seuil d'erreur.  Les seuils d'erreur et de critique sont prédéfinis et non configurables, de par leur conception.  Le seuil d'erreur indique qu'il reste moins d'un nœud de capacité dans le cluster.  Pour connaître la procédure de réglage du seuil, consultezlink:../storage/task_system_manage_cluster_set_the_cluster_full_threshold.html["Définition du seuil de saturation du cluster"] .
+
++
+
+TIP: Pour plus de détails sur l'API Element relative aux seuils de cluster, consultezlink:../api/reference_element_api_getclusterfullthreshold.html["« getClusterFullThreshold »"] dans la documentation de l'API du logiciel Element.  Pour consulter les détails relatifs à la capacité des blocs et des métadonnées, voirlink:../storage/concept_monitor_understand_cluster_fullness_levels.html["Comprendre les niveaux de remplissage des clusters"] dans la _documentation du logiciel Element_.
+
+. Sélectionnez l'onglet *EFFICACITÉ* pour afficher les informations relatives au stockage total alloué aux hôtes connectés et pour consulter les indices d'efficacité.
++
+.. Vous pouvez également cocher la case *Inclure le provisionnement fin* pour afficher les taux d'efficacité du provisionnement fin dans le graphique à barres de capacité effective.
+.. *Graphique à barres de capacité effective* : Regardez les lignes verticales pour déterminer si votre capacité utilisée est inférieure à la capacité totale ou aux seuils d’avertissement, d’erreur ou critique.  Comme pour l'onglet Brut, vous pouvez survoler les lignes verticales pour afficher les détails.
+.. *Gains d'efficacité* : Consultez ces évaluations pour déterminer les gains d'efficacité de votre capacité de stockage grâce aux fonctionnalités de compression, de déduplication et d'allocation dynamique activées.  Par exemple, si la compression affiche « 1,3x », cela signifie que l’efficacité du stockage avec la compression activée est 1,3 fois supérieure à celle sans compression.
++
+
+NOTE: L'efficacité totale est égale à (maxUsedSpace * facteur d'efficacité) / 2, où efficiencyFactor = (thinProvisioningFactor * deDuplicationFactor * compressionFactor).  Lorsque l'option Thin Provisioning n'est pas activée, elle n'est pas prise en compte dans l'efficacité totale.
+
+.. Si la capacité de stockage effective approche un seuil d'erreur ou critique, envisagez d'effacer les données de votre système.
+
+
+. Pour une analyse plus approfondie et un contexte historique, consultez https://activeiq.solidfire.com/["Détails de NetApp SolidFire Active IQ"^] .
+
+
+
+
+== Surveiller les performances de stockage
+
+Vous pouvez examiner la quantité d'IOPS ou le débit que vous pouvez obtenir d'un cluster sans dépasser les performances utiles de cette ressource en utilisant le volet Performances de stockage.  Les performances de stockage correspondent au point où l'utilisation maximale est atteinte avant que la latence ne devienne un problème.
+
+Le volet Performances de stockage vous aide à identifier si les performances atteignent le point où elles risquent de se dégrader en cas d'augmentation de la charge de travail.
+
+Les informations affichées dans ce panneau se mettent à jour toutes les 10 secondes et présentent la moyenne de tous les points du graphique.
+
+Pour plus de détails sur la méthode associée de l'API Element, consultez la documentation.link:../api/reference_element_api_getclusterstats.html["Obtenir les statistiques du cluster"] méthode décrite dans la documentation de l'API du logiciel Element.
+
+.Étapes
+. Consultez le volet Performances de stockage.  Pour plus de détails, survolez les points du graphique.
++
+.. Onglet *IOPS* : Affiche le nombre actuel d’opérations par seconde.  Recherchez les tendances ou les pics dans les données.  Par exemple, si vous constatez que le nombre maximal d'IOPS est de 160 000 et que 100 000 d'entre elles sont libres ou disponibles, vous pourriez envisager d'ajouter davantage de charges de travail à ce cluster.  En revanche, si vous constatez que seulement 140 Ko sont disponibles, vous pourriez envisager de décharger certaines charges de travail ou d'étendre votre système.
++
+image::hcc_dashboard_storage_perform_iops.png[Performances de stockage > Onglet IOPS]
+
+.. Onglet *Débit* : Surveillez les tendances ou les pics de débit.  Surveillez également les valeurs de débit constamment élevées, car cela pourrait indiquer que vous approchez des performances maximales utiles de la ressource.
++
+image::hcc_dashboard_storage_perform_throughput.png[Performances de stockage > Onglet Débit]
+
+.. Onglet *Utilisation* : Surveillez l’utilisation des IOPS par rapport au total des IOPS disponibles au niveau du cluster.
++
+image::hcc_dashboard_storage_perform_utlization.png[Performances de stockage > Onglet Utilisation]
+
+
+
+. Pour une analyse plus approfondie, examinez les performances de stockage à l'aide du plug-in NetApp Element pour vCenter Server.
++
+https://docs.netapp.com/us-en/vcp/vcp_task_reports_volume_performance.html["Performances affichées dans le plug-in NetApp Element pour vCenter Server"^].
+
+
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

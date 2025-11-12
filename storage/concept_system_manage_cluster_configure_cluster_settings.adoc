@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_system_manage_cluster_configure_cluster_settings.html 
+sidebar: sidebar 
+keywords: configure, cluster, threshold, support access, encryption at rest, virtual volumes, ntp broadcast, client, snapmirror 
+summary: 'Vous pouvez consulter et modifier les paramètres globaux du cluster et effectuer des tâches spécifiques au cluster depuis l"onglet Cluster de l"interface utilisateur Element.' 
+---
+= Configurer les paramètres du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter et modifier les paramètres globaux du cluster et effectuer des tâches spécifiques au cluster depuis l'onglet Cluster de l'interface utilisateur Element.
+
+Vous pouvez configurer des paramètres tels que le seuil de remplissage du cluster, l'accès au support, le chiffrement au repos, les volumes virtuels, SnapMirror et le client de diffusion NTP.
+
+.Options
+* xref:concept_data_manage_vvol_work_virtual_volumes.adoc[Travailler avec des volumes virtuels]
+* xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[Utilisez la réplication SnapMirror entre les clusters Element et ONTAP.]
+* xref:task_system_manage_cluster_set_the_cluster_full_threshold.adoc[Définir le seuil de saturation du cluster]
+* xref:task_system_manage_cluster_volume_load_balancing.adoc[Activer et désactiver l'équilibrage de charge des volumes]
+* xref:task_system_manage_cluster_enable_and_disable_support_access.adoc[Activer et désactiver l'accès au support]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["Comment les seuils d'espace bloc sont-ils calculés pour l'élément"]
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[Activer et désactiver le chiffrement pour un cluster]
+* xref:concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.adoc[Bannière Gérer les conditions d'utilisation]
+* xref:task_system_manage_cluster_ntp_configure.adoc[Configurer les serveurs NTP (Network Time Protocol) pour que le cluster puisse interroger les serveurs.]
+* xref:concept_system_manage_snmp_manage_snmp.adoc[Gérer les SNMP]
+* xref:concept_system_manage_drives_managing_drives.adoc[Gérer les lecteurs]
+* xref:concept_system_manage_nodes_manage_nodes.adoc[Gérer les nœuds]
+* xref:task_system_manage_fc_view_fibre_channel_ports_details.adoc[Afficher les détails des ports Fibre Channel]
+* xref:concept_system_manage_virtual_manage_virtual_networks.adoc[Gérer les réseaux virtuels]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

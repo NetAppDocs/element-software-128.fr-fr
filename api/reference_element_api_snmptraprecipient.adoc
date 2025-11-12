@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_snmptraprecipient.html 
+sidebar: sidebar 
+keywords: object,objects,snmptraprecipient 
+summary: 'L"objet snmpTrapRecipient contient des informations sur un hôte configuré pour recevoir les traps SNMP générées par le cluster de stockage.  Vous pouvez utiliser la méthode API GetSnmpTrapInfo pour obtenir la liste des hôtes configurés pour recevoir les traps SNMP.' 
+---
+= destinataire du piège SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet snmpTrapRecipient contient des informations sur un hôte configuré pour recevoir les traps SNMP générées par le cluster de stockage.  Vous pouvez utiliser le `GetSnmpTrapInfo` Méthode API permettant d'obtenir la liste des hôtes configurés pour recevoir les traps SNMP.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+hôte
+ a| 
+L'adresse IP ou le nom d'hôte de l'hôte cible.
+ a| 
+chaîne
+
+
+
+ a| 
+port
+ a| 
+Le numéro de port UDP sur l'hôte où le piège doit être envoyé.  La plage de valeurs valides est comprise entre 1 et 65535.  0 (zéro) n'est pas un numéro de port valide. Le port par défaut est 162.
+ a| 
+entier
+
+
+
+ a| 
+communauté
+ a| 
+Chaîne de communauté SNMP.
+ a| 
+chaîne
+
+|===

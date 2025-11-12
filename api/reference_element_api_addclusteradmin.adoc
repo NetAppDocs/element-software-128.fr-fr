@@ -1,0 +1,157 @@
+---
+permalink: api/reference_element_api_addclusteradmin.html 
+sidebar: sidebar 
+keywords: addclusteradmin,cluster,admin,administrator,adding,add 
+summary: 'Vous pouvez utiliser la méthode AddClusterAdmin pour ajouter un nouveau compte d"administrateur de cluster.  Un administrateur de cluster peut gérer le cluster via l"API et les outils de gestion.  Les administrateurs de cluster sont totalement distincts et sans lien avec les comptes locataires standard.' 
+---
+= AjouterClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `AddClusterAdmin` Méthode pour ajouter un nouveau compte d'administrateur de cluster.  Un administrateur de cluster peut gérer le cluster via l'API et les outils de gestion.  Les administrateurs de cluster sont totalement distincts et sans lien avec les comptes locataires standard.
+
+Chaque administrateur de cluster peut être limité à un sous-ensemble de l'API.  Vous devriez utiliser plusieurs comptes d'administrateur de cluster pour différents utilisateurs et applications.  Il est recommandé, par mesure de précaution, d'attribuer à chaque administrateur de cluster les autorisations minimales nécessaires ; cela réduit l'impact potentiel d'une compromission des identifiants.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+accéder
+ a| 
+Contrôle les méthodes que l'administrateur du cluster peut utiliser.
+ a| 
+tableau de chaînes
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+accepterEula
+ a| 
+Acceptez le contrat de licence utilisateur final.  Définissez cette valeur sur « true » pour ajouter un compte d'administrateur de cluster au système.  Si cette valeur est omise ou définie sur false, l'appel de méthode échoue.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+attributs
+ a| 
+Liste de paires nom/valeur au format objet JSON.
+ a| 
+objet JSON
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+mot de passe
+ a| 
+Mot de passe utilisé pour authentifier cet administrateur de cluster.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+nom d'utilisateur
+ a| 
+Nom d'utilisateur unique pour cet administrateur de cluster.  Doit comporter entre 1 et 1024 caractères.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+clusterAdminID
+ a| 
+ID d'administrateur de cluster pour le nouvel administrateur de cluster.
+ a| 
+entier
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "AddClusterAdmin",
+  "params": {
+    "username": "joeadmin",
+    "password": "68!5Aru268)$",
+    "attributes": {},
+    "acceptEula": true,
+    "access": ["volumes", "reporting", "read"]
+  },
+  "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id":1,
+  "result" : {
+    "clusterAdminID": 2
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_app_b_access_control.adoc[Contrôle d'accès]

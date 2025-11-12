@@ -1,0 +1,149 @@
+---
+permalink: api/reference_element_api_modifyqospolicy.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,qos,policy,policies,modifyqospolicy 
+summary: Vous pouvez utiliser la méthode ModifyQoSPolicy pour modifier une politique QoS existante sur le système. 
+---
+= Modifier la politique QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ModifyQoSPolicy` méthode permettant de modifier une politique QoS existante sur le système.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+
+
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+ID de politique qos
+ a| 
+L'identifiant de la politique à modifier.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+nom
+ a| 
+Si cette information est fournie, le nom de la politique QoS (par exemple or, platine, argent) est remplacé par cette valeur.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+qualité de service
+ a| 
+Si elles sont fournies, les paramètres QoS de cette politique sont modifiés selon ces paramètres.  Vous pouvez fournir des valeurs QoS partielles et ne modifier que certains paramètres QoS.
+ a| 
+objet QoS
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+Politique de QoS
+ a| 
+Détails de la politique QoS nouvellement modifiée.
+ a| 
+xref:reference_element_api_qospolicy.adoc[Politique de qualité]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": 1950,
+  "method": "ModifyQoSPolicy",
+  "params": {
+    "qosPolicyID": 2,
+    "qos": {
+      "minIOPS": 51,
+      "maxIOPS": 15002,
+      "burstIOPS": 15002
+    }
+  }
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": 1950,
+  "result": {
+    "qosPolicy": {
+      "name": "bronze",
+      "qos": {
+        "burstIOPS": 15002,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 15002,
+        "minIOPS": 51
+      },
+      "qosPolicyID": 2,
+      "volumeIDs": [
+        2
+      ]
+    }
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+10,0

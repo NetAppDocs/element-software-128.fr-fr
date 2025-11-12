@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Les groupes d"accès aux volumes permettent la communication entre les clients Fibre Channel et les volumes sur un système de stockage SolidFire .  Le mappage des initiateurs clients Fibre Channel (WWPN) aux volumes d"un groupe d"accès aux volumes permet des E/S de données sécurisées entre un réseau Fibre Channel et un volume SolidFire .' 
+---
+= Créer un groupe d'accès au volume pour les clients Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les groupes d'accès aux volumes permettent la communication entre les clients Fibre Channel et les volumes sur un système de stockage SolidFire .  Le mappage des initiateurs clients Fibre Channel (WWPN) sur les volumes d'un groupe d'accès aux volumes permet des E/S de données sécurisées entre un réseau Fibre Channel et un volume SolidFire .
+
+Vous pouvez également ajouter des initiateurs iSCSI à un groupe d'accès aux volumes ; cela donne aux initiateurs l'accès aux mêmes volumes dans le groupe d'accès aux volumes.
+
+.Étapes
+. Cliquez sur *Gestion* > *Groupes d'accès*.
+. Cliquez sur *Créer un groupe d'accès*.
+. Saisissez un nom pour le groupe d'accès au volume dans le champ *Nom*.
+. Sélectionnez et ajoutez les initiateurs Fibre Channel à partir de la liste *Initiateurs Fibre Channel non liés*.
++
+
+NOTE: Vous pouvez ajouter ou supprimer des initiateurs ultérieurement.
+
+. *Facultatif :* Sélectionnez et ajoutez un initiateur iSCSI à partir de la liste *Initiateurs*.
+. Pour associer des volumes au groupe d'accès, procédez comme suit :
++
+.. Sélectionnez un volume dans la liste *Volumes*.
+.. Cliquez sur *Attacher le volume*.
+
+
+. Cliquez sur *Créer un groupe d'accès*.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

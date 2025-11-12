@@ -1,0 +1,131 @@
+---
+permalink: api/reference_element_api_getaccountefficiency.html 
+sidebar: sidebar 
+keywords: accounts,account,efficiency,get,getting,GetAccountEfficiency 
+summary: 'Vous pouvez utiliser GetAccountEfficiency pour obtenir des statistiques d"efficacité concernant un compte de volume.  Cette méthode ne renvoie des informations sur l"efficacité que pour le compte que vous fournissez en paramètre.' 
+---
+= GetAccountEfficiency
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `GetAccountEfficiency` pour obtenir des statistiques d'efficacité concernant un compte de volume.  Cette méthode ne renvoie des informations sur l'efficacité que pour le compte que vous fournissez en paramètre.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+identifiant de compte
+ a| 
+Spécifie le compte de volume pour lequel les statistiques d'efficacité sont renvoyées.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+compression
+ a| 
+Quantité d'espace économisé grâce à la compression des données pour tous les volumes du compte.  Exprimé sous forme de ratio, où la valeur « 1 » signifie que les données ont été stockées sans compression.
+ a| 
+flotter
+
+
+
+ a| 
+déduplication
+ a| 
+L'espace économisé en évitant la duplication des données pour tous les volumes du compte.  Exprimé sous forme de ratio.
+ a| 
+flotter
+
+
+
+ a| 
+volumes manquants
+ a| 
+Les volumes pour lesquels il a été impossible d'obtenir des données d'efficacité.  Les volumes manquants peuvent être causés par un cycle de récupération des déchets (GC) datant de moins d'une heure, une perte temporaire de connectivité réseau ou des services redémarrés depuis le cycle GC.
+ a| 
+tableau d'entiers
+
+
+
+ a| 
+ThinProvisioning
+ a| 
+Le rapport entre l'espace utilisé et l'espace alloué au stockage des données.  Exprimé sous forme de ratio.
+ a| 
+flotter
+
+
+
+ a| 
+horodatage
+ a| 
+Les dernières données d'efficacité ont été collectées après le nettoyage de la mémoire (GC), au format UTC+0.
+ a| 
+Chaîne de date ISO 8601
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "GetAccountEfficiency",
+   "params": {
+     "accountID": 3
+   },
+   "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.020468042933262,
+       "deduplication": 2.042488619119879,
+       "missingVolumes": [],
+       "thinProvisioning": 1.010087163391013,
+       "timestamp": "2014-03-10T14:06:02Z"
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

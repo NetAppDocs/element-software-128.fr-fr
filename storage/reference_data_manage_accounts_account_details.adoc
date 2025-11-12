@@ -1,0 +1,54 @@
+---
+permalink: storage/reference_data_manage_accounts_account_details.html 
+sidebar: sidebar 
+keywords: account, volumes 
+summary: 'La page Comptes de l"onglet Gestion fournit des informations sur chaque compte du système, telles que l"identifiant, le nom d"utilisateur et les détails d"efficacité pour les volumes attribués à chaque compte.' 
+---
+= Détails du compte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Comptes de l'onglet Gestion fournit des informations sur chaque compte du système, telles que l'identifiant, le nom d'utilisateur et les détails d'efficacité pour les volumes attribués à chaque compte.
+
+* *IDENTIFIANT*
++
+L'identifiant généré par le système pour ce compte.
+
+* *Nom d'utilisateur*
++
+Le nom donné au compte lors de sa création.
+
+* *Statut*
++
+Statut du compte. Valeurs possibles :
+
++
+** actif : Un compte actif.
+** verrouillé : Un compte verrouillé.
+** supprimé : Un compte qui a été supprimé et purgé.
+
+
+* *Volumes actifs*
++
+Le nombre de volumes actifs attribués au compte.
+
+* *Compression*
++
+Score d'efficacité de compression pour les volumes attribués au compte.
+
+* *Déduplication*
++
+Score d'efficacité de la déduplication pour les volumes affectés au compte.
+
+* *Provisionnement fin*
++
+Score d'efficacité du provisionnement fin pour les volumes affectés au compte.
+
+* *Efficacité globale*
++
+Score d'efficacité global pour les volumes attribués au compte.
+
+

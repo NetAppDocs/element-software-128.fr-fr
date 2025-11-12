@@ -1,0 +1,48 @@
+---
+permalink: storage/task_data_protection_create_a_volume_snapshot.html 
+sidebar: sidebar 
+keywords: volume snapshot, create, active volume, preserve volume 
+summary: 'Vous pouvez créer un instantané d"un volume actif afin de préserver l"image du volume à tout moment.  Vous pouvez créer jusqu"à 32 instantanés pour un seul volume.' 
+---
+= Créer un instantané de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer un instantané d'un volume actif afin de préserver l'image du volume à tout moment.  Vous pouvez créer jusqu'à 32 instantanés pour un seul volume.
+
+. Cliquez sur *Gestion* > *Volumes*.
+. Cliquez sur l'icône *Actions* du volume que vous souhaitez utiliser pour la capture d'écran.
+. Dans le menu qui s'affiche, sélectionnez *Capture d'écran*.
+. Dans la boîte de dialogue *Créer un instantané de volume*, saisissez le nom du nouvel instantané.
+. *Facultatif :* Cochez la case *Inclure l’instantané dans la réplication lors du couplage* pour vous assurer que l’instantané est capturé lors de la réplication lorsque le volume parent est couplé.
+. Pour définir la durée de conservation de l'instantané, sélectionnez l'une des options suivantes :
++
+** Cliquez sur *Conserver indéfiniment* pour conserver l'instantané sur le système de façon permanente.
+** Cliquez sur *Définir la période de conservation* et utilisez les champs de date pour choisir la durée pendant laquelle le système conservera l'instantané.
+
+
+. Pour prendre une photo instantanée, procédez comme suit :
++
+.. Cliquez sur *Prendre un instantané maintenant*.
+.. Cliquez sur **Créer un instantané**.
+
+
+. Pour programmer l'exécution de la capture instantanée à une date ultérieure, procédez comme suit :
++
+.. Cliquez sur *Créer un calendrier d'instantanés*.
+.. Saisissez un *Nom pour le nouvel horaire*.
+.. Choisissez un *type de planification* dans la liste.
+.. *Facultatif :* Cochez la case *Planification récurrente* pour répéter périodiquement la capture d’écran planifiée.
+.. Cliquez sur *Créer un planning*.
+
+
+
+
+
+
+== Trouver plus d'informations
+
+xref:task_data_protection_schedule_a_snapshot_task.adoc[Planifiez une prise de vue]

@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_add_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, add, multi-drive slice service 
+summary: 'Vous pouvez ajouter un deuxième lecteur de métadonnées sur un nœud SolidFire en convertissant le lecteur de blocs de l"emplacement 2 en un lecteur de tranches.  Ceci est réalisé en activant la fonction de service de découpage multi-lecteurs (MDSS).  Pour activer cette fonctionnalité, vous devez contacter le support NetApp .' 
+---
+= Ajouter des lecteurs MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez ajouter un deuxième lecteur de métadonnées sur un nœud SolidFire en convertissant le lecteur de blocs de l'emplacement 2 en un lecteur de tranches.  Ceci est réalisé en activant la fonction de service de découpage multi-lecteurs (MDSS).  Pour activer cette fonctionnalité, vous devez contacter le support NetApp .
+
+Pour rendre un disque de partition disponible, il peut être nécessaire de remplacer un disque défaillant par un disque neuf ou de rechange.  Vous devez ajouter le disque système en même temps que le disque pour l'emplacement 2.  Si vous essayez d'ajouter le lecteur de tranche de l'emplacement 2 seul ou avant d'ajouter le lecteur de tranche système, le système générera une erreur.
+
+. Cliquez sur *Cluster* > *Disques*.
+. Cliquez sur *Disponible* pour afficher la liste des disques disponibles.
+. Sélectionnez les disques de tranches à ajouter.
+. Cliquez sur *Actions groupées*.
+. Cliquez sur *Ajouter*.
+. Vérifiez dans l'onglet *Lecteurs actifs* que les lecteurs ont bien été ajoutés.
+

@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_restartservices.html 
+sidebar: sidebar 
+keywords: restart,service,services,restartservices,restarting,node 
+summary: Vous pouvez utiliser la méthode RestartServices pour redémarrer les services sur un nœud. 
+---
+= Redémarrer les services
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `RestartServices` méthode pour redémarrer les services sur un nœud.
+
+
+
+== Paramètres
+
+PRUDENCE:
+
+Cette méthode provoque une interruption temporaire des services du nœud.
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+forcer
+ a| 
+Définir sur « true » pour redémarrer les services sur un nœud.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+service
+ a| 
+Nom du service à redémarrer.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+action
+ a| 
+Action à effectuer sur le service (démarrer, arrêter, redémarrer).
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+détails
+ a| 
+Le résultat de la procédure de redémarrage du service, y compris les erreurs (le cas échéant).
+ a| 
+objet JSON
+
+
+
+ a| 
+durée
+ a| 
+Le temps, en secondes, nécessaire pour redémarrer les services du nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+résultat
+ a| 
+Résultats du redémarrage.
+ a| 
+chaîne
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "RestartServices",
+   "params": {
+              "force" : true
+              "action" : restart,
+             }
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": "solidfire stop/waiting\nsolidfire start/running, process 7284\n",
+    "duration": "00:00:02.541594",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

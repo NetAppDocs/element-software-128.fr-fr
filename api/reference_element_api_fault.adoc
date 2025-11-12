@@ -1,0 +1,187 @@
+---
+permalink: api/reference_element_api_fault.html 
+sidebar: sidebar 
+keywords: object,objects,fault 
+summary: 'L"objet défaut contient des informations sur les défauts détectés dans le cluster.  La méthode ListClusterFaults renvoie les informations sur les erreurs de cluster.' 
+---
+= faute
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet défaut contient des informations sur les défauts détectés dans le cluster.  Le `ListClusterFaults` Cette méthode renvoie des informations sur les défauts du cluster.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+Mise à niveau des blocs
+ a| 
+Le défaut bloque la mise à jour. Valeurs possibles :
+
+* Vrai : Le défaut bloque la mise à niveau.
+* Faux : le défaut n'empêche pas la mise à niveau.
+
+ a| 
+booléen
+
+
+
+ a| 
+ID de défaut de cluster
+ a| 
+L'identifiant unique associé à chaque défaut de cluster.
+ a| 
+entier
+
+
+
+ a| 
+code
+ a| 
+Le code d'erreur correspondant à la panne spécifique détectée.  Pour plus de détails, consultez la section Codes d'erreur du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+données
+ a| 
+Informations complémentaires spécifiques à la panne.
+ a| 
+objet JSON
+
+
+
+ a| 
+date
+ a| 
+L'heure actuelle au format UTC+0.
+ a| 
+Chaîne ISO 8601
+
+
+
+ a| 
+détails
+ a| 
+Description du défaut avec des détails supplémentaires.
+ a| 
+chaîne
+
+
+
+ a| 
+ID du lecteur
+ a| 
+Le premier identifiant de lecteur dans la liste des identifiants de lecteur.  Si la liste des identifiants de lecteur est vide (ce qui signifie qu'aucun défaut concernant les lecteurs n'a été renvoyé), cette valeur est 0.
+ a| 
+entier
+
+
+
+ a| 
+ID de lecteur
+ a| 
+Liste des valeurs driveID des disques auxquels ce défaut fait référence.  Inclus pour les défauts liés aux disques durs.  Si aucune valeur n'est renseignée, il s'agit d'un tableau vide.
+ a| 
+tableau d'entiers
+
+
+
+ a| 
+ID de défaut matériel du nœud
+ a| 
+Identifiant attribué à une panne matérielle sur le cluster.
+ a| 
+entier
+
+
+
+ a| 
+ID du nœud
+ a| 
+L'identifiant du nœud auquel cette panne fait référence.  Inclus pour les défauts de nœud et de lecteur, sinon mis à 0.
+ a| 
+entier
+
+
+
+ a| 
+résolu
+ a| 
+État de résolution du problème. Valeurs possibles :
+
+* Vrai : le défaut n'est plus détecté.
+* Faux : le défaut est toujours présent.
+
+ a| 
+booléen
+
+
+
+ a| 
+Date de résolution
+ a| 
+Date et heure de résolution du problème.
+ a| 
+Chaîne ISO 8601
+
+
+
+ a| 
+serviceID
+ a| 
+Le service associé à la panne.  Cette valeur est « 0 » (zéro) si le défaut n’est pas associé à un service.
+ a| 
+entier
+
+
+
+ a| 
+gravité
+ a| 
+La gravité du défaut. Valeurs possibles :
+
+* Avertissement : Problème mineur.  Le cluster est fonctionnel et les mises à niveau sont autorisées à ce niveau de gravité.
+* erreur : Une défaillance qui ne devrait généralement pas affecter le service (sauf en cas de dégradation possible des performances ou de perte de haute disponibilité).  Certaines fonctionnalités peuvent être désactivées.
+* Critique : Une défaillance grave qui affecte le service.  Le système est incapable de traiter les requêtes API ou les entrées/sorties client et risque de perdre des données.
+* Meilleure pratique : Pannes déclenchées par une configuration système sous-optimale.
+
+ a| 
+chaîne
+
+
+
+ a| 
+taper
+ a| 
+Le type de panne. Valeurs possibles :
+
+* nœud : Une panne affectant un nœud entier.
+* Entraînement : Un défaut affectant un entraînement individuel.
+* cluster : Une panne affectant l'ensemble du cluster.
+* service : Une panne affectant un service sur le cluster.
+* volume : Un défaut affectant un volume individuel.
+
+ a| 
+chaîne
+
+|===
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_listclusterfaults.adoc[ListClusterFaults]
+* link:../storage/reference_monitor_cluster_fault_codes.html["Codes d'erreur du groupe d'outils"]
+

@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_create_an_endpoint.html 
+sidebar: sidebar 
+keywords: element, endpoints, create, snapmirror, ui 
+summary: 'Vous devez créer un point de terminaison SnapMirror dans l"interface utilisateur de NetApp Element avant de pouvoir créer une relation.' 
+---
+= Créer un point de terminaison SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez créer un point de terminaison SnapMirror dans l'interface utilisateur de NetApp Element avant de pouvoir créer une relation.
+
+Un point de terminaison SnapMirror est un cluster ONTAP qui sert de cible de réplication pour un cluster exécutant le logiciel Element.  Avant de créer une relation SnapMirror , vous devez d'abord créer un point de terminaison SnapMirror .
+
+Vous pouvez créer et gérer jusqu'à quatre points de terminaison SnapMirror sur un cluster de stockage exécutant le logiciel Element.
+
+
+NOTE: Si un point de terminaison existant a été créé à l'origine à l'aide de l'API et que les informations d'identification n'ont pas été enregistrées, vous pouvez voir le point de terminaison dans l'interface utilisateur d'Element et vérifier son existence, mais il ne peut pas être géré à l'aide de l'interface utilisateur d'Element.  Ce point de terminaison ne peut alors être géré qu'à l'aide de l'API Element.
+
+Pour plus de détails sur les méthodes API, consultez link:../api/concept_element_api_about_the_api.html["Gérez le stockage avec l'API Element"].
+
+.Ce dont vous aurez besoin
+* Vous auriez dû activer SnapMirror dans l'interface utilisateur Element pour le cluster de stockage.
+* Vous connaissez les identifiants ONTAP pour le point de terminaison.
+
+
+.Étapes
+. Cliquez sur *Protection des données* > *Points de terminaison SnapMirror *.
+. Cliquez sur *Créer un point de terminaison*.
+. Dans la boîte de dialogue *Créer un nouveau point de terminaison*, saisissez l'adresse IP de gestion du cluster du système ONTAP .
+. Saisissez les identifiants de l'administrateur ONTAP associés au point de terminaison.
+. Consultez les détails supplémentaires :
++
+** LIF : Liste les interfaces logiques inter-clusters ONTAP utilisées pour communiquer avec Element.
+** Statut : Affiche l’état actuel du point de terminaison SnapMirror .  Les valeurs possibles sont : connecté, déconnecté et non géré.
+
+
+. Cliquez sur *Créer un point de terminaison*.
+

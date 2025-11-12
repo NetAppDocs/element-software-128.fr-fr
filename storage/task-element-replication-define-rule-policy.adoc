@@ -1,0 +1,108 @@
+---
+permalink: storage/task-element-replication-define-rule-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, define, rule, policy 
+summary: 'Pour les politiques personnalisées de type « mirror-vault », vous devez définir au moins une règle qui détermine quelles copies d"instantané sont transférées lors de l"initialisation et de la mise à jour.  Vous pouvez également définir des règles pour les politiques par défaut avec le type de politique « mirror-vault ».' 
+---
+= Définir une règle pour une politique
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les politiques personnalisées de type « mirror-vault », vous devez définir au moins une règle qui détermine quelles copies d'instantané sont transférées lors de l'initialisation et de la mise à jour.  Vous pouvez également définir des règles pour les politiques par défaut avec le type de politique « `mirror-vault` ».
+
+.À propos de cette tâche
+Chaque politique de type « mirror-vault » doit comporter une règle spécifiant quelles copies d’instantané répliquer.  La règle « bi-mensuelle », par exemple, indique que seules les copies instantanées auxquelles est attribuée l'étiquette SnapMirror « bi-mensuelle » doivent être répliquées.  Vous attribuez l'étiquette SnapMirror lors de la configuration des copies d'instantanés Element.
+
+Chaque type de politique est associé à une ou plusieurs règles définies par le système.  Ces règles sont automatiquement attribuées à une politique lorsque vous spécifiez son type de politique.  Le tableau ci-dessous présente les règles définies par le système.
+
+|===
+
+
+| Règle définie par le système | Utilisé dans les types de polices | Résultat 
+
+
+ a| 
+sm_créé
+ a| 
+miroir asynchrone, coffre-fort miroir
+ a| 
+Une copie instantanée créée par SnapMirror est transférée lors de l'initialisation et de la mise à jour.
+
+
+
+ a| 
+tous les jours
+ a| 
+coffre-miroir
+ a| 
+De nouvelles copies instantanées de la source portant l'étiquette SnapMirror « `daily` » sont transférées lors de l'initialisation et de la mise à jour.
+
+
+
+ a| 
+hebdomadaire
+ a| 
+coffre-miroir
+ a| 
+De nouvelles copies instantanées de la source portant l'étiquette SnapMirror « hebdomadaire » sont transférées lors de l'initialisation et de la mise à jour.
+
+
+
+ a| 
+mensuel
+ a| 
+coffre-miroir
+ a| 
+De nouvelles copies instantanées de la source portant l'étiquette SnapMirror « mensuelle » sont transférées lors de l'initialisation et de la mise à jour.
+
+|===
+Vous pouvez spécifier des règles supplémentaires selon vos besoins, pour les politiques par défaut ou personnalisées. Par exemple:
+
+* Pour la valeur par défaut `MirrorAndVault` Dans le cadre de cette politique, vous pouvez créer une règle appelée « `bi-monthly` » pour faire correspondre les copies instantanées sur la source avec l'étiquette SnapMirror « `bi-monthly` ».
+* Pour une politique personnalisée avec le type de politique « `mirror-vault` », vous pouvez créer une règle appelée « `bi-weekly` » pour faire correspondre les copies instantanées sur la source avec l'étiquette SnapMirror « `bi-weekly` ».
+
+
+.Étape
+. Définir une règle pour une politique :
++
+`snapmirror policy add-rule -vserver _SVM_ -policy _policy_for_rule_ -snapmirror-label _snapmirror-label_ -keep _retention_count_`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+L'exemple suivant ajoute une règle avec l'étiquette SnapMirror `bi-monthly` par défaut `MirrorAndVault` politique:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy MirrorAndVault -snapmirror-label bi-monthly -keep 6
+----
++
+L'exemple suivant ajoute une règle avec l'étiquette SnapMirror `bi-weekly` à la douane `my_snapvault` politique:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy my_snapvault -snapmirror-label bi-weekly -keep 26
+----
++
+L'exemple suivant ajoute une règle avec l'étiquette SnapMirror `app_consistent` à la douane `Sync` politique:
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy add-rule -vserver svm1 -policy Sync -snapmirror-label app_consistent -keep 1
+----
++
+Vous pouvez ensuite répliquer des copies d'instantanés du cluster source qui correspondent à cette étiquette SnapMirror :
+
++
+[listing]
+----
+cluster_src::> snapshot create -vserver vs1 -volume vol1 -snapshot snapshot1 -snapmirror-label app_consistent
+----
+

@@ -1,0 +1,142 @@
+---
+permalink: api/reference_element_api_listaccounts.html 
+sidebar: sidebar 
+keywords: account,accounts,list,listing,all,listaccounts 
+summary: 'Vous pouvez utiliser ListAccounts pour obtenir la liste complète des comptes locataires de stockage, avec prise en charge optionnelle de la pagination.  Les comptes d"éléments permettent d"accéder aux volumes.' 
+---
+= Lister les comptes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `ListAccounts` pour obtenir la liste complète des comptes locataires de stockage, avec prise en charge optionnelle de la pagination.  Les comptes d'éléments permettent d'accéder aux volumes.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+inclure les conteneurs de stockage
+ a| 
+Les conteneurs de stockage de volumes virtuels sont inclus par défaut dans la réponse.  Pour exclure les conteneurs de stockage, définissez la valeur sur false.
+ a| 
+booléen
+ a| 
+true
+ a| 
+Non
+
+
+
+ a| 
+ID de compte de démarrage
+ a| 
+Identifiant du compte initial à renvoyer.  Si aucun compte n'existe avec cet identifiant de compte, le compte suivant dans l'ordre des identifiants de compte est utilisé comme début de la liste.  Pour parcourir la liste, transmettez l'identifiant du dernier compte de la réponse précédente + 1.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+limite
+ a| 
+Nombre maximal d'objets de compte à renvoyer.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+comptes
+ a| 
+La liste des comptes.
+ a| 
+xref:reference_element_api_account.adoc[compte]tableau
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "ListAccounts",
+   "params": {
+     "startAccountID"  : 0,
+     "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "result" : {
+    "accounts": [
+	{
+        "attributes": {},
+        "username": "jamesw",
+        "targetSecret": "168#5A757ru268)",
+        "volumes": [],
+        "enableChap": false,
+        "status": "active",
+        "accountID": 16,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "168#5A757ru268)"
+    },
+    {
+        "attributes": {},
+        "username": "jimmyd",
+        "targetSecret": "targetsecret",
+        "volumes": [],
+        "enableChap": true,
+        "status": "active",
+        "accountID": 5,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "initiatorsecret"
+    }
+  ]
+}
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

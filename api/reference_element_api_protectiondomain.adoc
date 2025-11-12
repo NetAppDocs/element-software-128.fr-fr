@@ -1,0 +1,46 @@
+---
+permalink: api/reference_element_api_protectiondomain.html 
+sidebar: sidebar 
+keywords: object,objects,protection domains 
+summary: 'L"objet protectionDomain contient le nom et les détails de type d"un domaine de protection.' 
+---
+= domaine de protection
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet protectionDomain contient le nom et les détails de type d'un domaine de protection.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+nom_de_domaine_protection
+ a| 
+Le nom du domaine de protection.
+ a| 
+chaîne
+
+
+
+ a| 
+type de domaine de protection
+ a| 
+Le type de domaine de protection. Valeurs possibles :
+
+* Châssis : Tous les nœuds de stockage dans un seul châssis.
+* personnalisé : Tous les nœuds de stockage dans un seul domaine de protection défini par le client.
+
+ a| 
+chaîne
+
+|===

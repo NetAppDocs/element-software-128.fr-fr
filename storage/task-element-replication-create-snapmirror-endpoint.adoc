@@ -1,0 +1,25 @@
+---
+permalink: storage/task-element-replication-create-snapmirror-endpoint.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, snapmirror, endpoint 
+summary: 'Vous devez créer un point de terminaison SnapMirror avant de pouvoir créer une relation de réplication. Vous ne pouvez effectuer cette tâche que dans l"interface utilisateur Web du logiciel Element ou en utilisant les méthodes de l"API.' 
+---
+= Créer un point de terminaison SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez créer un point de terminaison SnapMirror avant de pouvoir créer une relation de réplication. Vous pouvez uniquement effectuer cette tâche dans l'interface utilisateur Web du logiciel Element ou en utilisant le link:../api/reference_element_api_abortsnapmirrorrelationship.html["Méthodes de l'API SnapMirror"].
+
+.Avant de commencer
+Vous devez avoir activé SnapMirror sur le cluster Element.
+
+.Étapes
+. Cliquez sur *Protection des données* > *Points de terminaison SnapMirror *.
+. Cliquez sur *Créer un point de terminaison*.
+. Dans la boîte de dialogue *Créer un nouveau point de terminaison*, saisissez l'adresse IP de gestion du cluster ONTAP .
+. Saisissez l'identifiant et le mot de passe de l'administrateur du cluster ONTAP .
+. Cliquez sur *Créer un point de terminaison*.
+

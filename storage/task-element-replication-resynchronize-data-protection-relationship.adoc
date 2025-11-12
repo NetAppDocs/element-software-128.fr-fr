@@ -1,0 +1,37 @@
+---
+permalink: storage/task-element-replication-resynchronize-data-protection-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, update, replication, relationship, manually 
+summary: 'Vous devrez peut-être mettre à jour manuellement une relation de réplication si une mise à jour échoue en raison d"une erreur réseau.' 
+---
+= Resynchroniser une relation de réplication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez resynchroniser une relation de réplication après avoir rendu un volume de destination accessible en écriture, après l'échec d'une mise à jour parce qu'une copie Snapshot commune n'existe pas sur les volumes source et de destination, ou si vous souhaitez modifier la stratégie de réplication de la relation.
+
+.À propos de cette tâche
+Bien que la resynchronisation ne nécessite pas de transfert de base, elle peut prendre du temps.  Il serait peut-être préférable d'effectuer la resynchronisation en dehors des heures de pointe.
+
+Vous devez spécifier le chemin source de l'élément dans le formulaire `<hostip:>/lun/<name>` , où "`lun`" est la chaîne de caractères réelle "`lun`" et `name` est le nom du volume Element.
+
+.Étape
+. Resynchronisez les volumes source et de destination :
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -policy <policy>`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+L'exemple suivant resynchronise la relation entre le volume source `0005` à l'adresse IP 10.0.0.11 et au volume de destination `volA_dst` sur `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+

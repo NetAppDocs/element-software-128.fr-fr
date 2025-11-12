@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: 'L"objet nodeStats contient des mesures d"activité de haut niveau pour un nœud.  Vous pouvez utiliser les méthodes d"API GetNodeStats et ListNodeStats pour obtenir tout ou partie des objets nodeStats.' 
+---
+= statistiques des nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet nodeStats contient des mesures d'activité de haut niveau pour un nœud.  Vous pouvez utiliser le `GetNodeStats` et `ListNodeStats` Méthodes API permettant d'obtenir tout ou partie des objets nodeStats.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+compter
+ a| 
+Le nombre total d'échantillons dans l'objet nodeStats.
+ a| 
+entier
+
+
+
+ a| 
+processeur
+ a| 
+Utilisation du processeur, en %.
+ a| 
+entier
+
+
+
+ a| 
+cpuTotal
+ a| 
+Valeur croissante de l'utilisation du processeur.
+ a| 
+entier
+
+
+
+ a| 
+cBytesIn
+ a| 
+Octets reçus sur l'interface du cluster.
+ a| 
+entier
+
+
+
+ a| 
+cBytesOut
+ a| 
+Octets sortants sur l'interface du cluster.
+ a| 
+entier
+
+
+
+ a| 
+sBytesIn
+ a| 
+Octets entrants sur l'interface de stockage.
+ a| 
+entier
+
+
+
+ a| 
+sBytesOut
+ a| 
+Octets sortants sur l'interface de stockage.
+ a| 
+entier
+
+
+
+ a| 
+mBytesIn
+ a| 
+Octets entrants sur l'interface de gestion.
+ a| 
+entier
+
+
+
+ a| 
+mBytesOut
+ a| 
+Octets sortants sur l'interface de gestion.
+ a| 
+entier
+
+
+
+ a| 
+cluster d'utilisation du réseau
+ a| 
+Utilisation de l'interface réseau (en %) pour l'interface réseau du cluster.
+ a| 
+entier
+
+
+
+ a| 
+Utilisation du réseau Stockage
+ a| 
+Utilisation de l'interface réseau (en %) pour l'interface réseau de stockage.
+ a| 
+entier
+
+
+
+ a| 
+Noyau de chaleur
+ a| 
+Informations sur l'utilisation des nœuds.  Disponible à partir d'Element 12.8.  Membres :
+
+* primaryTotalHeat : nombre total d'IOPS du nœud principal / nombre d'IOPS configurées du nœud, moyenné sur 24 heures
+* recentPrimaryTotalHeat : IOPS totales du nœud principal / IOPS configurées du nœud, moyenne sur une heure
+* recentTotalHeat : IOPS totales du nœud / IOPS configurées du nœud, moyenne sur une heure
+* totalHeat : IOPS totales du nœud / IOPS configurées du nœud, moyenne sur 24 heures
+
+ a| 
+objet JSON
+
+
+
+ a| 
+latence de lecture en secondes totale
+ a| 
+Valeur croissante de manière monotone du temps total passé à effectuer des opérations de lecture sur le nœud.
+ a| 
+entier
+
+
+
+ a| 
+opérations de lecture
+ a| 
+Valeur croissante de façon monotone du nombre total d'opérations de lecture sur un nœud.
+ a| 
+entier
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+Données d'histogramme illustrant la charge du service de tranche au fil du temps.
+ a| 
+objet JSON
+
+
+
+ a| 
+horodatage
+ a| 
+L'heure actuelle au format UTC+0.
+ a| 
+Chaîne de date ISO 8601
+
+
+
+ a| 
+mémoire utilisée
+ a| 
+Utilisation totale de la mémoire en octets.
+ a| 
+entier
+
+
+
+ a| 
+writeLatenceUSecTotal
+ a| 
+Valeur croissante de manière monotone du temps total passé à effectuer des opérations d'écriture sur le nœud.
+ a| 
+entier
+
+
+
+ a| 
+Opérations d'écriture
+ a| 
+Valeur croissante de façon monotone du nombre total d'opérations d'écriture sur un nœud.
+ a| 
+entier
+
+|===
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_getnodestats.adoc[GetNodeStats]
+* xref:reference_element_api_listnodestats.adoc[ListNodeStats]
+

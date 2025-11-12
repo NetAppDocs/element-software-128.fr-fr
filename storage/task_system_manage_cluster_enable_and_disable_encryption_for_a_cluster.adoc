@@ -1,0 +1,78 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html 
+sidebar: sidebar 
+keywords: enable, disable, encryption at rest, cluster, sed, hardware-based, encryption settings, software-based 
+summary: 'Avec les clusters SolidFire , vous pouvez chiffrer toutes les données stockées sur le cluster à l"aide d"un chiffrement logiciel ou matériel au repos.' 
+---
+= Activer et désactiver le chiffrement au repos pour un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avec les clusters SolidFire , vous pouvez chiffrer toutes les données au repos stockées sur les disques du cluster.  Vous pouvez activer la protection à l'échelle du cluster des disques à chiffrement automatique (SED) en utilisant soitlink:../concepts/concept_solidfire_concepts_security.html["chiffrement matériel ou logiciel au repos"] .
+
+Vous pouvez activer le chiffrement matériel au repos via l'interface utilisateur ou l'API d'Element.  L'activation du chiffrement matériel au repos n'affecte ni les performances ni l'efficacité du cluster.  Vous pouvez activer le chiffrement logiciel au repos uniquement à l'aide de l'API Element.
+
+Le chiffrement matériel au repos n'est pas activé par défaut lors de la création du cluster et peut être activé et désactivé depuis l'interface utilisateur d'Element.
+
+
+WARNING: Pour les clusters de stockage 100 % flash SolidFire , le chiffrement logiciel au repos doit être activé lors de la création du cluster et ne peut pas être désactivé après sa création.
+
+.Ce dont vous aurez besoin
+* Vous disposez des privilèges d'administrateur de cluster pour activer ou modifier les paramètres de chiffrement.
+* Pour le chiffrement matériel au repos, vous devez vous assurer que le cluster est en bon état avant de modifier les paramètres de chiffrement.
+* Si vous désactivez le chiffrement, deux nœuds doivent participer à un cluster pour accéder à la clé permettant de désactiver le chiffrement sur un disque.
+
+
+
+
+== Vérifier l'état du chiffrement au repos
+
+Pour consulter l'état actuel du chiffrement au repos et/ou du chiffrement logiciel au repos sur le cluster, utilisezlink:../api/reference_element_api_getclusterinfo.html["Obtenir les informations du cluster"^] méthode.  Vous pouvez utiliser lelink:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["GetSoftwareEncryptionAtRestInfo"^] méthode permettant d'obtenir des informations sur la manière dont le cluster chiffre les données au repos.
+
+
+NOTE: Le tableau de bord de l'interface utilisateur du logiciel Element à `https://<MVIP>/` Actuellement, seul l'état du chiffrement au repos est affiché pour le chiffrement matériel.
+
+.Options
+* <<Activer le chiffrement matériel au repos>>
+* <<Activer le chiffrement logiciel au repos>>
+* <<Désactiver le chiffrement matériel au repos>>
+
+
+
+
+== Activer le chiffrement matériel au repos
+
+
+NOTE: Pour activer le chiffrement au repos à l'aide d'une configuration de gestion de clés externe, vous devez activer le chiffrement au repos via lelink:../api/reference_element_api_enableencryptionatrest.html["API"] .  L'activation via le bouton Element UI existant rétablira l'utilisation des clés générées en interne.
+
+. Dans l'interface utilisateur d'Element, sélectionnez *Cluster* > *Paramètres*.
+. Sélectionnez *Activer le chiffrement au repos*.
+
+
+
+
+== Activer le chiffrement logiciel au repos
+
+
+NOTE: Le chiffrement logiciel au repos ne peut pas être désactivé après avoir été activé sur le cluster.
+
+. Lors de la création du cluster, exécutez lalink:../api/reference_element_api_createcluster.html["méthode de création de cluster"] avec `enableSoftwareEncryptionAtRest` défini à `true` .
+
+
+
+
+== Désactiver le chiffrement matériel au repos
+
+. Dans l'interface utilisateur d'Element, sélectionnez *Cluster* > *Paramètres*.
+. Sélectionnez *Désactiver le chiffrement au repos*.
+
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

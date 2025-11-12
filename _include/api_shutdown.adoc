@@ -1,0 +1,95 @@
+= Paramètres
+:allow-uri-read: 
+
+
+Vous pouvez utiliser le `Shutdown` méthode pour redémarrer ou arrêter les nœuds d'un cluster.  Cette méthode permet d'arrêter un seul nœud, plusieurs nœuds ou tous les nœuds du cluster.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+nœuds
+ a| 
+Liste des identifiants de nœuds à redémarrer ou à arrêter.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+option
+ a| 
+Mesures à prendre pour le groupe. Valeurs possibles :
+
+* redémarrage : Redémarre le cluster.
+* arrêt : Procède à une mise hors tension complète.
+
+ a| 
+chaîne
+ a| 
+redémarrage
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "Shutdown",
+   "params": {
+     "nodes": [
+       2,
+       3,
+       4
+     ],
+     "option": "halt"
+   },
+   "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "failed": [],
+     "successful": [
+          6
+      [
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

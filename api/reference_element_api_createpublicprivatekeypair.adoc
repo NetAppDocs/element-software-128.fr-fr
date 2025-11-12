@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_createpublicprivatekeypair.html 
+sidebar: sidebar 
+keywords: SSL keys,public and private keys,certificate signing request,creating key pair 
+summary: 'Vous pouvez utiliser la méthode CreatePublicPrivateKeyPair pour créer des clés SSL publiques et privées.  Vous pouvez utiliser ces clés pour générer des demandes de signature de certificat.  Une seule paire de clés peut être utilisée pour chaque cluster de stockage.  Avant d"utiliser cette méthode pour remplacer des clés existantes, assurez-vous que ces clés ne sont plus utilisées par aucun fournisseur.' 
+---
+= Créer une paire de clés publique/privée
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `CreatePublicPrivateKeyPair` Méthode de création de clés SSL publiques et privées.  Vous pouvez utiliser ces clés pour générer des demandes de signature de certificat.  Une seule paire de clés peut être utilisée pour chaque cluster de stockage.  Avant d'utiliser cette méthode pour remplacer des clés existantes, assurez-vous que ces clés ne sont plus utilisées par aucun fournisseur.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+Nom commun
+ a| 
+Le champ *Nom commun* (CN) du nom distinctif X.509.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+pays
+ a| 
+Le champ de nom distinctif X.509 *Pays* (C).
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+Adresse e-mail
+ a| 
+Le champ *Adresse e-mail* du nom distinctif X.509 (MAIL).
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+localité
+ a| 
+Le champ *Nom de la localité* (L) du nom distinctif X.509.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+organisation
+ a| 
+Le champ *Nom de l'organisation* du nom distinctif X.509 (O).
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+unité organisationnelle
+ a| 
+Le champ *Nom de l'unité organisationnelle* (OU) du nom distinctif X.509.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+État
+ a| 
+Le champ du nom distinctif X.509 *État* ou *Nom de la province* (ST ou SP ou S).
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode ne renvoie aucune valeur.  En l'absence d'erreur, la création de la clé est considérée comme réussie.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "CreatePublicPrivateKeyPair",
+  "params": {
+    "commonName": "Name",
+    "country": "US",
+    "emailAddress" : "email@domain.com"
+   },
+"id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== Nouveautés depuis la version
+
+11,7

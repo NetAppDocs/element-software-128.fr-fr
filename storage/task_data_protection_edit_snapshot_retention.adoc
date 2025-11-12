@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_edit_snapshot_retention.html 
+sidebar: sidebar 
+keywords: snapshot retention, edit, set a retention period, edit retention period 
+summary: 'Vous pouvez modifier la période de conservation d"un instantané pour contrôler quand, et si, le système supprime les instantanés.  La période de conservation que vous spécifiez commence lorsque vous entrez dans le nouvel intervalle.  Lorsque vous définissez une période de conservation, vous pouvez sélectionner une période qui commence à l"heure actuelle (la conservation n"est pas calculée à partir de l"heure de création de l"instantané).  Vous pouvez spécifier les intervalles en minutes, en heures et en jours.' 
+---
+= Conservation des instantanés de modification
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier la période de conservation d'un instantané pour contrôler quand, et si, le système supprime les instantanés.  La période de conservation que vous spécifiez commence lorsque vous entrez dans le nouvel intervalle.  Lorsque vous définissez une période de conservation, vous pouvez sélectionner une période qui commence à l'heure actuelle (la conservation n'est pas calculée à partir de la date de création de l'instantané).  Vous pouvez spécifier les intervalles en minutes, en heures et en jours.
+
+.Étapes
+. Cliquez sur *Protection des données* > *Instantanés*.
+. Cliquez sur l'icône *Actions* de la capture d'écran que vous souhaitez modifier.
+. Dans le menu qui apparaît, cliquez sur *Modifier*.
+. *Facultatif :* Cochez la case **Inclure l’instantané dans la réplication lors du couplage** pour vous assurer que l’instantané est capturé dans la réplication lorsque le volume parent est couplé.
+. *Facultatif :* Sélectionnez une option de conservation pour l’instantané :
++
+** Cliquez sur *Conserver indéfiniment* pour conserver l'instantané sur le système de façon permanente.
+** Cliquez sur *Définir la période de conservation* et utilisez les champs de date pour sélectionner la durée pendant laquelle le système conservera l'instantané.
+
+
+. Cliquez sur *Enregistrer les modifications*.
+

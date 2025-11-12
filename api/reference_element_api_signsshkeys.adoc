@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_signsshkeys.html 
+sidebar: sidebar 
+keywords: ssh, sign key 
+summary: 'Une fois SSH activé sur un nœud ou un cluster, vous pouvez utiliser la méthode SignSshKeys pour accéder à un shell sur ce nœud en tant qu"administrateur (sfadmin) ou utilisateur en lecture seule (sfreadonly). L"utilisateur en lecture seule, introduit dans Element 12.5, permet le dépannage initial sur un nœud, mais ne dispose pas des privilèges nécessaires pour exécuter des commandes avec élévation de privilèges.' 
+---
+= SignSshKeys
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois SSH activé sur le cluster à l'aide delink:../api/reference_element_api_enablessh.html["Méthode EnableSSH"] , vous pouvez utiliser le `SignSshKeys` méthode pour accéder à un shell sur un nœud.
+
+À partir de l'élément 12.5, `sfreadonly` Il s'agit d'un nouveau compte système qui permet un dépannage de base sur un nœud.  Cette API permet l'accès SSH via `sfreadonly` Compte système sur tous les nœuds du cluster.
+
+
+WARNING: Sauf avis contraire du support NetApp , toute modification du système n'est pas prise en charge, annule votre contrat de support et peut entraîner une instabilité ou une inaccessibilité des données.
+
+Après avoir utilisé cette méthode, vous devez copier le trousseau de clés à partir de la réponse, l'enregistrer sur le système qui initiera la connexion SSH, puis exécuter la commande suivante :
+
+[listing]
+----
+ssh -i <identity_file> sfreadonly@<node_ip>
+----
+ `identity_file`est un fichier à partir duquel l'identité (clé privée) pour l'authentification par clé publique est lue et `node_ip` est l'adresse IP du nœud.  Pour plus d'informations sur `identity_file` , voir la page de manuel SSH.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+durée
+ a| 
+Entier compris entre 1 et 24 indiquant le nombre d'heures de validité de la clé signée.  Si la durée n'est pas spécifiée, la valeur par défaut est utilisée.
+ a| 
+entier
+ a| 
+1
+ a| 
+Non
+
+
+
+ a| 
+clé publique
+ a| 
+Si ce paramètre est fourni, il ne renverra que la clé publique signée au lieu de créer un trousseau complet pour l'utilisateur.
+
+
+NOTE: Clés publiques soumises via la barre d'adresse d'un navigateur avec `+` sont interprétés comme des signes espacés et des signes de rupture.
+ a| 
+chaîne
+ a| 
+Nul
+ a| 
+Non
+
+
+
+ a| 
+sfadmin
+ a| 
+Permet d'accéder au compte shell sfadmin lorsque vous effectuez l'appel API avec un accès au cluster supportAdmin, ou lorsque le nœud n'est pas dans un cluster.
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+statut de génération de clés
+ a| 
+Contient l'identité de la clé signée, les principaux autorisés et les dates de début et de fin de validité de la clé.
+ a| 
+chaîne
+
+
+
+ a| 
+clé privée
+ a| 
+La valeur d'une clé SSH privée n'est renvoyée que si l'API génère un trousseau complet pour l'utilisateur final.
+
+
+NOTE: La valeur est encodée en Base64 ; vous devez la décoder lorsqu’elle est écrite dans un fichier pour vous assurer qu’elle est lue comme une clé privée valide.
+ a| 
+chaîne
+
+
+
+ a| 
+clé publique
+ a| 
+Une valeur de clé SSH publique n'est renvoyée que si l'API génère un trousseau complet pour l'utilisateur final.
+
+
+NOTE: Lorsque vous transmettez un paramètre public_key à la méthode API, seule la `signed_public_key` La valeur est renvoyée dans la réponse.
+ a| 
+chaîne
+
+
+
+ a| 
+clé publique signée
+ a| 
+La clé publique SSH résultant de la signature de la clé publique, qu'elle ait été fournie par l'utilisateur ou générée par l'API.
+ a| 
+chaîne
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+    "method": "SignSshKeys",
+    "params": {
+        "duration": 2,
+        "publicKey":<string>
+    },
+    "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "signedKeys": {
+      "keygen_status": <keygen_status>,
+      "signed_public_key": <signed_public_key>
+    }
+  }
+}
+----
+Dans cet exemple, une clé publique est signée et renvoyée, valable pour une durée de 1 à 24 heures.
+
+
+
+== Nouveautés depuis la version
+
+12,5

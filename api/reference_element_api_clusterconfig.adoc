@@ -1,0 +1,150 @@
+---
+permalink: api/reference_element_api_clusterconfig.html 
+sidebar: sidebar 
+keywords: objects,object,clusterConfig 
+summary: 'L"objet clusterConfig renvoie les informations utilisées par le nœud pour communiquer avec le cluster.' 
+---
+= clusterConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `clusterConfig` L'objet renvoie les informations que le nœud utilise pour communiquer avec le cluster.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+`cipi`
+ a| 
+Interface réseau utilisée pour la communication au sein du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+`cluster`
+ a| 
+Nom unique du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+`encryptionCapable`
+ a| 
+Indique si le nœud prend en charge le chiffrement.
+ a| 
+booléen
+
+
+
+ a| 
+`ensemble`
+ a| 
+Nœuds participant au cluster.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+`fipsDriveConfiguration`
+ a| 
+Indique si le nœud prend en charge les disques certifiés FIPS 140-2.
+ a| 
+booléen
+
+
+
+ a| 
+`hasLocalAdmin`
+ a| 
+Indique si le cluster possède un administrateur local.
+ a| 
+booléen
+
+
+
+ a| 
+`mipi`
+ a| 
+Interface réseau utilisée pour la gestion des nœuds.
+ a| 
+chaîne
+
+
+
+ a| 
+`name`
+ a| 
+Identifiant unique du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+`nodeID`
+ a| 
+Identifiant unique du nœud.
+ a| 
+entier
+
+
+
+ a| 
+`pendingNodeID`
+ a| 
+Identifiant unique du nœud en attente.
+ a| 
+entier
+
+
+
+ a| 
+`role`
+ a| 
+Identifie le rôle du nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+`sipi`
+ a| 
+Interface réseau utilisée pour le stockage.
+ a| 
+chaîne
+
+
+
+ a| 
+`state`
+ a| 
+Indique l'état du nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+`version`
+ a| 
+Indique la version du nœud.
+ a| 
+chaîne
+
+|===

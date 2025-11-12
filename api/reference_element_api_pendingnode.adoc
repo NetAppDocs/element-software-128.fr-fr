@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_pendingnode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingNode 
+summary: 'L"objet pendingNode contient des informations sur un nœud pouvant être ajouté à un cluster.  Utilisez la méthode API ListPendingNodes pour obtenir une liste de ces informations pour tous les nœuds en attente.  Vous pouvez ajouter n"importe lequel des nœuds listés à un cluster en utilisant la méthode API AddNodes.' 
+---
+= nœud en attente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet pendingNode contient des informations sur un nœud pouvant être ajouté à un cluster.  Utilisez le `ListPendingNodes` Méthode API permettant de renvoyer une liste de ces informations pour tous les nœuds en attente.  Vous pouvez ajouter n'importe lequel des nœuds listés à un cluster en utilisant `AddNodes` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+cipi
+ a| 
+L'adresse IP du cluster attribuée au nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+clé de nœud active
+ a| 
+Une clé unique permettant au nœud de rejoindre automatiquement le cluster après une installation réussie du logiciel.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de nœud assigné
+ a| 
+L'identifiant de nœud attribué au nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+asyncHandle
+ a| 
+La méthode asynchrone que vous pouvez utiliser pour interroger l'état de l'opération.
+ a| 
+entier
+
+
+
+ a| 
+nom_du_châssis
+ a| 
+Identifie un châssis de manière unique ; identique pour tous les nœuds d'un même châssis.
+ a| 
+chaîne
+
+
+
+ a| 
+cip
+ a| 
+L'adresse IP du cluster attribuée au nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+mip
+ a| 
+L'adresse IP de gestion attribuée au nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+emplacement de nœud
+ a| 
+Pour les plateformes HCI, la lettre correspondant à l'emplacement du châssis dans lequel se trouve ce nœud (« A », « B », « C » ou « D »).  Pour les plateformes de stockage, cette valeur est nulle.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de nœud actif en attente
+ a| 
+L'identifiant du nœud en attente.
+ a| 
+entier
+
+
+
+ a| 
+platformInfo
+ a| 
+Informations matérielles pour le nœud.  Membres :
+
+* chassisType : La plateforme matérielle du nœud.
+* cpuModel : Modèle de processeur de la plateforme matérielle.
+* nodeMemoryGB : Quantité de mémoire installée sur la plateforme physique, en Go.
+* nodeType : Le nom du modèle de nœud.
+* platformConfigVersion : Version du logiciel configurée pour ce matériel de nœud.
+
+ a| 
+objet JSON
+
+
+
+ a| 
+rôle
+ a| 
+Le rôle du nœud dans le cluster. Valeurs possibles :
+
+* Gestion
+* Stockage
+* Calculer
+* Témoin
+
+ a| 
+
+
+
+ a| 
+siroter
+ a| 
+L'adresse IP de stockage (iSCSI) attribuée au nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+Version du logiciel
+ a| 
+La version actuelle du logiciel Element exécutée sur le nœud.
+ a| 
+chaîne
+
+|===
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_addnodes.adoc[Ajouter des nœuds]
+* xref:reference_element_api_listpendingnodes.adoc[ListPendingNodes]
+

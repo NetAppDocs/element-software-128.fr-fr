@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_snapshots_overview.html 
+sidebar: sidebar 
+keywords: snapshot,overview 
+summary: 'Un instantané de volume est une copie d"un volume à un instant précis.  Vous pouvez utiliser des instantanés pour restaurer un volume à l"état dans lequel il se trouvait au moment de la création de l"instantané.' 
+---
+= Aperçu des instantanés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un instantané de volume est une copie d'un volume à un instant précis.  Vous pouvez utiliser des instantanés pour restaurer un volume à l'état dans lequel il se trouvait au moment de la création de l'instantané.
+
+Vous pouvez regrouper les instantanés de volume afin que les volumes associés puissent être sauvegardés ou restaurés de manière cohérente.  Un instantané de groupe capture une image à un instant précis de tous les fichiers de tranches de volume.  Vous pouvez ensuite utiliser l'image pour restaurer un groupe de volumes à un état antérieur et garantir la cohérence des données sur tous les volumes du groupe.
+
+Vous pouvez programmer des instantanés de volume pour qu'ils s'effectuent automatiquement à intervalles définis.  Vous pouvez définir les intervalles par heure, par jour de la semaine ou par jour du mois.  Vous pouvez également utiliser des instantanés planifiés pour garantir la sauvegarde des instantanés sur un stockage distant à des fins d'archivage.
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

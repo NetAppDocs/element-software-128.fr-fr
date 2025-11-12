@@ -1,0 +1,98 @@
+= Téléverser les journaux
+:allow-uri-read: 
+
+
+Le menu d'options suivant apparaît si le processus RTFI échoue ou si vous choisissez de ne pas poursuivre lors de l'invite initiale du processus RTFI.
+
+image::../media/rtfi_menu_options.PNG[Options du menu SolidFire RTFI]
+
+
+NOTE: Veuillez contacter le support NetApp avant d'utiliser l'une des options de commande suivantes.
+
+[cols="25,75"]
+|===
+| Option | Description 
+
+
+| Redémarrage | Quitte le processus RTFI et redémarre le nœud dans son état actuel.  Aucun nettoyage n'est effectué. 
+
+
+| Mise hors tension | Éteint le nœud en douceur dans son état actuel.  Aucun nettoyage n'est effectué. 
+
+
+| Sortie | Quitte le processus RTFI et ouvre une invite de commandes. 
+
+
+| UploadLogs | Collecte tous les journaux du système et télécharge une seule archive de journaux consolidée vers une URL spécifiée. 
+|===
+
+
+== Téléverser les journaux
+
+Collectez tous les journaux du système et téléchargez-les sur une URL spécifiée selon la procédure suivante.
+
+.Étapes
+. À l'invite du menu des options RTFI, saisissez *UploadLogs*.
+. Saisissez les informations du répertoire distant :
++
+.. Saisissez une URL qui inclut le protocole. Par exemple: `\ftp://,scp://,http://,orhttps://` .
+.. (Facultatif) Ajouter un nom d'utilisateur et un mot de passe intégrés. Par exemple: `scp://user:password@URLaddress.com` .
++
+
+NOTE: Pour connaître l'ensemble des options de syntaxe, consultez la section suivante : https://curl.se/docs/manpage.html["boucle"^] manuel d'utilisation.
+
++
+Le fichier journal est téléchargé et enregistré dans le répertoire spécifié en tant que `.tbz2` archive.
+
+
+
+
+
+
+
+== Utilisez le tunnel de soutien
+
+Si vous avez besoin d'assistance technique pour votre système NetApp HCI ou votre système de stockage 100 % flash SolidFire , l'assistance NetApp peut se connecter à distance à votre système.  Pour démarrer une session et obtenir un accès à distance, le support NetApp peut ouvrir une connexion Secure Shell (SSH) inversée vers votre environnement.
+
+Vous pouvez ouvrir un port TCP pour une connexion tunnel SSH inverse avec le support NetApp .  Cette connexion permet au support NetApp de se connecter à votre nœud de gestion.
+
+.Avant de commencer
+* Pour les services de gestion 2.18 et versions ultérieures, la possibilité d'accès à distance est désactivée par défaut sur le nœud de gestion.  Pour activer la fonctionnalité d'accès à distance, consultez https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["Gérer la fonctionnalité SSH sur le nœud de gestion"] .
+* Si votre nœud de gestion se trouve derrière un serveur proxy, les ports TCP suivants sont requis dans le fichier sshd.config :
++
+[cols="15,25,60"]
+|===
+| Port TCP | Description | Direction de connexion 
+
+
+| 443 | Appels API/HTTPS pour la redirection de port inverse via un tunnel de support ouvert vers l'interface utilisateur web | nœud de gestion vers nœuds de stockage 
+
+
+| 22 | accès de connexion SSH | Du nœud de gestion aux nœuds de stockage ou des nœuds de stockage au nœud de gestion 
+|===
+
+
+.Étapes
+* Connectez-vous à votre nœud de gestion et ouvrez une session de terminal.
+* À l'invite, saisissez les informations suivantes :
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* Pour fermer le tunnel d'assistance à distance, saisissez les informations suivantes :
++
+`rst --killall`
+
+* (Facultatif) Désactiver https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["fonctionnalité d'accès à distance"] encore.
++
+
+NOTE: Le protocole SSH reste activé sur le nœud de gestion si vous ne le désactivez pas.  La configuration SSH activée persiste sur le nœud de gestion lors des mises à jour et des mises à niveau jusqu'à ce qu'elle soit désactivée manuellement.
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

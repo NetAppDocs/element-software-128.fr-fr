@@ -1,0 +1,91 @@
+---
+permalink: storage/reference_monitor_volume_performance_details.html 
+sidebar: sidebar 
+keywords: volume performance 
+summary: 'Vous pouvez consulter les statistiques de performance des volumes depuis la page Performances des volumes de l"onglet Rapports dans l"interface utilisateur d"Element.' 
+---
+= Détails des performances du volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les statistiques de performance des volumes depuis la page Performances des volumes de l'onglet Rapports dans l'interface utilisateur d'Element.
+
+La liste suivante décrit les détails dont vous disposez :
+
+* *IDENTIFIANT*
++
+L'identifiant généré par le système pour le volume.
+
+* *Nom*
++
+Le nom donné au volume lors de sa création.
+
+* *Compte*
++
+Le nom du compte associé au volume.
+
+* *Groupes d'accès*
++
+Le nom du ou des groupes d'accès au volume auxquels appartient le volume.
+
+* *Utilisation du volume*
++
+Un pourcentage qui décrit le niveau d'utilisation du volume par le client.
+
++
+Valeurs possibles :
+
++
+** 0 = Le client n'utilise pas le volume
+** 100 = Le client utilise le maximum
+** >100 = Le client utilise la rafale
+
+
+* *Total des IOPS*
++
+Le nombre total d'IOPS (lecture et écriture) actuellement exécutés sur le volume.
+
+* *Lire IOPS*
++
+Le nombre total d'IOPS de lecture actuellement exécutées sur le volume.
+
+* *Écrire les IOPS*
++
+Le nombre total d'IOPS d'écriture actuellement en cours d'exécution sur le volume.
+
+* *Débit total*
++
+Le débit total (lecture et écriture) actuellement exécuté sur le volume.
+
+* *Débit de lecture*
++
+Le débit total de lecture actuellement exécuté sur le volume.
+
+* *Débit d'écriture*
++
+Le débit total d'écriture actuellement exécuté sur le volume.
+
+* *Latence totale*
++
+Le temps moyen, en microsecondes, pour effectuer des opérations de lecture et d'écriture sur un volume.
+
+* *Latence de lecture*
++
+Le temps moyen, en microsecondes, pour effectuer les opérations de lecture sur le volume au cours des 500 dernières millisecondes.
+
+* *Latence d'écriture*
++
+Le temps moyen, en microsecondes, pour effectuer des opérations d'écriture sur un volume au cours des 500 dernières millisecondes.
+
+* *Profondeur de la file d'attente*
++
+Le nombre d'opérations de lecture et d'écriture en attente sur le volume.
+
+* *Taille moyenne des E/S*
++
+Taille moyenne en octets des E/S récentes sur le volume au cours des 500 dernières millisecondes.
+
+

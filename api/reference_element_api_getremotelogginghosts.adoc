@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_getremotelogginghosts.html 
+sidebar: sidebar 
+keywords: remote,logging,hosts,host,get,getting,getremotelogginghosts 
+summary: Vous pouvez utiliser la méthode GetRemoteLoggingHosts pour obtenir la liste actuelle des serveurs de journalisation. 
+---
+= GetRemoteLoggingHosts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetRemoteLoggingHosts` Méthode pour obtenir la liste actuelle des serveurs de journalisation.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+hôtes distants
+ a| 
+Liste des adresses IP et des informations de port des hôtes configurés pour recevoir les informations de journalisation transférées.
+ a| 
+xref:reference_element_api_loggingserver.adoc[serveur de journalisation]tableau
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 3386609,
+   "method": "GetRemoteLoggingHosts",
+   "params": {}
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 3386609,
+   "result": {
+      "remoteHosts": [
+         {
+           "host": "172.16.1.20",
+           "port": 10514
+         },
+         {
+           "host": "172.16.1.25"
+         }
+      ]
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_setremotelogginghosts.adoc[Définir les hôtes de journalisation à distance]

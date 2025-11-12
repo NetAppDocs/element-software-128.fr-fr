@@ -1,0 +1,37 @@
+---
+permalink: api/reference_element_api_volume_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: volume,pairing,order,operations,volumes,pairing,pair,pairs 
+summary: Vous devez créer une paire de clusters entre deux clusters correspondants avant que les volumes puissent être appariés. 
+---
+= ordre des opérations d'appariement des volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez créer une paire de clusters entre deux clusters correspondants avant que les volumes puissent être appariés.
+
+Utilisez l'ensemble de méthodes API suivant pour établir une connexion au cluster :
+
+* xref:reference_element_api_startvolumepairing.adoc[Début du couplage de volume]:
++
+Cette méthode API crée et renvoie une clé d'appariement de volumes qui est utilisée pour créer une paire de volumes.  La clé contient des informations utilisées pour établir des communications entre les volumes.
+
+* xref:reference_element_api_completevolumepairing.adoc[Appariement complet des volumes]:
++
+Cette méthode utilise la clé d'appairage créée avec lexref:reference_element_api_startvolumepairing.adoc[Début du couplage de volume] Méthode API pour créer une paire de volumes.  Émettre lexref:reference_element_api_completevolumepairing.adoc[Appariement complet des volumes] Méthode API avec les paramètres volumeID et volumePairingKey vers le volume de destination.
+
+
+
+Un seul des volumes appariés peut être identifié comme volume cible de réplication.  Utilisez lexref:reference_element_api_modifyvolumepair.adoc[ModifierVolumePair] Méthode API permettant d'établir le sens de la réplication des données du volume en identifiant le volume cible.  Les données sont répliquées du volume source vers le volume cible.
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_startvolumepairing.adoc[Début du couplage de volume]
+* xref:reference_element_api_completevolumepairing.adoc[Appariement complet des volumes]
+* xref:reference_element_api_modifyvolumepair.adoc[ModifierVolumePair]
+

@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_manage_volumes_deleting_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, delete, volumes 
+summary: 'Vous pouvez supprimer une politique QoS si elle n"est plus nécessaire.  Lorsque vous supprimez une stratégie QoS, tous les volumes associés à cette stratégie conservent leurs paramètres QoS mais ne sont plus associés à une stratégie.' 
+---
+= Supprimer une politique QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer une politique QoS si elle n'est plus nécessaire.  Lorsque vous supprimez une stratégie QoS, tous les volumes associés à cette stratégie conservent leurs paramètres QoS mais ne sont plus associés à une stratégie.
+
+
+NOTE: Si vous souhaitez plutôt dissocier un volume d'une stratégie QoS, vous pouvez modifier les paramètres QoS de ce volume en les personnalisant.
+
+. Sélectionnez *Gestion* > *Stratégies QoS*.
+. Cliquez sur l'icône Actions correspondant à la politique QoS que vous souhaitez supprimer.
+. Dans le menu qui s'affiche, sélectionnez *Supprimer*.
+. Confirmez l'action.
+
+
+
+
+== Trouver plus d'informations
+
+xref:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.adoc[Supprimer l'association de stratégie QoS d'un volume]

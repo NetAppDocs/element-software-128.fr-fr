@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_protection_copy_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, copy, maintain, schedule attributes 
+summary: Vous pouvez copier un planning et conserver ses attributs actuels. 
+---
+= Copier un planning instantané
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez copier un planning et conserver ses attributs actuels.
+
+. Cliquez sur *Protection des données* > *Plannings*.
+. Cliquez sur l'icône Actions correspondant à la planification que vous souhaitez copier.
+. Dans le menu qui s'affiche, cliquez sur *Créer une copie*.
++
+La boîte de dialogue *Créer une planification* s'affiche, préremplie avec les attributs actuels de la planification.
+
+. *Facultatif :* Saisissez un nom et les attributs mis à jour pour le nouveau planning.
+. Cliquez sur *Créer un planning*.
+

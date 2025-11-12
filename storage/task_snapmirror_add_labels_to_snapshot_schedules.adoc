@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: 'Vous pouvez ajouter des étiquettes SnapMirror aux planifications de snapshots pour garantir l"application d"une stratégie SnapMirror .  Vous pouvez consulter les étiquettes disponibles à partir d"une boîte de dialogue de relation SnapMirror existante ou du gestionnaire système NetAppONTAP.' 
+---
+= Ajouter des étiquettes SnapMirror aux planifications de snapshots
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez ajouter des étiquettes SnapMirror aux planifications de snapshots pour garantir l'application d'une stratégie SnapMirror .  Vous pouvez consulter les étiquettes disponibles à partir d'une boîte de dialogue de relation SnapMirror existante ou du gestionnaire système NetAppONTAP.
+
+.Ce dont vous aurez besoin
+* SnapMirror doit être activé au niveau du cluster.
+* L'étiquette que vous souhaitez ajouter existe déjà dans ONTAP.
+
+
+.Étapes
+. Cliquez sur *Protection des données* > *Plannings*.
+. Ajoutez une étiquette SnapMirror à une planification de l'une des manières suivantes :
++
+[cols="25,75"]
+|===
+| Option | Étapes 
+
+
+ a| 
+Création d'un nouvel horaire
+ a| 
+.. Sélectionnez *Créer un planning*.
+.. Veuillez saisir tous les autres détails pertinents.
+.. Sélectionnez *Créer un planning*.
+
+
+
+
+ a| 
+Modification du calendrier existant
+ a| 
+.. Cliquez sur l'icône *Actions* de la planification à laquelle vous souhaitez ajouter une étiquette et sélectionnez *Modifier*.
+.. Dans la boîte de dialogue qui s'affiche, saisissez du texte dans le champ * Étiquette SnapMirror *.
+.. Sélectionnez *Enregistrer les modifications*.
+
+
+|===
+
+
+
+
+== Trouver plus d'informations
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[Créer un planning instantané]

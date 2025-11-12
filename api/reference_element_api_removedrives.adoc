@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_removedrives.html 
+sidebar: sidebar 
+keywords: cluster,drive,drives,remove,removing,removedrives 
+summary: 'Vous pouvez utiliser la méthode RemoveDrives pour supprimer de manière proactive les disques faisant partie du cluster.  Vous pouvez utiliser cette méthode pour réduire la capacité d"un cluster ou pour préparer le remplacement de disques arrivant en fin de vie.  Toutes les données présentes sur les disques sont supprimées et transférées vers d"autres disques du cluster avant que le disque ne soit retiré de ce dernier.' 
+---
+= Supprimer les lecteurs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `RemoveDrives` méthode permettant de retirer de manière proactive les disques faisant partie du cluster.  Vous pouvez utiliser cette méthode pour réduire la capacité d'un cluster ou pour préparer le remplacement de disques arrivant en fin de vie. `RemoveDrives` crée une troisième copie des données de bloc sur les autres nœuds du cluster et attend que la synchronisation soit terminée avant de déplacer les disques vers la liste « Disponible ».  Les disques figurant dans la liste « Disponibles » sont complètement retirés du système et ne comportent aucun service en cours d'exécution ni aucune donnée active.
+
+`RemoveDrives`est une méthode asynchrone.  En fonction de la capacité totale des disques à retirer, la migration de toutes les données peut prendre plusieurs minutes.
+
+Lors du retrait de plusieurs disques, utilisez un seul `RemoveDrives` appel de méthode plutôt que plusieurs méthodes individuelles avec un seul lecteur chacune.  Cela réduit la quantité d'équilibrage de données qui doit être effectué pour stabiliser uniformément la charge de stockage sur le cluster.
+
+Vous pouvez également retirer les disques ayant un statut « défaillant » en utilisant `RemoveDrives` .  Lorsqu'un disque est retiré avec un statut « défaillant », il n'est pas remis à l'état « disponible » ou « actif ».  Le disque dur n'est pas disponible pour une utilisation dans le cluster.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+lecteurs
+ a| 
+Liste des ID de lecteur à supprimer du cluster.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+asyncHandle
+ a| 
+Valeur de gestion utilisée pour obtenir le résultat de l'opération.
+ a| 
+entier
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "RemoveDrives",
+   "params": {
+      "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 1,
+   "result" : {
+     "asyncHandle": 1
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_getasyncresult.adoc[GetAsyncResult]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+

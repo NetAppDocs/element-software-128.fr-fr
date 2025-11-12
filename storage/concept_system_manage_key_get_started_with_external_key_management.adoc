@@ -1,0 +1,28 @@
+---
+permalink: storage/concept_system_manage_key_get_started_with_external_key_management.html 
+sidebar: sidebar 
+keywords: kmip, master key, key management, encryption at rest, software encryption at rest, ekm, ak, eks, seds 
+summary: 'La gestion de clés externes (EKM) assure une gestion sécurisée des clés d"authentification (AK) en conjonction avec un serveur de clés externes hors cluster (EKS).  Les AK sont utilisés pour verrouiller et déverrouiller les disques à chiffrement automatique (SED) lorsque le chiffrement au repos est activé sur le cluster.' 
+---
+= Commencez la gestion des clés externes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La gestion des clés externes (EKM) assure une gestion sécurisée des clés d'authentification (AK) en conjonction avec un serveur de clés externes hors cluster (EKS).  Les clés AK servent à verrouiller et déverrouiller les disques à chiffrement automatique (SED) lorsquelink:../concepts/concept_solidfire_concepts_security.html["chiffrement au repos"] est activé sur le cluster.  L'EKS assure la génération et le stockage sécurisés des AK.  Le cluster utilise le protocole d'interopérabilité de gestion des clés (KMIP), un protocole standard défini par OASIS, pour communiquer avec l'EKS.
+
+* link:task_system_manage_key_set_up_external_key_management.html["Mettre en place une gestion externe"]
+* link:task_system_manage_rekey_software_ear_master_key.html["Réinitialisation du chiffrement logiciel au repos, clé principale"]
+* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys["Récupérer les clés d'authentification inaccessibles ou invalides"]
+* link:concept_system_manage_key_external_key_management_api_commands.html["Commandes de l'API de gestion des clés externes"]
+
+
+[discrete]
+== Trouver plus d'informations
+
+* link:../api/reference_element_api_createcluster.html["L'API CreateCluster permet d'activer le chiffrement logiciel au repos."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

@@ -1,0 +1,29 @@
+---
+permalink: setup/task_setup_gh_redirect_set_up_a_management_node.html 
+sidebar: sidebar 
+keywords: install management node,install mNode,install Active IQ,install AIQ 
+summary: 'Vous pouvez installer le nœud de gestion du logiciel NetApp Element (mNode) pour mettre à niveau et fournir des services système, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et activer l"accès au support NetApp pour le dépannage.' 
+---
+= Configurer un nœud de gestion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez installer le nœud de gestion du logiciel NetApp Element (mNode) pour mettre à niveau et fournir des services système, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et activer l'accès au support NetApp pour le dépannage.
+
+. Voir lelink:../mnode/task_mnode_install.html["installer le nœud de gestion"] documentation.
++
+
+NOTE: Pour configurer Active IQ, utilisez le `--telemetry_active` paramètre dans le script d'installation pour activer la collecte de données à des fins d'analyse par Active IQ.
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

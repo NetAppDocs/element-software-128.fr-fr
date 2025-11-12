@@ -1,0 +1,144 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_activeIQ.html 
+summary: 'Vous pouvez utiliser le nœud de gestion (mNode) pour activer Active IQ pour le stockage tout flash SolidFire .' 
+keywords: netapp, Element, api, enable, active iq, activeiq 
+---
+= Activer la surveillance Active IQ et NetApp
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer la surveillance du stockage Active IQ si vous ne l'avez pas déjà fait lors de l'installation ou de la mise à niveau.  Vous pourriez avoir besoin d'utiliser cette procédure si vous n'avez pas configuré SolidFire Active IQ lors de l'installation d'un système de stockage 100 % flash SolidFire .
+
+Le service de collecte Active IQ transmet les données de configuration et les indicateurs de performance du cluster basés sur le logiciel Element à SolidFire Active IQ pour la création de rapports historiques et la surveillance des performances en quasi temps réel.  Le service de surveillance NetApp permet de transmettre les pannes des clusters de stockage à vCenter pour notification d'alerte.
+
+.Avant de commencer
+* Certaines fonctions d' Active IQ, par exemple la qualité de service (QoS), nécessitent Element 11.3 ou une version ultérieure pour fonctionner correctement.  Pour confirmer que vous êtes en mesure d'utiliser toutes les fonctions Active IQ , NetApp recommande ce qui suit :
++
+** Votre cluster de stockage exécute le logiciel NetApp Element 11.3 ou une version ultérieure.
+** Vous avez déployé un nœud de gestion exécutant la version 11.3 ou ultérieure.
+
+
+* Vous avez accès à Internet.  Le service de collecte Active IQ ne peut pas être utilisé depuis des sites isolés dépourvus de connectivité externe.
+
+
+.Étapes
+. Obtenez l'identifiant de l'actif de base pour l'installation :
++
+.. Ouvrez l'interface utilisateur de l'API REST du service d'inventaire sur le nœud de gestion :
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Sélectionnez *Autoriser* et complétez les informations suivantes :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+... Ferme la fenêtre.
+
+
+.. Dans l'interface utilisateur de l'API REST, sélectionnez *GET /installations*.
+.. Sélectionnez *Essayer*.
+.. Sélectionnez *Exécuter*.
+.. À partir du corps de la réponse code 200, copiez le `id` pour l'installation.
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: Votre installation possède une configuration de ressources de base qui a été créée lors de l'installation ou de la mise à niveau.
+
+
+
+. Activer la télémétrie :
++
+.. Accédez à l'interface utilisateur de l'API du service mnode sur le nœud de gestion en saisissant l'adresse IP du nœud de gestion suivie de `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Sélectionnez *Autoriser* ou toute icône de verrouillage et procédez comme suit :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+... Ferme la fenêtre.
+
+
+.. Configurer la ressource de base :
++
+... Sélectionnez *PUT /assets/{asset_id}*.
+... Sélectionnez *Essayer*.
+... Saisissez les éléments suivants dans la charge utile JSON :
++
+[listing]
+----
+{
+"telemetry_active": true
+"config": {}
+}
+----
+... Saisissez l'identifiant de base de l'étape précédente dans *asset_ID*.
+... Sélectionnez *Exécuter*.
++
+Le service Active IQ redémarre automatiquement à chaque modification des ressources.  La modification des ressources entraîne un court délai avant l'application des paramètres.
+
+
+
+
+
+. Si vous ne l'avez pas déjà fait, ajoutez un élément de contrôleur vCenter pour NetApp Hybrid Cloud Control aux ressources connues du nœud de gestion :
++
+
+NOTE: Un contrôleur est nécessaire pour les services de surveillance NetApp .
+
++
+.. Sélectionnez *POST /assets/{asset_id}/controllers* pour ajouter un sous-élément de contrôleur.
+.. Sélectionnez *Essayer*.
+.. Saisissez l'identifiant de l'actif de base parent que vous avez copié dans votre presse-papiers dans le champ *asset_id*.
+.. Saisissez les valeurs de charge utile requises avec `type` comme `vCenter` et les identifiants vCenter.
++
+[listing]
+----
+{
+"username": "string",
+"password": "string",
+"ip": "string",
+"type": "vCenter",
+"host_name": "string",
+"config": {}
+}
+----
++
+
+NOTE: `ip`est l'adresse IP de vCenter.
+
+.. Sélectionnez *Exécuter*.
+
+
+
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

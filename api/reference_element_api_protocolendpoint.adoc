@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_protocolendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,protocolEndpoint 
+summary: 'L"objet protocolEndpoint contient les attributs d"un point de terminaison de protocole.  Vous pouvez récupérer ces informations pour tous les points de terminaison de protocole du cluster à l"aide de la méthode API ListProtocolEndpoints.' 
+---
+= point de terminaison du protocole
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet protocolEndpoint contient les attributs d'un point de terminaison de protocole.  Vous pouvez récupérer ces informations pour tous les points de terminaison de protocole du cluster en utilisant `ListProtocolEndpoints` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+ID du fournisseur principal
+ a| 
+L'identifiant de l'objet fournisseur de point de terminaison de protocole principal pour le point de terminaison de protocole.
+ a| 
+entier
+
+
+
+ a| 
+ID de point de terminaison du protocole
+ a| 
+L'identifiant unique du point de terminaison du protocole.
+ a| 
+UUID
+
+
+
+ a| 
+état du point de terminaison du protocole
+ a| 
+État du point de terminaison du protocole. Valeurs possibles :
+
+* Actif : Le point de terminaison du protocole est en cours d’utilisation.
+* Démarrage : Le point de terminaison du protocole démarre.
+* Basculement : Le point de terminaison du protocole a basculé.
+* Réservé : le point de terminaison du protocole est réservé.
+
+ a| 
+chaîne
+
+
+
+ a| 
+type de fournisseur
+ a| 
+Le type de fournisseur du point de terminaison du protocole. Valeurs possibles :
+
+* Primaire
+* Secondaire
+
+ a| 
+chaîne
+
+
+
+ a| 
+scsiNAADeviceID
+ a| 
+L'identifiant unique au niveau mondial du périphérique SCSI pour le point de terminaison du protocole au format étendu enregistré NAA IEEE.
+ a| 
+chaîne
+
+
+
+ a| 
+ID du fournisseur secondaire
+ a| 
+L'identifiant de l'objet fournisseur de point de terminaison de protocole secondaire pour le point de terminaison de protocole.
+ a| 
+entier
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]

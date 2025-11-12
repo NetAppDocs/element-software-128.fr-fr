@@ -1,0 +1,63 @@
+---
+permalink: storage/task_data_protection_configure_custom_protection_domains.html 
+sidebar: sidebar 
+keywords:  
+summary: Vous pouvez configurer des domaines de protection personnalisés pour améliorer la résilience du cluster. 
+---
+= Configurer des domaines de protection personnalisés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les clusters Element contenant plus de deux nœuds de stockage, vous pouvez configurer des domaines de protection personnalisés pour chaque nœud.  Lorsque vous configurez des domaines de protection personnalisés, vous devez affecter tous les nœuds du cluster à un domaine.
+
+
+TIP: Lorsque vous attribuez des domaines de protection, une synchronisation des données entre les nœuds démarre et certaines opérations du cluster sont indisponibles jusqu'à ce que la synchronisation des données soit terminée.  Une fois un domaine de protection personnalisé configuré pour un cluster, lorsque vous ajoutez un nouveau nœud de stockage, vous ne pouvez pas ajouter de disques à ce nouveau nœud tant que vous n'avez pas attribué un domaine de protection à ce nœud et laissé la synchronisation des données se terminer.  Visitez lelink:../concepts/concept_solidfire_concepts_data_protection.html#protection-domains["Documentation sur les domaines de protection"] pour en savoir plus sur les domaines de protection.
+
+
+NOTE: Pour qu'un schéma de domaine de protection personnalisé soit utile à un cluster, tous les nœuds de stockage de chaque châssis doivent être affectés au même domaine de protection personnalisé.  Vous devez créer autant de domaines de protection personnalisés que nécessaire pour que cela soit le cas (le plus petit schéma de domaine de protection personnalisé possible est de trois domaines).  Il est recommandé de configurer un nombre égal de nœuds par domaine et de veiller à ce que chaque nœud affecté à un domaine particulier soit du même type.
+
+.Étapes
+. Cliquez sur *Cluster* > *Nœuds*.
+. Cliquez sur *Configurer les domaines de protection*.
++
+Dans la fenêtre *Configurer les domaines de protection personnalisés*, vous pouvez voir les domaines de protection actuellement configurés (le cas échéant) ainsi que les affectations de domaines de protection pour chaque nœud.
+
+. Saisissez un nom pour le nouveau domaine de protection personnalisé, puis cliquez sur *Créer*.
++
+Répétez cette étape pour tous les nouveaux domaines de protection que vous devez créer.
+
+. Pour chaque nœud de la liste *Assigner les nœuds*, cliquez sur la liste déroulante de la colonne *Domaine de protection* et sélectionnez un domaine de protection à attribuer à ce nœud.
++
+
+CAUTION: Avant d'appliquer les modifications, assurez-vous de bien comprendre la configuration de vos nœuds et de votre châssis, le schéma de domaine de protection personnalisé que vous avez configuré et les effets de ce schéma sur la protection des données.  Si vous appliquez un schéma de domaine de protection et que vous devez immédiatement apporter des modifications, il se peut que vous ne puissiez pas le faire pendant un certain temps en raison de la synchronisation des données qui a lieu une fois la configuration appliquée.
+
+. Cliquez sur *Configurer les domaines de protection*.
+
+
+.Résultat
+En fonction de la taille de votre cluster, la synchronisation des données entre les domaines peut prendre un certain temps.  Une fois la synchronisation des données terminée, vous pouvez consulter les affectations de domaine de protection personnalisées sur la page *Cluster* > *Nœuds*, et le tableau de bord de l'interface utilisateur Web d'Element affiche l'état de protection du cluster dans le volet *État du domaine de protection personnalisé*.
+
+.Erreurs possibles
+Voici quelques erreurs que vous pourriez rencontrer après l'application d'une configuration de domaine de protection personnalisée :
+
+|===
+
+
+| Erreur | Description | Résolution 
+
+
+| Échec de SetProtectionDomainLayout : ProtectionDomainLayout rendrait le NodeID {9} inutilisable.  Les noms par défaut et les noms non par défaut ne peuvent pas être utilisés simultanément. | Aucun domaine de protection n'est attribué à ce nœud. | Attribuer un domaine de protection au nœud. 
+
+
+| Échec de SetProtectionDomainLayout : le type de domaine de protection « custom » divise le type de domaine de protection « chassis ». | Dans un châssis multi-nœuds, un nœud se voit attribuer un domaine de protection différent de celui des autres nœuds du châssis. | Assurez-vous que tous les nœuds du châssis se voient attribuer le même domaine de protection. 
+|===
+
+
+== Trouver plus d'informations
+
+* link:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["Domaines de protection personnalisés"^]
+* link:../api/concept_element_api_about_the_api.html["Gérez le stockage avec l'API Element"^]
+

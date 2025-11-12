@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_asynchronous_methods.html 
+sidebar: sidebar 
+keywords: async,asynchronous,methods,API 
+summary: 'Certaines méthodes d"API sont asynchrones, ce qui signifie que l"opération qu"elles effectuent peut ne pas être terminée lorsque la méthode se termine.  Les méthodes asynchrones renvoient un descripteur que vous pouvez interroger pour connaître l"état de l"opération ; les informations d"état de certaines opérations peuvent inclure un pourcentage d"achèvement.' 
+---
+= Méthodes asynchrones
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Certaines méthodes d'API sont asynchrones, ce qui signifie que l'opération qu'elles effectuent peut ne pas être terminée lorsque la méthode se termine.  Les méthodes asynchrones renvoient un descripteur que vous pouvez interroger pour connaître l'état de l'opération ; les informations d'état de certaines opérations peuvent inclure un pourcentage d'achèvement.
+
+Lorsqu'une opération asynchrone est interrogée, son résultat peut être de l'un des types suivants :
+
+* `DriveAdd`Le système ajoute un disque au cluster.
+* `BulkVolume`Le système effectue une opération de copie entre volumes, telle qu'une sauvegarde ou une restauration.
+* `Clone`Le système est en train de cloner un volume.
+* `DriveRemoval`Le système copie des données d'un disque en vue de son retrait du cluster.
+* `RtfiPendingNode`Le système installe un logiciel compatible sur un nœud avant de l'ajouter au cluster.
+
+
+Notez les points suivants lors de l'utilisation de méthodes asynchrones ou de l'obtention de l'état d'une opération asynchrone en cours :
+
+* Les méthodes asynchrones sont indiquées dans la documentation de chaque méthode.
+* Les méthodes asynchrones renvoient un « `asyncHandle` », qui est un descripteur connu de la méthode API émettrice.  Vous pouvez utiliser cette poignée pour interroger l'état ou le résultat de l'opération asynchrone.
+* Vous pouvez obtenir le résultat de chaque méthode asynchrone grâce à la méthode GetAsyncResult.  Lorsque vous utilisez GetAsyncResult pour interroger une opération terminée, le système renvoie le résultat et le supprime automatiquement du système.  Lorsque vous utilisez GetAsyncResult pour interroger une opération incomplète, le système renvoie le résultat mais ne le supprime pas.
+* Vous pouvez obtenir l'état et les résultats de toutes les méthodes asynchrones en cours d'exécution ou terminées à l'aide de la méthode ListAsyncResults.  Dans ce cas, le système ne supprime pas les résultats des opérations terminées.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

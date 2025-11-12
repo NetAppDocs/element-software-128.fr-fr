@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_UI.html 
+summary: 'Avec l"interface utilisateur du nœud de gestion(https://<mNodeIP>:442[] ), vous pouvez modifier les paramètres réseau et de cluster, exécuter des tests système ou utiliser les utilitaires système.' 
+keywords: 'netapp, management node ui, mnode ui, :442, Element' 
+---
+= Aperçu de l'interface utilisateur du nœud de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avec l'interface utilisateur du nœud de gestion(`https://<ManagementNodeIP>:442` ), vous pouvez modifier les paramètres réseau et de cluster, exécuter des tests système ou utiliser les utilitaires système.
+
+Tâches que vous pouvez effectuer avec l'interface utilisateur du nœud de gestion :
+
+* link:task_mnode_enable_alerts.html["Configurer la surveillance des alertes"]
+* link:task_mnode_settings.html["Modifier et tester les paramètres du réseau, du cluster et du système du nœud de gestion"]
+* link:task_mnode_run_system_utilities.html["Exécutez les utilitaires système à partir du nœud de gestion"]
+
+
+[discrete]
+== Trouver plus d'informations
+
+* link:task_mnode_access_ui.html["Accédez au nœud de gestion"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

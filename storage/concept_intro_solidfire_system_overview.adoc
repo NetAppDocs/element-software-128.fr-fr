@@ -1,0 +1,37 @@
+---
+permalink: storage/concept_intro_solidfire_system_overview.html 
+sidebar: sidebar 
+keywords: drives, nodes, unified cluster, nodes, storage nodes, Fibre Channel nodes, FC, cluster, management, Active IQ, system components, components, hardware, storage resources, storage, Element UI, Element software, Element 
+summary: 'Un système de stockage tout flash SolidFire est composé de composants matériels discrets (disque et nœuds) qui sont combinés en un seul pool de ressources de stockage grâce au logiciel NetApp Element fonctionnant indépendamment sur chaque nœud.  Ce cluster unifié se présente comme un système de stockage unique destiné aux clients externes et est géré comme une entité unique via l"interface utilisateur, l"API et d"autres outils de gestion du logiciel Element.' 
+---
+= Système de stockage SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un système de stockage 100% flash SolidFire est composé de composants matériels discrets (disques et nœuds) qui sont combinés en un seul pool de ressources de stockage grâce au logiciel NetApp Element fonctionnant indépendamment sur chaque nœud.  Ce cluster unifié se présente comme un système de stockage unique destiné aux clients externes et est géré comme une entité unique via l'interface utilisateur, l'API et d'autres outils de gestion du logiciel Element.
+
+L'interface utilisateur du logiciel NetApp Element vous permet de configurer et de surveiller la capacité et les performances du stockage en cluster SolidFire , et de gérer l'activité de stockage sur une infrastructure mutualisée.
+
+image::../media/solidfire_concepts_architecture_image.gif[Diagramme architectural d'Element Software]
+
+Un système de stockage 100 % flash SolidFire comprend les composants suivants :
+
+* Nœuds : Matériel physique fournissant les ressources de stockage d’un cluster.  Il existe deux types de nœuds :
++
+** Nœuds de stockage : serveurs contenant un ensemble de disques.
+** Nœuds Fibre Channel (FC) : utilisés pour connecter des clients FC via un commutateur Fibre Channel.
+
+
+* Cluster : Le nœud central du système de stockage SolidFire, composé d’au moins quatre nœuds.
+* Nœud de gestion : vous permet de mettre à niveau et de fournir des services système, notamment la surveillance et la télémétrie, de gérer les ressources et les paramètres du cluster, d’exécuter des tests et des utilitaires système et de fournir un accès au support NetApp pour le dépannage.  Le nœud de gestion (mNode) est une machine virtuelle qui fonctionne en tandem avec un cluster de stockage basé sur le logiciel Element.
+* Active IQ: Un outil web qui fournit des vues historiques mises à jour en continu des données à l'échelle du cluster.  Vous pouvez configurer des alertes pour des événements, des seuils ou des indicateurs spécifiques.  Active IQ vous permet de surveiller les performances et la capacité du système, ainsi que de rester informé de l'état du cluster.
+* Les disques durs sont utilisés dans les nœuds de stockage et stockent les données du cluster.  Un nœud de stockage contient deux types de disques :
++
+** Les lecteurs de métadonnées de volume stockent les informations qui définissent les volumes et autres objets au sein d'un cluster.
+** Les disques de stockage par blocs stockent les blocs de données pour les volumes d'application.
+
+
+

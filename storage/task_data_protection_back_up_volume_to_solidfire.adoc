@@ -1,0 +1,44 @@
+---
+permalink: storage/task_data_protection_back_up_volume_to_solidfire.html 
+sidebar: sidebar 
+keywords: volume backup, solidfire storage cluster 
+summary: Pour les clusters de stockage exécutant le logiciel Element, vous pouvez sauvegarder les volumes résidant sur un cluster vers un cluster distant. 
+---
+= Sauvegardez un volume sur un cluster de stockage SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les clusters de stockage exécutant le logiciel Element, vous pouvez sauvegarder les volumes résidant sur un cluster vers un cluster distant.
+
+Assurez-vous que les clusters source et cible sont appariés.
+
+Voirlink:task_replication_pair_clusters.html["Apparier les clusters pour la réplication"] .
+
+Lors de la sauvegarde ou de la restauration d'un cluster à un autre, le système génère une clé qui servira d'authentification entre les clusters.  Cette clé d'écriture en masse permet au cluster source de s'authentifier auprès du cluster de destination, assurant ainsi un niveau de sécurité lors de l'écriture sur le volume de destination.  Dans le cadre du processus de sauvegarde ou de restauration, vous devez générer une clé d'écriture de volume en masse à partir du volume de destination avant de démarrer l'opération.
+
+. Sur le cluster de destination, *Gestion* > *Volumes*.
+. Cliquez sur l'icône Actions du volume de destination.
+. Dans le menu qui s'affiche, cliquez sur *Restaurer à partir de*.
+. Dans la boîte de dialogue *Restauration intégrée*, sous *Restaurer à partir de*, sélectionnez * SolidFire*.
+. Sélectionnez une option sous *Format des données* :
++
+** *Natif* : Un format compressé lisible uniquement par les systèmes de stockage SolidFire .
+** *Non compressé* : Un format non compressé compatible avec d’autres systèmes.
+
+
+. Cliquez sur *Générer la clé*.
+. Copiez la clé contenue dans la zone *Clé d'écriture en masse* dans votre presse-papiers.
+. Sur le cluster source, accédez à *Gestion* > *Volumes*.
+. Cliquez sur l'icône Actions pour rétablir le volume.
+. Dans le menu qui apparaît, cliquez sur *Sauvegarder vers*.
+. Dans la boîte de dialogue *Sauvegarde intégrée*, sous *Sauvegarder vers*, sélectionnez * SolidFire*.
+. Sélectionnez la même option que celle que vous avez sélectionnée précédemment dans le champ *Format des données*.
+. Saisissez l'adresse IP virtuelle de gestion du cluster du volume de destination dans le champ *Adresse IP virtuelle du cluster distant*.
+. Saisissez le nom d'utilisateur du cluster distant dans le champ *Nom d'utilisateur du cluster distant*.
+. Saisissez le mot de passe du cluster distant dans le champ *Mot de passe du cluster distant*.
+. Dans le champ *Clé d'écriture en masse*, collez la clé que vous avez générée précédemment sur le cluster de destination.
+. Cliquez sur *Commencer la lecture*.
+

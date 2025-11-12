@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: 'Vous pouvez utiliser la méthode GetClusterStructure pour sauvegarder les informations de configuration actuelles du cluster de stockage.  Si la configuration du cluster de stockage est modifiée pendant l"exécution de cette méthode, le contenu de la sauvegarde de configuration sera imprévisible.  Vous pouvez enregistrer ces données dans un fichier texte et les restaurer sur d"autres clusters, ou sur le même cluster en cas de sinistre.' 
+---
+= Obtenir la structure du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetClusterStructure` méthode de sauvegarde des informations de configuration actuelles du cluster de stockage.  Si la configuration du cluster de stockage est modifiée pendant l'exécution de cette méthode, le contenu de la sauvegarde de configuration sera imprévisible.  Vous pouvez enregistrer ces données dans un fichier texte et les restaurer sur d'autres clusters, ou sur le même cluster en cas de sinistre.
+
+
+
+== Paramètre
+
+Cette méthode ne comporte aucun paramètre d'entrée.
+
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+résultat
+ a| 
+Un objet JSON contenant les informations de configuration actuelles du cluster de stockage.
+ a| 
+xref:reference_element_api_clusterstructure.adoc[structure de cluster]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== Nouveautés depuis la version
+
+10,3

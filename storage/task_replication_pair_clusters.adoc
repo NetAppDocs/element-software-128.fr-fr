@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: 'Vous devez d"abord coupler deux clusters pour pouvoir utiliser la fonctionnalité de réplication en temps réel.  Après avoir jumelé et connecté deux clusters, vous pouvez configurer les volumes actifs d"un cluster pour qu"ils soient répliqués en continu sur un deuxième cluster, assurant ainsi une protection continue des données (CDP).' 
+---
+= Apparier les clusters pour la réplication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez d'abord coupler deux clusters pour pouvoir utiliser la fonctionnalité de réplication en temps réel.  Après avoir jumelé et connecté deux clusters, vous pouvez configurer les volumes actifs d'un cluster pour qu'ils soient répliqués en continu sur un deuxième cluster, assurant ainsi une protection continue des données (CDP).
+
+.Ce dont vous aurez besoin
+* Vous devez disposer des privilèges d'administrateur de cluster pour l'un ou les deux clusters appariés.
+* Tous les MIP et SIP des nœuds sont acheminés les uns vers les autres.
+* Latence aller-retour entre les clusters inférieure à 2000 ms.
+* Chaque cluster de stockage doit avoir un nom de cluster unique, une adresse IP virtuelle principale (MVIP), une adresse IP virtuelle secondaire (SVIP) et une adresse IP pour chaque nœud.
+* La différence entre les versions du logiciel Element sur les clusters ne dépasse pas une version majeure.  Si la différence est plus importante, l'un des clusters doit être mis à niveau pour effectuer la réplication des données.
+
+
+
+NOTE: Le jumelage en cluster nécessite une connectivité complète entre les nœuds du réseau de gestion.  La réplication nécessite une connectivité entre les différents nœuds du réseau du cluster de stockage.
+
+Vous pouvez associer un cluster à un maximum de quatre autres clusters pour la réplication de volumes.  Vous pouvez également apparier des clusters au sein d'un même groupe de clusters.
+
+
+
+== Apparier les clusters à l'aide de MVIP ou d'une clé d'appariement
+
+Vous pouvez associer un cluster source et un cluster cible en utilisant l'adresse MVIP du cluster cible si les deux clusters disposent d'un accès administrateur.  Si l'accès administrateur de cluster n'est disponible que sur un seul cluster d'une paire de clusters, une clé d'appairage peut être utilisée sur le cluster cible pour finaliser l'appairage des clusters.
+
+. Sélectionnez l'une des méthodes suivantes pour apparier les clusters :
++
+** link:task_replication_pair_cluster_using_mvip.html["Clusters appariés utilisant MVIP"]Utilisez cette méthode si l'administrateur du cluster a accès aux deux clusters. Cette méthode utilise le MVIP du cluster distant pour apparier deux clusters.
+** link:task_replication_pair_cluster_using_pairing_key.html["Apparier les clusters à l'aide d'une clé d'appariement"]Utilisez cette méthode si l'administrateur du cluster n'a accès qu'à un seul des clusters. Cette méthode génère une clé d'appariement qui peut être utilisée sur le cluster cible pour finaliser l'appariement des clusters.
+
+
+
+
+
+
+== Trouver plus d'informations
+
+xref:reference_prereq_network_port_requirements.adoc[Exigences relatives aux ports réseau]

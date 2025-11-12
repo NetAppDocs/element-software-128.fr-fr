@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listdrivehardware.html 
+sidebar: sidebar 
+keywords: drive,hardware,list,listing,listdrivehardware,drives 
+summary: 'Vous pouvez utiliser la méthode ListDriveHardware pour lister tous les disques connectés à un nœud.  Utilisée sur des nœuds individuels, cette méthode renvoie des informations sur le matériel du disque.  Lorsqu"elle est utilisée sur le nœud maître du cluster MVIP, cette méthode renvoie des informations pour tous les disques de tous les nœuds.' 
+---
+= Liste des disques durs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ListDriveHardware` Méthode permettant de lister tous les lecteurs connectés à un nœud.  Utilisée sur des nœuds individuels, cette méthode renvoie des informations sur le matériel du disque.  Lorsqu'elle est utilisée sur le nœud maître du cluster MVIP, cette méthode renvoie des informations pour tous les disques sur tous les nœuds.
+
+
+
+== Paramètres
+
+
+NOTE: La ligne « securitySupported : true » de la réponse de la méthode n'implique pas que les disques sont capables de chiffrement ; elle indique seulement que l'état de sécurité peut être interrogé.  Si vous avez un type de nœud dont le numéro de modèle se termine par « -NE », les commandes permettant d'activer les fonctions de sécurité sur ces disques échoueront.
+
+Cette méthode possède le paramètre suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+forcer
+ a| 
+Définissez cette valeur sur « true » pour exécuter cette méthode sur tous les nœuds.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+matériel de disque
+ a| 
+Informations matérielles renvoyées pour le nœud.
+ a| 
+tableau d'objets JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+"method": "ListDriveHardware",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "driveHardware": [
+      {
+        "canonicalName": "sda",
+        "connected": true,
+        "dev": 2048,
+        "devPath": "/dev/slot0",
+        "driveEncryptionCapability": "fips",
+        "driveType": "Slice",
+        "lifeRemainingPercent": 98,
+        "lifetimeReadBytes": 0,
+        "lifetimeWriteBytes": 14012129542144,
+        "name": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "path": "/dev/sda",
+        "pathLink": "/dev/slot0",
+        "powerOnHours": 15489,
+        "product": "SAMSUNG MZ7GE240HMGR-00003",
+        "reallocatedSectors": 0,
+        "reserveCapacityPercent": 100,
+        "scsiCompatId": "scsi-SATA_SAMSUNG_MZ7GE24S1M9NWAG501251",
+        "scsiState": "Running",
+        "securityAtMaximum": false,
+        "securityEnabled": true,
+        "securityFrozen": false,
+        "securityLocked": false,
+        "securitySupported": true,
+        "serial": "S1M9NWAG501251",
+        "size": 240057409536,
+        "slot": 0,
+        "uncorrectableErrors": 0,
+        "uuid": "789aa05d-e49b-ff4f-f821-f60eed8e43bd",
+        "vendor": "Samsung",
+        "version": "EXT1303Q"
+      }
+   ]
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_enableencryptionatrest.adoc[Activer le chiffrement au repos]

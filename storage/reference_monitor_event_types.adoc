@@ -1,0 +1,183 @@
+---
+permalink: storage/reference_monitor_event_types.html 
+sidebar: sidebar 
+keywords: event types, monitor, event log 
+summary: 'Le système signale plusieurs types d"événements ; chaque événement correspond à une opération effectuée par le système.  Les événements peuvent être des événements de routine et normaux, ou des événements nécessitant l"attention d"un administrateur.  La colonne « Types d"événements » de la page « Journal des événements » indique dans quelle partie du système l"événement s"est produit.' 
+---
+= Types d'événements
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système signale plusieurs types d'événements ; chaque événement correspond à une opération effectuée par le système.  Les événements peuvent être des événements de routine et normaux, ou des événements nécessitant l'attention d'un administrateur.  La colonne « Types d'événements » de la page « Journal des événements » indique dans quelle partie du système l'événement s'est produit.
+
+
+NOTE: Le système n'enregistre pas les commandes API en lecture seule dans le journal des événements.
+
+La liste suivante décrit les types d'événements qui apparaissent dans le journal des événements :
+
+* *événement API*
++
+Événements déclenchés par un utilisateur via une API ou une interface utilisateur web qui modifient les paramètres.
+
+* *binAssignmentsEvent*
++
+Événements liés à l'attribution des compartiments de données.  Les bins sont essentiellement des conteneurs qui stockent des données et sont répartis sur l'ensemble du cluster.
+
+* *binSyncEvent*
++
+Événements système liés à une réaffectation de données entre services de blocs.
+
+* *bsCheckEvent*
++
+Événements système liés aux contrôles de service de blocage.
+
+* *bsKillEvent*
++
+Événements système liés aux arrêts de service par blocs.
+
+* *événement d'opération en masse*
++
+Événements liés aux opérations effectuées sur un volume entier, telles qu'une sauvegarde, une restauration, un instantané ou un clonage.
+
+* *événement clone*
++
+Événements liés au clonage de volumes.
+
+* *événement maître de cluster*
++
+Événements survenant lors de l'initialisation du cluster ou lors de modifications de sa configuration, telles que l'ajout ou la suppression de nœuds.
+
+* [[csum_event]]*cSumEvent*
++
+Événements liés à la détection d'une incohérence de somme de contrôle lors de la validation de bout en bout de la somme de contrôle.
+
++
+Les services qui détectent une erreur de somme de contrôle sont automatiquement arrêtés et ne sont pas redémarrés après la génération de cet événement.
+
+* *dataEvent*
++
+Événements liés à la lecture et à l'écriture de données.
+
+* *dbEvent*
++
+Événements liés à la base de données globale gérée par les nœuds de l'ensemble dans le cluster.
+
+* *driveEvent*
++
+Événements liés aux opérations de conduite.
+
+* *événement de chiffrement au repos*
++
+Événements liés au processus de chiffrement sur un cluster.
+
+* *ensembleEvent*
++
+Événements liés à l'augmentation ou à la diminution du nombre de nœuds dans un ensemble.
+
+* *événement fibreChannel*
++
+Événements liés à la configuration et aux connexions des nœuds.
+
+* *gcEvent*
++
+Des événements liés aux processus s'exécutent toutes les 60 minutes afin de récupérer de l'espace de stockage sur les disques durs par blocs.  Ce processus est également connu sous le nom de collecte des ordures.
+
+* *ieEvent*
++
+Erreur système interne.
+
+* *événement d'installation*
++
+Événements d'installation automatique de logiciels.  Le logiciel est en cours d'installation automatique sur un nœud en attente.
+
+* *Événement iSCS*
++
+Événements liés à des problèmes iSCSI dans le système.
+
+* *limitEvent*
++
+Événements liés au nombre de volumes ou de volumes virtuels dans un compte ou dans le cluster qui approche du maximum autorisé.
+
+* *événement de mode maintenance*
++
+Événements liés au mode de maintenance du nœud, tels que la désactivation du nœud.
+
+* [[network_event]]*networkEvent*
++
+Événements liés au signalement des erreurs réseau pour chaque interface de carte réseau physique (NIC).
+
++
+Ces événements sont déclenchés lorsque le nombre d'erreurs pour une interface dépasse un seuil par défaut de 1000 au cours d'un intervalle de surveillance de 10 minutes.  Ces événements s'appliquent aux erreurs de réseau telles que les défauts de réception, les erreurs de contrôle de redondance cyclique (CRC), les erreurs de longueur, les erreurs de dépassement et les erreurs de trame.
+
+* *platformHardwareEvent*
++
+Événements liés à des problèmes détectés sur les périphériques matériels.
+
+* *événement de cluster distant*
++
+Événements liés au jumelage de clusters distants.
+
+* *événement de planification*
++
+Événements liés aux instantanés planifiés.
+
+* *événement de service*
++
+Événements liés à l'état du service système.
+
+* *sliceEvent*
++
+Événements liés au serveur Slice, tels que la suppression d'un lecteur ou d'un volume de métadonnées.
+
++
+Il existe trois types d'événements de réaffectation de tranches, qui incluent des informations sur le service auquel un volume est affecté :
+
++
+** basculement : changement du service principal vers un nouveau service principal
++
+[listing]
+----
+sliceID oldPrimaryServiceID->newPrimaryServiceID
+----
+** Déplacement : changement du service secondaire vers un nouveau service secondaire
++
+[listing]
+----
+sliceID {oldSecondaryServiceID(s)}->{newSecondaryServiceID(s)}
+----
+** élagage : suppression d’un volume d’un ensemble de services
++
+[listing]
+----
+sliceID {oldSecondaryServiceID(s)}
+----
+
+
+* *snmpTrapEvent*
++
+Événements liés aux traps SNMP.
+
+* *événement d'état*
++
+Événements liés aux statistiques système.
+
+* *tsEvent*
++
+Événements liés au service de transport du système.
+
+* *exception inattendue*
++
+Événements liés à des exceptions système inattendues.
+
+* *ureEvent*
++
+Événements liés aux erreurs de lecture irrécupérables qui surviennent lors de la lecture à partir du périphérique de stockage.
+
+* *vasaProviderEvent*
++
+Événements liés à un fournisseur VASA (vSphere APIs for Storage Awareness).
+
+

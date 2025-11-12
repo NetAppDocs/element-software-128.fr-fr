@@ -1,0 +1,71 @@
+---
+permalink: storage/concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: element, terms of use, banner, config, edit, terms of use, disable, enable 
+summary: 'Vous pouvez activer, modifier ou configurer une bannière contenant un message destiné à l"utilisateur.' 
+---
+= Bannière Gérer les conditions d'utilisation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer, modifier ou configurer une bannière contenant un message destiné à l'utilisateur.
+
+.Options
+<<Activer la bannière des conditions d'utilisation>> <<Modifier la bannière des conditions d'utilisation>> <<Désactiver la bannière des conditions d'utilisation>>
+
+
+
+== Activer la bannière des conditions d'utilisation
+
+Vous pouvez activer une bannière de conditions d'utilisation qui s'affiche lorsqu'un utilisateur se connecte à l'interface utilisateur d'Element.  Lorsque l'utilisateur clique sur la bannière, une boîte de dialogue s'affiche contenant le message que vous avez configuré pour le cluster.  La bannière peut être retirée à tout moment.
+
+Vous devez disposer des privilèges d'administrateur de cluster pour activer la fonctionnalité des conditions d'utilisation.
+
+. Cliquez sur *Utilisateurs* > *Conditions d'utilisation*.
+. Dans le formulaire *Conditions d'utilisation*, saisissez le texte à afficher dans la boîte de dialogue Conditions d'utilisation.
++
+
+NOTE: Ne pas dépasser 4096 caractères.
+
+. Cliquez sur *Activer*.
+
+
+
+
+== Modifier la bannière des conditions d'utilisation
+
+Vous pouvez modifier le texte que voit un utilisateur lorsqu'il sélectionne la bannière de connexion aux conditions d'utilisation.
+
+.Ce dont vous aurez besoin
+* Vous devez disposer des privilèges d'administrateur de cluster pour configurer les conditions d'utilisation.
+* Assurez-vous que la fonctionnalité « Conditions d'utilisation » est activée.
+
+
+.Étapes
+. Cliquez sur *Utilisateurs* > *Conditions d'utilisation*.
+. Dans la boîte de dialogue *Conditions d'utilisation*, modifiez le texte que vous souhaitez afficher.
++
+
+NOTE: Ne pas dépasser 4096 caractères.
+
+. Cliquez sur *Enregistrer les modifications*.
+
+
+
+
+== Désactiver la bannière des conditions d'utilisation
+
+Vous pouvez désactiver la bannière des conditions d'utilisation.  Lorsque la bannière est désactivée, l'utilisateur n'est plus tenu d'accepter les conditions d'utilisation lors de l'utilisation de l'interface utilisateur Element.
+
+.Ce dont vous aurez besoin
+* Vous devez disposer des privilèges d'administrateur de cluster pour configurer les conditions d'utilisation.
+* Assurez-vous que les conditions d'utilisation sont activées.
+
+
+.Étapes
+. Cliquez sur *Utilisateurs* > *Conditions d'utilisation*.
+. Cliquez sur *Désactiver*.
+

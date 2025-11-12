@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_ldapconfiguration.html 
+sidebar: sidebar 
+keywords: object,objects,ldapConfiguration 
+summary: 'L"objet ldapConfiguration contient des informations sur la configuration LDAP du système de stockage.  Vous pouvez récupérer les informations LDAP avec la méthode API GetLdapConfiguration.' 
+---
+= Configuration LDAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet ldapConfiguration contient des informations sur la configuration LDAP du système de stockage.  Vous pouvez récupérer les informations LDAP avec `GetLdapConfiguration` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+authType
+ a| 
+Indique la méthode d'authentification utilisateur à utiliser. Valeurs possibles :
+
+* DirectBind
+* SearchAndBind
+
+ a| 
+chaîne
+
+
+
+ a| 
+activé
+ a| 
+Indique si le système est configuré pour LDAP. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+Le DN de base de l'arbre pour démarrer la recherche de groupe (le système effectuera une recherche de sous-arbre à partir d'ici).
+ a| 
+chaîne
+
+
+
+ a| 
+filtre personnalisé de recherche de groupe
+ a| 
+Filtre de recherche personnalisé utilisé.
+ a| 
+chaîne
+
+
+
+ a| 
+type de recherche de groupe
+ a| 
+Contrôle le filtre de recherche de groupe par défaut utilisé. Valeurs possibles :
+
+* NoGroups : Aucune prise en charge des groupes.
+* Active Directory : Appartenance imbriquée à tous les groupes AD d’un utilisateur.
+* MemberDN : Groupes de style MemberDN (à un seul niveau).
+
+ a| 
+chaîne
+
+
+
+ a| 
+searchBindDN
+ a| 
+Un DN complet pour se connecter et effectuer une recherche LDAP pour l'utilisateur (nécessite un accès en lecture à l'annuaire LDAP).
+ a| 
+chaîne
+
+
+
+ a| 
+URI du serveur
+ a| 
+Une liste d'URI de serveurs LDAP séparées par des virgules (par exemple, `ldap://1.2.3.4` et `ldaps://1.2.3.4:123` .)
+ a| 
+chaîne
+
+
+
+ a| 
+userDNTemplate
+ a| 
+Une chaîne de caractères utilisée pour former un DN utilisateur entièrement qualifié.
+ a| 
+chaîne
+
+
+
+ a| 
+userSearchBaseDN
+ a| 
+Le DN de base de l'arbre utilisé pour démarrer la recherche (une recherche dans le sous-arbre sera effectuée à partir d'ici).
+ a| 
+chaîne
+
+
+
+ a| 
+filtre de recherche utilisateur
+ a| 
+Filtre LDAP utilisé.
+ a| 
+chaîne
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_getldapconfiguration.adoc[Obtenir la configuration LDAP]

@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: upgrade/concept_element_upgrade_overview.html 
+summary: Vous pouvez maintenir votre système de stockage SolidFire Element à jour après son déploiement en mettant à niveau tous les composants de stockage NetApp . 
+keywords: netapp, solidfire upgrade, vcp upgrade, element upgrade, vsphere upgrade 
+---
+= Aperçu de la séquence de mise à niveau
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez maintenir votre système de stockage SolidFire Element à jour après son déploiement en mettant à niveau séquentiellement tous les composants de stockage NetApp .
+
+Ces composants incluent les services de gestion, NetApp Hybrid Cloud Control, le logiciel Element, le nœud de gestion et (selon votre installation) le plug-in Element pour vCenter Server.
+
+[NOTE]
+====
+* À compter de novembre 2023, vous ne pourrez plus lancer de mise à niveau de composant à l'aide de NetApp Hybrid Cloud Control ou de l'API REST, car les certificats de clé de signature (privée et publique) ont expiré le 5 novembre 2023.  Vous pouvez contourner ce problème enlink:task_hcc_upgrade_management_node.html["effectuer une mise à niveau sur place du nœud de gestion"] à la version 12.8 avant d'utiliser NetApp Hybrid Cloud Control ou l'API REST pour mettre à niveau les services de gestion, le logiciel Element et le firmware de stockage.
++
+Si vous déployez un nouveau nœud de gestion avec la version 12.8, vous pouvez utiliser NetApp Hybrid Cloud Control ou l'API REST pour effectuer les mises à niveau des composants dans l'ordre indiqué.<<sys_upgrade,séquence de mise à niveau du système>> .
+
+* Les nœuds suivants ne sont pas pris en charge.  Si vous tentez de mettre à niveau l'un de ces nœuds vers une version Element non prise en charge, vous verrez une erreur indiquant que le nœud n'est pas pris en charge par Element 12.x :
++
+** À commencer par les nœuds de stockage Element 12.8, SF4805, SF9605, SF19210 et SF38410.
+** À commencer par l'élément 12.7, les nœuds de stockage SF2405 et SF9608 et les nœuds FC FC0025 et SF-FCN-01.
+
+
+* À compter de la version 12.5 d'Element, NetApp HealthTools n'est plus pris en charge pour les mises à niveau du logiciel Element.  Si vous utilisez Element 11.0 ou 11.1, vous devez d'abord… https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["Mettez à niveau Element vers la version 12.3 à l'aide de HealthTools."^] puis effectuez une mise à niveau vers Element 12.5 ou une version ultérieure à l'aide de NetApp Hybrid Cloud Control.
+
+
+====
+Le<<sys_upgrade,séquence de mise à niveau du système>> Le contenu décrit les tâches nécessaires pour effectuer une mise à niveau d'un système de stockage 100 % flash SolidFire .  Idéalement, ces procédures sont effectuées dans le cadre d'une séquence de mise à niveau plus large et non de manière isolée.  Si une mise à niveau ou une mise à jour par composant est nécessaire, consultez les prérequis de la procédure pour vous assurer que les complexités supplémentaires sont prises en compte.
+
+Lelink:task_sf_upgrade_all_vsphere.html["séquence de mise à niveau de vSphere"] Le contenu relatif au plug-in Element pour vCenter Server décrit les étapes supplémentaires avant et après la mise à niveau nécessaires pour réinstaller le plug-in Element pour vCenter Server.
+
+.Avant de commencer
+* Vous utilisez le nœud de gestion 11.3 ou une version ultérieure.  Les versions plus récentes du nœud de gestion possèdent une architecture modulaire qui fournit des services individuels.
++
+
+TIP: Pour vérifier la version, connectez-vous à votre nœud de gestion et consultez le numéro de version d'Element dans la bannière de connexion.  Si vous n'avez pas la version 11.3, consultezlink:task_hcc_upgrade_management_node.html["Mettez à niveau votre nœud de gestion"] .
+
+* Vous avez mis à niveau vos services de gestion au moins à la version 2.1.326.
++
+Les mises à niveau utilisant NetApp Hybrid Cloud Control ne sont pas disponibles dans les versions antérieures des offres de services.
+
+* Vous avez vérifié que l'heure système est synchronisée sur tous les nœuds et que le protocole NTP est correctement configuré pour le cluster de stockage et les nœuds.  Chaque nœud doit être configuré avec un serveur de noms DNS dans l'interface web dédiée.(`https://[IP address]:442` ) sans défauts de cluster non résolus liés au décalage temporel.
+* Vous avez prévu suffisamment de temps pour votrelink:task_hcc_upgrade_element_software.html#element-upgrade-time["Logiciel Element"] etlink:task_hcc_upgrade_storage_firmware.html#storage-firmware-upgrade["micrologiciel de stockage"] améliorations.  Lors de la mise à niveau vers le logiciel Element 12.5 ou une version ultérieure, la durée du processus de mise à niveau varie en fonction de la version du logiciel Element et des mises à jour du micrologiciel.
+
+
+
+
+== [[sys_upgrade]]Séquence de mise à niveau du système
+
+Vous pouvez utiliser la séquence suivante pour mettre à niveau votre système de stockage tout flash NetApp SolidFire vers Element 12.5 ou version ultérieure.
+
+.Étapes
+. link:task_hcc_upgrade_element_prechecks.html["Exécutez les contrôles d'intégrité du stockage Element avant de mettre à niveau le stockage"].
+. link:task_hcc_upgrade_management_node.html["(Facultatif) Mettez à niveau votre nœud de gestion"].
++
+
+NOTE: Il n'est plus nécessaire de mettre à niveau le système d'exploitation du nœud de gestion pour mettre à niveau le logiciel Element sur le cluster de stockage. Si le nœud de gestion est en version 11.3 ou ultérieure, vous pouvez simplement mettre à niveau les services de gestion vers la dernière version pour effectuer des mises à niveau d'Element à l'aide de NetApp Hybrid Cloud Control. Suivez la procédure de mise à niveau du nœud de gestion correspondant à votre scénario si vous devez mettre à niveau le système d'exploitation du nœud de gestion pour d'autres raisons, telles que la correction de failles de sécurité.
+
+. link:task_hcc_update_management_services.html["Services de gestion des mises à jour depuis Hybrid Cloud Control"].
++
+[IMPORTANT]
+====
+** Le pack de services de gestion 2.27 inclut le plug-in Element pour vCenter Server 5.5, qui est uniquement compatible avec le nœud de gestion 12.8. Lorsque vous effectuez une mise à jour vers les services de gestion 2.27, vous devez modifier la séquence de mise à niveau et mettre à jour le bundle de services de gestion _après_ la mise à niveau vers Element 12.8 pour assurer la compatibilité entre le nœud de gestion et les services de gestion.
+** Si vous effectuez une mise à jour vers les services de gestion 2.21.61 à 2.26.40, vous devez mettre à jour le bundle de services de gestion _avant_ la mise à niveau vers Element 12.8.
+
+
+====
++
+
+IMPORTANT: Si vous mettez à jour les services de gestion vers la version 2.16 ou ultérieure et que vous exécutez un nœud de gestion 11.3 à 11.8, vous devrez augmenter la RAM de votre machine virtuelle de nœud de gestion avant de mettre à jour les services de gestion.
+
+. link:task_hcc_upgrade_element_software.html["Mettez à jour le logiciel et le micrologiciel de votre stockage Element."].
+. link:task_hcc_upgrade_storage_firmware.html["(Facultatif) Mettez à jour uniquement le micrologiciel de votre stockage Element."].
++
+
+NOTE: Vous pourriez effectuer cette tâche lorsqu'une nouvelle mise à jour du micrologiciel de stockage sera disponible en dehors d'une version majeure.
+
+. link:task_vcp_upgrade_plugin.html["Mettez à jour votre plug-in Element pour vCenter Server."].
+
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

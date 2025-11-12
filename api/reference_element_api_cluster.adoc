@@ -1,0 +1,295 @@
+---
+permalink: api/reference_element_api_cluster.html 
+sidebar: sidebar 
+keywords: objects,object,cluster 
+summary: 'L"objet cluster contient les informations que le nœud utilise pour communiquer avec le cluster.  Vous pouvez récupérer ces informations à l"aide de la méthode API GetClusterConfig.' 
+---
+= grappe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet cluster contient les informations que le nœud utilise pour communiquer avec le cluster.  Vous pouvez récupérer ces informations à l'aide de la méthode API GetClusterConfig.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+cipi
+ a| 
+Interface réseau utilisée pour la communication au sein du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+grappe
+ a| 
+Nom unique du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+Capacité de chiffrement
+ a| 
+Indique si le nœud prend en charge le chiffrement du lecteur.
+ a| 
+booléen
+
+
+
+ a| 
+ensemble
+ a| 
+Les nœuds qui participent au cluster.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+Configuration du lecteur fips
+ a| 
+Indique si le nœud prend en charge les disques certifiés FIPS 140-2.
+ a| 
+booléen
+
+
+
+ a| 
+mipi
+ a| 
+L'interface réseau utilisée pour la gestion des nœuds.
+ a| 
+chaîne
+
+
+
+ a| 
+nom
+ a| 
+Le nom du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+ID du nœud
+ a| 
+L'identifiant du nœud dans le cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de nœud en attente
+ a| 
+L'identifiant du nœud en attente dans le cluster.
+ a| 
+entier
+
+
+
+ a| 
+rôle
+ a| 
+Identifie le rôle du nœud.
+ a| 
+entier
+
+
+
+ a| 
+sipi
+ a| 
+L'interface réseau utilisée pour le trafic de stockage.
+ a| 
+chaîne
+
+
+
+ a| 
+État
+ a| 
+État actuel du nœud. Valeurs possibles :
+
+* Disponible : Le nœud n'a pas été configuré avec un nom de cluster.
+* En attente : le nœud est en attente pour un cluster nommé spécifique et peut être ajouté.
+* Actif : Ce nœud est un membre actif d’un cluster et ne peut pas être ajouté à un autre cluster.
+* En attente d'activation : Le nœud est actuellement en cours de restauration à l'image logicielle d'usine et n'est pas encore un membre actif d'un cluster.  Une fois l'opération terminée, elle passera à l'état Actif.
+
+ a| 
+chaîne
+
+
+
+ a| 
+version
+ a| 
+La version du logiciel exécuté sur le nœud.
+ a| 
+chaîne
+
+|===
+
+
+== modifiabilité des membres et états des nœuds
+
+Ce tableau indique si les paramètres de l'objet peuvent être modifiés à chaque état possible du nœud.
+
+|===
+
+
+| Nom du paramètre | État disponible | État en attente | État actif 
+
+
+ a| 
+cipi
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+grappe
+ a| 
+Oui
+ a| 
+Oui
+ a| 
+Non
+
+
+
+ a| 
+Capacité de chiffrement
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+ensemble
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+mipi
+ a| 
+Oui
+ a| 
+Oui
+ a| 
+Non
+
+
+
+ a| 
+nom
+ a| 
+Oui
+ a| 
+Oui
+ a| 
+Oui
+
+
+
+ a| 
+ID du nœud
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+ID de nœud en attente
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+rôle
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+sipi
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+État
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+
+
+ a| 
+version
+ a| 
+Non
+ a| 
+Non
+ a| 
+Non
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_getclusterconfig.adoc[Obtenir la configuration du cluster]

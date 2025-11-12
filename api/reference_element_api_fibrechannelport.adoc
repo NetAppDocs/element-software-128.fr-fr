@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_fibrechannelport.html 
+sidebar: sidebar 
+keywords: object,objects,fibreChannelPort 
+summary: 'L"objet fibreChannelPort contient des informations sur les ports individuels d"un nœud, ou sur un nœud entier du cluster.  Vous pouvez récupérer ces informations à l"aide de la méthode ListNodeFibreChannelPortInfo.' 
+---
+= fibreChannelPort
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet fibreChannelPort contient des informations sur les ports individuels d'un nœud, ou sur un nœud entier du cluster.  Vous pouvez récupérer ces informations en utilisant le `ListNodeFibreChannelPortInfo` méthode.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+micrologiciel
+ a| 
+Version du firmware installée sur le port Fibre Channel.
+ a| 
+entier
+
+
+
+ a| 
+hbaPort
+ a| 
+L'identifiant du port de l'adaptateur de bus hôte (HBA) individuel.
+ a| 
+entier
+
+
+
+ a| 
+modèle
+ a| 
+Modèle du HBA sur le port.
+ a| 
+chaîne
+
+
+
+ a| 
+nPortID
+ a| 
+L'identifiant unique du nœud de port.
+ a| 
+chaîne
+
+
+
+ a| 
+emplacement PCI
+ a| 
+L'emplacement contenant la carte PCI dans le châssis du nœud Fibre Channel.
+ a| 
+entier
+
+
+
+ a| 
+en série
+ a| 
+Le numéro de série du port Fibre Channel.
+ a| 
+chaîne
+
+
+
+ a| 
+vitesse
+ a| 
+La vitesse du HBA sur le port.
+ a| 
+chaîne
+
+
+
+ a| 
+État
+ a| 
+Valeurs possibles :
+
+* Inconnu
+* Absent
+* En ligne
+* Hors ligne
+* Bloqué
+* Contourné
+* Diagnostic
+* Linkdown
+* Erreur
+* Boucle de retour
+* Supprimé
+
+ a| 
+chaîne
+
+
+
+ a| 
+switchWwn
+ a| 
+Nom mondial du port de commutation Fibre Channel.
+ a| 
+chaîne
+
+
+
+ a| 
+wwnn
+ a| 
+Nom mondial du nœud HBA.
+ a| 
+chaîne
+
+
+
+ a| 
+wwpn
+ a| 
+Nom mondial du port attribué au port physique du HBA.
+ a| 
+chaîne
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listnodefibrechannelportinfo.adoc[ListNodeFibreChannelPortInfo]

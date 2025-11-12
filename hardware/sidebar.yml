@@ -1,0 +1,36 @@
+---
+section: hardware
+title: Installer et entretenir le matériel
+entries:
+- title: Informations matérielles H410S et H610S
+  entries:
+  - title: Installer les nœuds H410S et H610S
+    url: "/hardware/task_h410s_h610s_install.html"
+  - title: Remplacer un nœud H410S
+    url: "/hardware/task_h410s_repl.html"
+  - title: Remplacer un nœud H610S
+    url: "/hardware/task_h610s_repl.html"
+  - title: Remplacer les disques
+    url: "/hardware/task_hseries_driverepl.html"
+  - title: Remplacer un bloc d'alimentation
+    url: "/hardware/task_psu_repl.html"
+- title: Informations matérielles de la série SF
+  entries:
+  - title: Remplacer un châssis
+    url: "/hardware/task_sfseries_chassisrepl.html"
+  - title: Remplacer les disques
+    url: "/hardware/task_sfseries_driverepl.html"
+  - title: Remplacer un bloc d'alimentation
+    url: "/hardware/task_sfseries_psurepl.html"
+- title: Retour aux informations sur l'image de l'usine
+  entries:
+  - title: Configurer l'image de retour en usine
+    url: "/hardware/concept_rtfi_configure.html"
+  - title: options de déploiement et d'installation de RTFI
+    url: "/hardware/task_rtfi_deployment_and_install_options.html"
+  - title: Le processus RTFI
+    url: "/hardware/task_rtfi_process.html"
+  - title: menu des options RTFI
+    url: "/hardware/task_rtfi_options_menu.html"
+- title: Versions de firmware prises en charge pour les nœuds de stockage
+  url: "/hardware/fw_storage_nodes.html"

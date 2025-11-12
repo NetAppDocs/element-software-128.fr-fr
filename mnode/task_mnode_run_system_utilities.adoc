@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_run_system_utilities.html 
+summary: Vous pouvez créer ou supprimer des ensembles de support de cluster, réinitialiser les paramètres de configuration des nœuds ou redémarrer le réseau. 
+keywords: netapp, Element, management node ui, mnode ui, system utilities 
+---
+= Exécutez les utilitaires système à partir du nœud de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser l'interface utilisateur par nœud du nœud de gestion pour créer ou supprimer des ensembles de support de cluster, réinitialiser les paramètres de configuration du nœud ou redémarrer le réseau.
+
+.Étapes
+. Ouvrez l'interface utilisateur de gestion par nœud en utilisant les identifiants d'administrateur du nœud de gestion.
+. Sélectionnez *Utilitaires système*.
+. Sélectionnez le bouton correspondant à l'utilitaire que vous souhaitez exécuter :
++
+.. *Contrôle de l'alimentation* : Redémarre, met hors tension ou éteint le nœud.  Spécifiez l'une des options suivantes.
++
+
+IMPORTANT: Cette opération entraîne une perte temporaire de connectivité réseau.
+
++
+*** *Action* : Les options incluent `Restart` et `Halt` (coupure du courant).
+*** *Délai de réveil* : Tout temps supplémentaire avant que le nœud ne soit de nouveau en ligne.
+
+
+.. *Créer un bundle de support de cluster* : Crée le bundle de support de cluster pour aider le support NetApp à évaluer le diagnostic d’un ou plusieurs nœuds d’un cluster.  Spécifiez les options suivantes :
++
+*** *Nom du pack* : Nom unique pour chaque pack de support créé.  Si aucun nom n'est fourni, alors « supportbundle » et le nom du nœud sont utilisés comme nom de fichier.
+*** *Mvip* : Le MVIP du cluster.  Les paquets sont collectés à partir de tous les nœuds du cluster.  Ce paramètre est obligatoire si le paramètre Nodes n'est pas spécifié.
+*** *Nœuds* : Les adresses IP des nœuds à partir desquels collecter les paquets.  Utilisez soit Nodes, soit Mvip, mais pas les deux, pour spécifier les nœuds à partir desquels rassembler les paquets.  Ce paramètre est obligatoire si Mvip n'est pas spécifié.
+*** *Nom d'utilisateur* : Le nom d'utilisateur de l'administrateur du cluster.
+*** *Mot de passe* : Le mot de passe de l’administrateur du cluster.
+*** *Autoriser les opérations incomplètes* : Permet au script de continuer à s’exécuter si les paquets ne peuvent pas être collectés à partir d’un ou plusieurs nœuds.
+*** *Arguments supplémentaires* : Ce paramètre est transmis à `sf_make_support_bundle` scénario.  Ce paramètre ne doit être utilisé qu'à la demande du support NetApp .
+
+
+.. *Supprimer tous les modules de support* : Supprime tous les modules de support actuellement présents sur le nœud de gestion.
+.. *Réinitialiser le nœud* : Réinitialise le nœud de gestion à une nouvelle image d’installation.  Cela rétablit tous les paramètres par défaut, à l'exception de la configuration réseau.  Spécifiez les options suivantes :
++
+*** *Build* : URL d’une image logicielle Element distante vers laquelle le nœud sera réinitialisé.
+*** *Options* : Spécifications pour l’exécution des opérations de réinitialisation.  Des détails supplémentaires seront fournis par le support NetApp , si nécessaire.
++
+
+IMPORTANT: Cette opération entraîne une perte temporaire de connectivité réseau.
+
+
+
+.. *Redémarrage du réseau* : Redémarre tous les services réseau sur le nœud de gestion.
++
+
+IMPORTANT: Cette opération entraîne une perte temporaire de connectivité réseau.
+
+
+
+
+
+[discrete]
+== Pour en savoir plus, consultez les informations disponibles.
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

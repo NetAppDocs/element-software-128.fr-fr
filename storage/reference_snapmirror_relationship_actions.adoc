@@ -1,0 +1,26 @@
+---
+permalink: storage/reference_snapmirror_relationship_actions.html 
+sidebar: sidebar 
+keywords: element, ui, relationships, snapmirror, actions, configure 
+summary: 'Vous pouvez configurer une relation depuis la page Relations SnapMirror de l"onglet Protection des données.  Les options accessibles via l"icône Actions sont décrites ici.' 
+---
+= Actions relationnelles SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer une relation depuis la page Relations SnapMirror de l'onglet Protection des données.  Les options accessibles via l'icône Actions sont décrites ici.
+
+* *Modifier* : Modifie la politique ou le calendrier utilisé pour la relation.
+* *Supprimer* : Supprime la relation SnapMirror .  Cette fonction ne supprime pas le volume de destination.
+* *Initialisation* : Effectue le premier transfert initial de données de référence pour établir une nouvelle relation.
+* *Mise à jour* : Effectue une mise à jour à la demande de la relation, en répliquant vers la destination toutes les nouvelles données et les copies Snapshot incluses depuis la dernière mise à jour.
+* *Quiesce* : Empêche toute mise à jour ultérieure d’une relation.
+* *Reprendre* : Reprend une relation qui était en sommeil.
+* *Pause* : Permet de lire et d’écrire sur le volume de destination et interrompt tous les transferts en cours et futurs.  Vérifiez que les clients n'utilisent pas le volume source d'origine, car l'opération de resynchronisation inverse rend le volume source d'origine en lecture seule.
+* *Resynchronisation* : Rétablit une relation interrompue dans la même direction qu’avant la rupture.
+* *Resynchronisation inverse* : Automatise les étapes nécessaires pour créer et initialiser une nouvelle relation dans le sens inverse.  Cela n'est possible que si la relation existante est rompue.  Cette opération ne supprimera pas la relation actuelle.  Le volume source d'origine revient à la copie Snapshot commune la plus récente et se resynchronise avec la destination.  Toutes les modifications apportées au volume source d'origine depuis la dernière mise à jour réussie de SnapMirror sont perdues.  Toute modification apportée au volume de destination actuel, ou toute nouvelle donnée écrite dans celui-ci, est renvoyée au volume source d'origine.
+* *Annuler* : Annule un transfert en cours.  Si une mise à jour SnapMirror est émise pour une relation interrompue, la relation reprend avec le dernier transfert à partir du dernier point de contrôle de redémarrage créé avant l'interruption.
+

@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_getsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,information,info,get,getting 
+summary: 'Vous pouvez utiliser la méthode GetSnmpInfo pour obtenir les informations de configuration actuelles du protocole SNMP (Simple Network Management Protocol).' 
+---
+= GetSnmpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetSnmpInfo` méthode pour obtenir les informations de configuration actuelles du protocole SNMP (Simple Network Management Protocol).
+
+
+
+== Paramètres
+
+
+NOTE: La fonction GetSnmpInfo est obsolète pour les versions postérieures à Element 8.0.  Lexref:reference_element_api_getsnmpstate.adoc[Obtenir l'état SNMP] etxref:reference_element_api_setsnmpacl.adoc[Définir la liste de contrôle d'accès SNMP] Ces méthodes remplacent la méthode GetSnmpInfo.
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+réseaux
+ a| 
+Liste des réseaux et des types d'accès activés pour SNMP.  *Remarque :* l’affichage des réseaux n’est possible que si SNMP v3 est désactivé.
+ a| 
+xref:reference_element_api_network_snmp.adoc[réseau]
+
+
+
+ a| 
+activé
+ a| 
+Indique si les nœuds du cluster sont configurés pour SNMP. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+Si le nœud du cluster est configuré pour SNMP v3. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+utilisateurs américains
+ a| 
+Si SNMP v3 est activé, une liste des paramètres d'accès utilisateur pour SNMP est renvoyée par le cluster.  Cette valeur est renvoyée à la place du paramètre « networks ».
+ a| 
+xref:reference_element_api_usmuser.adoc[utilisateur usm]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "GetSnmpInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "enabled" : true,
+      "networks" : [
+         {
+            "access" : "rosys",
+            "cidr" : 0,
+            "community" : "public",
+            "network" : "localhost"
+         }
+      ]
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_getsnmpstate.adoc[Obtenir l'état SNMP]
+* xref:reference_element_api_setsnmpacl.adoc[Définir la liste de contrôle d'accès SNMP]
+

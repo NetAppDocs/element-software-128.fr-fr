@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_removevolumepair.html 
+sidebar: sidebar 
+keywords: volume,pair,volumes,remove,removing,removevolumepair 
+summary: 'Vous pouvez utiliser la méthode RemoveVolumePair pour supprimer l"appairage distant entre deux volumes.  Utilisez cette méthode sur les volumes source et cible appariés.  Lorsque vous supprimez les informations de couplage de volumes, les données ne sont plus répliquées vers ou depuis le volume.' 
+---
+= RemoveVolumePair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `RemoveVolumePair` méthode pour supprimer l'appairage à distance entre deux volumes.  Utilisez cette méthode sur les volumes source et cible appariés.  Lorsque vous supprimez les informations de couplage de volumes, les données ne sont plus répliquées vers ou depuis le volume.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+volumeID
+ a| 
+Identifiant du volume sur lequel arrêter le processus de réplication.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "RemoveVolumePair",
+   "params": {
+      "volumeID": 5
+   "id" : 1
+   }
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

@@ -1,0 +1,233 @@
+---
+permalink: api/reference_element_api_schedule.html 
+sidebar: sidebar 
+keywords: object,objects,schedule 
+summary: 'L"objet de planification contient des informations sur une planification créée pour effectuer de manière autonome un instantané d"un volume.  Vous pouvez récupérer les informations de planification pour tous les horaires grâce à la méthode API ListSchedules.' 
+---
+= calendrier
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet de planification contient des informations sur une planification créée pour effectuer automatiquement une capture instantanée d'un volume.  Vous pouvez consulter les informations relatives à tous les horaires grâce à `ListSchedules` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+attributs
+ a| 
+Indique la fréquence d'occurrence du calendrier. Valeurs possibles :
+
+* Jour de la semaine
+* Jour du mois
+* Intervalle de temps
+
+ a| 
+objet JSON
+
+
+
+ a| 
+aErreur
+ a| 
+Indique si le planning comporte des erreurs ou non. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+heures
+ a| 
+Affiche le nombre d'heures qui s'écouleront avant la création du prochain instantané.  Les valeurs possibles vont de 0 à 24.
+ a| 
+entier
+
+
+
+ a| 
+dernier statut d'exécution
+ a| 
+Indique l'état de la dernière capture instantanée planifiée. Valeurs possibles :
+
+* Succès
+* Échec
+
+ a| 
+chaîne
+
+
+
+ a| 
+dernière exécution
+ a| 
+Indique la dernière fois que le programme a commencé.
+ a| 
+Chaîne de date ISO 8601
+
+
+
+ a| 
+minutes
+ a| 
+Affiche le nombre de minutes qui s'écouleront avant la création du prochain instantané.  Les valeurs possibles vont de 0 à 59.
+ a| 
+entier
+
+
+
+ a| 
+jours du mois
+ a| 
+Indique les jours du mois où une capture d'écran sera effectuée.
+ a| 
+tableau
+
+
+
+ a| 
+pause
+ a| 
+Indique si la programmation est suspendue ou non. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+récurrent
+ a| 
+Indique si la planification est récurrente ou non. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+exécuterIntervalle suivant
+ a| 
+Indique si la planification sera exécutée ou non lors de la prochaine activation du planificateur.  Si cette valeur est vraie, la planification s'exécutera lors de la prochaine activation du planificateur, puis cette valeur sera réinitialisée à fausse. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+ID de planification
+ a| 
+L'identifiant unique du planning.
+ a| 
+entier
+
+
+
+ a| 
+Informations sur le calendrier
+ a| 
+Inclut le nom unique donné à la planification, la période de conservation de l'instantané créé et l'identifiant du volume à partir duquel l'instantané a été créé.  Valeurs valides :
+
+* `enableRemoteReplication`: Indique si l'instantané doit être inclus dans la réplication distante.  (booléen)
+* `ensureSerialCreation`: Indique si la création d'un nouvel instantané doit être autorisée si une réplication d'instantané précédente est en cours.  (booléen)
+* `name`: Le nom de l'instantané à utiliser.  (chaîne)
+* `retention`: La durée de conservation de l'instantané.  Selon l'heure, il s'affiche dans l'un des formats suivants :
++
+** `fifo`: L'instantané est conservé selon le principe du premier entré, premier sorti (FIFO).  Si elle est vide, la capture d'écran est conservée indéfiniment.  (chaîne)
+** HH:mm:ss
+
+
+* `volumeID`: L'identifiant du volume à inclure dans l'instantané.  (entier)
+* `volumes`: Liste des identifiants de volume à inclure dans l'instantané de groupe.  (tableau d'entiers)
+
+ a| 
+objet JSON
+
+
+
+ a| 
+nom_de_l'horaire
+ a| 
+Le nom unique attribué au calendrier.
+ a| 
+chaîne
+
+
+
+ a| 
+type de planification
+ a| 
+Seuls les types de snapshots planifiés sont pris en charge pour le moment.
+ a| 
+chaîne
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+Le snapMirrorLabel à appliquer à l'instantané créé ou à l'instantané de groupe, contenu dans le scheduleInfo.  Si cette valeur n'est pas définie, elle est nulle.
+ a| 
+chaîne
+
+
+
+ a| 
+date de début
+ a| 
+Indique la date de début ou de début prévu du calendrier ; formatée en heure UTC.
+ a| 
+Chaîne de date ISO 8601
+
+
+
+ a| 
+à supprimer
+ a| 
+Indique si le calendrier est marqué pour suppression. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+jours de la semaine
+ a| 
+Indique les jours de la semaine où une capture d'écran sera effectuée.
+ a| 
+tableau
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listschedules.adoc[Liste des horaires]

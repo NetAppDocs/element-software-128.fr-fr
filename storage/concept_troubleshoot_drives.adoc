@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, drives, ssd, swappable, solid-state drives 
+summary: 'Vous pouvez remplacer un disque SSD défectueux par un disque de remplacement.  Les disques SSD pour les nœuds de stockage SolidFire sont remplaçables à chaud.  Si vous soupçonnez une défaillance d"un disque SSD, contactez le support NetApp pour vérifier la panne et obtenir de l"aide concernant la procédure de résolution appropriée.  L"assistance NetApp travaille également avec vous pour obtenir un disque de remplacement conformément à votre contrat de niveau de service.' 
+---
+= Dépannage des disques
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez remplacer un disque SSD défectueux par un disque de remplacement.  Les disques SSD pour les nœuds de stockage SolidFire sont remplaçables à chaud.  Si vous soupçonnez une défaillance d'un disque SSD, contactez le support NetApp pour vérifier la panne et obtenir de l'aide concernant la procédure de résolution appropriée.  L'assistance NetApp travaille également avec vous pour obtenir un disque de remplacement conformément à votre contrat de niveau de service.
+
+Dans ce cas, « remplaçable » signifie que vous pouvez retirer un disque défaillant d'un nœud actif et le remplacer par un nouveau disque SSD de NetApp.  Il est déconseillé de retirer les disques non défaillants d'un cluster actif.
+
+Vous devez conserver sur site les pièces de rechange recommandées par le support NetApp afin de permettre le remplacement immédiat du disque en cas de panne.
+
+
+NOTE: À des fins de test, si vous simulez une panne de disque en retirant un disque d'un nœud, vous devez attendre 30 secondes avant de réinsérer le disque dans son emplacement.
+
+En cas de panne d'un disque, Double Helix redistribue les données qu'il contient sur les nœuds restants du cluster.  Les pannes de plusieurs disques sur le même nœud ne posent pas de problème, car le logiciel Element protège contre la présence de deux copies de données sur le même nœud.  Une panne de disque entraîne les événements suivants :
+
+* Les données sont transférées hors du disque.
+* La capacité globale du cluster est réduite par la capacité du disque.
+* La protection des données Double Helix garantit l'existence de deux copies valides des données.
+
+
+
+IMPORTANT: Les systèmes de stockage SolidFire ne prennent pas en charge le retrait d'un disque si cela entraîne une capacité de stockage insuffisante pour migrer les données.
+
+
+
+== Pour plus d'informations
+
+* xref:task_troubleshoot_remove_failed_drives.adoc[Supprimer les disques défaillants du cluster]
+* xref:concept_troubleshoot_basic_mdss_drive_troubleshooting.adoc[Dépannage de base des lecteurs MDSS]
+* xref:task_troubleshoot_remove_mdss_drives.adoc[Retirer les lecteurs MDSS]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2844771["Remplacement des disques par des nœuds de stockage SolidFire"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2846859["Remplacement des disques pour les nœuds de stockage de la série H600S"]
+* link:../hardware/task_h410s_h610s_install.html["Informations matérielles H410S et H610S"]
+* link:../hardware/task_sfseries_chassisrepl.html["Informations matérielles de la série SF"]
+

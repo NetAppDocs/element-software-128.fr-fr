@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_setnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,set,setting,node,setnetworkconfig 
+summary: 'Vous pouvez utiliser la méthode SetNetworkConfig pour définir la configuration réseau d"un nœud.  Pour afficher les paramètres réseau actuels d"un nœud, exécutez la méthode API GetNetworkConfig.' 
+---
+= Configurer le réseau
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `SetNetworkConfig` méthode permettant de configurer le réseau d'un nœud.  Pour afficher les paramètres réseau actuels d'un nœud, exécutez la commande suivante : `GetNetworkConfig` Méthode API.
+
+
+
+== Paramètre
+
+PRUDENCE:
+
+Modifier le mode de liaison sur un nœud peut entraîner une perte temporaire de connectivité réseau.
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+réseau
+ a| 
+Un objet contenant les paramètres réseau des nœuds à modifier.  Il vous suffit d'ajouter les champs que vous souhaitez modifier pour cette méthode en tant qu'attributs dans ce paramètre.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[réseau (toutes les interfaces)]
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+réseau
+ a| 
+La configuration réseau nouvelle et actuelle du nœud.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[réseau (toutes les interfaces)]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+	"method": "SetNetworkConfig",
+		"params": {
+			"network": {
+				"Bond10G": {
+					"bond-mode": "ALB"
+				},
+				"Bond1G": {
+					"netmask": "255.255.224.0"
+				},
+				"eth0": {
+					"method": "bond"
+				},
+				"lo": {
+					"method": "loopback"
+				}
+			}
+		}
+}
+----
+
+
+== Exemple de réponse
+
+La réponse de cette méthode est identique à celle de la méthode GetNetworkConfig.  Cette méthode affiche tous les membres de chaque objet et inclut les nouvelles valeurs des membres modifiés.
+
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_getnetworkconfig.adoc[Obtenir la configuration réseau]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[Obtenir la configuration réseau]
+

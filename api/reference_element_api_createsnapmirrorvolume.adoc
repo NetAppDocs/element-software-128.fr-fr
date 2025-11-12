@@ -1,0 +1,134 @@
+---
+permalink: api/reference_element_api_createsnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoints,create,creating,volume,volumes,CreateSnapMirrorVolume 
+summary: 'L"interface utilisateur Web d"Element utilise la méthode CreateSnapMirrorVolume pour créer un volume sur le système ONTAP distant.' 
+---
+= CréerSnapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web d'Element utilise `CreateSnapMirrorVolume` méthode pour créer un volume sur le système ONTAP distant.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'identifiant du point de terminaison du système de stockage ONTAP distant communiquant avec le cluster de stockage Element.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+serveur virtuel
+ a| 
+Le nom du serveur virtuel.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+nom
+ a| 
+Nom du volume ONTAP de destination.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+taper
+ a| 
+Le type de volume. Valeurs possibles :
+
+* rw : Volume de lecture-écriture
+* ls : Volume de partage de charge
+* dp : Volume de protection des données
+
+
+Si aucun type n'est fourni, le type par défaut est dp.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+agrégat
+ a| 
+L'agrégat ONTAP contenant dans lequel créer le volume.  Vous pouvez utiliser ListSnapMirrorAggregates pour obtenir des informations sur les agrégats ONTAP disponibles.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+taille
+ a| 
+La taille du volume en octets.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorVolume
+ a| 
+Informations concernant un volume SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolume.adoc[snapMirrorVolume]
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,1

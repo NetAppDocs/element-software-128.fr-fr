@@ -1,0 +1,25 @@
+---
+permalink: storage/concept_per_node_work_with_utilities.html 
+sidebar: sidebar 
+keywords: troubleshooting network issues, using per-node utilities, storage node UI 
+summary: 'Vous pouvez utiliser les utilitaires par nœud pour résoudre les problèmes de réseau si les outils de surveillance standard de l"interface utilisateur du logiciel NetApp Element ne vous fournissent pas suffisamment d"informations pour le dépannage.  Les utilitaires par nœud fournissent des informations et des outils spécifiques qui peuvent vous aider à résoudre les problèmes de réseau entre les nœuds ou avec le nœud de gestion.' 
+---
+= Utilisez les utilitaires par nœud pour les nœuds de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser les utilitaires par nœud pour résoudre les problèmes de réseau si les outils de surveillance standard de l'interface utilisateur du logiciel NetApp Element ne vous fournissent pas suffisamment d'informations pour le dépannage.  Les utilitaires par nœud fournissent des informations et des outils spécifiques qui peuvent vous aider à résoudre les problèmes de réseau entre les nœuds ou avec le nœud de gestion.
+
+
+
+== Trouver plus d'informations
+
+* xref:task_per_node_access_settings.adoc[Accédez aux paramètres par nœud via l'interface utilisateur de chaque nœud.]
+* xref:reference_per_node_network_settings_details.adoc[Détails des paramètres réseau depuis l'interface utilisateur de chaque nœud]
+* xref:reference_per_node_cluster_settings_details.adoc[Détails des paramètres du cluster depuis l'interface utilisateur de chaque nœud]
+* xref:task_per_node_run_system_tests.adoc[Exécutez des tests système à l'aide de l'interface utilisateur par nœud]
+* xref:task_per_node_run_system_utilities.adoc[Exécutez les utilitaires système à l'aide de l'interface utilisateur par nœud.]
+

@@ -1,0 +1,107 @@
+= Trouver plus d'informations
+:allow-uri-read: 
+
+
+Chaque châssis comprend deux blocs d'alimentation pour assurer une redondance électrique.  Si un bloc d'alimentation est défectueux, vous devez le remplacer dès que possible afin de garantir que le châssis dispose d'une source d'alimentation redondante.
+
+.Ce dont vous aurez besoin
+* Vous avez déterminé que le bloc d'alimentation est défectueux.
+* Vous disposez d'un bloc d'alimentation de remplacement.
+* Vous avez vérifié que le deuxième bloc d'alimentation fonctionne.
+* Vous portez un bracelet antistatique (ESD) ou vous avez pris d'autres précautions antistatiques.
+
+
+.À propos de cette tâche
+La procédure de remplacement s'applique aux modèles de nœuds suivants :
+
+* Châssis NetApp HCI à deux unités de rack (2U) et quatre nœuds
+* Châssis de stockage H610S à une unité rack (1U)
++
+
+NOTE: Dans le cas du H610S, les termes « nœud » et « châssis » sont utilisés de manière interchangeable car le nœud et le châssis ne sont pas des composants séparés, contrairement au cas du châssis 2U à quatre nœuds.
+
+
+
+Les alarmes de l'interface utilisateur Element fournissent des informations sur le bloc d'alimentation défaillant, en le désignant par PS1 ou PS2.  Dans un châssis NetApp HCI 2U à quatre nœuds, PS1 désigne l'unité située sur la rangée supérieure du châssis et PS2 désigne l'unité située sur la rangée inférieure du châssis.  Vous pouvez remplacer le bloc d'alimentation défectueux pendant que votre châssis est sous tension et en fonctionnement, à condition que le bloc d'alimentation de secours fonctionne.
+
+
+NOTE: Si vous remplacez les deux alimentations d'un nœud, celles-ci doivent avoir la même référence et la même puissance.  Des alimentations incompatibles peuvent endommager le système.
+
+.Étapes
+. Repérez le bloc d'alimentation défectueux dans le châssis.  La LED de l'appareil défectueux est orange.
++
+
+NOTE: L'emplacement des blocs d'alimentation varie selon le type de châssis.
+
++
+Consultez les images ci-dessous pour connaître l'emplacement des blocs d'alimentation :
+
++
+[cols="2*"]
+|===
+| Modèle | Emplacement des groupes électrogènes 
+
+
+| Châssis de stockage NetApp HCI 2U à quatre nœuds  a| 
+image::storage_chassis_psu.png[Présente les blocs d'alimentation dans un format 2U]
+
+
+NOTE: L'apparence des nœuds de votre châssis peut varier selon le type de nœuds (stockage ou calcul) dont vous disposez.
+
+
+
+| Châssis H610S  a| 
+image::h610s_psu.png[Présente les blocs d'alimentation dans un châssis H610S.]
+
+|===
+. Identifiez le nœud correct à l'aide de l'étiquette bleue détachable ou du numéro de série.  L'étiquette bleue détachable indique le numéro de série (S/N) et la disposition du disque.  Veuillez confirmer le numéro de série du nœud à réparer.
++
+** Si vous remplacez les deux blocs d'alimentation, passez à l'étape 3.
+** Si vous ne remplacez qu'un seul bloc d'alimentation, passez à l'étape 4.
+
+
+. Vérifiez que le nœud a été mis hors tension ou qu'il est prêt à être mis hors tension pour maintenance. Notez ce qui suit :
++
+** Un nœud mis hors tension n'affiche aucune LED bleue d'alimentation sur les disques ou le bouton d'alimentation.
+** Un nœud qui n'a pas encore été arrêté affiche des LED bleues sur les disques et le bouton d'alimentation.
+** Un nœud qui a été arrêté et qui est prêt à être remis en service affiche une LED d'alimentation clignotante qui clignote en vert et en noir.
+** Un nœud qui n'a pas encore été arrêté affiche des LED vertes fixes sur les alimentations.
+
+
+. Débranchez le cordon d'alimentation du bloc d'alimentation ou les deux cordons d'alimentation si vous remplacez les deux blocs.
+. Soulevez la poignée à came et appuyez sur le loquet bleu pour faire glisser le bloc d'alimentation.
++
+image::psu-remove.gif[On voit ici la poignée de la came soulevée et le bloc d'alimentation retiré du châssis.]
+
++
+
+NOTE: L'illustration est un exemple.  L'emplacement du ou des blocs d'alimentation dans le châssis et la couleur du bouton de déverrouillage varient selon le type de châssis que vous possédez.
+
++
+
+IMPORTANT: Veillez à utiliser vos deux mains pour soutenir le poids du bloc d'alimentation.
+
++
+Répétez les étapes 3, 4 et 5 si vous remplacez un deuxième bloc d'alimentation.
+
+. Repérez l'étiquette sur le bloc d'alimentation que vous avez retiré du châssis.  L'étiquette contient des informations sur le fabricant et la puissance de sortie (en watts).
++
+
+NOTE: Ne remplacez pas le bloc d'alimentation si la puissance du bloc d'alimentation fourni dans le cadre de votre retour sous garantie ne correspond pas à la puissance du bloc d'alimentation retiré.  Contactez le support NetApp pour connaître les prochaines étapes.
+
+. À l'aide des deux mains, alignez les bords du bloc d'alimentation avec l'ouverture du châssis, poussez doucement le bloc dans le châssis à l'aide de la poignée à came jusqu'à ce qu'il se verrouille en place, puis remettez la poignée à came en position verticale.
++
+image::psu-install.gif[L'image montre l'unité d'alimentation en cours d'installation dans le châssis.]
+
+. Branchez un ou les deux cordons d'alimentation.
+. Si vous avez remplacé les deux blocs d'alimentation, rendez-vous à l'avant du nœud et appuyez sur le bouton d'alimentation pour allumer les nœuds.  Après la mise sous tension, la LED du bouton d'alimentation s'illumine d'une couleur bleue fixe.  Les LED bleues des variateurs et du bouton d'identification commenceront à clignoter.
+. Retournez l'appareil défectueux à NetApp en suivant les instructions figurant dans la boîte qui vous a été expédiée.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

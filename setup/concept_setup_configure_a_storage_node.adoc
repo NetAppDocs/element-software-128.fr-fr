@@ -1,0 +1,106 @@
+---
+permalink: setup/concept_setup_configure_a_storage_node.html 
+sidebar: sidebar 
+keywords: configuring node,configure storage node,configuring using TUI,configuring using node UI 
+summary: 'Vous devez configurer chaque nœud individuellement avant de pouvoir les ajouter à un cluster.  Après avoir installé et câblé un nœud dans une unité rack et l"avoir mis sous tension, vous pouvez configurer les paramètres réseau du nœud à l"aide de l"interface utilisateur spécifique à chaque nœud ou de l"interface utilisateur du terminal du nœud.' 
+---
+= Configurer un nœud de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez configurer chaque nœud individuellement avant de pouvoir les ajouter à un cluster.  Après avoir installé et câblé un nœud dans une unité rack et l'avoir mis sous tension, vous pouvez configurer les paramètres réseau du nœud à l'aide de l'interface utilisateur par nœud ou de l'interface utilisateur du terminal du nœud (TUI).  Assurez-vous de disposer des informations de configuration réseau nécessaires pour le nœud avant de continuer.
+
+Il existe deux options pour configurer les nœuds de stockage :
+
+* <<Configurez un nœud de stockage à l'aide de l'interface utilisateur spécifique à chaque nœud.,Interface utilisateur par nœud>>Utilisez l'interface utilisateur par nœud. (`https://<node_management_IP>:442`) pour configurer les paramètres réseau du nœud.
+* <<Configurez un nœud de stockage à l'aide de l'interface utilisateur graphique (TUI).,TUI>>Utilisez l'interface utilisateur du terminal du nœud (TUI) pour configurer le nœud.
+
+
+Vous ne pouvez pas ajouter à un cluster un nœud doté d'adresses IP attribuées par DHCP.  Vous pouvez utiliser l'adresse IP DHCP pour configurer initialement le nœud dans l'interface utilisateur, l'interface utilisateur textuelle ou l'API de chaque nœud.  Lors de cette configuration initiale, vous pouvez ajouter des informations d'adresse IP statique afin de pouvoir ajouter le nœud à un cluster.
+
+Après la configuration initiale, vous pouvez accéder au nœud en utilisant son adresse IP de gestion.  Vous pouvez ensuite modifier les paramètres du nœud, l'ajouter à un cluster ou utiliser le nœud pour créer un cluster.  Vous pouvez également configurer un nouveau nœud à l'aide des méthodes de l'API du logiciel Element.
+
+
+NOTE: À partir de la version 11.0 d'Element, les nœuds peuvent être configurés avec des adresses IPv4, IPv6 ou les deux pour leur réseau de gestion.  Ceci s'applique aux nœuds de stockage et aux nœuds de gestion, à l'exception du nœud de gestion 11.3 et versions ultérieures qui ne prend pas en charge IPv6.  Lors de la création d'un cluster, une seule adresse IPv4 ou IPv6 peut être utilisée pour l'adresse MVIP et le type d'adresse correspondant doit être configuré sur tous les nœuds.
+
+
+
+== Configurez un nœud de stockage à l'aide de l'interface utilisateur spécifique à chaque nœud.
+
+Vous pouvez configurer les nœuds à l'aide de l'interface utilisateur propre à chaque nœud.
+
+.À propos de cette tâche
+* Vous pouvez configurer le nœud pour qu'il ait une adresse IPv4 ou IPv6.
+* Vous avez besoin de l'adresse DHCP affichée dans l'interface utilisateur textuelle pour accéder à un nœud.  Vous ne pouvez pas utiliser les adresses DHCP pour ajouter un nœud à un cluster.
++
+
+IMPORTANT: Vous devez configurer les interfaces de gestion (Bond1G) et de stockage (Bond10G) pour des sous-réseaux distincts.  Les interfaces Bond1G et Bond10G configurées pour le même sous-réseau provoquent des problèmes de routage lorsque le trafic de stockage est envoyé via l'interface Bond1G.  Si vous devez utiliser le même sous-réseau pour le trafic de gestion et de stockage, configurez manuellement le trafic de gestion pour utiliser l'interface Bond10G.  Vous pouvez effectuer cette opération pour chaque nœud en utilisant la page *Paramètres du cluster* de l'interface utilisateur de chaque nœud.
+
+
+
+.Étapes
+. Dans une fenêtre de navigateur, saisissez l'adresse IP DHCP d'un nœud.
++
+Vous devez ajouter l'extension `:442` pour accéder au nœud ; par exemple, `https://172.25.103.6:442`.
+
++
+L'onglet *Paramètres réseau* s'ouvre sur la section *Bond1G*.
+
+. Saisissez les paramètres du réseau de gestion 1G.
+. Cliquez sur *Appliquer les modifications*.
+. Cliquez sur *Bond10G* pour afficher les paramètres du réseau de stockage 10G.
+. Saisissez les paramètres du réseau de stockage 10G.
+. Cliquez sur *Appliquer les modifications*.
+. Cliquez sur *Paramètres du cluster*.
+. Saisissez le nom d'hôte du réseau 10G.
+. Saisissez le nom du cluster.
++
+
+IMPORTANT: Ce nom doit être ajouté à la configuration de tous les nœuds avant qu'un cluster puisse être créé.  Tous les nœuds d'un cluster doivent avoir des noms de cluster identiques.  Les noms de clusters sont sensibles à la casse.
+
+. Cliquez sur *Appliquer les modifications*.
+
+
+
+
+== Configurez un nœud de stockage à l'aide de l'interface utilisateur graphique (TUI).
+
+Vous pouvez utiliser l'interface utilisateur du terminal (TUI) pour effectuer la configuration initiale des nouveaux nœuds.
+
+Vous devez configurer les interfaces Bond1G (Gestion) et Bond10G (Stockage) pour des sous-réseaux distincts.  Les interfaces Bond1G et Bond10G configurées pour le même sous-réseau provoquent des problèmes de routage lorsque le trafic de stockage est envoyé via l'interface Bond1G.  Si vous devez utiliser le même sous-réseau pour le trafic de gestion et de stockage, configurez manuellement le trafic de gestion pour utiliser l'interface Bond10G.  Vous pouvez le faire pour chaque nœud en utilisant la page *Cluster* > *Nœuds* de l'interface utilisateur de l'élément.
+
+.Étapes
+. Connectez un clavier et un moniteur au nœud, puis mettez le nœud sous tension.
++
+Le menu principal de NetApp Storage de l'interface utilisateur en temps réel (TUI) apparaît sur le terminal tty1.
+
++
+
+NOTE: Si le nœud ne parvient pas à joindre votre serveur de configuration, l'interface utilisateur en temps réel affiche un message d'erreur.  Vérifiez la connexion à votre serveur de configuration ou votre connexion réseau pour résoudre l'erreur.
+
+. Sélectionnez *Réseau* > *Configuration réseau*.
++
+
+TIP: Pour naviguer dans le menu, appuyez sur les touches fléchées Haut ou Bas.  Pour passer à un autre bouton ou aux champs depuis les boutons, appuyez sur *Tab*.  Pour naviguer entre les champs, utilisez les touches fléchées Haut et Bas.
+
+. Sélectionnez *Bond1G (Gestion)* ou *Bond10G (Stockage)* pour configurer les paramètres réseau 1G et 10G du nœud.
+. Pour les champs Mode de liaison et Statut, appuyez sur *Tab* pour sélectionner le bouton Aide et identifier les options disponibles.
++
+Tous les nœuds d'un cluster doivent avoir des noms de cluster identiques.  Les noms de clusters sont sensibles à la casse.  Si un serveur DHCP est en cours d'exécution sur le réseau et dispose d'adresses IP disponibles, l'adresse 1GbE apparaît dans le champ Adresse.
+
+. Appuyez sur *Tab* pour sélectionner le bouton *OK* et enregistrer les modifications.
++
+Le nœud est placé dans un état en attente et peut être ajouté à un cluster existant ou à un nouveau cluster.
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

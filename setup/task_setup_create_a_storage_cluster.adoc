@@ -1,0 +1,75 @@
+---
+permalink: setup/task_setup_create_a_storage_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez créer un cluster de stockage après avoir configuré tous les nœuds individuels.  Lorsque vous créez un cluster, un compte utilisateur d"administrateur de cluster est automatiquement créé pour vous.  L"administrateur du cluster a l"autorisation de gérer tous les attributs du cluster et peut créer d"autres comptes d"administrateur de cluster.' 
+---
+= Créer un cluster de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer un cluster de stockage après avoir configuré tous les nœuds individuels.  Lorsque vous créez un cluster, un compte utilisateur d'administrateur de cluster est automatiquement créé pour vous.  L'administrateur du cluster a l'autorisation de gérer tous les attributs du cluster et peut créer d'autres comptes d'administrateur de cluster.
+
+.Ce dont vous aurez besoin
+* Vous avez installé le nœud de gestion.
+* Vous avez configuré tous les nœuds individuels.
+
+
+.À propos de cette tâche
+Lors de la configuration d'un nouveau nœud, des adresses IP de gestion (MIP) 1G ou 10G sont attribuées à chaque nœud.  Vous devez utiliser l'une des adresses IP des nœuds créées lors de la configuration pour ouvrir la page « Créer un nouveau cluster ».  L'adresse IP que vous utilisez dépend du réseau que vous avez choisi pour la gestion du cluster.
+
+[IMPORTANT]
+====
+Si vous souhaitez activer l'activation à l'échelle du clusterlink:../concepts/concept_solidfire_concepts_security.html#encryption-at-rest-software["Cryptage logiciel au repos"] Pour les clusters de stockage 100 % flash SolidFire , vous devez le faire lors de la création du cluster.  À partir d'Element 12.5, vous devez activer le chiffrement logiciel au repos dans l'interface utilisateur de création de cluster lors de la création du cluster.  Pour Element 12.3.x et versions antérieures, vous devez créer le cluster à l'aide delink:../api/reference_element_api_createcluster.html["Créer un cluster"] Méthode API et modifiez le paramètre enableSoftwareEncryptionAtRest en `true` .  Une fois le chiffrement logiciel au repos activé sur le cluster, il ne peut plus être désactivé.  Tu peuxlink:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["activer et désactiver"] Chiffrement matériel au repos après la création du cluster.
+
+====
+[NOTE]
+====
+Lors de la création d'un nouveau cluster, tenez compte des points suivants :
+
+* Si vous utilisez des nœuds de stockage situés dans un châssis partagé, vous pourriez envisager de concevoir une protection contre les pannes au niveau du châssis à l'aide de la fonctionnalité des domaines de protection.
+* Si un châssis partagé n'est pas utilisé, vous pouvez définir une configuration de domaine de protection personnalisée.
+
+
+====
+.Étapes
+. Dans une fenêtre de navigateur, saisissez `\https://MIP:443` , où MIP est l'adresse IP du nœud de gestion.
+. Dans la section « Créer un nouveau cluster », saisissez les informations suivantes :
++
+** Adresse IP virtuelle de gestion (VIP) : adresse IP virtuelle routable sur le réseau 1 GbE ou 10 GbE pour les tâches de gestion du réseau.
++
+
+NOTE: Vous pouvez créer un nouveau cluster en utilisant l'adressage IPv4 ou IPv6.
+
+** iSCSI (stockage) VIP : Adresse IP virtuelle sur le réseau 10GbE pour le stockage et la découverte iSCSI.
++
+
+NOTE: Vous ne pouvez pas modifier le MVIP, le SVIP ou le nom du cluster après avoir créé ce dernier.
+
+** Nom d'utilisateur : Nom d'utilisateur de l'administrateur principal du cluster pour l'accès authentifié au cluster.  Vous devez conserver le nom d'utilisateur pour référence ultérieure.
++
+
+NOTE: Vous pouvez utiliser des lettres majuscules et minuscules, des caractères spéciaux et des chiffres pour le nom d'utilisateur et le mot de passe.
+
+** Mot de passe : Mot de passe permettant l’accès authentifié au cluster.  Vous devez conserver ce mot de passe pour référence ultérieure.  La protection bidirectionnelle des données est activée par défaut.  Vous ne pouvez pas modifier ce paramètre.
+
+
+. Lisez le contrat de licence utilisateur final et sélectionnez *J'accepte*.
+. *Facultatif* : Dans la liste des nœuds, assurez-vous que les cases à cocher des nœuds qui ne doivent pas être inclus dans le cluster ne sont pas sélectionnées.
+. Sélectionnez *Créer un cluster*.
++
+La création du cluster peut prendre plusieurs minutes, selon le nombre de nœuds qui le composent.  Sur un réseau correctement configuré, un petit groupe de cinq nœuds devrait prendre moins d'une minute.  Une fois le cluster créé, la fenêtre « Créer un nouveau cluster » est redirigée vers l’adresse URL MVIP du cluster et affiche l’interface utilisateur Element.
+
+
+
+
+
+== Pour plus d'informations
+
+* link:../api/concept_element_api_about_the_api.html["Gestion du stockage avec l'API Element"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

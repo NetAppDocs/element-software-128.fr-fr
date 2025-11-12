@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_edit_vcenter_assets.html 
+summary: 'Vous pouvez modifier les contrôleurs de nœuds de gestion vCenter à l"aide de l"interface utilisateur de l"API REST.' 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= Afficher ou modifier les ressources de contrôleur existantes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter et modifier les informations relatives aux contrôleurs VMware vCenter existants dans la configuration du nœud de gestion à l'aide de l'API REST.  Les contrôleurs sont des instances VMware vCenter enregistrées sur le nœud de gestion de votre installation NetApp SolidFire .
+
+.Avant de commencer
+* Assurez-vous que votre version de cluster exécute le logiciel NetApp Element 11.3 ou une version ultérieure.
+* Assurez-vous d'avoir déployé un nœud de gestion exécutant la version 11.3 ou ultérieure.
+
+
+
+
+== Accédez à l'API REST des services de gestion
+
+.Étapes
+. Accédez à l'interface utilisateur de l'API REST pour les services de gestion en saisissant l'adresse IP du nœud de gestion suivie de `/vcenter/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. Sélectionnez *Autoriser* ou toute icône de verrouillage et procédez comme suit :
++
+.. Saisissez le nom d'utilisateur et le mot de passe du cluster.
+.. Saisissez l'identifiant du client comme `mnode-client` .
+.. Sélectionnez *Autoriser* pour démarrer une session.
+.. Ferme la fenêtre.
+
+
+
+
+
+
+== Afficher les informations enregistrées concernant les contrôleurs existants
+
+Vous pouvez lister les contrôleurs vCenter existants enregistrés auprès du nœud de gestion et consulter les informations stockées les concernant à l'aide de l'API REST.
+
+.Étapes
+. Sélectionnez *GET /compute/controllers*.
+. Sélectionnez *Essayer*.
+. Sélectionnez *Exécuter*.
++
+L'API renvoie une liste de tous les contrôleurs vCenter connus, ainsi que l'adresse IP, l'ID du contrôleur, le nom d'hôte et l'ID utilisateur utilisés pour communiquer avec chaque contrôleur.
+
+. Si vous souhaitez connaître l'état de connexion d'un contrôleur particulier, copiez l'ID du contrôleur à partir de `id` copiez le champ de ce contrôleur dans votre presse-papiers et voyez<<Afficher l'état d'un contrôleur existant>> .
+
+
+
+
+== Afficher l'état d'un contrôleur existant
+
+Vous pouvez consulter l'état de n'importe quel contrôleur vCenter existant enregistré auprès du nœud de gestion.  L'API renvoie un statut indiquant si NetApp Hybrid Cloud Control peut se connecter au contrôleur vCenter, ainsi que la raison de ce statut.
+
+.Étapes
+. Sélectionnez *GET /compute/controllers/{controller_id}/status*.
+. Sélectionnez *Essayer*.
+. Saisissez l'ID du contrôleur que vous avez copié précédemment dans le `controller_id` paramètre.
+. Sélectionnez *Exécuter*.
++
+L'API renvoie l'état de ce contrôleur vCenter particulier, ainsi que la raison de cet état.
+
+
+
+
+
+== Modifier les propriétés stockées d'un contrôleur
+
+Vous pouvez modifier le nom d'utilisateur ou le mot de passe enregistré pour chacun des contrôleurs vCenter existants enregistrés auprès du nœud de gestion.  Vous ne pouvez pas modifier l'adresse IP enregistrée d'un contrôleur vCenter existant.
+
+.Étapes
+. Sélectionnez *PUT /compute/controllers/{controller_id}*.
+. Saisissez l'ID du contrôleur vCenter dans le champ prévu à cet effet. `controller_id` paramètre.
+. Sélectionnez *Essayer*.
+. Modifiez l'un des paramètres suivants dans le champ *Corps de la requête* :
++
+|===
+| Paramètre | Type | Description 
+
+
+| `userId` | chaîne | Modifiez l'identifiant utilisateur utilisé pour communiquer avec le contrôleur vCenter (l'utilisateur doit disposer de privilèges d'administrateur). 
+
+
+| `password` | chaîne | Modifiez le mot de passe utilisé pour communiquer avec le contrôleur vCenter. 
+|===
+. Sélectionnez *Exécuter*.
++
+L'API renvoie des informations de contrôleur mises à jour.
+
+
+
+[discrete]
+== Trouver plus d'informations
+
+* link:task_mnode_add_assets.html["Ajouter une ressource de contrôleur au nœud de gestion"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

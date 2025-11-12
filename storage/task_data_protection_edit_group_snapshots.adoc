@@ -1,0 +1,37 @@
+---
+permalink: storage/task_data_protection_edit_group_snapshots.html 
+sidebar: sidebar 
+keywords: group snapshots, edit, replication, retention 
+summary: Vous pouvez modifier les paramètres de réplication et de conservation des instantanés de groupe existants. 
+---
+= Modification des instantanés de groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres de réplication et de conservation des instantanés de groupe existants.
+
+. Cliquez sur *Protection des données* > *Instantanés de groupe*.
+. Cliquez sur l'icône Actions de l'instantané de groupe que vous souhaitez modifier.
+. Dans le menu qui s'affiche, sélectionnez *Modifier*.
+. *Facultatif :* Pour modifier le paramètre de réplication de l’instantané de groupe :
++
+.. Cliquez sur *Modifier* à côté de *Réplication actuelle*.
+.. Cochez la case *Inclure chaque membre du snapshot de groupe dans la réplication lors de l'appairage* pour garantir que chaque snapshot est capturé dans la réplication lorsque le volume parent est apparié.
+
+
+. *Facultatif :* Pour modifier le paramètre de conservation de l’instantané de groupe, sélectionnez parmi les options suivantes :
++
+.. Cliquez sur *Modifier* à côté de *Rétention actuelle*.
+.. Sélectionnez une option de conservation pour l'instantané de groupe :
++
+*** Cliquez sur *Conserver indéfiniment* pour conserver l'instantané sur le système de façon permanente.
+*** Cliquez sur *Définir la période de conservation* et utilisez les champs de date pour choisir la durée pendant laquelle le système conservera l'instantané.
+
+
+
+
+. Cliquez sur *Enregistrer les modifications*.
+

@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_deleteclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,delete,deleting,DeleteClusterInterfacePreference 
+summary: 'La méthode DeleteClusterInterfacePreference permet aux systèmes intégrés à des clusters de stockage exécutant le logiciel Element de supprimer une préférence d"interface de cluster existante.  Cette méthode est réservée à un usage interne.' 
+---
+= Préférence de suppression d'interface de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `DeleteClusterInterfacePreference` Cette méthode permet aux systèmes intégrés à des clusters de stockage exécutant le logiciel Element de supprimer une préférence d'interface de cluster existante.  Cette méthode est réservée à un usage interne.
+
+
+
+== Paramètres
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+nom
+ a| 
+Nom de la préférence d'interface de cluster à supprimer.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+	"method": "DeleteClusterInterfacePreference",
+	"params": {
+		"name": "prefname"
+		},
+	"id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== Nouveautés depuis la version
+
+11,0

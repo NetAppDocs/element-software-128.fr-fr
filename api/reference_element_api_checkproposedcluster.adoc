@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_checkproposedcluster.html 
+sidebar: sidebar 
+keywords: cluster,creation,check,proposed,checking,nodes,node,before,CheckProposedCluster 
+summary: 'Vous pouvez utiliser la méthode CheckProposedCluster pour tester un ensemble de nœuds de stockage avant de créer un cluster de stockage avec ceux-ci afin d"identifier les erreurs ou les défauts possibles qui pourraient survenir lors de la tentative, tels que des capacités de nœuds mixtes déséquilibrées ou des types de nœuds qui ne sont pas pris en charge pour les clusters de stockage à deux nœuds.' 
+---
+= Vérifier le cluster proposé
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `CheckProposedCluster` méthode permettant de tester un ensemble de nœuds de stockage avant de créer un cluster de stockage avec ceux-ci afin d'identifier les erreurs ou défauts possibles qui pourraient survenir lors de la tentative, tels que des capacités de nœuds mixtes déséquilibrées ou des types de nœuds non pris en charge pour les clusters de stockage à deux nœuds.
+
+
+
+== Paramètres
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+nœuds
+ a| 
+Liste des adresses IP de stockage de l'ensemble initial de nœuds de stockage constituant le cluster de stockage.
+ a| 
+tableau de chaînes
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+forcer
+ a| 
+Définissez cette option sur « true » pour exécuter la commande sur tous les nœuds de stockage du cluster de stockage.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+cluster proposéValide
+ a| 
+Indique si les nœuds de stockage proposés constitueraient ou non un cluster de stockage valide. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+erreurs de cluster proposées
+ a| 
+Erreurs qui se produiraient si un cluster de stockage était créé à l'aide des nœuds de stockage proposés.
+ a| 
+tableau de chaînes
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+	"method": "CheckProposedCluster",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== Nouveautés depuis la version
+
+11,0

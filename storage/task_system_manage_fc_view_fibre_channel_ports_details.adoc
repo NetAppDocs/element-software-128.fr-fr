@@ -1,0 +1,49 @@
+---
+permalink: storage/task_system_manage_fc_view_fibre_channel_ports_details.html 
+sidebar: sidebar 
+keywords: fibre channel ports, details, view, fc ports, hba, wwnn, wwpn 
+summary: Vous pouvez consulter les détails des ports Fibre Channel, tels que leur statut, leur nom et leur adresse, sur la page Ports FC. 
+---
+= Afficher les détails des ports Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les détails des ports Fibre Channel, tels que leur statut, leur nom et leur adresse, sur la page Ports FC.
+
+Consultez les informations relatives aux ports Fibre Channel connectés au cluster.
+
+.Étapes
+. Cliquez sur *Cluster* > *Ports FC*.
+. Pour filtrer les informations de cette page, cliquez sur *Filtrer*.
+. Examinez les détails :
++
+** *ID du nœud* : Le nœud hébergeant la session pour la connexion.
+** *Nom du nœud* : Nom du nœud généré par le système.
+** *Emplacement* : Numéro de l’emplacement où se trouve le port Fibre Channel.
+** *Port HBA* : Port physique sur l’adaptateur de bus hôte Fibre Channel (HBA).
+** *WWNN* : Le nom du nœud mondial.
+** *WWPN* : Nom du port cible mondial.
+** *Switch WWN* : Nom mondial du commutateur Fibre Channel.
+** *État du port* : État actuel du port.
+** *nPort ID* : L’identifiant du port du nœud sur la structure Fibre Channel.
+** *Vitesse* : La vitesse négociée du canal Fibre Channel.  Les valeurs possibles sont les suivantes :
++
+*** 4Gbps
+*** 8Gbps
+*** 16Gbps
+
+
+
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

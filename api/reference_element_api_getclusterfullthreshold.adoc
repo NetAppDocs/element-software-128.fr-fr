@@ -1,0 +1,300 @@
+---
+permalink: api/reference_element_api_getclusterfullthreshold.html 
+sidebar: sidebar 
+keywords: cluster,get,getting,full,threshold,level,fullness,storage,capacity,getclusterfullthreshold 
+summary: Vous pouvez utiliser la méthode GetClusterFullThreshold pour visualiser les étapes définies pour les niveaux de remplissage du cluster.  Cette méthode renvoie toutes les métriques de remplissage du cluster. 
+---
+= Seuil complet du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetClusterFullThreshold` méthode pour visualiser les étapes définies pour les niveaux de remplissage des clusters.  Cette méthode renvoie toutes les métriques de remplissage du cluster.
+
+
+NOTE: Lorsqu'un cluster atteint le stade d'erreur de remplissage du cluster de blocs, les IOPS maximales sur tous les volumes sont réduites linéairement aux IOPS minimales du volume à mesure que le cluster approche du stade critique.  Cela permet d'éviter que le cluster n'atteigne le stade critique de saturation du cluster de blocs.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+blocPlein
+ a| 
+Le niveau de remplissage actuel des blocs du cluster.
+
+* étape1Heureux : Aucune alerte ni condition d’erreur.  Correspond à l'état *Sain* dans l'interface utilisateur web.
+* stage2Aware : Aucune alerte ni condition d’erreur.  Correspond à l'état *Sain* dans l'interface utilisateur web.
+* stage3Low : Votre système ne peut pas assurer une protection redondante des données contre deux défaillances de nœuds non simultanées.  Correspond à l'état *Avertissement* dans l'interface utilisateur Web.  Vous pouvez configurer ce niveau dans l'interface utilisateur Web (par défaut, le système déclenche cette alerte à une capacité inférieure de 3 % à l'état d'erreur).
+* Étape 4Critique : Le système n’est pas capable d’assurer une protection redondante des données en cas de défaillance d’un seul nœud.  Il est impossible de créer de nouveaux volumes ou clones.  Correspond à l'état *Erreur* dans l'interface utilisateur de l'élément.
+* étape5CompletelyConsommé : Entièrement consommé.  Le cluster est en lecture seule et les connexions iSCSI sont maintenues, mais toutes les écritures sont suspendues.  Correspond à l'état *Critique* dans l'interface utilisateur de l'élément.
+
+ a| 
+chaîne
+
+
+
+ a| 
+plénitude
+ a| 
+Reflète le niveau de remplissage le plus élevé entre « blockFullness » et « metadataFullness ».
+ a| 
+chaîne
+
+
+
+ a| 
+maxMetadataOverProvisionFactor
+ a| 
+Une valeur représentative du nombre de fois où l'espace de métadonnées peut être surdimensionné par rapport à la quantité d'espace disponible.  Par exemple, s'il y avait suffisamment d'espace de métadonnées pour stocker 100 Tio de volumes et que ce nombre était fixé à 5, alors des volumes d'une valeur de 500 Tio pourraient être créés.
+ a| 
+entier
+
+
+
+ a| 
+métadonnées complètes
+ a| 
+Le niveau actuel de complétude des métadonnées du cluster.
+
+* étape1Heureux : Aucune alerte ni condition d’erreur.  Correspond à l'état *Sain* dans l'interface utilisateur web.
+* stage2Aware : Aucune alerte ni condition d’erreur.  Correspond à l'état *Sain* dans l'interface utilisateur web.
+* stage3Low : Votre système ne peut pas assurer une protection redondante des données contre deux défaillances de nœuds non simultanées.  Correspond à l'état *Avertissement* dans l'interface utilisateur Web.  Vous pouvez configurer ce niveau dans l'interface utilisateur Web (par défaut, le système déclenche cette alerte à une capacité inférieure de 3 % à l'état d'erreur).
+* Étape 4Critique : Le système n’est pas capable d’assurer une protection redondante des données en cas de défaillance d’un seul nœud.  Il est impossible de créer de nouveaux volumes ou clones.  Correspond à l'état *Erreur* dans l'interface utilisateur de l'élément.
+* étape5CompletelyConsommé : Entièrement consommé.  Le cluster est en lecture seule et les connexions iSCSI sont maintenues, mais toutes les écritures sont suspendues.  Correspond à l'état *Critique* dans l'interface utilisateur de l'élément.
+
+ a| 
+chaîne
+
+
+
+ a| 
+sliceReserveUsedThresholdPct
+ a| 
+Condition d'erreur.  Une alerte système est déclenchée si l'utilisation de la tranche réservée est supérieure à cette valeur.
+ a| 
+entier
+
+
+
+ a| 
+stage2AwareThreshold
+ a| 
+État de conscience.  La valeur définie pour le niveau de seuil du cluster de l'étape 2.
+ a| 
+entier
+
+
+
+ a| 
+stage2BlockThresholdBytes
+ a| 
+Le nombre d'octets utilisés par le cluster à partir duquel une condition de niveau 2 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+stage2MetadataThresholdBytes
+ a| 
+Le nombre d'octets de métadonnées utilisés par le cluster à partir duquel une condition de remplissage de niveau 2 sera atteinte.
+ a| 
+
+
+
+ a| 
+stage3BlockThresholdBytes
+ a| 
+Le nombre d'octets de stockage utilisés par le cluster à partir duquel une condition de saturation de niveau 3 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+stage3BlockThresholdPercent
+ a| 
+Le pourcentage défini pour l'étape 3.  À ce pourcentage de remplissage, un avertissement est publié dans le journal des alertes.
+ a| 
+entier
+
+
+
+ a| 
+stage3LowThreshold
+ a| 
+Condition d'erreur.  Le seuil à partir duquel une alerte système est créée en raison d'une faible capacité sur un cluster.
+ a| 
+entier
+
+
+
+ a| 
+stage3MetadataThresholdBytes
+ a| 
+Le nombre d'octets de métadonnées utilisés par le cluster à partir duquel une condition de remplissage de niveau 3 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+stage3MetadataThresholdPercent
+ a| 
+Valeur en pourcentage définie pour l'étape 3 de complétude des métadonnées.  À ce pourcentage de remplissage, un avertissement sera publié dans le journal des alertes.
+ a| 
+entier
+
+
+
+ a| 
+stage4BlockThresholdBytes
+ a| 
+Le nombre d'octets de stockage utilisés par le cluster à partir duquel une condition de saturation de niveau 4 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+stage4CriticalThreshold
+ a| 
+Condition d'erreur.  Le seuil à partir duquel une alerte système est créée pour signaler une capacité critique faible sur un cluster.
+ a| 
+entier
+
+
+
+ a| 
+stage4MetadataThresholdBytes
+ a| 
+Le nombre d'octets de métadonnées utilisés par le cluster à partir duquel une condition de remplissage de niveau 4 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+stage5BlockThresholdBytes
+ a| 
+Le nombre d'octets de stockage utilisés par le cluster à partir duquel une condition de remplissage de niveau 5 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+stage5MetadataThresholdBytes
+ a| 
+Le nombre d'octets de métadonnées utilisés par le cluster à partir duquel une condition de remplissage de niveau 5 sera atteinte.
+ a| 
+entier
+
+
+
+ a| 
+sommeTotaleClusterBytes
+ a| 
+La capacité physique du cluster, mesurée en octets.
+ a| 
+entier
+
+
+
+ a| 
+sommeTotaleMétadonnéesClusterOctets
+ a| 
+L'espace total pouvant être utilisé pour stocker les métadonnées.
+ a| 
+entier
+
+
+
+ a| 
+somme des octets utilisés par le cluster
+ a| 
+Le nombre d'octets de stockage utilisés sur le cluster.
+ a| 
+entier
+
+
+
+ a| 
+sommeUsedMetadataClusterBytes
+ a| 
+L'espace utilisé sur les disques de volume pour stocker les métadonnées.
+ a| 
+entier
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method" : "GetClusterFullThreshold",
+   "params" : {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+    "blockFullness":"stage1Happy",
+    "fullness":"stage3Low",
+    "maxMetadataOverProvisionFactor":5,
+    "metadataFullness":"stage3Low",
+    "sliceReserveUsedThresholdPct":5,
+    "stage2AwareThreshold":3,
+    "stage2BlockThresholdBytes":2640607661261,
+    "stage3BlockThresholdBytes":8281905846682,
+    "stage3BlockThresholdPercent":5,
+    "stage3LowThreshold":2,
+    "stage4BlockThresholdBytes":8641988709581,
+    "stage4CriticalThreshold":1,
+    "stage5BlockThresholdBytes":12002762096640,
+    "sumTotalClusterBytes":12002762096640,
+    "sumTotalMetadataClusterBytes":404849531289,
+    "sumUsedClusterBytes":45553617581,
+    "sumUsedMetadataClusterBytes":31703113728
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_modifyclusterfullthreshold.adoc[Seuil complet de modification du cluster]

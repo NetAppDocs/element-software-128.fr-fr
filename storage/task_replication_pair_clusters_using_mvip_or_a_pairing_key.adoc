@@ -1,0 +1,30 @@
+---
+permalink: storage/task_replication_pair_clusters_using_mvip_or_a_pairing_key.html 
+sidebar: sidebar 
+keywords: pair cluster, mvip, pairing key, cluster pairing 
+summary: 'Vous pouvez associer un cluster source et un cluster cible en utilisant l"adresse MVIP du cluster cible si les deux clusters disposent d"un accès administrateur.  Si l"accès administrateur de cluster n"est disponible que sur un seul cluster d"une paire de clusters, une clé d"appairage peut être utilisée sur le cluster cible pour finaliser l"appairage des clusters.' 
+---
+= Apparier les clusters à l'aide de MVIP ou d'une clé d'appariement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez associer un cluster source et un cluster cible en utilisant l'adresse MVIP du cluster cible si les deux clusters disposent d'un accès administrateur.  Si l'accès administrateur de cluster n'est disponible que sur un seul cluster d'une paire de clusters, une clé d'appairage peut être utilisée sur le cluster cible pour finaliser l'appairage des clusters.
+
+. Sélectionnez l'une des méthodes suivantes pour apparier les clusters :
++
+** Appariement de clusters à l'aide de MVIP : utilisez cette méthode si l'administrateur de cluster a accès aux deux clusters. Cette méthode utilise le MVIP du cluster distant pour apparier deux clusters.
+** Appariement des clusters à l'aide d'une clé d'appariement : utilisez cette méthode si l'administrateur du cluster n'a accès qu'à l'un des clusters. Cette méthode génère une clé d'appariement qui peut être utilisée sur le cluster cible pour finaliser l'appariement des clusters.
+
+
+
+
+
+
+== Trouver plus d'informations
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Clusters appariés utilisant MVIP]
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[Apparier les clusters à l'aide d'une clé d'appariement]
+

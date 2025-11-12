@@ -1,0 +1,67 @@
+---
+permalink: storage/task-element-replication-make-destination-volume-writeable.html 
+sidebar: sidebar 
+keywords: ontap, cli, make, destination, volume, write 
+summary: Vous devez rendre le volume de destination accessible en écriture avant de pouvoir diffuser des données de ce volume aux clients.  Vous pouvez utiliser la commande snapmirror quiesce pour arrêter les transferts planifiés vers la destination, la commande snapmirror abort pour arrêter les transferts en cours et la commande snapmirror break pour rendre la destination accessible en écriture. 
+---
+= Rendre le volume de destination inscriptible
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsqu'un sinistre met hors service le site principal d'une relation de reprise après sinistre SnapMirror , vous pouvez diffuser des données à partir du volume de destination avec une interruption minimale.  Vous pouvez réactiver le volume source une fois le service rétabli sur le site principal.
+
+Vous devez rendre le volume de destination accessible en écriture avant de pouvoir diffuser des données de ce volume aux clients.  Vous pouvez utiliser le `snapmirror quiesce` l'ordre d'arrêter les transferts programmés vers la destination, le `snapmirror abort` l'ordre d'arrêter les transferts en cours, et le `snapmirror break` commande permettant de rendre la destination accessible en écriture.
+
+.À propos de cette tâche
+Vous devez spécifier le chemin source de l'élément dans le formulaire `<hostip:>/lun/<name>` , où "`lun`" est la chaîne de caractères réelle "`lun`" et `name` est le nom du volume Element.
+
+.Étapes
+. Arrêter les transferts programmés vers la destination :
++
+`snapmirror quiesce -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+L'exemple suivant interrompt les transferts planifiés entre le volume source `0005` à l'adresse IP 10.0.0.11 et au volume de destination `volA_dst` sur `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. Interrompre les transferts en cours vers la destination :
++
+`snapmirror abort -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+L'exemple suivant interrompt les transferts en cours entre le volume source et le volume source. `0005` à l'adresse IP 10.0.0.11 et au volume de destination `volA_dst` sur `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. Rompre la relation avec SnapMirror DR :
++
+`snapmirror break -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+L'exemple suivant rompt la relation entre le volume source `0005` à l'adresse IP 10.0.0.11 et au volume de destination `volA_dst` sur `svm_backup` et le volume de destination `volA_dst` sur `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

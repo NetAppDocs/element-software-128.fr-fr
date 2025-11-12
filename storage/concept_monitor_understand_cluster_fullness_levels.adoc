@@ -1,0 +1,57 @@
+---
+permalink: storage/concept_monitor_understand_cluster_fullness_levels.html 
+sidebar: sidebar 
+keywords: cluster fullness levels, understanding, fullness levels 
+summary: 'Le cluster exécutant le logiciel Element génère des erreurs de cluster pour avertir l"administrateur de stockage lorsque le cluster atteint sa capacité maximale.  Il existe trois niveaux de remplissage du cluster, tous affichés dans l"interface utilisateur de NetApp Element : avertissement, erreur et critique.' 
+---
+= Comprendre les niveaux de remplissage des grappes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le cluster exécutant le logiciel Element génère des erreurs de cluster pour avertir l'administrateur de stockage lorsque le cluster atteint sa capacité maximale.  Il existe trois niveaux de remplissage du cluster, tous affichés dans l'interface utilisateur de NetApp Element : avertissement, erreur et critique.
+
+Le système utilise le code d'erreur BlockClusterFull pour signaler un niveau de saturation du stockage des blocs du cluster.  Vous pouvez consulter les niveaux de gravité du remplissage du cluster depuis l'onglet Alertes de l'interface utilisateur d'Element.
+
+La liste suivante contient des informations sur les niveaux de gravité de BlockClusterFull :
+
+* *Avertissement*
++
+Il s'agit d'un avertissement configurable par le client qui apparaît lorsque la capacité de bloc du cluster approche le niveau de gravité d'erreur.  Par défaut, ce niveau est fixé à trois pour cent en dessous du niveau d'erreur et peut être ajusté via l'interface utilisateur et l'API d'Element.  Vous devez augmenter votre capacité, ou libérer de la capacité dès que possible.
+
+* *Erreur*
++
+Lorsque le cluster est dans cet état, si un nœud est perdu, la capacité du cluster sera insuffisante pour reconstruire la protection des données Double Helix.  La création de nouveaux volumes, de clones et de snapshots est bloquée tant que le cluster est dans cet état.  Il ne s'agit pas d'un état sûr ni recommandé pour un cluster. Vous devez augmenter sa capacité ou en libérer immédiatement.
+
+* *Critique*
++
+Cette erreur critique s'est produite car le cluster est consommé à 100 %.  Il est en mode lecture seule et aucune nouvelle connexion iSCSI ne peut être établie avec le cluster.  Lorsque ce stade est atteint, vous devez immédiatement libérer ou ajouter de la capacité.
+
+
+
+Le système utilise le code d'erreur MetadataClusterFull pour signaler un niveau de saturation du stockage des métadonnées du cluster.  Vous pouvez consulter le taux de remplissage du stockage des métadonnées du cluster dans la section Capacité du cluster de la page Vue d'ensemble de l'onglet Rapports de l'interface utilisateur Element.
+
+La liste suivante contient des informations sur les niveaux de gravité de MetadataClusterFull :
+
+* *Avertissement*
++
+Il s'agit d'un avertissement configurable par le client qui apparaît lorsque la capacité des métadonnées du cluster approche du niveau de gravité d'erreur.  Par défaut, ce niveau est fixé à trois pour cent en dessous du niveau d'erreur et peut être ajusté via l'API Element.  Vous devez augmenter votre capacité, ou libérer de la capacité dès que possible.
+
+* *Erreur*
++
+Lorsque le cluster est dans cet état, si un nœud est perdu, la capacité du cluster sera insuffisante pour reconstruire la protection des données Double Helix.  La création de nouveaux volumes, de clones et de snapshots est bloquée tant que le cluster est dans cet état.  Il ne s'agit pas d'un état sûr ni recommandé pour un cluster. Vous devez augmenter sa capacité ou en libérer immédiatement.
+
+* *Critique*
++
+Cette erreur critique s'est produite car le cluster est consommé à 100 %.  Il est en mode lecture seule et aucune nouvelle connexion iSCSI ne peut être établie avec le cluster.  Lorsque ce stade est atteint, vous devez immédiatement libérer ou ajouter de la capacité.
+
+
+
+
+NOTE: Les dispositions suivantes s'appliquent aux seuils des clusters à deux nœuds :
+
+* Le taux d'erreur de complétude des métadonnées est inférieur de 20 % au seuil critique.
+* L'erreur de remplissage des blocs est inférieure d'un disque de stockage (capacité inutilisée incluse) à la capacité critique ; ce qui signifie qu'elle est inférieure de deux disques de stockage à la capacité critique.
+

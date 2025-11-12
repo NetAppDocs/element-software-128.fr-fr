@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_data_manage_vvol_protocol_endpoints.html 
+sidebar: sidebar 
+keywords: protocol endpoint, access, cluster, storage node, iscsi supported 
+summary: 'Les points de terminaison de protocole sont des points d"accès utilisés par un hôte pour adresser le stockage sur un cluster exécutant le logiciel NetApp Element .  Les points de terminaison de protocole ne peuvent être ni supprimés ni modifiés par un utilisateur, ne sont pas associés à un compte et ne peuvent pas être ajoutés à un groupe d"accès aux volumes.' 
+---
+= Découvrez les points de terminaison du protocole
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les points de terminaison de protocole sont des points d'accès utilisés par un hôte pour adresser le stockage sur un cluster exécutant le logiciel NetApp Element .  Les points de terminaison de protocole ne peuvent être ni supprimés ni modifiés par un utilisateur, ne sont pas associés à un compte et ne peuvent pas être ajoutés à un groupe d'accès aux volumes.
+
+Un cluster exécutant le logiciel Element crée automatiquement un point de terminaison de protocole par nœud de stockage dans le cluster.  Par exemple, un cluster de stockage à six nœuds possède six points de terminaison de protocole qui sont mappés sur chaque hôte ESXi.  Les points de terminaison du protocole sont gérés dynamiquement par le logiciel Element et sont créés, déplacés ou supprimés selon les besoins, sans aucune intervention.  Les points de terminaison de protocole sont la cible du multipathing et servent de proxy d'E/S pour les LUN subsidiaires.  Chaque point de terminaison du protocole consomme une adresse SCSI disponible, tout comme une cible iSCSI standard.  Les points de terminaison du protocole apparaissent comme un périphérique de stockage à bloc unique (512 octets) dans le client vSphere, mais ce périphérique de stockage n'est pas disponible pour être formaté ou utilisé comme stockage.
+
+iSCSI est le seul protocole pris en charge.  Le protocole Fibre Channel n'est pas pris en charge.

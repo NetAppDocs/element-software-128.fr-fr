@@ -1,0 +1,42 @@
+---
+permalink: storage/task_data_protection_edit_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, edit, modify 
+summary: 'Vous pouvez modifier les planifications d"instantanés existantes.  Après modification, lors de sa prochaine exécution, la planification utilisera les attributs mis à jour.  Toutes les captures d"écran créées par la planification d"origine restent sur le système de stockage.' 
+---
+= Modifier un calendrier instantané
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les planifications d'instantanés existantes.  Après modification, lors de sa prochaine exécution, la planification utilisera les attributs mis à jour.  Toutes les captures d'écran créées par la planification d'origine restent sur le système de stockage.
+
+.Étapes
+. Cliquez sur *Protection des données* > *Plannings*.
+. Cliquez sur l'icône *Actions* correspondant à la planification que vous souhaitez modifier.
+. Dans le menu qui apparaît, cliquez sur *Modifier*.
+. Dans le champ *ID de volume CSV*, modifiez l'ID de volume unique ou la liste d'ID de volume séparés par des virgules actuellement inclus dans l'opération d'instantané.
+. Pour suspendre ou reprendre la programmation, sélectionnez parmi les options suivantes :
++
+** Pour suspendre une planification active, sélectionnez *Oui* dans la liste *Suspendre manuellement la planification*.
+** Pour reprendre une programmation suspendue, sélectionnez *Non* dans la liste *Suspendre manuellement la programmation*.
+
+
+. Saisissez un autre nom pour le planning dans le champ *Nouveau nom du planning* si vous le souhaitez.
+. Pour modifier la planification et la faire s'exécuter à différents jours de la semaine ou du mois, sélectionnez *Type de planification* et modifiez la planification à partir des options proposées.
+. *Facultatif :* Sélectionnez *Planification récurrente* pour répéter indéfiniment la planification de la capture instantanée.
+. *Facultatif :* Saisissez ou modifiez le nom du nouvel instantané dans le champ *Nom du nouvel instantané*.
++
+Si vous laissez ce champ vide, le système utilisera la date et l'heure de création de l'instantané comme nom.
+
+. *Facultatif :* Cochez la case *Inclure les instantanés dans la réplication lors du couplage* pour vous assurer que les instantanés sont capturés dans la réplication lorsque le volume parent est couplé.
+. Pour modifier le paramètre de rétention, sélectionnez parmi les options suivantes :
++
+** Cliquez sur *Conserver indéfiniment* pour conserver l'instantané sur le système de façon permanente.
+** Cliquez sur *Définir la période de conservation* et utilisez les champs de date pour sélectionner la durée pendant laquelle le système conservera l'instantané.
+
+
+. Cliquez sur *Enregistrer les modifications*.
+

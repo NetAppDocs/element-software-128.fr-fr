@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_syncjob.html 
+sidebar: sidebar 
+keywords: object,objects,syncjob 
+summary: 'L"objet syncJob contient des informations sur les tâches de clonage, de réplication à distance ou de synchronisation de tranches exécutées sur un cluster.' 
+---
+= synchroniserJob
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet syncJob contient des informations sur les tâches de clonage, de réplication à distance ou de synchronisation de tranches exécutées sur un cluster.
+
+Vous pouvez récupérer les informations de synchronisation avec le `ListSyncJobs` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+blocsParSeconde
+ a| 
+Le nombre de blocs de données transférés par seconde du cluster source vers le cluster cible.  Présent uniquement si le membre de type est défini sur distant.
+ a| 
+entier
+
+
+
+ a| 
+type de branche
+ a| 
+Retourné uniquement pour les tâches de synchronisation de réplication à distance. Valeurs possibles :
+
+* instantané
+* volume
+
+ a| 
+chaîne
+
+
+
+ a| 
+octetsParSeconde
+ a| 
+Le nombre d'octets traités par le clone par seconde.  Présent uniquement si le membre de type est défini sur clone ou slice.
+ a| 
+flotter
+
+
+
+ a| 
+cloneID
+ a| 
+L'identifiant de l'opération de clonage en cours.  Présent uniquement si le membre de type est défini sur clone.
+ a| 
+entier
+
+
+
+ a| 
+octets actuels
+ a| 
+Le nombre d'octets que le clone a traités dans le volume source.  Présent uniquement si le membre de type est défini sur clone ou slice.
+ a| 
+entier
+
+
+
+ a| 
+dstServiceID
+ a| 
+L'identifiant du service hébergeant la réplique principale du volume.  Présent uniquement si le membre de type est défini sur distant.
+ a| 
+entier
+
+
+
+ a| 
+dstVolumeID
+ a| 
+L'identifiant du volume de destination.  Présent uniquement si le membre de type est défini sur clone ou distant.
+ a| 
+entier
+
+
+
+ a| 
+temps écoulé
+ a| 
+Le temps écoulé, en secondes, depuis le début de la tâche de synchronisation.
+ a| 
+flottant ou entier selon le type d'opération de synchronisation
+
+
+
+ a| 
+groupCloneID
+ a| 
+L'identifiant de l'opération de clonage de groupe en cours.
+ a| 
+entier
+
+
+
+ a| 
+ID du nœud
+ a| 
+Spécifie le nœud sur lequel le clonage a lieu.  Présent uniquement si le membre de type est défini sur clone.
+ a| 
+entier
+
+
+
+ a| 
+pour cent terminé
+ a| 
+Le pourcentage d'achèvement des tâches de synchronisation.
+ a| 
+flottant ou entier selon le type d'opération de synchronisation
+
+
+
+ a| 
+temps restant
+ a| 
+Le temps estimé, en secondes, pour effectuer l'opération.
+ a| 
+flotter
+
+
+
+ a| 
+sliceID
+ a| 
+L'identifiant du lecteur de partition en cours de synchronisation.
+ a| 
+entier
+
+
+
+ a| 
+scène
+ a| 
+Présent uniquement si le membre de type est défini sur distant ou clone. Valeurs possibles :
+
+* Métadonnées : La réplication est en train de déterminer quelles données doivent être transférées vers le cluster distant.  Aucun statut n'est disponible pour cette étape du processus de réplication.
+* Données : La réplication est en cours de transfert de la majeure partie des données vers le cluster distant.
+* entier : indique la rétrocompatibilité de la tranche pour les tâches de synchronisation des tranches.
+
+ a| 
+chaîne
+
+
+
+ a| 
+snapshotID
+ a| 
+L'identifiant de l'instantané à partir duquel le clone a été créé.  Présent uniquement si le membre de type est défini sur clone.
+ a| 
+entier
+
+
+
+ a| 
+srcServiceID
+ a| 
+L'identifiant du service source.
+ a| 
+entier
+
+
+
+ a| 
+srcVolumeID
+ a| 
+L'identifiant du volume source.
+ a| 
+entier
+
+
+
+ a| 
+totalBytes
+ a| 
+Le nombre total d'octets du clone.  Présent uniquement si le membre de type est défini sur clone ou slice.
+ a| 
+entier
+
+
+
+ a| 
+taper
+ a| 
+Le type d'opération de synchronisation. Valeurs possibles :
+
+* cloner
+* tranche
+* bloc
+* télécommande
+
+ a| 
+chaîne
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]

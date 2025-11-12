@@ -1,0 +1,43 @@
+---
+permalink: storage/task_intro_view_api_activity_in_real_time.html 
+sidebar: sidebar 
+keywords: solidfire api, element api, element os, element, viewing the API log, viewing API calls 
+summary: 'Le système Element utilise l"API NetApp Element comme base pour ses fonctionnalités.  L"interface utilisateur Element vous permet de visualiser différents types d"activité API en temps réel sur le système pendant que vous utilisez l"interface.  Le journal de l"API vous permet de consulter l"activité de l"API système initiée par l"utilisateur et en arrière-plan, ainsi que les appels d"API effectués sur la page que vous consultez actuellement.' 
+---
+= Afficher l'activité de l'API
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système Element utilise l'API NetApp Element comme base pour ses fonctionnalités.  L'interface utilisateur Element vous permet de visualiser différents types d'activité API en temps réel sur le système pendant que vous utilisez l'interface.  Le journal de l'API vous permet de consulter l'activité de l'API système initiée par l'utilisateur et en arrière-plan, ainsi que les appels d'API effectués sur la page que vous consultez actuellement.
+
+Vous pouvez utiliser le journal de l'API pour identifier les méthodes d'API utilisées pour certaines tâches et voir comment utiliser les méthodes et les objets de l'API pour créer des applications personnalisées.
+
+Pour plus d'informations sur chaque méthode, consultez link:../api/concept_element_api_about_the_api.html["Référence de l'API Element Software"].
+
+. Dans la barre de navigation de l'interface utilisateur Element, cliquez sur *Journal API*.
+. Pour modifier le type d'activité API affiché dans la fenêtre Journal API, procédez comme suit :
++
+.. Sélectionnez *Requêtes* pour afficher le trafic des requêtes API.
+.. Sélectionnez *Réponses* pour afficher le trafic de réponse de l'API.
+.. Filtrez les types de trafic API en sélectionnant l'une des options suivantes :
++
+*** *Initié par l'utilisateur* : Trafic API généré par vos activités durant cette session d'interface utilisateur Web.
+*** *Interrogation en arrière-plan* : Trafic API généré par l’activité système en arrière-plan.
+*** *Page actuelle* : Trafic API généré par les tâches de la page que vous consultez actuellement.
+
+
+
+
+
+
+
+
+== Trouver plus d'informations
+
+* link:../api/concept_element_api_about_the_api.html["Gestion du stockage avec l'API Element"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

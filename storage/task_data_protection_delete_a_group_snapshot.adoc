@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_delete_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot, delete 
+summary: 'Vous pouvez supprimer un instantané de groupe du système.  Lorsque vous supprimez l"instantané de groupe, vous pouvez choisir si tous les instantanés associés au groupe sont supprimés ou conservés individuellement.' 
+---
+= Suppression d'un instantané de groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer un instantané de groupe du système.  Lorsque vous supprimez l'instantané de groupe, vous pouvez choisir si tous les instantanés associés au groupe sont supprimés ou conservés individuellement.
+
+Si vous supprimez un volume ou un instantané qui fait partie d'un instantané de groupe, vous ne pourrez plus revenir à cet instantané de groupe.  Vous pouvez toutefois annuler chaque volume individuellement.
+
+. Cliquez sur *Protection des données* > *Instantanés de groupe*.
+. Cliquez sur l'icône Actions correspondant à l'instantané que vous souhaitez supprimer.
+. Dans le menu qui s'affiche, cliquez sur *Supprimer*.
+. Dans la boîte de dialogue de confirmation, sélectionnez l'une des options suivantes :
++
+** Cliquez sur *Supprimer l'instantané du groupe ET tous les membres de l'instantané du groupe* pour supprimer l'instantané du groupe et tous les instantanés de ses membres.
+** Cliquez sur *Conserver les membres du groupe en tant qu'instantanés individuels* pour supprimer l'instantané du groupe tout en conservant tous les instantanés des membres.
+
+
+. Confirmez l'action.
+

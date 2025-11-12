@@ -1,0 +1,71 @@
+---
+permalink: storage/reference_replication_volume_pair_details.html 
+sidebar: sidebar 
+keywords: volume pairs, replication, data protection 
+summary: 'La page « Paires de volumes » de l’onglet « Protection des données » fournit des informations sur les volumes qui ont été appariés ou qui sont en cours d’appariement.  Le système affiche les messages d"appairage et de progression dans la colonne État du volume.' 
+---
+= Détails de la paire de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page « Paires de volumes » de l’onglet « Protection des données » fournit des informations sur les volumes qui ont été appariés ou qui sont en cours d’appariement.  Le système affiche les messages d'appairage et de progression dans la colonne État du volume.
+
+* *IDENTIFIANT*
++
+Identifiant généré par le système pour le volume.
+
+* *Nom*
++
+Le nom donné au volume lors de sa création.  Les noms de volumes peuvent comporter jusqu'à 223 caractères et contenir az, 0-9 et un tiret (-).
+
+* *Compte*
++
+Nom du compte associé au volume.
+
+* *État du volume*
++
+État de réplication du volume
+
+* *État de l'instantané*
++
+État du volume de snapshot.
+
+* *Mode*
++
+La méthode de réplication d'écriture du client.  Les valeurs possibles sont les suivantes :
+
++
+** Asynchrone
+** Instantané uniquement
+** Synchroniser
+
+
+* *Direction*
++
+Sens des données de volume :
+
++
+** icône du volume source (image:../media/source_icon_for_volume_pairs.png["Indique que des données sont écrites sur un cluster cible externe"] ) indique que des données sont écrites sur une cible située en dehors du cluster.
+** icône du volume cible (image:../media/target_icon_for_volume_pairs.png["Icône indiquant que des données sont écrites sur le volume local à partir d'une source externe"] ) indique que des données sont écrites sur le volume local à partir d'une source externe.
+
+
+* *Délai asynchrone*
++
+Durée écoulée depuis la dernière synchronisation du volume avec le cluster distant.  Si le volume n'est pas apparié, la valeur est nulle.
+
+* *Cluster distant*
++
+Nom du cluster distant sur lequel réside le volume.
+
+* *ID du volume distant*
++
+Identifiant du volume sur le cluster distant.
+
+* *Nom du volume distant*
++
+Nom donné au volume distant lors de sa création.
+
+

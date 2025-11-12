@@ -1,0 +1,35 @@
+---
+permalink: api/concept_element_api_vvols_api_methods.html 
+sidebar: sidebar 
+keywords: virtual,volume,vvol,API,method 
+summary: 'Les méthodes de l"API de volume virtuel du logiciel Element vous permettent de gérer les volumes virtuels (VVols).  Vous pouvez consulter les VVols existants grâce à ces méthodes d"API, ainsi que créer, modifier et supprimer des conteneurs de stockage de volumes virtuels.  Bien que vous ne puissiez pas utiliser ces méthodes pour opérer sur des volumes normaux, vous pouvez utiliser les méthodes de l"API de volume normale pour lister les informations relatives aux VVols.' 
+---
+= Méthodes d'API de volume virtuel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les méthodes de l'API de volume virtuel du logiciel Element vous permettent de gérer les volumes virtuels (VVols).  Vous pouvez consulter les VVols existants grâce à ces méthodes d'API, ainsi que créer, modifier et supprimer des conteneurs de stockage de volumes virtuels.  Bien que vous ne puissiez pas utiliser ces méthodes pour opérer sur des volumes normaux, vous pouvez utiliser les méthodes de l'API de volume normale pour lister les informations relatives aux VVols.
+
+* xref:reference_element_api_createstoragecontainer.adoc[Créer un conteneur de stockage]
+* xref:reference_element_api_deletestoragecontainers.adoc[Supprimer les conteneurs de stockage]
+* xref:reference_element_api_getstoragecontainerefficiency.adoc[GetStorageContainerEfficiency]
+* xref:reference_element_api_getvirtualvolumecount.adoc[ObtenirVolumeVirtuel]
+* xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]
+* xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]
+* xref:reference_element_api_listvirtualvolumebindings.adoc[ListerVirtualVolumeBindings]
+* xref:reference_element_api_listvirtualvolumehosts.adoc[Lister les hôtes de volume virtuel]
+* xref:reference_element_api_listvirtualvolumes.adoc[Lister les volumes virtuels]
+* xref:reference_element_api_listvirtualvolumetasks.adoc[Lister les tâches de volume virtuel]
+* xref:reference_element_api_modifystoragecontainer.adoc[Modifier le conteneur de stockage]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

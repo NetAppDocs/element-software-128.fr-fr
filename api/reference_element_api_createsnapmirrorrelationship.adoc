@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_createsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,create,creating,CreateSnapMirrorRelationship 
+summary: 'L"interface utilisateur Web d"Element utilise la méthode CreateSnapMirrorRelationship pour créer une relation de protection des données étendue SnapMirror entre un point de terminaison source et un point de terminaison de destination.' 
+---
+= Créer une relation SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web d'Element utilise `CreateSnapMirrorRelationship` méthode permettant de créer une relation de protection des données étendue SnapMirror entre un point de terminaison source et un point de terminaison de destination.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'identifiant du point de terminaison du système de stockage ONTAP distant communiquant avec le cluster de stockage Element.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+sourceVolume
+ a| 
+Le volume source dans la relation.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+destinationVolume
+ a| 
+Le volume de destination dans la relation.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+type de relation
+ a| 
+Le type de relation.  Sur les systèmes de stockage exécutant le logiciel Element, cette valeur est toujours « `extended_data_protection` ».
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+Nom de la politique
+ a| 
+Spécifie le nom de la stratégie ONTAP SnapMirror pour la relation.  Si aucune spécification n'est fournie, le nom de la politique par défaut est MirrorLatest.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+nom_de_l'horaire
+ a| 
+Le nom de la planification cron préexistante sur le système ONTAP qui est utilisée pour mettre à jour la relation SnapMirror .  Si aucune planification n'est définie, les mises à jour de snapMirror ne sont pas programmées et doivent être effectuées manuellement.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+taux de transfert maximal
+ a| 
+Spécifie le débit de transfert de données maximal entre les volumes en kilo-octets par seconde.  La valeur par défaut, 0, est illimitée et permet à la relation SnapMirror d'utiliser pleinement la bande passante réseau disponible.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorRelation
+ a| 
+Informations concernant la nouvelle relation SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelation]
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,1

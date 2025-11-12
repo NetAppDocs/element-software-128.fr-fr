@@ -1,0 +1,293 @@
+---
+permalink: api/reference_element_api_clusterstats.html 
+sidebar: sidebar 
+keywords: objects,clusterStats 
+summary: 'L"objet clusterStats contient des données statistiques pour un cluster.  La plupart des statistiques relatives au volume contenues dans l"objet sont moyennées pour tous les volumes du cluster.  Vous pouvez utiliser la méthode GetClusterStats pour récupérer ces informations pour un cluster.' 
+---
+= statistiques du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet clusterStats contient des données statistiques pour un cluster.  La plupart des statistiques relatives au volume contenues dans l'objet sont moyennées pour tous les volumes du cluster.  Vous pouvez utiliser la méthode GetClusterStats pour récupérer ces informations pour un cluster.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Calcul | Type 
+
+
+ a| 
+IOPS réels
+ a| 
+IOPS réelles actuelles pour l'ensemble du cluster au cours des 500 dernières millisecondes.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+taille d'IOPS moyenne
+ a| 
+Taille moyenne en octets des E/S récentes vers le cluster au cours des 500 dernières millisecondes.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+profondeur de la file d'attente des clients
+ a| 
+Le nombre d'opérations de lecture et d'écriture en attente sur le cluster.
+ a| 
+S/O
+ a| 
+entier
+
+
+
+ a| 
+utilisation du cluster
+ a| 
+Le pourcentage des IOPS maximales du cluster actuellement utilisées.  Ceci est calculé comme suit : clusterUtilization = normalizedIOPS / maxIOPS (à partir de GetClusterCapacity).
+ a| 
+S/O
+ a| 
+flotter
+
+
+
+ a| 
+latenceUSec
+ a| 
+Le temps moyen, en microsecondes, pour effectuer des opérations sur un cluster au cours des 500 dernières millisecondes.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+IOPS normalisées
+ a| 
+Nombre moyen d'IOPS pour l'ensemble du cluster au cours des 500 dernières millisecondes.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+octets lus
+ a| 
+Le nombre total cumulé d'octets lus depuis la création du cluster.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+readBytesDernierÉchantillon
+ a| 
+Le nombre total d'octets lus à partir du cluster au cours de la dernière période d'échantillonnage.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+lireLatenceUSec
+ a| 
+Le temps moyen, en microsecondes, pour effectuer les opérations de lecture sur le cluster au cours des 500 dernières millisecondes.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+latence de lecture en secondes totale
+ a| 
+Temps total passé à effectuer des opérations de lecture depuis la création du cluster.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+opérations de lecture
+ a| 
+Le nombre total d'opérations de lecture cumulées sur le cluster depuis sa création.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+readOpsDernierÉchantillon
+ a| 
+Le nombre total d'opérations de lecture au cours de la dernière période d'échantillonnage.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+période d'échantillonnage (ms)
+ a| 
+La durée de la période d'échantillonnage, en millisecondes.
+ a| 
+S/O
+ a| 
+entier
+
+
+
+ a| 
+nombre de services
+ a| 
+Le nombre de services exécutés sur le cluster.  Si cette valeur est égale à servicesTotal, cela indique que des statistiques valides ont été collectées auprès de tous les nœuds.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+servicesTotal
+ a| 
+Nombre total de services attendus sur le cluster.
+ a| 
+S/O
+ a| 
+entier
+
+
+
+ a| 
+horodatage
+ a| 
+L'heure actuelle au format UTC+0.
+ a| 
+S/O
+ a| 
+Chaîne de date ISO 8601
+
+
+
+ a| 
+lectures non alignées
+ a| 
+Le nombre total cumulé d'opérations de lecture non alignées sur un cluster depuis la création de celui-ci.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+Écritures non alignées
+ a| 
+Le nombre total cumulé d'opérations d'écriture non alignées sur un cluster depuis la création de celui-ci.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+écrire des octets
+ a| 
+Le nombre total d'octets cumulés écrits dans le cluster depuis la création de celui-ci.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+writeBytesDernierÉchantillon
+ a| 
+Le nombre total d'octets écrits dans le cluster au cours de la dernière période d'échantillonnage.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+writeLatenceUSec
+ a| 
+Le temps moyen, en microsecondes, pour effectuer des opérations d'écriture sur un cluster au cours des 500 dernières millisecondes.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+
+
+ a| 
+writeLatenceUSecTotal
+ a| 
+Temps total passé à effectuer des opérations d'écriture depuis la création du cluster.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+Opérations d'écriture
+ a| 
+Le nombre total d'opérations d'écriture cumulées sur le cluster depuis sa création.
+ a| 
+Monotone croissant
+ a| 
+entier
+
+
+
+ a| 
+writeOpsDernierÉchantillon
+ a| 
+Le nombre total d'opérations d'écriture au cours de la dernière période d'échantillonnage.
+ a| 
+Point précis dans le temps
+ a| 
+entier
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_getclusterstats.adoc[Obtenir les statistiques du cluster]

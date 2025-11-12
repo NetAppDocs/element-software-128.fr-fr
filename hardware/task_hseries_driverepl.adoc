@@ -1,0 +1,122 @@
+---
+permalink: hardware/task_hseries_driverepl.html 
+sidebar: sidebar 
+keywords: drives, replace drives, SSDs, replacement, h610s, h410s, maintenance 
+summary: 'Si un disque dur est défectueux ou si son niveau d"usure descend en dessous d"un certain seuil, vous devez le remplacer.  Les alarmes de l"interface utilisateur du logiciel Element vous avertissent lorsqu"un disque est tombé en panne ou est sur le point de tomber en panne.  Vous pouvez remplacer à chaud un disque défaillant.' 
+---
+= Remplacer les disques
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si un disque dur est défectueux ou si son niveau d'usure descend en dessous d'un certain seuil, vous devez le remplacer.  Les alarmes de l'interface utilisateur du logiciel Element vous avertissent lorsqu'un disque est tombé en panne ou est sur le point de tomber en panne.  Vous pouvez remplacer à chaud un disque défaillant.
+
+.À propos de cette tâche
+Cette procédure concerne le remplacement des disques dans les nœuds de stockage H410S et H610S.  Retirer un disque le met hors ligne.  Toutes les données présentes sur le disque sont supprimées et transférées vers d'autres disques du cluster.  La migration des données vers d'autres disques actifs du système peut prendre de quelques minutes à une heure en fonction du taux d'utilisation de la capacité et des E/S actives sur le cluster.  Vous devez suivre ces bonnes pratiques pour la manipulation des disques durs lors de leur retrait et de leur remplacement :
+
+* Conservez le disque dur dans le sachet ESD jusqu'à ce que vous soyez prêt à l'installer.
+* Ouvrez le sachet ESD à la main ou découpez le haut avec des ciseaux.
+* Portez toujours un bracelet antistatique relié à la terre par une surface non peinte de votre châssis.
+* Utilisez toujours vos deux mains pour retirer, installer ou transporter un disque dur.
+* Ne jamais forcer un disque dur dans le châssis.
+* Utilisez toujours un emballage homologué pour l'expédition de disques.
+* Ne superposez pas les disques durs.
+
+
+
+
+== Meilleures pratiques pour l'ajout et la suppression de disques
+
+* Ajoutez tous les disques de blocs et assurez-vous que la synchronisation des blocs est terminée avant d'ajouter les disques de tranches.
+* Pour les versions 10.x et ultérieures du logiciel Element, ajoutez tous les disques de stockage par blocs en une seule fois.  Veillez à ne pas effectuer cette opération pour plus de trois nœuds à la fois.
+* Pour les versions 9.x et antérieures du logiciel Element, ajoutez trois disques à la fois en leur permettant de se synchroniser complètement avant d'ajouter le groupe suivant de trois.
+* Retirez le disque de partition et assurez-vous que la synchronisation des partitions est terminée avant de retirer les disques de blocs.
+* Retirez tous les disques de stockage par blocs d'un seul nœud en une seule fois.  Assurez-vous que la synchronisation de tous les blocs est terminée avant de passer au nœud suivant.
+
+
+.Étapes
+. Retirez le disque du cluster à l'aide de l'interface utilisateur du logiciel NetApp Element :
++
+.. Dans l'interface utilisateur d'Element, sélectionnez *Cluster > Drives*.
+.. Sélectionnez *Échec* pour afficher la liste des disques défaillants.
+.. Notez le numéro d'emplacement du disque défectueux.  Vous avez besoin de ces informations pour localiser le disque défectueux dans le châssis.
+.. Sélectionnez *Actions* pour le lecteur que vous souhaitez supprimer.
+.. Sélectionnez *Supprimer*.
++
+
+NOTE: Si la capacité est insuffisante pour retirer les disques actifs avant de retirer un nœud, un message d'erreur s'affiche lorsque vous confirmez le retrait du disque.  Une fois l'erreur résolue, vous pouvez retirer physiquement le disque du châssis.
+
+
+
+. Remplacez le disque dur du châssis :
++
+.. Déballez le disque de remplacement et placez-le sur une surface plane et antistatique à proximité du rack.  Conservez les matériaux d'emballage pour le moment où vous renverrez le disque défectueux à NetApp.  Voici la vue de face des nœuds de stockage H610S et H410S avec les disques :
++
+image::h610s_h410s.png[Présente la vue de face des nœuds de stockage H610S et H410S.]
+
+.. (*H410S uniquement*) Procédez comme suit :
++
+... Identifiez le nœud en faisant correspondre le numéro de série (étiquette de service) avec le numéro que vous avez noté dans l'interface utilisateur de l'élément.  Le numéro de série se trouve sur une étiquette autocollante au dos de chaque nœud.  Une fois le nœud identifié, vous pouvez utiliser les informations d'emplacement pour déterminer l'emplacement du disque défaillant. Les disques sont classés par ordre alphabétique de A à D et de 0 à 5.
+... Retirez le cadre.
+... Appuyez sur le bouton de déverrouillage du lecteur défaillant :
++
+image::h410s_drive.png[Affiche le bouton de déverrouillage du lecteur pour les nœuds de stockage H410S.]
+
++
+Lorsque vous appuyez sur le bouton de déverrouillage, la poignée à came du mécanisme s'ouvre partiellement et le mécanisme se libère du plan médian.
+
+... Ouvrez la poignée de la came et faites glisser le disque d'entraînement avec précaution en utilisant les deux mains.
+... Placez le disque dur sur une surface plane et antistatique.
+... Insérez le disque dur de remplacement dans son logement, à fond dans le châssis, en utilisant les deux mains.
+... Appuyez sur la poignée de la came jusqu'à entendre un clic.
+... Réinstallez le cadre.
+... Veuillez informer le support NetApp du remplacement du disque.  Le support NetApp vous fournira les instructions pour renvoyer le disque défectueux.
+
+
+.. (*H610S uniquement*) Procédez comme suit :
++
+... Faites correspondre le numéro d'emplacement du disque défaillant affiché dans l'interface utilisateur Element avec le numéro figurant sur le châssis.  La LED du disque dur défectueux est allumée en orange.
+... Retirez le cadre.
+... Appuyez sur le bouton de déverrouillage et retirez le disque défectueux comme indiqué dans l'illustration suivante :
++
+image::h610s_driveremove.png[Montre le retrait du disque du nœud H610S.]
+
++
+
+NOTE: Assurez-vous que la poignée du tiroir est complètement ouverte avant de tenter de faire glisser le disque hors du châssis.
+
+... Faites glisser le disque dur vers l'extérieur et placez-le sur une surface plane et exempte d'électricité statique.
+... Appuyez sur le bouton de déverrouillage du disque de remplacement avant de l'insérer dans la baie de disque.  La poignée du plateau de disque dur s'ouvre à ressort.
++
+image::H600S_driveinstall.png[Affiche le disque en cours d'installation dans le nœud H610S.]
+
+... Insérez le disque de remplacement sans forcer.  Lorsque le disque est complètement inséré, vous entendez un clic.
+... Fermez soigneusement la poignée du tiroir du disque dur.
+... Réinstallez le cadre.
+... Veuillez informer le support NetApp du remplacement du disque.  Le support NetApp vous fournira les instructions pour renvoyer le disque défectueux.
+
+
+
+
+. Réintégrez le disque au cluster à l'aide de l'interface utilisateur Element.
++
+
+NOTE: Lorsque vous installez un nouveau disque dans un nœud existant, celui-ci est automatiquement enregistré comme *Disponible* dans l'interface utilisateur d'Element.  Vous devez ajouter le disque au cluster avant qu'il puisse y participer.
+
++
+.. Dans l'interface utilisateur d'Element, sélectionnez *Cluster > Drives*.
+.. Sélectionnez *Disponible* pour afficher la liste des lecteurs disponibles.
+.. Sélectionnez l'icône Actions du lecteur que vous souhaitez ajouter, puis sélectionnez *Ajouter*.
+
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

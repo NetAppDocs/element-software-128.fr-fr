@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: 'La page Points de terminaison du protocole de l"onglet VVols fournit des informations sur les points de terminaison du protocole.' 
+---
+= Détails des points de terminaison du protocole
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Points de terminaison du protocole de l'onglet VVols fournit des informations sur les points de terminaison du protocole.
+
+* *Identifiant du fournisseur principal*
++
+L'identifiant du fournisseur de point de terminaison du protocole principal.
+
+* *Identifiant du fournisseur secondaire*
++
+L'identifiant du fournisseur de point de terminaison du protocole secondaire.
+
+* *ID du point de terminaison du protocole*
++
+L'UUID du point de terminaison du protocole.
+
+* *État du point de terminaison du protocole*
++
+État du point de terminaison du protocole.  Les valeurs possibles sont les suivantes :
+
++
+** Actif : Le point de terminaison du protocole est en cours d’utilisation.
+** Démarrage : Le point de terminaison du protocole démarre.
+** Basculement : Le point de terminaison du protocole a basculé.
+** Réservé : le point de terminaison du protocole est réservé.
+
+
+* *Type de fournisseur*
++
+Le type de fournisseur du point de terminaison du protocole.  Les valeurs possibles sont les suivantes :
+
++
+** Primaire
+** Secondaire
+
+
+* *Identifiant du périphérique SCSI NAA*
++
+L'identifiant unique au niveau mondial du périphérique SCSI pour le point de terminaison du protocole au format étendu enregistré NAA IEEE.
+
+

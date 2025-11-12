@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_getclusterhardwareinfo.html 
+sidebar: sidebar 
+keywords: get,getting,cluster,hardware,getclusterhardwareinfo 
+summary: 'Vous pouvez utiliser la méthode GetClusterHardwareInfo pour récupérer l"état et les informations matérielles de tous les nœuds Fibre Channel, nœuds iSCSI et disques du cluster.  Cela inclut généralement les fabricants, les fournisseurs, les versions et autres informations d"identification matérielle associées.' 
+---
+= GetClusterHardwareInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetClusterHardwareInfo` méthode permettant de récupérer l'état et les informations matérielles de tous les nœuds Fibre Channel, nœuds iSCSI et disques du cluster.  Cela inclut généralement les fabricants, les fournisseurs, les versions et autres informations d'identification matérielle associées.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+taper
+ a| 
+N'incluez dans votre réponse qu'un seul des types d'informations matérielles suivants. Valeurs possibles :
+
+* lecteurs :
++
+Les listes ne font que générer des informations dans la réponse.
+
+* nœuds : Indique uniquement les informations relatives aux nœuds dans la réponse.
+* all : Inclut les informations relatives aux lecteurs et aux nœuds dans la réponse.
+
+
+Si ce paramètre est omis, le type « tous » est supposé.
+ a| 
+chaîne
+ a| 
+tous
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+Informations matérielles du cluster
+ a| 
+Informations matérielles pour tous les nœuds et disques du cluster.  Chaque objet de cette sortie est étiqueté avec l'identifiant du nœud donné.
+ a| 
+xref:reference_element_api_hardwareinfo.adoc[Informations matérielles]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "GetClusterHardwareInfo",
+    "params": {
+        "type": "all"
+    },
+    "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+En raison de sa longueur, cet exemple de réponse est documenté dans un sujet supplémentaire.
+
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_response_example_getclusterhardwareinfo.adoc[GetClusterHardwareInfo]

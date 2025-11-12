@@ -1,0 +1,67 @@
+---
+permalink: api/concept_element_api_volume_api_methods.html 
+sidebar: sidebar 
+keywords: volume,API,method,methods 
+summary: 'Les méthodes de l"API de volume du logiciel Element vous permettent de gérer les volumes résidant sur un nœud de stockage.  Vous pouvez créer, modifier, cloner et supprimer des volumes grâce à ces méthodes.  Vous pouvez également utiliser les méthodes de l"API Volume pour collecter et afficher les mesures de données relatives à un volume.' 
+---
+= Méthodes de l'API Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les méthodes de l'API de volume du logiciel Element vous permettent de gérer les volumes résidant sur un nœud de stockage.  Vous pouvez créer, modifier, cloner et supprimer des volumes grâce à ces méthodes.  Vous pouvez également utiliser les méthodes de l'API Volume pour collecter et afficher les mesures de données relatives à un volume.
+
+* xref:reference_element_api_cancelclone.adoc[AnnulerClone]
+* xref:reference_element_api_cancelgroupclone.adoc[AnnulerGroupClone]
+* xref:reference_element_api_clonemultiplevolumes.adoc[Cloner plusieurs volumes]
+* xref:reference_element_api_clonevolume.adoc[Volume cloné]
+* xref:reference_element_api_copyvolume.adoc[Copie de volume]
+* xref:reference_element_api_createqospolicy.adoc[Créer une politique de qualité]
+* xref:reference_element_api_createvolume.adoc[CréerVolume]
+* xref:reference_element_api_createbackuptarget.adoc[Créer une cible de sauvegarde]
+* xref:reference_element_api_deleteqospolicy.adoc[Supprimer la politique QoS]
+* xref:reference_element_api_deletevolume.adoc[Supprimer le volume]
+* xref:reference_element_api_deletevolumes.adoc[Supprimer les volumes]
+* xref:reference_element_api_getbackuptarget.adoc[GetBackupTarget]
+* xref:reference_element_api_getvolumestats.adoc[Obtenir les statistiques de volume]
+* xref:reference_element_api_getdefaultqos.adoc[Obtenir la QoS par défaut]
+* xref:reference_element_api_getqospolicy.adoc[Obtenir la politique QoS]
+* xref:reference_element_api_getvolumecount.adoc[ObtenirVolumeCount]
+* xref:reference_element_api_getvolumeefficiency.adoc[GetVolumeEfficiency]
+* xref:reference_element_api_listactivevolumes.adoc[Lister les volumes actifs]
+* xref:reference_element_api_listbackuptargets.adoc[Lister les cibles de sauvegarde]
+* xref:reference_element_api_listbulkvolumejobs.adoc[Lister les tâches en volume]
+* xref:reference_element_api_listdeletedvolumes.adoc[Liste des volumes supprimés]
+* xref:reference_element_api_listqospolicies.adoc[ListQoSPolicies]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+* xref:reference_element_api_listvolumeqoshistograms.adoc[ListVolumeQoSHistograms]
+* xref:reference_element_api_listvolumes.adoc[Liste des volumes]
+* xref:reference_element_api_listvolumestats.adoc[ListVolumeStats]
+* xref:reference_element_api_listvolumesforaccount.adoc[Lister les volumes pour le compte]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[Lister les statistiques de volume par compte]
+* xref:reference_element_api_listvolumestatsbyvirtualvolume.adoc[ListVolumeStatsByVirtualVolume]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[ListVolumeStatsByVolume]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[ListVolumeStatsByVolumeAccessGroup]
+* xref:reference_element_api_modifybackuptarget.adoc[Modifier la cible de sauvegarde]
+* xref:reference_element_api_modifyqospolicy.adoc[Modifier la politique QoS]
+* xref:reference_element_api_modifyvolume.adoc[Modifier le volume]
+* xref:reference_element_api_modifyvolumes.adoc[Modifier les volumes]
+* xref:reference_element_api_purgedeletedvolume.adoc[PurgeDeletedVolume]
+* xref:reference_element_api_purgedeletedvolumes.adoc[PurgeDeletedVolumes]
+* xref:reference_element_api_removebackuptarget.adoc[Supprimer la cible de sauvegarde]
+* xref:reference_element_api_restoredeletedvolume.adoc[Restaurer le volume supprimé]
+* xref:reference_element_api_setdefaultqos.adoc[Définir la QoS par défaut]
+* xref:reference_element_api_startbulkvolumeread.adoc[Démarrer la lecture en masse]
+* xref:reference_element_api_startbulkvolumewrite.adoc[Démarrer l'écriture en masse]
+* xref:reference_element_api_updatebulkvolumestatus.adoc[Mise à jour de l'état du volume en masse]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

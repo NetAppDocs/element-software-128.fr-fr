@@ -1,0 +1,74 @@
+---
+permalink: storage/reference_per_node_cluster_settings_details.html 
+sidebar: sidebar 
+keywords: nodes, changing cluster settings, per-node UI 
+summary: 'Vous pouvez vérifier les paramètres du cluster pour un nœud de stockage après la configuration du cluster et modifier le nom d"hôte du nœud.' 
+---
+= Détails des paramètres du cluster depuis l'interface utilisateur de chaque nœud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier les paramètres du cluster pour un nœud de stockage après la configuration du cluster et modifier le nom d'hôte du nœud.
+
+La liste suivante décrit les paramètres de cluster pour un nœud de stockage indiqué sur la page *Paramètres de cluster* de l'interface utilisateur du nœud. (`https://<node_IP>:442/hcc/node/cluster-settings`).
+
+* *Rôle*
++
+Rôle du nœud dans le cluster. Valeurs possibles :
+
++
+** Stockage : Nœud de stockage ou Fibre Channel.
+** Gestion : Node est un nœud de gestion.
+
+
+* *Nom d'hôte*
++
+Nom du nœud.
+
+* *Grappe*
++
+Nom du cluster.
+
+* *Adhésion au groupe*
++
+État du nœud. Valeurs possibles :
+
++
+** Disponible : Ce nœud n'a pas de nom de cluster associé et ne fait pas encore partie d'un cluster.
+** En attente : le nœud est configuré et peut être ajouté à un cluster désigné.  L'authentification n'est pas requise pour accéder au nœud.
+** En attente : Le système est en train d'installer un logiciel compatible sur le nœud.  Une fois l'opération terminée, le nœud passera à l'état Actif.
+** Actif : Le nœud participe à un cluster.  L'authentification est requise pour modifier le nœud.
+
+
+* *Version*
++
+Version du logiciel Element exécutée sur le nœud.
+
+* *Ensemble*
++
+Nœuds faisant partie de l'ensemble de bases de données.
+
+* *ID du nœud*
++
+Un identifiant est attribué lorsqu'un nœud est ajouté au cluster.
+
+* *Interface de cluster*
++
+Interface réseau utilisée pour la communication au sein du cluster.
+
+* *Interface de gestion*
++
+Interface réseau de gestion.  Par défaut, il s'agit de Bond1G, mais Bond10G peut également être utilisé.
+
+* *Interface de stockage*
++
+Interface réseau de stockage utilisant Bond10G.
+
+* *Compatible avec le chiffrement*
++
+Indique si le nœud prend en charge ou non le chiffrement du disque.
+
+

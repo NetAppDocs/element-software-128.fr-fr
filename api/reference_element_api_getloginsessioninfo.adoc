@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_getloginsessioninfo.html 
+sidebar: sidebar 
+keywords: cluster,get,getting,login,session,info,getloginsessioninfo 
+summary: 'Vous pouvez utiliser la méthode GetLoginSessionInfo pour obtenir la durée de validité d"une session d"authentification de connexion, aussi bien pour les shells de connexion que pour l"interface utilisateur textuelle (TUI).' 
+---
+= Obtenir les informations de session de connexion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetLoginSessionInfo` méthode permettant de renvoyer la période de validité d'une session d'authentification de connexion pour les deux shells de connexion et l'interface utilisateur textuelle.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+Informations de session de connexion
+ a| 
+Un objet contenant la période d'expiration de l'authentification.  Objets possibles renvoyés :
+
+* temps mort:
++
+Durée, en minutes, après laquelle cette session expirera.  Formaté en H:mm:ss.  Par exemple : 1:30:00, 20:00, 5:00.  Tous les zéros non significatifs et les deux-points sont supprimés, quel que soit le format de saisie du délai d'expiration.
+
+
+ a| 
+objet JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "GetLoginSessionInfo",
+    "params": {},
+  "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+"id": 1,
+  "result" : {
+    "loginSessionInfo" : {
+      "timeout" : "30:00"
+    }
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

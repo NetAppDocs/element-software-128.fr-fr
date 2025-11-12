@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_protection_using_volume_snapshots.html 
+sidebar: sidebar 
+keywords: data protection, volume snapshots, roll back volume, replicate snapshots 
+summary: 'Un instantané de volume est une copie d"un volume à un instant précis.  Vous pouvez prendre un instantané d"un volume et l"utiliser ultérieurement si vous devez restaurer un volume à l"état dans lequel il se trouvait au moment de la création de l"instantané.' 
+---
+= Utilisez les instantanés de volume pour la protection des données
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un instantané de volume est une copie d'un volume à un instant précis.  Vous pouvez prendre un instantané d'un volume et l'utiliser ultérieurement si vous devez restaurer un volume à l'état dans lequel il se trouvait au moment de la création de l'instantané.
+
+Les instantanés sont similaires aux clones de volume.  Cependant, les instantanés ne sont que des répliques des métadonnées du volume ; vous ne pouvez donc ni les monter ni y écrire.  La création d'un instantané de volume ne nécessite qu'une petite quantité de ressources système et d'espace, ce qui rend la création d'un instantané plus rapide que le clonage.
+
+Vous pouvez prendre un instantané d'un volume individuel ou d'un ensemble de volumes.
+
+Vous pouvez également répliquer les instantanés sur un cluster distant et les utiliser comme copie de sauvegarde du volume.  Cela vous permet de restaurer un volume à un point précis dans le temps en utilisant l'instantané répliqué.  Vous pouvez également créer un clone d'un volume à partir d'un instantané répliqué.
+
+
+
+== Trouver plus d'informations
+
+* xref:task_data_protection_use_individual_volume_snapshots.adoc[Utilisez des instantanés de volumes individuels pour la protection des données]
+* xref:task_data_protection_use_group_snapshots_for_data_protection.adoc[Utilisation des instantanés de groupe pour la tâche de protection des données]
+* xref:task_data_protection_schedule_a_snapshot_task.adoc[Planification d'un instantané]
+

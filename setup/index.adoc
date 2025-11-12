@@ -1,0 +1,40 @@
+---
+permalink: setup/index.html 
+sidebar: sidebar 
+keywords: set up storage, storage system, set up, configure node, configuring storage node, add drives, fibre channel, create cluster 
+summary: Apprenez comment configurer le système de stockage adapté à votre environnement. 
+---
+= Aménager le stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Apprenez comment configurer le système de stockage adapté à votre environnement.
+
+* xref:concept_setup_overview.adoc[Aménager le stockage]
++
+** xref:task_setup_cluster_with_storage_nodes.adoc[Configurez un cluster avec des nœuds de stockage]
++
+*** xref:concept_setup_configure_a_storage_node.adoc[Configurer un nœud de stockage]
+*** xref:task_setup_create_a_storage_cluster.adoc[Créer un cluster de stockage]
+*** xref:task_post_deploy_access_the_element_software_user_interface.adoc[Connectez-vous à l'interface utilisateur du logiciel Element.]
+*** xref:task_setup_add_drives_to_a_cluster.adoc[Ajouter des disques au cluster]
+
+
+** xref:task_setup_cluster_with_fibre_channel_nodes.adoc[Configurer un cluster avec des nœuds Fibre Channel]entrées :
++
+*** xref:concept_setup_fc_configure_a_fibre_channel_node.adoc[Configurer un nœud Fibre Channel]
+*** xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[Ajouter des nœuds Fibre Channel à un cluster]
+*** xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[Créer un nouveau cluster avec des nœuds Fibre Channel]
+*** xref:concept_setup_fc_set_up_zones_for_fibre_channel_nodes.adoc[Configurer des zones pour les nœuds Fibre Channel]
+*** xref:task_setup_create_a_volume_access_group_for_fibre_channel_clients.adoc[Créer un groupe d'accès au volume pour les clients Fibre Channel]
+
+
+** xref:task_setup_determine_which_solidfire_components_to_install.adoc[Déterminez les composants SolidFire à installer.]
+** xref:task_setup_gh_redirect_set_up_a_management_node.adoc[Configurer un nœud de gestion]
+** xref:concept_setup_whats_next.adoc[Quelle est la prochaine étape ?]
+
+
+

@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_enablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableFeature,vvols,virtual volumes,FIPS,140-2,SnapMirror 
+summary: Vous pouvez utiliser la méthode EnableFeature pour activer les fonctionnalités du cluster telles que les VVols, qui sont désactivées par défaut. 
+---
+= Activer la fonctionnalité
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `EnableFeature` méthode permettant d'activer les fonctionnalités de cluster telles que les VVols, désactivées par défaut.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant.
+
+
+NOTE: Pour les systèmes exécutant le logiciel Element 11.x, l'activation des volumes virtuels avant ou après la configuration de la surveillance du domaine de protection fait que la fonctionnalité des domaines de protection du cluster ne fonctionne qu'au niveau du nœud.
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+fonctionnalité
+ a| 
+Activer la fonctionnalité de cluster. Valeurs possibles :
+
+* `fips`Activer le chiffrement certifié FIPS 140-2 pour les communications HTTPS.
+* `FipsDrives`: Activer la prise en charge des disques FIPS 140-2 pour le cluster de stockage.
+* `SnapMirror`Activez la fonctionnalité de cluster de réplication SnapMirror .
+* `VolumeLoadBalanceOnActualIOPS`: Activer l'équilibrage des tranches sur les IOPS réelles plutôt que sur les IOPS minimales.  Disponible à partir d'Element 12.8.
+* `vvols`Activez la fonction de cluster VVols du logiciel Element.
+
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "vvols"
+    },
+    "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

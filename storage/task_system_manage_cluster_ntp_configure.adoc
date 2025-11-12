@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure.html 
+sidebar: sidebar 
+keywords: ntp, cluster, query, fqdn, dns server 
+summary: 'Vous pouvez configurer chaque nœud d"un cluster pour qu"il interroge un serveur NTP (Network Time Protocol) afin d"obtenir les mises à jour.  Le cluster contacte uniquement les serveurs configurés et leur demande des informations NTP.' 
+---
+= Configurer les serveurs NTP (Network Time Protocol) pour que le cluster puisse interroger les serveurs.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez configurer chaque nœud d'un cluster pour qu'il interroge un serveur NTP (Network Time Protocol) afin d'obtenir les mises à jour.  Le cluster contacte uniquement les serveurs configurés et leur demande des informations NTP.
+
+Le protocole NTP est utilisé pour synchroniser les horloges sur un réseau.  La connexion à un serveur NTP interne ou externe doit faire partie de la configuration initiale du cluster.
+
+Configurez le protocole NTP sur le cluster pour qu'il pointe vers un serveur NTP local.  Vous pouvez utiliser l'adresse IP ou le nom d'hôte FQDN.  Le serveur NTP par défaut lors de la création du cluster est défini sur us.pool.ntp.org ; cependant, une connexion à ce site ne peut pas toujours être établie en fonction de l’emplacement physique du cluster SolidFire .
+
+L'utilisation du nom de domaine pleinement qualifié (FQDN) dépend de la présence et du bon fonctionnement des paramètres DNS du nœud de stockage individuel.  Pour ce faire, configurez les serveurs DNS sur chaque nœud de stockage et assurez-vous que les ports sont ouverts en consultant la page « Configuration requise pour les ports réseau ».
+
+Vous pouvez saisir jusqu'à cinq serveurs NTP différents.
+
+
+NOTE: Vous pouvez utiliser les adresses IPv4 et IPv6.
+
+.Ce dont vous aurez besoin
+Vous devez disposer des privilèges d'administrateur de cluster pour configurer ce paramètre.
+
+.Étapes
+. Configurez une liste d'adresses IP et/ou de noms de domaine pleinement qualifiés (FQDN) dans les paramètres du serveur.
+. Vérifiez que le DNS est correctement configuré sur les nœuds.
+. Cliquez sur *Cluster* > *Paramètres*.
+. Dans les paramètres du protocole NTP (Network Time Protocol), sélectionnez *Non*, ce qui utilise la configuration NTP standard.
+. Cliquez sur *Enregistrer les modifications*.
+
+
+
+
+== Trouver plus d'informations
+
+* link:../storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html["Configurez le cluster pour qu'il écoute les diffusions NTP."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

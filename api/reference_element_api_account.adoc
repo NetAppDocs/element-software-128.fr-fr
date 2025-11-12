@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: 'L"objet compte contient des informations sur un compte.  Cet objet contient uniquement des informations « configurées » concernant le compte, et non des informations relatives à l"exécution ou à l"utilisation.' 
+---
+= compte
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `account` Cet objet contient des informations relatives à un compte.  Cet objet contient uniquement des informations « configurées » concernant le compte, et non des informations relatives à l'exécution ou à l'utilisation.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+`accountID`
+ a| 
+L'identifiant unique du compte.
+ a| 
+entier
+
+
+
+ a| 
+`attributes`
+ a| 
+Liste de paires nom-valeur au format objet JSON.
+ a| 
+objet JSON
+
+
+
+ a| 
+`enableChap`
+ a| 
+Indique si les informations d'identification du compte CHAP peuvent être utilisées par un initiateur pour accéder aux volumes.
+ a| 
+booléen
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+Le secret de l'initiateur CHAP.
+ a| 
+chaîne
+
+
+
+ a| 
+`status`
+ a| 
+État actuel du compte. Valeurs possibles :
+
+* actif : Un compte actif.
+* verrouillé : Un compte verrouillé.
+* supprimé : Un compte qui a été supprimé et purgé.
+
+ a| 
+chaîne
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+L'identifiant unique du conteneur de stockage de volume virtuel associé à ce compte.
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+Le secret CHAP cible.
+ a| 
+chaîne
+
+
+
+ a| 
+`username`
+ a| 
+Le nom d'utilisateur du compte.
+ a| 
+chaîne
+
+
+
+ a| 
+`volumes`
+ a| 
+Liste des identifiants de volume des volumes appartenant à ce compte.
+ a| 
+tableau d'entiers
+
+|===
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_addaccount.adoc[Ajouter un compte]
+* xref:reference_element_api_getaccountbyid.adoc[ObtenirCompteParID]
+* xref:reference_element_api_getaccountbyname.adoc[ObtenirCompteParNom]
+* xref:reference_element_api_listaccounts.adoc[Lister les comptes]
+

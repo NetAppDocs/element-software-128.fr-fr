@@ -1,0 +1,46 @@
+---
+permalink: storage/task_replication_pair_cluster_using_pairing_key.html 
+sidebar: sidebar 
+keywords: remote replication, pairing key, pairing clusters 
+summary: 'Si vous disposez d"un accès d"administrateur de cluster à un cluster local mais pas au cluster distant, vous pouvez apparier les clusters à l"aide d"une clé d"appariement.  Une clé d"appairage est générée sur un cluster local, puis envoyée de manière sécurisée à un administrateur de cluster sur un site distant afin d"établir une connexion et de finaliser l"appairage du cluster pour la réplication en temps réel.' 
+---
+= Apparier les clusters à l'aide d'une clé d'appariement
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Si vous disposez d'un accès d'administrateur de cluster à un cluster local mais pas au cluster distant, vous pouvez apparier les clusters à l'aide d'une clé d'appariement.  Une clé d'appairage est générée sur un cluster local, puis envoyée de manière sécurisée à un administrateur de cluster sur un site distant afin d'établir une connexion et de finaliser l'appairage du cluster pour la réplication en temps réel.
+
+. Sur le cluster local, sélectionnez *Protection des données* > *Paires de clusters*.
+. Cliquez sur *Pair Cluster*.
+. Cliquez sur *Démarrer l'appairage* et sur *Non* pour indiquer que vous n'avez pas accès au cluster distant.
+. Cliquez sur *Générer la clé*.
++
+
+NOTE: Cette action génère une clé de texte pour l'appariement et crée une paire de clusters non configurée sur le cluster local.  Si vous ne terminez pas la procédure, vous devrez supprimer manuellement la paire de clusters.
+
+. Copiez la clé d'appairage du cluster dans votre presse-papiers.
+. Rendez la clé d'appairage accessible à l'administrateur du cluster sur le site distant.
++
+
+NOTE: La clé d'appairage du cluster contient une version du MVIP, le nom d'utilisateur, le mot de passe et les informations de la base de données pour permettre les connexions de volume pour la réplication à distance.  Cette clé doit être traitée de manière sécurisée et ne doit pas être stockée d'une façon qui permettrait un accès accidentel ou non sécurisé au nom d'utilisateur ou au mot de passe.
+
++
+
+IMPORTANT: Ne modifiez aucun des caractères de la clé d'appariement.  La clé devient invalide si elle est modifiée.
+
+. Sur le cluster distant, sélectionnez *Protection des données* > *Paires de clusters*.
+. Cliquez sur *Pair Cluster*.
+. Cliquez sur *Terminer l'appairage* et saisissez la clé d'appairage dans le champ *Clé d'appairage* (le collage est la méthode recommandée).
+. Cliquez sur *Terminer l'appairage*.
+
+
+
+
+== Trouver plus d'informations
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Clusters appariés utilisant MVIP]
+* https://www.youtube.com/watch?v=1ljHAd1byC8&feature=youtu.be["Appariement de clusters à l'aide d'une clé d'appariement de clusters (vidéo)"]
+

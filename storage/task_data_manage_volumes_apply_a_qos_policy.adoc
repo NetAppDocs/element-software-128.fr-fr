@@ -1,0 +1,30 @@
+---
+permalink: storage/task_data_manage_volumes_apply_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, apply to volumes 
+summary: Vous pouvez appliquer en masse une politique QoS existante à un ou plusieurs volumes. 
+---
+= Appliquer une politique QoS aux volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez appliquer en masse une politique QoS existante à un ou plusieurs volumes.
+
+La politique QoS que vous souhaitez appliquer en masse doit exister.
+
+. Sélectionnez *Gestion* > *Volumes*.
+. Dans la liste des volumes, cochez la case en regard des volumes auxquels vous souhaitez appliquer la politique QoS.
+. Cliquez sur *Actions groupées*.
+. Dans le menu qui s'affiche, cliquez sur *Appliquer la politique QoS*.
+. Sélectionnez la politique QoS dans la liste déroulante.
+. Cliquez sur *Appliquer*.
+
+
+
+
+== Trouver plus d'informations
+
+xref:concept_data_manage_volumes_quality_of_service_policies.adoc[Politiques de qualité de service]

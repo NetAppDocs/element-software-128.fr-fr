@@ -1,0 +1,27 @@
+---
+permalink: storage/task_system_manage_fips_enable_encryption_at_rest.html 
+sidebar: sidebar 
+keywords: fips, security, encryption at rest, enable, disable, drives 
+summary: 'Vous pouvez activer et désactiver le chiffrement au repos à l"échelle du cluster.  Cette fonctionnalité n"est pas activée par défaut.  Pour prendre en charge les disques FIPS, vous devez activer le chiffrement au repos.' 
+---
+= Activer le chiffrement au repos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer et désactiver le chiffrement au repos à l'échelle du cluster.  Cette fonctionnalité n'est pas activée par défaut.  Pour prendre en charge les disques FIPS, vous devez activer le chiffrement au repos.
+
+. Dans l'interface utilisateur du logiciel NetApp Element , cliquez sur *Cluster* > *Paramètres*.
+. Cliquez sur *Activer le chiffrement au repos*.
+
+
+
+
+== Trouver plus d'informations
+
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[Activer et désactiver le chiffrement pour un cluster]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

@@ -1,0 +1,254 @@
+---
+permalink: api/reference_element_api_drivestats.html 
+sidebar: sidebar 
+keywords: object,objects,driveStats 
+summary: 'L"objet driveStats contient des mesures d"activité de haut niveau pour un seul disque.  Vous pouvez récupérer les informations de mesure avec la méthode API GetDriveStats.' 
+---
+= driveStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet driveStats contient des mesures d'activité de haut niveau pour un seul disque.  Vous pouvez récupérer les informations de mesure avec la méthode API. `GetDriveStats` .
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+Sessions actives
+ a| 
+Nombre de sessions iSCSI utilisant actuellement ce lecteur (présent uniquement pour les lecteurs de métadonnées).
+ a| 
+entier
+
+
+
+ a| 
+ID du lecteur
+ a| 
+Identifiant unique du lecteur dans le cluster.
+ a| 
+entier
+
+
+
+ a| 
+échec du décompte
+ a| 
+Nombre d'éléments matériels du disque dur défaillants.
+ a| 
+entier
+
+
+
+ a| 
+iOS en cours
+ a| 
+Le nombre d'E/S en cours sur ce disque.
+ a| 
+entier
+
+
+
+ a| 
+Pourcentage de vie restante
+ a| 
+Indicateur d'usure du support de disque.
+ a| 
+entier
+
+
+
+ a| 
+durée de vieReadBytes
+ a| 
+Nombre total d'octets lus sur ce disque pendant toute sa durée de vie.
+ a| 
+entier
+
+
+
+ a| 
+durée de vie des octets d'écriture
+ a| 
+Nombre total d'octets écrits sur ce disque depuis sa durée de vie.
+ a| 
+entier
+
+
+
+ a| 
+powerOnHours
+ a| 
+Nombre d'heures de fonctionnement de ce disque.
+ a| 
+entier
+
+
+
+ a| 
+lectures
+ a| 
+Le nombre d'appels read() par seconde sur ce lecteur.
+ a| 
+entier
+
+
+
+ a| 
+octets lus
+ a| 
+Nombre total d'octets lus sur le disque en raison des opérations du client.
+ a| 
+entier
+
+
+
+ a| 
+lectures combinées
+ a| 
+Le nombre d'appels read() à des secteurs adjacents qui pourraient être combinés en une lecture plus large.
+ a| 
+entier
+
+
+
+ a| 
+lireMsec
+ a| 
+Le nombre de millisecondes passées à la lecture.
+ a| 
+entier
+
+
+
+ a| 
+opérations de lecture
+ a| 
+Opérations de lecture totales sur le disque dues aux opérations du client.
+ a| 
+entier
+
+
+
+ a| 
+secteurs réalloués
+ a| 
+Nombre de secteurs défectueux remplacés dans ce disque.
+ a| 
+entier
+
+
+
+ a| 
+pourcentage de capacité de réserve
+ a| 
+La capacité de réserve disponible du disque dur.
+ a| 
+entier
+
+
+
+ a| 
+horodatage
+ a| 
+L'heure actuelle au format UTC+0.
+ a| 
+Chaîne de date ISO 8601
+
+
+
+ a| 
+capacité totale
+ a| 
+Capacité totale du disque, en octets.
+ a| 
+entier
+
+
+
+ a| 
+Erreurs non corrigibles
+ a| 
+Valeur des erreurs non corrigibles signalées par le système de surveillance SMART (Self-Monitoring, Analysis and Reporting Technology) du disque dur.
+ a| 
+entier
+
+
+
+ a| 
+capacité utilisée
+ a| 
+Capacité utilisée du disque, en octets.
+ a| 
+entier
+
+
+
+ a| 
+mémoire utilisée
+ a| 
+Quantité de mémoire actuellement utilisée par le nœud hébergeant ce lecteur.
+ a| 
+entier
+
+
+
+ a| 
+écrit
+ a| 
+Le nombre d'appels write() par seconde sur ce lecteur.
+ a| 
+entier
+
+
+
+ a| 
+écrire des octets
+ a| 
+Nombre total d'octets écrits sur le disque en raison de l'activité du client.
+ a| 
+entier
+
+
+
+ a| 
+écritCombiné
+ a| 
+Le nombre d'appels write() à des secteurs adjacents qui pourraient être combinés en une écriture plus importante.
+ a| 
+entier
+
+
+
+ a| 
+écrireMsec
+ a| 
+Le nombre de millisecondes passées à écrire.
+ a| 
+entier
+
+
+
+ a| 
+Opérations d'écriture
+ a| 
+Opérations d'écriture totales sur le disque dues à l'activité du client.
+ a| 
+entier
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_getdrivestats.adoc[GetDriveStats]

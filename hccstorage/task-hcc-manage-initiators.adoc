@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-initiators.html 
+summary: Apprenez à ajouter, créer et gérer des initiateurs qui permettent la communication entre les clients externes et les volumes de stockage Element. 
+keywords: netapp, initiator, storage, element, access group 
+---
+= Créer et gérer des initiateurs
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliserlink:../concepts/concept_solidfire_concepts_initiators.html["initiateurs"] pour un accès aux volumes basé sur CHAP plutôt que sur un compte.  Vous pouvez créer et supprimer des initiateurs, et leur attribuer des alias conviviaux pour simplifier l'administration et l'accès aux volumes.  Lorsque vous ajoutez un initiateur à un groupe d'accès aux volumes, cet initiateur autorise l'accès à tous les volumes du groupe.
+
+.Ce dont vous aurez besoin
+* Vous disposez des identifiants d'administrateur de cluster.
+* Vous avez mis à niveau vos services de gestion au moins à la version 2.17.  La gestion des initiateurs de NetApp Hybrid Cloud Control n'est pas disponible dans les versions antérieures des modules de services.
+
+
+.Options
+* <<Créer un initiateur>>
+* <<Ajouter des initiateurs à un groupe d'accès aux volumes>>
+* <<Modifier un alias d'initiateur>>
+* <<Supprimer les initiateurs>>
+
+
+
+
+== Créer un initiateur
+
+Vous pouvez créer des initiateurs iSCSI ou Fibre Channel et, si vous le souhaitez, leur attribuer des alias.
+
+.À propos de cette tâche
+Le format accepté d'un IQN d'initiateur est `iqn.yyyy-mm` où y et m sont des chiffres suivis d'un texte qui ne doit contenir que des chiffres, des lettres minuscules et un point.(`.` ), côlon(`:` ) ou tiret(`-` ).  Voici un exemple de format :
+
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
+Le format accepté d'un initiateur Fibre Channel WWPN est : `:Aa:bB:CC:dd:11:22:33:44` ou `AabBCCdd11223344` .  Voici un exemple de format :
+
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+.Étapes
+. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants d'administrateur du cluster de stockage Element.
+. Depuis le tableau de bord, développez le nom de votre cluster de stockage dans le menu de navigation de gauche.
+. Sélectionnez *Volumes*.
+. Sélectionnez l'onglet *Initiateurs*.
+. Sélectionnez le bouton *Créer des initiateurs*.
++
+|===
+| Option | Étapes 
+
+
+| Créer un ou plusieurs initiateurs  a| 
+.. Saisissez l'IQN ou le WWPN de l'initiateur dans le champ *IQN/WWPN*.
+.. Saisissez un nom convivial pour l'initiateur dans le champ *Alias*.
+.. (Facultatif) Sélectionnez *Ajouter un initiateur* pour ouvrir de nouveaux champs d'initiateur ou utilisez plutôt l'option de création en masse.
+.. Sélectionnez *Créer des initiateurs*.
+
+
+
+
+| Création en masse d'initiateurs  a| 
+.. Sélectionnez *Ajout groupé IQN/WWPN*.
+.. Saisissez une liste d'IQN ou de WWPN dans la zone de texte.  Chaque IQN ou WWPN doit être séparé par une virgule ou un espace, ou figurer sur sa propre ligne.
+.. Sélectionnez *Ajouter des IQN/WWPN*.
+.. (Facultatif) Ajouter des alias uniques à chaque initiateur.
+.. Supprimez de la liste tout initiateur susceptible d'exister déjà dans l'installation.
+.. Sélectionnez *Créer des initiateurs*.
+
+
+|===
+
+
+
+
+== Ajouter des initiateurs à un groupe d'accès aux volumes
+
+Vous pouvez ajouter des initiateurs à un groupe d'accès aux volumes.  Lorsque vous ajoutez un initiateur à un groupe d'accès aux volumes, l'initiateur autorise l'accès à tous les volumes de ce groupe.
+
+.Étapes
+. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants d'administrateur du cluster de stockage Element.
+. Depuis le tableau de bord, développez le nom de votre cluster de stockage dans le menu de navigation de gauche.
+. Sélectionnez *Volumes*.
+. Sélectionnez l'onglet *Initiateurs*.
+. Sélectionnez un ou plusieurs initiateurs que vous souhaitez ajouter.
+. Sélectionnez *Actions > Ajouter au groupe d'accès*.
+. Sélectionnez le groupe d'accès.
+. Confirmez vos modifications en sélectionnant *Ajouter un initiateur*.
+
+
+
+
+== Modifier un alias d'initiateur
+
+Vous pouvez modifier l'alias d'un initiateur existant ou ajouter un alias s'il n'en existe pas déjà un.
+
+.Étapes
+. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants d'administrateur du cluster de stockage Element.
+. Depuis le tableau de bord, développez le nom de votre cluster de stockage dans le menu de navigation de gauche.
+. Sélectionnez *Volumes*.
+. Sélectionnez l'onglet *Initiateurs*.
+. Dans la colonne *Actions*, développez le menu des options de l'initiateur.
+. Sélectionnez *Modifier*.
+. Apportez les modifications nécessaires à l'alias ou ajoutez un nouvel alias.
+. Sélectionnez *Enregistrer*.
+
+
+
+
+== Supprimer les initiateurs
+
+Vous pouvez supprimer un ou plusieurs initiateurs.  Lorsque vous supprimez un initiateur, le système le retire de tout groupe d'accès aux volumes associé.  Toute connexion utilisant l'initiateur reste valide jusqu'à sa réinitialisation.
+
+.Étapes
+. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants d'administrateur du cluster de stockage Element.
+. Depuis le tableau de bord, développez le nom de votre cluster de stockage dans le menu de navigation de gauche.
+. Sélectionnez *Volumes*.
+. Sélectionnez l'onglet *Initiateurs*.
+. Supprimer un ou plusieurs initiateurs :
++
+.. Sélectionnez un ou plusieurs initiateurs que vous souhaitez supprimer.
+.. Sélectionnez *Actions > Supprimer*.
+.. Confirmez l'opération de suppression et sélectionnez *Oui*.
+
+
+
+
+[discrete]
+== Trouver plus d'informations
+
+* link:../concepts/concept_solidfire_concepts_initiators.html["Découvrez les initiateurs"]
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["Découvrez les groupes d'accès au volume"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

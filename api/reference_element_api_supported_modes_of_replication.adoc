@@ -1,0 +1,19 @@
+---
+permalink: api/reference_element_api_supported_modes_of_replication.html 
+sidebar: sidebar 
+keywords: supported,replication,modes,clusters,paired,pair,pairs 
+summary: 'Les modes de réplication suivants sont pris en charge sur les clusters appariés :' 
+---
+= Modes de réplication pris en charge pour les clusters appariés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les modes de réplication suivants sont pris en charge sur les clusters appariés :
+
+* Réplication asynchrone des données : les données envoyées au volume cible de réplication sont envoyées de manière asynchrone.  Le système n'attend pas l'envoi d'un accusé de réception avant d'écrire les données.
+* Réplication synchrone des données : les données envoyées au volume cible de réplication sont envoyées de manière synchrone.  Lorsque les opérations d'E/S envoyées par l'hôte sont acquittées par le système, l'accusé de réception du système est renvoyé à l'hôte et les données sont envoyées au volume cible de réplication.
+* Réplication des données par instantanés uniquement : seuls les instantanés de volume sont répliqués sur le cluster cible.
+

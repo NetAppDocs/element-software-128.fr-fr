@@ -1,0 +1,263 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_recover.html 
+summary: 'Vous pouvez récupérer et redéployer un nœud de gestion pour votre cluster exécutant le logiciel NetApp Element .  Selon votre configuration, vous devrez peut-être reconfigurer l"authentification du nœud de gestion.' 
+keywords: netapp, element, management node, mnode, disaster recovery, redeploy, VM 
+---
+= Récupérer un nœud de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez récupérer et redéployer manuellement le nœud de gestion de votre cluster exécutant le logiciel NetApp Element si votre nœud de gestion précédent utilisait des volumes persistants.
+
+Vous pouvez déployer un nouvel OVA et exécuter un script de redéploiement pour récupérer les données de configuration d'un nœud de gestion précédemment installé exécutant la version 11.3 ou ultérieure.
+
+.Ce dont vous aurez besoin
+* Votre nœud de gestion précédent exécutait le logiciel NetApp Element version 11.3 ou ultérieure aveclink:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Volumes persistants"] Fonctionnalité activée.
+* Vous connaissez le MVIP et le SVIP du cluster contenant les volumes persistants.
+* Votre version de cluster exécute le logiciel NetApp Element 11.3 ou une version ultérieure.
+* Votre installation utilise IPv4.  Le nœud de gestion 11.3 ne prend pas en charge IPv6.
+* Vous êtes autorisé à télécharger des logiciels depuis le site d'assistance NetApp .
+* Vous avez identifié le type d'image de nœud de gestion qui convient à votre plateforme :
++
+[cols="30,30"]
+|===
+| Plate-forme | type d'image d'installation 
+
+
+| Microsoft Hyper-V | .iso 
+
+
+| KVM | .iso 
+
+
+| VMware vSphere | .iso, .ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+
+
+.Étapes
+. <<Téléchargez l'ISO ou l'OVA et déployez la machine virtuelle.>>
+. <<Configurer le réseau>>
+. <<Configurer la synchronisation de l'heure>>
+. <<Configurer le nœud de gestion>>
+
+
+
+
+== Téléchargez l'ISO ou l'OVA et déployez la machine virtuelle.
+
+. Téléchargez le fichier OVA ou ISO pour votre installation depuis le site web. https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Logiciel Element"^] page sur le site d'assistance NetApp .
++
+.. Sélectionnez *Télécharger la dernière version* et acceptez le CLUF.
+.. Sélectionnez l'image du nœud de gestion que vous souhaitez télécharger.
+
+
+. Si vous avez téléchargé le fichier OVA, suivez ces étapes :
++
+.. Déployez l'OVA.
+.. Si votre cluster de stockage se trouve sur un sous-réseau distinct de votre nœud de gestion (eth0) et que vous souhaitez utiliser des volumes persistants, ajoutez un deuxième contrôleur d'interface réseau (NIC) à la VM sur le sous-réseau de stockage (par exemple, eth1) ou assurez-vous que le réseau de gestion peut router vers le réseau de stockage.
+
+
+. Si vous avez téléchargé l'ISO, suivez ces étapes :
++
+.. Créez une nouvelle machine virtuelle 64 bits à partir de votre hyperviseur avec la configuration suivante :
++
+*** Six processeurs virtuels
+*** 24 Go de RAM
+*** Disque virtuel de 400 Go, provisionnement dynamique
+*** Une interface réseau virtuelle avec accès internet et accès au stockage MVIP.
+*** (Optionnel pour le stockage 100% flash SolidFire ) Une interface réseau virtuelle avec accès réseau de gestion au cluster de stockage.  Si votre cluster de stockage se trouve sur un sous-réseau distinct de votre nœud de gestion (eth0) et que vous souhaitez utiliser des volumes persistants, ajoutez un deuxième contrôleur d'interface réseau (NIC) à la VM sur le sous-réseau de stockage (eth1) ou assurez-vous que le réseau de gestion peut router vers le réseau de stockage.
++
+
+IMPORTANT: N’allumez pas la machine virtuelle avant l’étape qui vous invitera à le faire plus loin dans cette procédure.
+
+
+
+.. Attachez l'image ISO à la machine virtuelle et démarrez sur l'image d'installation .iso.
++
+
+NOTE: L'installation d'un nœud de gestion à l'aide de cette image peut entraîner un délai de 30 secondes avant l'affichage de l'écran de démarrage.
+
+
+
+. Mettez sous tension la machine virtuelle du nœud de gestion une fois l'installation terminée.
+
+
+
+
+== Configurer le réseau
+
+. À l'aide de l'interface utilisateur du terminal (TUI), créez un utilisateur administrateur de nœud de gestion.
++
+
+TIP: Pour naviguer dans les options du menu, appuyez sur les touches fléchées Haut ou Bas.  Pour naviguer entre les boutons, appuyez sur Tab.  Pour passer des boutons aux champs, appuyez sur la touche Tab.  Pour naviguer entre les champs, appuyez sur les touches fléchées Haut ou Bas.
+
+. Configurez le réseau du nœud de gestion (eth0).
++
+
+NOTE: Si vous avez besoin d'une carte réseau supplémentaire pour isoler le trafic de stockage, consultez les instructions relatives à la configuration d'une autre carte réseau :link:task_mnode_install_add_storage_NIC.html["Configurer un contrôleur d'interface réseau (NIC) de stockage"] .
+
+
+
+
+
+== Configurer la synchronisation de l'heure
+
+. Vérifiez que l'heure est synchronisée entre le nœud de gestion et le cluster de stockage à l'aide de NTP :
+
+
+
+NOTE: À partir de l'élément 12.3.1, les sous-étapes (a) à (e) sont exécutées automatiquement.  Pour le nœud de gestion 12.3.1 ou version ultérieure, passez à la section suivante :<<substep_f_recover_config_time_sync,sous-étape (f)>> pour terminer la configuration de la synchronisation horaire.
+
+. Connectez-vous au nœud de gestion en utilisant SSH ou la console fournie par votre hyperviseur.
+. Stop NTPD :
++
+[listing]
+----
+sudo service ntpd stop
+----
+. Modifier le fichier de configuration NTP `/etc/ntp.conf` :
++
+.. Commentez les serveurs par défaut(`server 0.gentoo.pool.ntp.org` ) en ajoutant un `#` devant chacun.
+.. Ajoutez une nouvelle ligne pour chaque serveur de temps par défaut que vous souhaitez ajouter. Les serveurs de temps par défaut doivent être les mêmes serveurs NTP que ceux utilisés sur le cluster de stockage que vous utiliserez dans un link:task_mnode_recover.html#configure-the-management-node["étape ultérieure"].
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. Enregistrez le fichier de configuration une fois terminé.
+
+
+. Forcez une synchronisation NTP avec le serveur nouvellement ajouté.
++
+[listing]
+----
+sudo ntpd -gq
+----
+. Redémarrez NTPD.
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_recover_config_time_sync]]Désactiver la synchronisation de l'heure avec l'hôte via l'hyperviseur (voici un exemple VMware) :
++
+
+NOTE: Si vous déployez le mNode dans un environnement d'hyperviseur autre que VMware, par exemple à partir de l'image .iso dans un environnement Openstack, reportez-vous à la documentation de l'hyperviseur pour connaître les commandes équivalentes.
+
++
+.. Désactiver la synchronisation horaire périodique :
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. Afficher et confirmer l'état actuel du service :
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. Dans vSphere, vérifiez que le `Synchronize guest time with host` La case correspondante est décochée dans les options de la machine virtuelle.
++
+
+NOTE: Ne pas activer cette option si vous apportez des modifications ultérieures à la machine virtuelle.
+
+
+
+
+
+
+NOTE: Ne modifiez pas le protocole NTP après avoir terminé la configuration de la synchronisation horaire, car cela affectera le protocole NTP lors de son exécution. <<step_6_recover_mnode_redeploy,commande de redéploiement>> sur le nœud de gestion.
+
+
+
+== Configurer le nœud de gestion
+
+. Créez un répertoire de destination temporaire pour le contenu du bundle de services de gestion :
++
+[listing]
+----
+mkdir -p /sf/etc/mnode/mnode-archive
+----
+. Téléchargez le module de services de gestion (version 2.15.28 ou ultérieure) précédemment installé sur le nœud de gestion existant et enregistrez-le dans le répertoire suivant : `/sf/etc/mnode/` annuaire.
+. Extrayez le paquet téléchargé à l'aide de la commande suivante, en remplaçant la valeur entre crochets [ ] (crochets compris) par le nom du fichier du paquet :
++
+[listing]
+----
+tar -C /sf/etc/mnode -xvf /sf/etc/mnode/[management services bundle file]
+----
+. Extrayez le fichier résultant vers le `/sf/etc/mnode-archive` annuaire:
++
+[listing]
+----
+tar -C /sf/etc/mnode/mnode-archive -xvf /sf/etc/mnode/services_deploy_bundle.tar.gz
+----
+. Créez un fichier de configuration pour les comptes et les volumes :
++
+[listing]
+----
+echo '{"trident": true, "mvip": "[mvip IP address]", "account_name": "[persistent volume account name]"}' | sudo tee /sf/etc/mnode/mnode-archive/management-services-metadata.json
+----
++
+.. Remplacez la valeur entre crochets [ ] (crochets compris) pour chacun des paramètres obligatoires suivants :
++
+*** *[Adresse IP mvip]* : L’adresse IP virtuelle de gestion du cluster de stockage. Configurez le nœud de gestion avec le même cluster de stockage que celui que vous avez utilisé lors de link:task_mnode_recover.html#configure-time-sync["configuration des serveurs NTP"].
+*** *[nom du compte de volume persistant]* : Le nom du compte associé à tous les volumes persistants dans ce cluster de stockage.
+
+
+
+
+
+
+[[step_6_recover_mnode_redeploy]]
+. Configurez et exécutez la commande de redéploiement du nœud de gestion pour vous connecter aux volumes persistants hébergés sur le cluster et démarrer les services avec les données de configuration précédentes du nœud de gestion :
++
+
+NOTE: Vous serez invité à saisir vos mots de passe dans une fenêtre sécurisée.  Si votre cluster se trouve derrière un serveur proxy, vous devez configurer les paramètres du proxy pour pouvoir accéder à un réseau public.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode --mnode_admin_user [username]
+----
++
+.. Remplacez la valeur entre crochets [ ] (crochets compris) par le nom d'utilisateur du compte administrateur du nœud de gestion.  Il s'agit probablement du nom d'utilisateur du compte utilisateur que vous avez utilisé pour vous connecter au nœud de gestion.
++
+
+NOTE: Vous pouvez ajouter le nom d'utilisateur ou laisser le script vous demander ces informations.
+
+.. Exécutez le `redeploy-mnode` commande.  Le script affiche un message de réussite une fois le redéploiement terminé.
+.. Si vous accédez aux interfaces Web d'Element (telles que le nœud de gestion ou NetApp Hybrid Cloud Control) en utilisant le nom de domaine pleinement qualifié (FQDN) du système,link:../upgrade/task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["reconfigurer l'authentification pour le nœud de gestion"] .
+
+
+
+
+
+IMPORTANT: capacité SSH qui fournitlink:task_mnode_enable_remote_support_connections.html["Accès à la session du tunnel d'assistance à distance (RST) de NetApp Support"] est désactivé par défaut sur les nœuds de gestion exécutant les services de gestion 2.18 et versions ultérieures.  Si vous aviez précédemment activé la fonctionnalité SSH sur le nœud de gestion, vous pourriez avoir besoin delink:task_mnode_ssh_management.html["désactiver SSH à nouveau"] sur le nœud de gestion récupéré.
+
+[discrete]
+== Pour en savoir plus, consultez les informations disponibles.
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Volumes persistants"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

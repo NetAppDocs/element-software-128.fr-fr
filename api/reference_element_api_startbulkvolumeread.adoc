@@ -1,0 +1,191 @@
+---
+permalink: api/reference_element_api_startbulkvolumeread.html 
+sidebar: sidebar 
+keywords: volume,read,session,start,starting,bulk,startbulkvolumeread 
+summary: Vous pouvez utiliser la méthode StartBulkVolumeRead pour démarrer une session de lecture de volume en bloc sur un volume spécifié. 
+---
+= Démarrer la lecture en masse
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `StartBulkVolumeRead` méthode pour démarrer une session de lecture de volume en masse sur un volume spécifié.
+
+Seuls deux processus de traitement de volume en vrac peuvent s'exécuter simultanément sur un volume.  Lors de l'initialisation de la session, les données sont lues à partir d'un volume de stockage SolidFire pour être stockées sur une source de sauvegarde externe.  Les données externes sont accessibles via un serveur web fonctionnant sur un nœud de stockage Element.  Les informations d'interaction avec le serveur pour l'accès aux données externes sont transmises par un script exécuté sur le système de stockage.
+
+Au début d'une opération de lecture de volume en masse, un instantané du volume est créé et cet instantané est supprimé une fois la lecture terminée.  Vous pouvez également lire un instantané du volume en saisissant l'identifiant de l'instantané comme paramètre.  Lorsque vous lisez un instantané précédent, le système ne crée pas de nouvel instantané du volume et ne supprime pas non plus l'instantané précédent une fois la lecture terminée.
+
+
+NOTE: Ce processus crée un nouvel instantané si l'identifiant d'un instantané existant n'est pas fourni.  Des instantanés peuvent être créés si le taux de remplissage du cluster est au stade 2 ou 3.  Les instantanés ne sont pas créés lorsque le niveau de remplissage du cluster atteint 4 ou 5.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+format
+ a| 
+Le format des données de volume.  Peut être l'un ou l'autre :
+
+* `uncompressed`Chaque octet du volume est renvoyé sans aucune compression.
+* `native`Les données opaques renvoyées sont plus petites et stockées et écrites plus efficacement lors d'une écriture ultérieure sur un volume en bloc.
+
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+volumeID
+ a| 
+L'identifiant du volume à lire.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+snapshotID
+ a| 
+L'identifiant d'un instantané créé précédemment et utilisé pour les lectures de volumes en masse.  Si aucun identifiant n'est saisi, une capture instantanée de l'image du volume actif actuel est effectuée.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+scénario
+ a| 
+Le nom d'un script exécutable.  Si aucun nom de script n'est fourni, la clé et l'URL sont nécessaires pour accéder aux nœuds de stockage Element.  Le script est exécuté sur le nœud principal, et la clé et l'URL sont renvoyées au script afin que le serveur web local puisse être contacté.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+Paramètres du script
+ a| 
+Paramètres JSON à transmettre au script.
+ a| 
+objet JSON
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+attributs
+ a| 
+Liste de paires nom-valeur au format objet JSON. link:reference_element_api_attributes.html["Apprendre encore plus"].
+ a| 
+objet JSON
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+asyncHandle
+ a| 
+L'identifiant du processus asynchrone dont l'achèvement doit être vérifié.
+ a| 
+entier
+
+
+
+ a| 
+clé
+ a| 
+Clé opaque identifiant la session de manière unique.
+ a| 
+chaîne
+
+
+
+ a| 
+URL
+ a| 
+URL permettant d'accéder au serveur web du nœud.
+ a| 
+chaîne
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "StartBulkVolumeRead",
+   "params": {
+      "volumeID" : 5,
+      "format"  : "native",
+      "snapshotID" : 2
+   },
+   "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+      "id" : 1,
+   "result" : {
+      "asyncHandle" : 1,
+      "key" : "11eed8f086539205beeaadd981aad130",
+      "url" : "https://127.0.0.1:44000/"
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

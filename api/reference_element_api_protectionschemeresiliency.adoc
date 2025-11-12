@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: 'L"objet protectionSchemeResiliency contient des informations indiquant si un cluster de stockage, pour un schéma de protection spécifique, peut se réparer automatiquement après une ou plusieurs défaillances au sein de son protectionDomainType associé.  Un cluster de stockage est considéré comme réparé lorsqu"il peut continuer à lire et à écrire des données malgré la défaillance d"un seul nœud de stockage (un état connu sous le nom de tolérance aux nœuds).' 
+---
+= protectionSchémaRésilience
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet protectionSchemeResiliency contient des informations indiquant si un cluster de stockage, pour un schéma de protection spécifique, peut se réparer automatiquement après une ou plusieurs défaillances au sein de son protectionDomainType associé.  Un cluster de stockage est considéré comme réparé lorsqu'il peut continuer à lire et à écrire des données malgré la défaillance d'un seul nœud de stockage (un état connu sous le nom de tolérance aux nœuds).
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+schéma de protection
+ a| 
+Schéma de protection actuel de ce cluster de stockage.  La seule valeur possible est doubleHelix.
+ a| 
+chaîne
+
+
+
+ a| 
+Échecs durables pour les données par blocs
+ a| 
+Le nombre prévu de pannes simultanées pouvant survenir sans perdre la capacité de se rétablir automatiquement et de revenir à un état de tolérance des nœuds pour les données.
+ a| 
+entier
+
+
+
+ a| 
+Échecs durables pour les métadonnées
+ a| 
+Le nombre prévu de défaillances simultanées pouvant survenir sans perdre la capacité de se rétablir automatiquement dans un état de tolérance des nœuds pour les métadonnées.
+ a| 
+entier
+
+|===

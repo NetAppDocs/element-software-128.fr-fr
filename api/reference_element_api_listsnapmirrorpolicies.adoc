@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorpolicies.html 
+sidebar: sidebar 
+keywords: snapmirror,policy,policies,list,listing,ontap,listsnapmirrorpolicies 
+summary: 'L"interface utilisateur Web du logiciel Element utilise la méthode ListSnapMirrorPolicies pour lister toutes les politiques SnapMirror sur un système ONTAP distant.' 
+---
+= ListSnapMirrorPolicies
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web du logiciel Element utilise `ListSnapMirrorPolicies` Méthode permettant de lister toutes les politiques SnapMirror sur un système ONTAP distant.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+N'afficher que les politiques associées à l'ID de point de terminaison spécifié.  Si aucun identifiant de point de terminaison n'est fourni, le système répertorie les politiques de tous les points de terminaison SnapMirror connus.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+Politiques SnapMirror
+ a| 
+Liste des politiques SnapMirror sur le système de stockage ONTAP .
+ a| 
+xref:reference_element_api_snapmirrorpolicy.adoc[snapMirrorPolicy]tableau
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,1

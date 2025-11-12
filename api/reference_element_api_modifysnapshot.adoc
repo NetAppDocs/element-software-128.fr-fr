@@ -1,0 +1,169 @@
+---
+permalink: api/reference_element_api_modifysnapshot.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,attributes,attribute 
+summary: 'Vous pouvez utiliser ModifySnapshot pour modifier les attributs actuellement attribués à un instantané.  Vous pouvez également utiliser cette méthode pour permettre la réplication à distance des instantanés créés sur le volume de lecture/écriture (source) vers un cluster de stockage cible exécutant le logiciel Element.' 
+---
+= Modifier l'instantané
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `ModifySnapshot` modifier les attributs actuellement attribués à un instantané.  Vous pouvez également utiliser cette méthode pour permettre la réplication à distance des instantanés créés sur le volume de lecture/écriture (source) vers un cluster de stockage cible exécutant le logiciel Element.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+
+
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+activer la réplication à distance
+ a| 
+Utilisez cette fonction pour permettre la réplication de l'instantané créé vers un cluster de stockage distant. Valeurs possibles :
+
+* `true`L'instantané sera répliqué sur un stockage distant.
+* `false`La capture d'écran ne sera pas répliquée sur le stockage distant.
+
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+
+
+ a| 
+expirationTime
+ a| 
+Spécifiez la durée après laquelle l'instantané peut être supprimé.  Ne peut être utilisé avec rétention.  Si ni expirationTime, ni la durée de conservation de l'instantané d'origine ne sont spécifiés, l'instantané n'expirera pas.  Le format de l'heure est une chaîne de date ISO 8601 pour une expiration basée sur le temps ; sinon, elle n'expirera pas.  La valeur nulle entraîne la conservation permanente de l'instantané.  La valeur fifo permet de conserver l'instantané selon le principe du premier entré, premier sorti (FIFO), par rapport aux autres instantanés FIFO sur le volume.  L'API échouera si aucun espace FIFO n'est disponible.
+ a| 
+Chaîne de date ISO 8601
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+nom
+ a| 
+Le nom de la capture d'écran.  Si aucun nom n'est saisi, la date et l'heure de la prise de vue seront utilisées.  La longueur maximale autorisée pour un nom est de 255 caractères.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+Étiquette utilisée par le logiciel SnapMirror pour spécifier la politique de conservation des instantanés sur un point de terminaison SnapMirror .
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+snapshotID
+ a| 
+Identifiant de l'instantané.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+instantané
+ a| 
+Un objet contenant des informations sur l'instantané récemment modifié.
+ a| 
+xref:reference_element_api_snapshot.adoc[instantané]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "ModifySnapshot",
+  "params": {
+    "snapshotID": 3114,
+    "enableRemoteReplication": "true",
+    "name" : "Chicago"
+  },
+  "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:26:20Z",
+      "enableRemoteReplication": true,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1",
+      "snapshotID": 3114,
+      "snapshotUUID": "5809a671-4ad0-4a76-9bf6-01cccf1e65eb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    }
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

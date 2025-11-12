@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_remove_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, remove, multi-drive slice service 
+summary: 'Vous pouvez supprimer les disques du service de découpage multi-lecteurs (MDSS).  Cette procédure s"applique uniquement si le nœud possède plusieurs disques de partition.' 
+---
+= Retirer les lecteurs MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer les disques du service de découpage multi-lecteurs (MDSS).  Cette procédure s'applique uniquement si le nœud possède plusieurs disques de partition.
+
+
+NOTE: Si le disque de la tranche système et le disque de l'emplacement 2 tombent en panne, le système arrêtera les services de tranche et retirera les disques.  S'il n'y a pas de panne et que vous retirez les disques, les deux disques doivent être retirés simultanément.
+
+. Cliquez sur *Cluster* > *Disques*.
+. Dans l'onglet *Disponibles*, cochez la case correspondant aux disques de partition à supprimer.
+. Cliquez sur *Actions groupées*.
+. Cliquez sur *Supprimer*.
+. Confirmez l'action.
+

@@ -1,0 +1,351 @@
+---
+permalink: api/reference_element_api_modifyschedule.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,schedule,scheduled,delete,pause,modifyschedule 
+summary: Vous pouvez utiliser ModifySchedule pour modifier les intervalles auxquels un instantané planifié est effectué.  Vous pouvez également supprimer ou suspendre une planification en utilisant cette méthode. 
+---
+= Modifier le calendrier
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `ModifySchedule` modifier les intervalles auxquels un instantané programmé est effectué.  Vous pouvez également supprimer ou suspendre une planification en utilisant cette méthode.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+attributs
+ a| 
+Utilisez cette fonction pour modifier la fréquence d'apparition des instantanés. Valeurs possibles :
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+objet JSON
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+heures
+ a| 
+Nombre d'heures entre les instantanés ou heure à laquelle l'instantané aura lieu en mode Jours de la semaine ou Jours du mois. Les valeurs valides sont comprises entre 0 et 24.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+nom
+ a| 
+Le nom de la capture d'écran.  Si aucun nom n'est saisi, la date et l'heure de la prise de vue du groupe seront utilisées.  La longueur maximale autorisée pour un nom est de 244 caractères.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+minutes
+ a| 
+Nombre de minutes entre les instantanés ou minute à laquelle l'instantané aura lieu en mode Jours de la semaine ou Jours du mois. Les valeurs valides sont comprises entre 0 et 59.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+| dernier statut d'exécution | Résultat ou état de la dernière création d'instantané planifiée. | chaîne | Aucune | Non 
+
+
+ a| 
+pause
+ a| 
+Indique si la planification doit être suspendue ou non.  Valeurs valides :
+
+* `true`
+* `false`
+
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+récurrent
+ a| 
+Indique si la programmation sera récurrente ou non.  Les valeurs valides sont :
+
+* `true`
+* `false`
+
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+exécuterIntervalle suivant
+ a| 
+Utilisez cette option pour choisir si la capture instantanée doit être exécutée ou non lors de la prochaine activation du planificateur.  Valeurs valides :
+
+* `true`
+* `false`
+
+
+Lorsque cette option est activée (true), l'instantané planifié s'exécute lors de la prochaine activité du planificateur, puis repasse à la valeur false.
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+
+
+ a| 
+ID de planification
+ a| 
+Identifiant unique du planning.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+nom_de_l'horaire
+ a| 
+Nom unique pour le calendrier.  La longueur maximale autorisée pour le nom du planning est de 244 caractères.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+type de planification
+ a| 
+Indique le type de planning à créer.  La seule valeur prise en charge est `snapshot` .
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+Le nom unique attribué à la planification, la période de conservation de l'instantané créé et l'identifiant du volume à partir duquel l'instantané a été créé.  Valeurs valides :
+
+* `enableRemoteReplication`: Indique si l'instantané doit être inclus dans la réplication distante.  (booléen)
+* `ensureSerialCreation`: Indique si la création d'un nouvel instantané doit être autorisée si une réplication d'instantané précédente est en cours.  (booléen)
+* `name`: Le nom de l'instantané à utiliser.  (chaîne)
+* `retention`: La durée de conservation de l'instantané.  Selon l'heure, il s'affiche dans l'un des formats suivants :
++
+** `fifo`: L'instantané est conservé selon le principe du premier entré, premier sorti (FIFO).  Si elle est vide, la capture d'écran est conservée indéfiniment.  (chaîne)
+** HH:mm:ss
+
+
+* `volumeID`: L'identifiant du volume à inclure dans l'instantané.  (entier)
+* `volumes`: Liste des identifiants de volume à inclure dans l'instantané de groupe.  (tableau d'entiers)
+
+ a| 
+link:reference_element_api_schedule.html["calendrier"^]
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+Étiquette utilisée par le logiciel SnapMirror pour spécifier la politique de conservation des instantanés sur un point de terminaison SnapMirror .
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+à supprimer
+ a| 
+Indique si le calendrier est marqué pour suppression.  Valeurs valides :
+
+* `true`
+* `false`
+
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+date de début
+ a| 
+Indique la date à laquelle le calendrier a débuté ou débutera pour la première fois.
+ a| 
+Chaîne de date ISO 8601
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+jours du mois
+ a| 
+Les jours du mois où une capture d'écran sera effectuée. Les valeurs valides sont comprises entre 1 et 31.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+jours de la semaine
+ a| 
+Jour de la semaine où la capture d'écran doit être effectuée.  Le jour de la semaine commence le dimanche avec la valeur 0 et un décalage de 1.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+calendrier
+ a| 
+Un objet contenant les attributs de planification modifiés.
+ a| 
+xref:reference_element_api_schedule.adoc[calendrier]
+
+|===
+
+
+== Exemple de demande
+
+[listing]
+----
+{
+  "method": "ModifySchedule",
+  "params": {
+    "scheduleName" : "Chicago",
+    "scheduleID" : 3
+    },
+  "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+            },
+      "hasError": false,
+      "hours": 5,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 3,
+      "scheduleInfo": {
+        "volumeID": "2"
+            },
+      "scheduleName": "Chicago",
+      "scheduleType": "Snapshot",
+      "startingDate": null,
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 2,
+          "offset": 1
+      }
+      ]
+    }
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

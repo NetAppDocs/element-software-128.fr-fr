@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_request_object_members.html 
+sidebar: sidebar 
+keywords: request,object,members 
+summary: 'Chaque requête API du logiciel Element comporte les éléments de base suivants :' 
+---
+= membres de l'objet Request
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Chaque requête API du logiciel Element comporte les éléments de base suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+méthode
+ a| 
+Nom de la méthode à appeler.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+paramètres
+ a| 
+Objet contenant les paramètres de la méthode appelée.  Les paramètres nommés sont obligatoires.  Les paramètres positionnels (transmis sous forme de tableau) ne sont pas autorisés.
+ a| 
+objet JSON
+ a| 
+{}
+ a| 
+Non
+
+
+
+ a| 
+identifiant
+ a| 
+Identifiant utilisé pour faire correspondre la requête à la réponse, renvoyée dans le résultat.
+ a| 
+chaîne de caractères ou entier
+ a| 
+{}
+ a| 
+Non
+
+|===

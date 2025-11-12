@@ -1,0 +1,553 @@
+---
+permalink: storage/reference_prereq_network_port_requirements.html 
+sidebar: sidebar 
+keywords: network port requirements, TCP ports, firewall, utilities, URL, access attempt, ICMP, MIP, SIP, MVIP, SVIP 
+summary: Vous devrez peut-être autoriser les ports TCP suivants à travers le pare-feu périphérique de votre centre de données afin de pouvoir gérer le système à distance et permettre aux clients situés en dehors de votre centre de données de se connecter aux ressources.  Certains de ces ports pourraient ne pas être nécessaires, selon votre utilisation du système. 
+---
+= Exigences relatives aux ports réseau
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devrez peut-être autoriser les ports TCP et UDP suivants via le pare-feu périphérique de votre centre de données afin de pouvoir gérer le système à distance et permettre aux clients situés en dehors de votre centre de données de se connecter aux ressources.  Certains de ces ports pourraient ne pas être nécessaires, selon votre utilisation du système.
+
+Tous les ports sont TCP sauf indication contraire, et tous les ports TCP doivent prendre en charge la communication de prise de contact en trois étapes entre le serveur de support NetApp , le nœud de gestion et les nœuds exécutant le logiciel Element.  Par exemple, l'hôte sur un nœud de gestion source communique avec l'hôte sur une destination MVIP de cluster de stockage via le port TCP 443, et l'hôte de destination communique en retour avec l'hôte source via n'importe quel port.
+
+
+TIP: Activez le protocole ICMP entre le nœud de gestion, les nœuds exécutant le logiciel Element et le MVIP du cluster.
+
+Les abréviations suivantes sont utilisées dans le tableau :
+
+* MIP : Adresse IP de gestion, une adresse par nœud
+* SIP : Adresse IP de stockage, une adresse par nœud
+* MVIP : Adresse IP virtuelle de gestion
+* SVIP : Adresse IP virtuelle de stockage
+
+
+[cols="25,25,15,35"]
+|===
+| Source | Destination | Port | Description 
+
+
+ a| 
+clients iSCSI
+ a| 
+Cluster de stockage MVIP
+ a| 
+443
+ a| 
+(Facultatif) Accès à l'interface utilisateur et à l'API
+
+
+
+ a| 
+clients iSCSI
+ a| 
+Cluster de stockage SVIP
+ a| 
+3260
+ a| 
+Communications iSCSI du client
+
+
+
+ a| 
+clients iSCSI
+ a| 
+SIP du nœud de stockage
+ a| 
+3260
+ a| 
+Communications iSCSI du client
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+`sfsupport.solidfire.com`
+ a| 
+22
+ a| 
+Tunnel SSH inversé pour l'accès au support
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+Nœud de stockage MIP
+ a| 
+22
+ a| 
+Accès SSH pour l'assistance
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+Serveurs DNS
+ a| 
+53 TCP/UDP
+ a| 
+Recherche DNS
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+Nœud de stockage MIP
+ a| 
+442
+ a| 
+Accès à l'interface utilisateur et à l'API pour les mises à jour du nœud de stockage et du logiciel Element
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+Cluster de stockage MVIP
+ a| 
+442
+ a| 
+Accès à l'interface utilisateur et à l'API pour les mises à jour du nœud de stockage et du logiciel Element
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+`monitoring.solidfire.com`
+ a| 
+443
+ a| 
+Le cluster de stockage communique avec Active IQ.
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+Cluster de stockage MVIP
+ a| 
+443
+ a| 
+Accès à l'interface utilisateur et à l'API pour les mises à jour du nœud de stockage et du logiciel Element
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+repo.netapp.com
+ a| 
+443
+ a| 
+Fournit un accès aux composants nécessaires à l'installation/la mise à jour du déploiement sur site.
+
+
+
+| Nœud de gestion | Nœud de stockage BMC/IPMI | 623 UDP | Port RMCP.  Ceci est nécessaire pour gérer les systèmes compatibles IPMI. 
+
+
+ a| 
+Nœud de gestion
+ a| 
+Nœud témoin
+ a| 
+9442
+ a| 
+Service API de configuration par nœud
+
+
+
+ a| 
+Nœud de gestion
+ a| 
+vCenter Server
+ a| 
+9443
+ a| 
+Enregistrement du plug-in vCenter.  Le port peut être fermé une fois l'enregistrement terminé.
+
+
+
+ a| 
+serveur SNMP
+ a| 
+Cluster de stockage MVIP
+ a| 
+161 UDP
+ a| 
+Interrogation SNMP
+
+
+
+ a| 
+serveur SNMP
+| Nœud de stockage MIP  a| 
+161 UDP
+ a| 
+Interrogation SNMP
+
+
+
+| Nœud de stockage BMC/IPMI | Nœud de gestion | 623 UDP | Port RMCP.  Ceci est nécessaire pour gérer les systèmes compatibles IPMI. 
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Serveurs DNS
+ a| 
+53 TCP/UDP
+ a| 
+Recherche DNS
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Nœud de gestion
+ a| 
+80
+ a| 
+Mises à jour du logiciel Element
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Point de terminaison S3/Swift
+ a| 
+80
+ a| 
+(Facultatif) Communication HTTP avec le point de terminaison S3/Swift pour la sauvegarde et la récupération
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+serveur NTP
+ a| 
+123 UDP
+ a| 
+NTP
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Nœud de gestion
+ a| 
+162 UDP
+ a| 
+(Facultatif) Traps SNMP
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+serveur SNMP
+ a| 
+162 UDP
+ a| 
+(Facultatif) Traps SNMP
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+serveur LDAP
+ a| 
+389 TCP/UDP
+ a| 
+(Facultatif) Recherche LDAP
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Nœud de gestion
+ a| 
+443
+ a| 
+Mises à niveau du stockage des éléments
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Cluster de stockage distant MVIP
+ a| 
+443
+ a| 
+communication d'appariement de clusters de réplication à distance
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Nœud de stockage distant MIP
+ a| 
+443
+ a| 
+communication d'appariement de clusters de réplication à distance
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Point de terminaison S3/Swift
+ a| 
+443
+ a| 
+(Facultatif) Communication HTTPS avec le point de terminaison S3/Swift pour la sauvegarde et la récupération
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Nœud de gestion
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Transfert Syslog
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Serveur Syslog
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Transfert Syslog
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+serveur LDAPS
+ a| 
+636 TCP/UDP
+ a| 
+Recherche LDAPS
+
+
+
+ a| 
+Nœud de stockage MIP
+ a| 
+Nœud de stockage distant MIP
+ a| 
+2181
+ a| 
+Communication inter-clusters pour la réplication à distance
+
+
+
+ a| 
+SIP du nœud de stockage
+ a| 
+Nœud de stockage distant SIP
+ a| 
+2181
+ a| 
+Communication inter-clusters pour la réplication à distance
+
+
+
+ a| 
+SIP du nœud de stockage
+ a| 
+SIP du nœud de stockage
+ a| 
+3260
+ a| 
+iSCSI inter-nœud
+
+
+
+ a| 
+SIP du nœud de stockage
+ a| 
+Nœud de stockage distant SIP
+ a| 
+4000 à 4020
+ a| 
+Réplication à distance et transfert de données de nœud à nœud
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Nœud de gestion
+ a| 
+442
+ a| 
+Accès à l'interface utilisateur HTTPS du nœud de gestion
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Nœud de stockage MIP
+ a| 
+442
+ a| 
+Interface utilisateur HTTPS et accès API au nœud de stockage
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Nœud de gestion
+ a| 
+443
+ a| 
+Interface utilisateur HTTPS et accès API au nœud de gestion
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Cluster de stockage MVIP
+ a| 
+443
+ a| 
+Interface utilisateur HTTPS et accès API au cluster de stockage
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Contrôleur de gestion de carte mère (BMC)/interface de gestion de plateforme intelligente (IPMI) des séries H410 et H600 des nœuds de stockage
+ a| 
+443
+ a| 
+Interface utilisateur HTTPS et accès API au contrôle à distance du nœud
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Nœud de stockage MIP
+ a| 
+443
+ a| 
+Création d'un cluster de stockage HTTPS, accès à l'interface utilisateur du cluster de stockage après déploiement
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Nœud de stockage BMC/IPMI séries H410 et H600
+ a| 
+623 UDP
+ a| 
+Port du protocole de contrôle de gestion à distance.  Ceci est nécessaire pour gérer les systèmes compatibles IPMI.
+
+
+
+ a| 
+PC de l'administrateur système
+ a| 
+Nœud témoin
+ a| 
+8080
+ a| 
+Interface utilisateur Web par nœud témoin
+
+
+
+ a| 
+vCenter Server
+ a| 
+Cluster de stockage MVIP
+ a| 
+443
+ a| 
+Accès à l'API du plug-in vCenter
+
+
+
+ a| 
+vCenter Server
+ a| 
+Prise à distance
+ a| 
+8333
+ a| 
+Service de plug-in vCenter à distance
+
+
+
+ a| 
+vCenter Server
+ a| 
+Nœud de gestion
+ a| 
+8443
+ a| 
+(Optionnel) Service QoSSIOC du plug-in vCenter.
+
+
+
+ a| 
+vCenter Server
+ a| 
+Cluster de stockage MVIP
+ a| 
+8444
+ a| 
+Accès au fournisseur vCenter VASA (VVols uniquement)
+
+
+
+ a| 
+vCenter Server
+ a| 
+Nœud de gestion
+ a| 
+9443
+ a| 
+Enregistrement du plug-in vCenter.  Le port peut être fermé une fois l'enregistrement terminé.
+
+|===
+
+
+== Pour plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

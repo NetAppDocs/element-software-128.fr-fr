@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_task_virtual_volumes.html 
+sidebar: sidebar 
+keywords: object,objects,task 
+summary: 'L"objet tâche contient des informations sur une tâche de volume virtuel en cours d"exécution ou terminée dans le système.  Vous pouvez utiliser la méthode ListVirtualVolumeTasks pour récupérer ces informations pour toutes les tâches de volume virtuel.' 
+---
+= tâche (volumes virtuels)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet tâche contient des informations sur une tâche de volume virtuel en cours d'exécution ou terminée dans le système.  Vous pouvez utiliser le `ListVirtualVolumeTasks` méthode permettant de récupérer ces informations pour toutes les tâches de volume virtuel.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+annulé
+ a| 
+Indique si la tâche a été annulée ou non. Valeurs possibles :
+
+* true
+* FAUX
+
+ a| 
+booléen
+
+
+
+ a| 
+cloneVirtualVolumeID
+ a| 
+L'identifiant unique du volume virtuel cloné (pour les tâches de clonage).
+ a| 
+UUID
+
+
+
+ a| 
+métadonnées des parents
+ a| 
+Un objet contenant les métadonnées du parent pour les tâches qui clonent ou créent des instantanés d'un volume virtuel.
+ a| 
+objet JSON
+
+
+
+ a| 
+taille totale des parents
+ a| 
+L'espace total disponible (en octets) sur le parent pour les tâches de clonage ou de capture d'instantané.
+ a| 
+entier
+
+
+
+ a| 
+taille utilisée par le parent
+ a| 
+L'espace utilisé du parent (en octets) pour les tâches de clonage ou de capture d'écran.
+ a| 
+entier
+
+
+
+ a| 
+opération
+ a| 
+Le type d'opération effectuée par la tâche. Valeurs possibles :
+
+* Inconnu : L'opération de la tâche est inconnue.
+* préparer : La tâche consiste à préparer un volume virtuel.
+* instantané : La tâche consiste à créer un instantané d’un volume virtuel.
+* restauration : La tâche consiste à restaurer un volume virtuel à partir d'un instantané.
+* clone : La tâche consiste à créer un clone du volume virtuel.
+* fastClone : Cette tâche consiste à créer un clone rapide d’un volume virtuel.
+* copyDiffs : La tâche consiste à copier les blocs différents vers un volume virtuel.
+
+ a| 
+chaîne
+
+
+
+ a| 
+statut
+ a| 
+État actuel de la tâche de volume virtuel. Valeurs possibles :
+
+* Erreur : La tâche a échoué et a renvoyé une erreur.
+* En file d'attente : La tâche est en attente d'exécution.
+* Exécution : La tâche est en cours d'exécution.
+* Succès : La tâche a été accomplie avec succès.
+
+ a| 
+chaîne
+
+
+
+ a| 
+ID d'hôte du volume virtuel
+ a| 
+L'identifiant unique de l'hôte qui a lancé la tâche.
+ a| 
+UUID
+
+
+
+ a| 
+ID de volume virtuel
+ a| 
+Le nouvel identifiant unique du volume virtuel (pour les tâches qui créent un nouveau volume virtuel).
+ a| 
+UUID
+
+
+
+ a| 
+ID de tâche de volume virtuel
+ a| 
+L'identifiant unique de la tâche.
+ a| 
+UUID
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listvirtualvolumetasks.adoc[Lister les tâches de volume virtuel]

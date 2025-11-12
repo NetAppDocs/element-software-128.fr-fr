@@ -1,0 +1,40 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_solidfire.html 
+sidebar: sidebar 
+keywords: volume restore, solidfire storage cluster 
+summary: 'Vous pouvez restaurer un volume à partir d"une sauvegarde sur un cluster de stockage SolidFire .' 
+---
+= Restaurez un volume à partir d'une sauvegarde sur un cluster de stockage SolidFire .
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez restaurer un volume à partir d'une sauvegarde sur un cluster de stockage SolidFire .
+
+Lors de la sauvegarde ou de la restauration d'un cluster à un autre, le système génère une clé qui servira d'authentification entre les clusters.  Cette clé d'écriture en masse permet au cluster source de s'authentifier auprès du cluster de destination, assurant ainsi un niveau de sécurité lors de l'écriture sur le volume de destination.  Dans le cadre du processus de sauvegarde ou de restauration, vous devez générer une clé d'écriture de volume en masse à partir du volume de destination avant de démarrer l'opération.
+
+. Sur le cluster de destination, cliquez sur *Gestion* > *Volumes*.
+. Cliquez sur l'icône Actions correspondant au volume que vous souhaitez restaurer.
+. Dans le menu qui s'affiche, cliquez sur *Restaurer à partir de*.
+. Dans la boîte de dialogue *Restauration intégrée*, sous *Restaurer à partir de*, sélectionnez * SolidFire*.
+. Sélectionnez l'option correspondant à la sauvegarde sous *Format des données* :
++
+** *Natif* : Un format compressé lisible uniquement par les systèmes de stockage SolidFire .
+** *Non compressé* : Un format non compressé compatible avec d’autres systèmes.
+
+
+. Cliquez sur *Générer la clé*.
+. Copiez les informations de la *clé d'écriture en masse* dans le presse-papiers.
+. Sur le cluster source, cliquez sur *Gestion* > *Volumes*.
+. Cliquez sur l'icône Actions correspondant au volume que vous souhaitez utiliser pour la restauration.
+. Dans le menu qui apparaît, cliquez sur *Sauvegarder vers*.
+. Dans la boîte de dialogue *Sauvegarde intégrée*, sélectionnez * SolidFire* sous *Sauvegarder vers*.
+. Sélectionnez l'option correspondant à la sauvegarde sous *Format des données*.
+. Saisissez l'adresse IP virtuelle de gestion du cluster du volume de destination dans le champ *Adresse IP virtuelle du cluster distant*.
+. Saisissez le nom d'utilisateur du cluster distant dans le champ *Nom d'utilisateur du cluster distant*.
+. Saisissez le mot de passe du cluster distant dans le champ *Mot de passe du cluster distant*.
+. Collez la clé depuis votre presse-papiers dans le champ *Clé d'écriture en masse*.
+. Cliquez sur *Commencer la lecture*.
+

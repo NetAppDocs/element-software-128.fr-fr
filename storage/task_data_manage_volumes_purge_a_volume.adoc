@@ -1,0 +1,51 @@
+---
+permalink: storage/task_data_manage_volumes_purge_a_volume.html 
+sidebar: sidebar 
+keywords: volumes, purge a volume 
+summary: 'Lorsqu"un volume est purgé, il est définitivement supprimé du système.  Toutes les données du volume sont perdues.' 
+---
+= Purger un volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsqu'un volume est purgé, il est définitivement supprimé du système.  Toutes les données du volume sont perdues.
+
+Le système purge automatiquement les volumes supprimés huit heures après leur suppression.  Toutefois, si vous souhaitez purger un volume avant l'heure prévue, vous pouvez le faire.
+
+
+NOTE: Si vous purgez un grand nombre de volumes simultanément, ou si les volumes que vous purgez comportent chacun de nombreux instantanés associés, le processus de purge peut échouer et renvoyer l'erreur « xDBConnectionLoss », qui apparaîtra dans le journal de l'API de l'interface utilisateur Web d'Element.  Si cela se produit, réessayez la purge avec des volumes inférieurs.
+
+. Sélectionnez *Gestion* > *Volumes*.
+. Cliquez sur le bouton *Supprimé*.
+. Suivez les étapes pour purger un seul volume ou plusieurs volumes.
++
+|===
+
+
+| Option | Étapes 
+
+
+ a| 
+Purger un seul volume
+ a| 
+.. Cliquez sur l'icône Actions correspondant au volume que vous souhaitez purger.
+.. Cliquez sur *Purge*.
+.. Confirmez l'action.
+
+
+
+
+ a| 
+Purger plusieurs volumes
+ a| 
+.. Sélectionnez les volumes que vous souhaitez purger.
+.. Cliquez sur *Actions groupées*.
+.. Dans le menu qui s'affiche, sélectionnez *Purge*.
+.. Confirmez l'action.
+
+
+|===
+

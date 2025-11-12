@@ -1,0 +1,20 @@
+= Trouver plus d'informations
+:allow-uri-read: 
+
+
+Le processus Return To Factory Image (RTFI) utilise un support amorçable et installable avec un système d'exploitation Linux minimaliste et totalement autonome pour déployer le logiciel Element sur un nœud.  Vous pouvez télécharger l'image ISO RTFI spécifique à votre version du logiciel Element depuis le https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Site d'assistance NetApp"^] .
+
+Après avoir téléchargé l'image ISO RTFI, vous pouvez la déployer selon l'une des méthodes couramment utilisées suivantes :
+
+* *Clé USB physique* : Vous pouvez écrire une image ISO amorçable du logiciel Element sur une clé USB.  Pour obtenir des instructions, consultez l'article de la base de connaissances. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["Comment créer une clé RTFI pour réinstaller l'image d'un nœud de stockage SolidFire"^] .  Insérez la clé USB contenant l'ISO dans le nœud et démarrez à partir de la clé USB.
+* *Supports virtuels utilisant le port de gestion du contrôleur de gestion de la carte mère (BMC)* : Vous pouvez utiliser le BMC pour vous connecter dynamiquement à l’ISO situé sur votre système client.  L'ISO est mise à disposition du système d'exploitation hôte sous forme de lecteur virtuel (CD ou DVD).  Pour plus d'informations, consultez l'article de la base de connaissances. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_RTFI_a_node_via_BMC["Comment obtenir des informations en temps réel (RTFI) sur un nœud via BMC"^] .
+* *Démarrage réseau via PXE (Preboot Execution Environment), TFTP (Trivial File Transfer Protocol) ou FTP* : au lieu de décompresser manuellement une image ISO, vous pouvez utiliser `autofs` extraire automatiquement une image lorsque le processus RTFI le demande.  Ce mécanisme de déploiement nécessite une configuration initiale plus importante, mais permet une automatisation correcte et une évolutivité de l'installation.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

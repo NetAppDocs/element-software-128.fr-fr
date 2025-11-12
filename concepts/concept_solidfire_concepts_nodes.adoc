@@ -1,0 +1,98 @@
+---
+permalink: concepts/concept_solidfire_concepts_nodes.html 
+sidebar: sidebar 
+keywords: what is, node, management node, storage node, fibre channel, state, pending, active 
+summary: Les nœuds sont les éléments matériels regroupés en cluster pour être utilisés comme ressources de stockage par blocs ou de calcul. 
+---
+= Nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les nœuds sont des ressources matérielles ou virtuelles regroupées en cluster pour fournir des capacités de stockage par blocs et de calcul.
+
+Le logiciel NetApp Element définit différents rôles de nœud pour un cluster.  Les types de rôles de nœud sont les suivants :
+
+* <<Nœud de gestion>>
+* <<Nœud de stockage>>
+* <<Nœud Fibre Channel>>
+
+
+<<États de fonctionnement des nœuds,États des nœuds>>varient en fonction de l'association au sein du cluster.
+
+
+
+== Nœud de gestion
+
+Un nœud de gestion est une machine virtuelle utilisée pour mettre à niveau et fournir des services système, notamment la surveillance et la télémétrie, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et permettre l'accès au support NetApp pour le dépannage.link:../concepts/concept_intro_management_node.html["Apprendre encore plus"]
+
+
+
+== Nœud de stockage
+
+Un nœud de stockage SolidFire est un serveur contenant un ensemble de disques qui communiquent entre eux via l'interface réseau Bond10G.  Les disques du nœud contiennent de l'espace bloc et de métadonnées pour le stockage et la gestion des données.  Chaque nœud contient une image d'usine du logiciel NetApp Element .
+
+Les nœuds de stockage présentent les caractéristiques suivantes :
+
+* Chaque nœud possède un nom unique.  Si aucun nom de nœud n'est spécifié par un administrateur, il prend par défaut la valeur SF-XXXX, où XXXX correspond à quatre caractères aléatoires générés par le système.
+* Chaque nœud possède son propre cache d'écriture NVRAM(mémoire vive non volatile haute performance) afin d'améliorer les performances globales du système et de réduire la latence d'écriture.
+* Chaque nœud est connecté à deux réseaux, stockage et gestion, chacun disposant de deux liaisons indépendantes pour la redondance et les performances.  Chaque nœud nécessite une adresse IP sur chaque réseau.
+* Vous pouvez créer un cluster avec de nouveaux nœuds de stockage, ou ajouter des nœuds de stockage à un cluster existant pour augmenter la capacité et les performances de stockage.
+* Vous pouvez ajouter ou supprimer des nœuds du cluster à tout moment sans interrompre le service.
+
+
+
+
+== Nœud Fibre Channel
+
+Les nœuds Fibre Channel de SolidFire assurent la connectivité à un commutateur Fibre Channel, auquel vous pouvez connecter des clients Fibre Channel.  Les nœuds Fibre Channel servent de convertisseur de protocole entre les protocoles Fibre Channel et iSCSI ; cela vous permet d'ajouter une connectivité Fibre Channel à tout cluster SolidFire nouveau ou existant.
+
+Les nœuds Fibre Channel présentent les caractéristiques suivantes :
+
+* Les commutateurs Fibre Channel gèrent l'état du réseau, assurant des interconnexions optimisées.
+* Le trafic entre deux ports transite uniquement par les commutateurs ; il n'est transmis à aucun autre port.
+* La défaillance d'un port est isolée et n'affecte pas le fonctionnement des autres ports.
+* Plusieurs paires de ports peuvent communiquer simultanément au sein d'un réseau.
+
+
+
+
+== États de fonctionnement des nœuds
+
+Un nœud peut se trouver dans l'un des nombreux états possibles en fonction de son niveau de configuration.
+
+* *Disponible*
++
+Ce nœud n'a pas de nom de cluster associé et ne fait pas encore partie d'un cluster.
+
+* *En attente*
++
+Le nœud est configuré et peut être ajouté à un cluster désigné.
+
++
+L'authentification n'est pas requise pour accéder au nœud.
+
+* *Activité en attente*
++
+Le système est en train d'installer le logiciel Element compatible sur le nœud.  Une fois l'opération terminée, le nœud passera à l'état Actif.
+
+* *Actif*
++
+Le nœud participe à un cluster.
+
++
+L'authentification est requise pour modifier le nœud.
+
+
+
+Dans chacun de ces états, certains champs sont en lecture seule.
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

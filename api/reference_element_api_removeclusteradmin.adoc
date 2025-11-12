@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removeclusteradmin.html 
+sidebar: sidebar 
+keywords: cluster,admin,remove,removing,removeclusteradmin 
+summary: 'Vous pouvez utiliser la méthode RemoveClusterAdmin pour supprimer un administrateur de cluster, un administrateur de cluster LDAP ou un administrateur de cluster d"un fournisseur d"identité tiers (IdP).  Vous ne pouvez pas supprimer le compte d"administrateur de cluster « admin ».' 
+---
+= Supprimer l'administrateur du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `RemoveClusterAdmin` méthode pour supprimer un administrateur de cluster, un administrateur de cluster LDAP ou un administrateur de cluster fournisseur d'identité (IdP) tiers.  Vous ne pouvez pas supprimer le compte d'administrateur de cluster « admin ».
+
+
+
+== Paramètre
+
+Lorsqu'un administrateur de cluster IdP est supprimé et que des sessions authentifiées sont associées à un fournisseur d'identité tiers (IdP), ces sessions seront soit déconnectées, soit elles subiront une perte de droits d'accès au sein de leur session actuelle.  La perte des droits d'accès dépendra de la correspondance entre l'administrateur du cluster IdP supprimé et l'un des multiples administrateurs de cluster IdP figurant dans les attributs SAML d'un utilisateur donné.  L'ensemble restant d'administrateurs de cluster IdP correspondants entraîne un ensemble réduit de droits d'accès agrégés.  Les autres types d'utilisateurs administrateurs de cluster sont déconnectés lorsque leurs administrateurs de cluster sont supprimés.
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+clusterAdminID
+ a| 
+Identifiant ClusterAdminID à supprimer par l'administrateur du cluster.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "RemoveClusterAdmin",
+   "params": {
+     "clusterAdminID"  : 2
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+ "id" : 1
+ "result" : { }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

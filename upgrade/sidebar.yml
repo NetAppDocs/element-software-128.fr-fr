@@ -1,0 +1,24 @@
+---
+section: upgrade
+title: Mettez à niveau votre système de stockage 100 % flash NetApp SolidFire
+entries:
+- title: Aperçu de la séquence de mise à niveau
+  url: "/upgrade/concept_element_upgrade_overview.html"
+- title: procédures de mise à niveau du système
+  entries:
+  - title: Effectuez des contrôles d'intégrité du stockage Element avant de mettre
+      à niveau le stockage.
+    url: "/upgrade/task_hcc_upgrade_element_prechecks.html"
+  - title: Mettre à niveau un nœud de gestion
+    url: "/upgrade/task_hcc_upgrade_management_node.html"
+  - title: Services de gestion des mises à jour
+    url: "/upgrade/task_hcc_update_management_services.html"
+  - title: Logiciel Upgrade Element
+    url: "/upgrade/task_hcc_upgrade_element_software.html"
+  - title: Mise à jour du micrologiciel de stockage
+    url: "/upgrade/task_hcc_upgrade_storage_firmware.html"
+  - title: Mettez à niveau le plug-in Element pour vCenter Server.
+    url: "/upgrade/task_vcp_upgrade_plugin.html"
+- title: Mettez à niveau vos composants vSphere pour un système de stockage NetApp
+    SolidFire grâce au plug-in Element pour vCenter Server.
+  url: "/upgrade/task_sf_upgrade_all_vsphere.html"

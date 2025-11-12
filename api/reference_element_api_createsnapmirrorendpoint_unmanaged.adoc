@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_createsnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoint,unmanaged,create,creating,CreateSnapMirrorEndpointUnmanaged 
+summary: 'Le système de stockage logiciel Element utilise la méthode CreateSnapMirrorEndpointUnmanaged pour permettre aux points de terminaison SnapMirror distants et non gérés de communiquer avec un cluster de stockage Element.  Les points de terminaison non gérés ne peuvent pas être administrés à l"aide des API Element SnapMirror .  Elles doivent être gérées à l"aide du logiciel de gestion ONTAP ou d"API.' 
+---
+= CréerSnapMirrorEndpointNonGéré
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système de stockage logiciel Element utilise `CreateSnapMirrorEndpointUnmanaged` méthode permettant aux points de terminaison SnapMirror distants et non gérés de communiquer avec un cluster de stockage Element.  Les points de terminaison non gérés ne peuvent pas être administrés à l'aide des API Element SnapMirror .  Elles doivent être gérées à l'aide du logiciel de gestion ONTAP ou d'API.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+nom du cluster
+ a| 
+Le nom du point de terminaison.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+Adresses IP
+ a| 
+Liste des adresses IP d'un cluster de systèmes de stockage ONTAP qui doivent communiquer avec ce cluster de stockage Element.
+ a| 
+tableau de chaînes
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+Le nouveau point de terminaison SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,3

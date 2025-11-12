@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez ajouter des nœuds Fibre Channel à un cluster lorsque davantage de stockage est nécessaire ou lors de la création du cluster.  Les nœuds Fibre Channel nécessitent une configuration initiale lors de leur première mise sous tension.  Une fois le nœud configuré, il apparaît dans la liste des nœuds en attente et vous pouvez l"ajouter à un cluster.' 
+---
+= Ajouter des nœuds Fibre Channel à un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez ajouter des nœuds Fibre Channel à un cluster lorsque davantage de stockage est nécessaire ou lors de la création du cluster.  Les nœuds Fibre Channel nécessitent une configuration initiale lors de leur première mise sous tension.  Une fois le nœud configuré, il apparaît dans la liste des nœuds en attente et vous pouvez l'ajouter à un cluster.
+
+La version du logiciel sur chaque nœud Fibre Channel d'un cluster doit être compatible.  Lorsque vous ajoutez un nœud Fibre Channel à un cluster, celui-ci installe la version cluster d'Element sur le nouveau nœud si nécessaire.
+
+.Étapes
+. Sélectionnez *Cluster* > *Nœuds*.
+. Cliquez sur *En attente* pour afficher la liste des nœuds en attente.
+. Effectuez l’une des opérations suivantes :
++
+** Pour ajouter des nœuds individuels, cliquez sur l'icône *Actions* du nœud que vous souhaitez ajouter.
+** Pour ajouter plusieurs nœuds, cochez la case des nœuds à ajouter, puis cliquez sur *Actions groupées*.
++
+
+NOTE: Si le nœud que vous ajoutez possède une version d'Element différente de celle exécutée sur le cluster, ce dernier met à jour le nœud de manière asynchrone vers la version d'Element exécutée sur le nœud maître du cluster.  Une fois le nœud mis à jour, il s'ajoute automatiquement au cluster.  Durant ce processus asynchrone, le nœud sera dans un état pendingActive.
+
+
+
+. Cliquez sur *Ajouter*.
++
+Le nœud apparaît dans la liste des nœuds actifs.
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

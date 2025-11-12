@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_createsupportbundle.html 
+sidebar: sidebar 
+keywords: create,creating,support,bundle,CreateSupportBundle 
+summary: Vous pouvez utiliser CreateSupportBundle pour créer un fichier de bundle de support dans le répertoire du nœud.  Une fois créé, le paquet est stocké sur le nœud sous forme de fichier tar.gz. 
+---
+= Créer un bundle de support
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `CreateSupportBundle` pour créer un fichier de bundle de support dans le répertoire du nœud.  Une fois créé, le paquet est stocké sur le nœud sous forme de fichier tar (l'option de compression gz est disponible via le paramètre extraArgs).
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+nom du bundle
+ a| 
+Nom unique du pack de support.  Si aucun nom n'est fourni, alors « supportbundle » et le nom du nœud sont utilisés comme nom de fichier.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+extraArgs
+ a| 
+Utilisez '--compress gz' pour créer le paquet de support sous forme de fichier tar.gz.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+délai d'expiration en secondes
+ a| 
+Le nombre de secondes pendant lesquelles le script du module de support s'exécute.
+ a| 
+entier
+ a| 
+1500
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+détails
+ a| 
+Détails du pack de support. Valeurs possibles :
+
+* bundleName : Le nom spécifié dans la méthode CreateSupportBundleAPI.  Si aucun nom n'a été spécifié, « supportbundle » est utilisé.
+* extraArgs : Les arguments transmis avec cette méthode.
+* Fichiers : Liste des fichiers du module de support créés par le système.
+* Résultat : La sortie de la ligne de commande du script qui a créé le bundle de support.
+* timeoutSec : Nombre de secondes pendant lesquelles le script du module de support s’exécute avant de s’arrêter.
+* url : URL du fichier de support créé.
+
+ a| 
+objet JSON
+
+
+
+ a| 
+durée
+ a| 
+L'heure utilisée pour créer le paquet de support au format : HH:MM:SS.ssssss.
+ a| 
+chaîne
+
+
+
+ a| 
+résultat
+ a| 
+Le succès ou l'échec de l'opération du lot de soutien.
+ a| 
+chaîne
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+ "method": "CreateSupportBundle",
+"params": {
+  "extraArgs": "--compress gz"
+ },
+"id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+  "details": {
+    "bundleName": "supportbundle",
+    "extraArgs": "--compress gz",
+    "files": [
+         "supportbundle.nodehostname.tar.gz"
+     ],
+     "output": "timeout -s KILL 1500s /sf/scripts/sfsupportbundle --quiet --compress gz /tmp/solidfire-dtemp.1L6bdX/supportbundle<br><br>Moved '/tmp/solidfire-dtemp.1L6bdX/supportbundle.nodehostname.tar.gz' to /tmp/supportbundles",
+      "timeoutSec": 1500,
+      "url": [
+          "https://nodeIP:442/config/supportbundles/supportbundle.nodehostname.tar.gz"
+      ]
+    },
+    "duration": "00:00:43.101627",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

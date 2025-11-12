@@ -1,0 +1,57 @@
+---
+permalink: storage/reference_data_protection_snapshot_schedule_details.html 
+sidebar: sidebar 
+keywords: snapshots, snapshot schedules 
+summary: 'Sur la page Protection des données > Planifications, vous pouvez consulter les informations suivantes dans la liste des planifications d"instantanés.' 
+---
+= Aperçu du calendrier
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sur la page Protection des données > Planifications, vous pouvez consulter les informations suivantes dans la liste des planifications d'instantanés.
+
+* *IDENTIFIANT*
++
+L'identifiant généré par le système pour l'instantané.
+
+* *Taper*
++
+Le type d'horaire.  Seul le type « snapshot » est actuellement pris en charge.
+
+* *Nom*
++
+Le nom donné au planning lors de sa création.  Les noms des calendriers instantanés peuvent comporter jusqu'à 223 caractères et contenir les caractères az, 0-9 et le tiret (-).
+
+* *Fréquence*
++
+La fréquence d'exécution du programme.  La fréquence peut être réglée en heures et minutes, en semaines ou en mois.
+
+* *Récurrent*
++
+Indication précisant si l'exécution doit être ponctuelle ou régulière.
+
+* *Pause manuelle*
++
+Indication précisant si la planification a été suspendue manuellement ou non.
+
+* *Identifiants de volume*
++
+L'identifiant du volume que la planification utilisera lors de son exécution.
+
+* *Dernière course*
++
+La dernière fois que le programme a été exécuté.
+
+* *Statut de la dernière exécution*
++
+Résultat de la dernière exécution du planning. Valeurs possibles :
+
++
+** Succès
+** Échec
+
+
+

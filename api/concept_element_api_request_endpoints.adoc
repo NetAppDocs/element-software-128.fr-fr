@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: 'L"API utilise trois types de points de terminaison de requête (cluster de stockage, création de cluster de stockage et par nœud).  Vous devez toujours utiliser le point de terminaison le plus récent pris en charge par votre version du logiciel Element.' 
+---
+= Points de terminaison de requête
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'API utilise trois types de points de terminaison de requête (cluster de stockage, création de cluster de stockage et par nœud).  Vous devez toujours utiliser le point de terminaison le plus récent pris en charge par votre version du logiciel Element.
+
+Les trois points de terminaison de requête de l'API sont désignés de la manière suivante :
+
+
+
+== Méthodes d'API de cluster
+
+Le point de terminaison HTTPS pour les requêtes API à l'échelle du cluster de stockage est `+https://<mvip>/json-rpc/<api-version>+` , où:
+
+* `<mvip>`est l'adresse IP virtuelle de gestion du cluster de stockage.
+* `<api-version>`il s'agit de la version de l'API que vous utilisez.
+
+
+
+
+== Méthodes d'API de création de cluster et d'amorçage
+
+Le point de terminaison HTTPS permettant de créer un cluster de stockage et d'accéder aux requêtes API d'amorçage est `+https://<nodeIP>/json-rpc/<api-version>+` , où:
+
+* `<nodeIP>`est l'adresse IP du nœud que vous ajoutez au cluster.
+* `<api-version>`il s'agit de la version de l'API que vous utilisez.
+
+
+
+
+== Méthodes d'API par nœud
+
+Le point de terminaison HTTPS pour les requêtes API des nœuds de stockage individuels est `+https://<nodeIP>:442/json-rpc/<api-version>+` , où:
+
+* `<nodeIP>`est l'adresse IP de gestion du nœud de stockage ; 442 est le port sur lequel le serveur HTTPS est exécuté.
+* `<api-version>`il s'agit de la version de l'API que vous utilisez.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

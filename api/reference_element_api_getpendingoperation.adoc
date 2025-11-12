@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_getpendingoperation.html 
+sidebar: sidebar 
+keywords: get,getting,pending,operation,getpendingoperation 
+summary: 'Vous pouvez utiliser la méthode GetPendingOperation pour détecter une opération en cours sur un nœud.  Cette méthode peut également être utilisée pour signaler la fin d"une opération.' 
+---
+= Obtenir l'opération en attente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetPendingOperation` méthode permettant de détecter une opération en cours sur un nœud.  Cette méthode peut également être utilisée pour signaler la fin d'une opération.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+en attente
+ a| 
+Valeurs possibles :
+
+* Vrai : L'opération est toujours en cours.
+* FAUX:
++
+L'opération est terminée.
+
+
+ a| 
+booléen
+
+
+
+ a| 
+opération
+ a| 
+Nom de l'opération en cours ou terminée.
+ a| 
+chaîne
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "GetPendingOperation",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "pendingOperation" : {
+         "pending" : "true",
+         "operation" : "TestDrivesInternal",
+      }
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

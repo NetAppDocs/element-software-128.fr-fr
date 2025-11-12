@@ -1,0 +1,1115 @@
+---
+permalink: api/reference_element_api_app_b_access_control.html 
+sidebar: sidebar 
+keywords: access,control,type 
+summary: 'Les méthodes disponibles de l"API Element varient en fonction du type d"accès que vous définissez.' 
+---
+= Contrôle d'accès
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les méthodes disponibles de l'API Element varient en fonction du type d'accès que vous définissez.
+
+
+NOTE: Certains types d'accès disponibles via l'API ne sont pas disponibles dans l'interface utilisateur d'Element.
+
+
+
+== comptes
+
+Les méthodes suivantes sont disponibles pour le type d'accès aux comptes :
+
+|===
+
+
+ a| 
+Ajouter un compte
+
+
+
+ a| 
+ObtenirCompteParID
+
+
+
+ a| 
+Modifier le compte
+
+
+
+ a| 
+ObtenirCompteParNom
+
+
+
+ a| 
+Lister les comptes
+
+
+
+ a| 
+GetAccountEfficiency
+
+
+
+ a| 
+Supprimer le compte
+
+|===
+
+
+== administrateur
+
+Toutes les méthodes sont disponibles pour le type d'accès administrateur.
+
+
+
+== Administrateur de cluster
+
+Les méthodes suivantes sont disponibles pour le type d'accès administrateur de cluster :
+
+|===
+
+
+ a| 
+AjouterClusterAdmin
+
+
+
+ a| 
+Lister les cibles de sauvegarde
+
+
+
+ a| 
+Ajouter les initiateurs au groupe d'accès au volume
+
+
+
+ a| 
+Lister les tâches en volume
+
+
+
+ a| 
+AjouterLdapClusterAdmin
+
+
+
+ a| 
+ListClusterAdmins
+
+
+
+ a| 
+Ajouter un réseau virtuel
+
+
+
+ a| 
+ListClusterPairs
+
+
+
+ a| 
+Ajouter un réseau virtuel
+
+
+
+ a| 
+ListNodeFibreChannelPortInfo
+
+
+
+ a| 
+AjouterVolumeAuGroupeDAccèsVolume
+
+
+
+ a| 
+Lister les cibles de sauvegarde
+
+
+
+ a| 
+Cloner plusieurs volumes
+
+
+
+ a| 
+Liste des disques durs
+
+
+
+ a| 
+Appariement complet du cluster
+
+
+
+ a| 
+Lister les sessions Fibre Channel
+
+
+
+ a| 
+Appariement complet des volumes
+
+
+
+ a| 
+ListFibreChannelPortInfo
+
+
+
+ a| 
+Créer une cible de sauvegarde
+
+
+
+ a| 
+Instantanés de groupe de liste
+
+
+
+ a| 
+Créer un calendrier
+
+
+
+ a| 
+Lister les volumes appariés actifs
+
+
+
+ a| 
+Créer un instantané
+
+
+
+ a| 
+Modifier la cible de sauvegarde
+
+
+
+ a| 
+Créer un bundle de support
+
+
+
+ a| 
+Modifier l'administrateur du cluster
+
+
+
+ a| 
+CréerClusterSupportBundle
+
+
+
+ a| 
+Modifier l'instantané du groupe
+
+
+
+ a| 
+Créer un instantané de groupe
+
+
+
+ a| 
+Seuil complet de modification du cluster
+
+
+
+ a| 
+Créer un groupe d'accès au volume
+
+
+
+ a| 
+Modifier le groupe d'accès au volume
+
+
+
+ a| 
+Supprimer tous les modules de support
+
+
+
+ a| 
+Modifier les affectations Lun du groupe d'accès au volume
+
+
+
+ a| 
+Supprimer l'instantané
+
+
+
+ a| 
+ModifierVolumePair
+
+
+
+ a| 
+Supprimer l'instantané du groupe
+
+
+
+ a| 
+Modifier le réseau virtuel
+
+
+
+ a| 
+Supprimer le groupe d'accès au volume
+
+
+
+ a| 
+Supprimer l'administrateur du cluster
+
+
+
+ a| 
+Désactiver le chiffrement au repos
+
+
+
+ a| 
+RemoveVolumePair
+
+
+
+ a| 
+Désactiver l'authentification LDAP
+
+
+
+ a| 
+Supprimer le réseau virtuel
+
+
+
+ a| 
+Désactiver SNMP
+
+
+
+ a| 
+Supprimer les volumes du groupe d'accès aux volumes
+
+
+
+ a| 
+Activer le chiffrement au repos
+
+
+
+ a| 
+Supprimer les initiateurs du groupe d'accès aux volumes
+
+
+
+ a| 
+Activer l'authentification LDAP
+
+
+
+ a| 
+Restauration de l'instantané
+
+
+
+ a| 
+Activer SNMP
+
+
+
+ a| 
+Restauration vers l'instantané de groupe
+
+
+
+ a| 
+GetBackupTarget
+
+
+
+ a| 
+Définir les informations de session de connexion
+
+
+
+ a| 
+Seuil complet du cluster
+
+
+
+ a| 
+DéfinirNtpInfo
+
+
+
+ a| 
+GetClusterMasterNodeID
+
+
+
+ a| 
+Définir la liste de contrôle d'accès SNMP
+
+
+
+ a| 
+ObtenirConfigurationMatérielle
+
+
+
+ a| 
+Définir les informations SNMP
+
+
+
+ a| 
+Obtenir la configuration LDAP
+
+
+
+ a| 
+SetSnmpTrapInfo
+
+
+
+ a| 
+Obtenir les informations de session de connexion
+
+
+
+ a| 
+Définir les hôtes de journalisation à distance
+
+
+
+ a| 
+ObtenirNtpInfo
+
+
+
+ a| 
+Fermer
+
+
+
+ a| 
+GetNvramInfo
+
+
+
+ a| 
+Démarrer la lecture en masse
+
+
+
+ a| 
+GetRawStats
+
+
+
+ a| 
+Démarrer l'écriture en masse
+
+
+
+ a| 
+GetSnmpACL
+
+
+
+ a| 
+Début de l'appairage du cluster
+
+
+
+ a| 
+GetVolumeAccessGroupEfficiency
+
+
+
+ a| 
+Début du couplage de volume
+
+
+
+ a| 
+GetVolumeAccessLunAssignments
+
+
+
+ a| 
+Test d'authentification LDAP
+
+
+
+ a| 
+GetVirtualNetwork
+
+
+
+ a| 
+
+|===
+
+
+== lecteurs
+
+Les méthodes suivantes sont disponibles pour le type d'accès aux lecteurs :
+
+|===
+
+
+ a| 
+ListDrives
+
+
+
+ a| 
+Supprimer les lecteurs
+
+
+
+ a| 
+Ajouter des lecteurs
+
+
+
+ a| 
+SecureEraseDrives
+
+|===
+
+
+== nœuds
+
+Les méthodes suivantes sont disponibles pour le type d'accès aux nœuds :
+
+|===
+
+
+ a| 
+Ajouter des nœuds
+
+
+
+ a| 
+ListPendingNodes
+
+
+
+ a| 
+Lister les nœuds actifs
+
+
+
+ a| 
+Supprimer les nœuds
+
+|===
+
+
+== lire
+
+Les méthodes suivantes sont disponibles pour le type d'accès en lecture :
+
+|===
+
+
+ a| 
+ObtenirCompteParID
+
+
+
+ a| 
+ListCloneJobs
+
+
+
+ a| 
+ObtenirCompteParNom
+
+
+
+ a| 
+Liste des volumes supprimés
+
+
+
+ a| 
+GetAsyncResult
+
+
+
+ a| 
+Liste des disques durs
+
+
+
+ a| 
+Obtenir la capacité du cluster
+
+
+
+ a| 
+ListDrives
+
+
+
+ a| 
+Obtenir la QoS par défaut
+
+
+
+ a| 
+ListEvents
+
+
+
+ a| 
+GetDriveStats
+
+
+
+ a| 
+Liste des sessions ISCSI
+
+
+
+ a| 
+Mise à niveau du logiciel
+
+
+
+ a| 
+ListPendingNodes
+
+
+
+ a| 
+Obtenir les statistiques de volume
+
+
+
+ a| 
+ListSyncJobs
+
+
+
+ a| 
+Lister les comptes
+
+
+
+ a| 
+Lister les groupes d'accès aux volumes
+
+
+
+ a| 
+Lister les nœuds actifs
+
+
+
+ a| 
+Lister les statistiques de volume par compte
+
+
+
+ a| 
+Lister les nœuds actifs
+
+
+
+ a| 
+ListVolumeStatsByVolume
+
+
+
+ a| 
+Lister les volumes actifs
+
+
+
+ a| 
+ListVolumeStatsByVolumeAccessGroup
+
+
+
+ a| 
+Lister tous les nœuds
+
+
+
+ a| 
+Lister les volumes pour le compte
+
+
+
+ a| 
+Lister les cibles de sauvegarde
+
+|===
+
+
+== reportage
+
+Les méthodes suivantes sont disponibles pour le type d'accès de reporting :
+
+|===
+
+
+ a| 
+Effacer les défauts de cluster
+
+
+
+ a| 
+GetVolumeEfficiency
+
+
+
+ a| 
+GetAccountEfficiency
+
+
+
+ a| 
+Obtenir les statistiques de volume
+
+
+
+ a| 
+Obtenir la capacité du cluster
+
+
+
+ a| 
+ListCloneJobs
+
+
+
+ a| 
+GetClusterHardwareInfo
+
+
+
+ a| 
+ListClusterFaults
+
+
+
+ a| 
+Obtenir les informations du cluster
+
+
+
+ a| 
+ListClusterPairs
+
+
+
+ a| 
+GetClusterMasterNodeID
+
+
+
+ a| 
+Liste des disques durs
+
+
+
+ a| 
+Obtenir les statistiques du cluster
+
+
+
+ a| 
+ListEvents
+
+
+
+ a| 
+GetDriveHardwareInfo
+
+
+
+ a| 
+Liste des sessions ISCSI
+
+
+
+ a| 
+GetDriveStats
+
+
+
+ a| 
+Liste des horaires
+
+
+
+ a| 
+Obtenir la configuration réseau
+
+
+
+ a| 
+ListServices
+
+
+
+ a| 
+GetNodeHardwareInfo
+
+
+
+ a| 
+ListSyncJobs
+
+
+
+ a| 
+GetNodeStats
+
+
+
+ a| 
+Lister les réseaux virtuels
+
+
+
+ a| 
+GetSnmpInfo
+
+
+
+ a| 
+Lister les statistiques de volume par compte
+
+
+
+ a| 
+GetSnmpTrapInfo
+
+
+
+ a| 
+ListVolumeStatsByVolume
+
+
+
+ a| 
+GetVolumeAccessGroupEfficiency
+
+
+
+ a| 
+ListVolumeStatsByVolumeAccessGroup
+
+|===
+
+
+== dépôts
+
+La méthode ListAllNodes est disponible pour le type d'accès aux dépôts.
+
+
+
+== volumes
+
+Les méthodes suivantes sont disponibles pour le type d'accès aux volumes :
+
+|===
+
+
+ a| 
+CréerVolume
+
+
+
+ a| 
+Supprimer le volume
+
+
+
+ a| 
+Modifier la cible de sauvegarde
+
+
+
+ a| 
+Volume cloné
+
+
+
+ a| 
+Supprimer le couplage de volumes
+
+
+
+ a| 
+Modifier les volumes
+
+
+
+ a| 
+Cloner plusieurs volumes
+
+
+
+ a| 
+GetBackupTarget
+
+
+
+ a| 
+ModifierVolumePair
+
+
+
+ a| 
+Créer une cible de sauvegarde
+
+
+
+ a| 
+Obtenir la QoS par défaut
+
+
+
+ a| 
+PurgeDeletedVolume
+
+
+
+ a| 
+Créer un instantané
+
+
+
+ a| 
+Lister les volumes actifs
+
+
+
+ a| 
+Supprimer la cible de sauvegarde
+
+
+
+ a| 
+Créer un instantané de groupe
+
+
+
+ a| 
+ListBackupTarget
+
+
+
+ a| 
+RemoveVolumePair
+
+
+
+ a| 
+Appariement complet des volumes
+
+
+
+ a| 
+Instantanés de groupe de liste
+
+
+
+ a| 
+Restaurer le volume supprimé
+
+
+
+ a| 
+Cloner plusieurs volumes
+
+
+
+ a| 
+Lister les volumes pour le compte
+
+
+
+ a| 
+Restauration vers l'instantané de groupe
+
+
+
+ a| 
+Supprimer l'instantané du groupe
+
+
+
+ a| 
+Liste des volumes supprimés
+
+
+
+ a| 
+Restauration de l'instantané
+
+
+
+ a| 
+Supprimer l'instantané
+
+
+
+ a| 
+Instantanés de groupe de liste
+
+
+
+ a| 
+Démarrer la lecture en masse
+
+
+
+ a| 
+Démarrer l'écriture en masse
+
+
+
+ a| 
+Début du couplage de volume
+
+
+
+ a| 
+Mise à jour de l'état du volume en masse
+
+|===
+
+
+== écrire
+
+Les méthodes suivantes sont disponibles pour le type d'accès en écriture :
+
+|===
+
+
+ a| 
+Ajouter des lecteurs
+
+
+
+ a| 
+Supprimer les nœuds
+
+
+
+ a| 
+Ajouter des nœuds
+
+
+
+ a| 
+Supprimer le compte
+
+
+
+ a| 
+Ajouter un compte
+
+
+
+ a| 
+Supprimer les volumes du groupe d'accès aux volumes
+
+
+
+ a| 
+AjouterVolumeAuGroupeDAccèsVolume
+
+
+
+ a| 
+Supprimer les initiateurs du groupe d'accès aux volumes
+
+
+
+ a| 
+Ajouter les initiateurs au groupe d'accès au volume
+
+
+
+ a| 
+Supprimer le groupe d'accès au volume
+
+
+
+ a| 
+Créer un groupe d'accès au volume
+
+
+
+ a| 
+Supprimer le volume
+
+
+
+ a| 
+Modifier le groupe d'accès au volume
+
+
+
+ a| 
+Restaurer le volume supprimé
+
+
+
+ a| 
+Modifier le compte
+
+
+
+ a| 
+PurgeDeletedVolume
+
+
+
+ a| 
+CréerVolume
+
+
+
+ a| 
+Modifier le volume
+
+
+
+ a| 
+Volume cloné
+
+
+
+ a| 
+GetAsyncResult
+
+
+
+ a| 
+Supprimer les lecteurs
+
+|===
+.Informations connexes
+link:../storage/concept_system_manage_manage_cluster_administrator_users.html#view-cluster-admin-details["Découvrez les types d'accès disponibles dans l'interface utilisateur Element."]

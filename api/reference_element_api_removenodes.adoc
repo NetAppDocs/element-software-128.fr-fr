@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_removenodes.html 
+sidebar: sidebar 
+keywords: node,nodes,cluster,remove,removing,removenodes 
+summary: Vous pouvez utiliser RemoveNodes pour supprimer un ou plusieurs nœuds qui ne doivent plus faire partie du cluster. 
+---
+= Supprimer les nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `RemoveNodes` supprimer un ou plusieurs nœuds qui ne devraient plus faire partie du cluster.
+
+Avant de supprimer un nœud, vous devez retirer tous les disques qu'il contient à l'aide de `RemoveDrives` méthode.  Vous ne pouvez pas supprimer un nœud tant que… `RemoveDrives` Le processus est terminé et toutes les données ont été migrées hors du nœud.  Une fois un nœud supprimé, il s'enregistre comme nœud en attente.  Vous pouvez ajouter à nouveau le nœud ou le désactiver (la désactivation du nœud le retire de la liste des nœuds en attente).
+
+
+
+== suppression du nœud maître du cluster
+
+Si vous utilisez `RemoveNodes` Pour supprimer le nœud maître du cluster, la méthode peut expirer avant de renvoyer une réponse.  Si l'appel de méthode ne parvient pas à supprimer le nœud, réessayez.  Notez que si vous supprimez le nœud maître du cluster ainsi que d'autres nœuds, vous devez utiliser un appel distinct pour supprimer le nœud maître du cluster seul.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+ignorerEnsembleToleranceChange
+ a| 
+Ignorer les modifications apportées à la tolérance aux pannes des nœuds de l'ensemble lors de la suppression de nœuds.
+
+Si le cluster de stockage utilise des schémas de protection des données qui tolèrent les pannes de plusieurs nœuds et que la suppression des nœuds diminuerait la tolérance aux pannes de nœuds de l'ensemble, la suppression du nœud échoue normalement avec une erreur.  Vous pouvez définir ce paramètre sur « vrai » pour désactiver la vérification de tolérance de l'ensemble et permettre ainsi la suppression du nœud.
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+
+
+ a| 
+nœuds
+ a| 
+Liste des identifiants des nœuds à supprimer.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "RemoveNodes",
+   "params": {
+     "nodes"  : [3,4,5]
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id" : 1
+  "result" : {},
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

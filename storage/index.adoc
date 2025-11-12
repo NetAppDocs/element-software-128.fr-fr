@@ -1,0 +1,37 @@
+---
+permalink: storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Gérez le stockage avec le logiciel Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilisez le logiciel Element pour configurer le stockage SolidFire , surveiller la capacité et les performances du cluster et gérer l'activité de stockage sur une infrastructure mutualisée.
+
+Element est le système d'exploitation de stockage au cœur d'un cluster SolidFire .  Le logiciel Element s'exécute indépendamment sur tous les nœuds du cluster et permet à ces nœuds de combiner leurs ressources et de se présenter comme un système de stockage unique aux clients externes.  Le logiciel Element est responsable de la coordination, de la mise à l'échelle et de la gestion de l'ensemble du système.
+
+L'interface logicielle est construite sur l'API Element.
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["Accéder à l'interface utilisateur du logiciel Element"]
+* link:task_post_deploy_configure_system_options.html["Configurez les options système SolidFire après le déploiement."]
+* link:../upgrade/concept_element_upgrade_overview.html["Composants de mise à niveau du système de stockage"]
+* link:task_intro_use_basic_options_in_the_element_software_ui.html["Utilisez les options de base de l'interface utilisateur du logiciel Element."]
+* link:concept_system_manage_accounts_overview.html["Gérer les comptes"]
+* link:concept_system_manage_system_management.html["Gérez votre système"]
+* link:concept_data_manage_data_management.html["Gérer les volumes et les volumes virtuels"]
+* link:concept_data_protection.html["Protégez vos données"]
+* link:concept_system_monitoring_and_troubleshooting.html["Dépannage de votre système"]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

@@ -1,0 +1,34 @@
+---
+permalink: api/concept_element_api_response_examples.html 
+sidebar: sidebar 
+keywords: response,example 
+summary: Des exemples de réponses complètes sont fournis ici. 
+---
+= Exemples de réponses
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Des exemples de réponses complètes sont fournis ici.
+
+* xref:reference_element_api_response_example_getconfig.adoc[GetConfig]
+* xref:reference_element_api_response_example_getclusterhardwareinfo.adoc[GetClusterHardwareInfo]
+* xref:reference_element_api_response_example_getlldpinfo.adoc[GetLldpInfo]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[Obtenir la configuration réseau]
+* xref:reference_element_api_response_example_getnodehardwareinfo.adoc[GetNodeHardwareInfo (sortie pour iSCSI)]
+* xref:reference_element_api_response_example_getnodehardwareinfo_fibre_channel.adoc[GetNodeHardwareInfo (sortie pour les nœuds Fibre Channel)]
+* xref:reference_element_api_response_example_getnvraminfo.adoc[GetNvramInfo]
+* xref:reference_element_api_response_example_listactivenodes.adoc[Lister les nœuds actifs]
+* xref:reference_element_api_response_example_listactivevolumes.adoc[Lister les volumes actifs]
+* xref:reference_element_api_response_example_testhardwareconfig.adoc[Configuration matérielle de test]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

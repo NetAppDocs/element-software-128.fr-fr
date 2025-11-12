@@ -1,0 +1,18 @@
+---
+permalink: concepts/concept_intro_management_node.html 
+sidebar: sidebar 
+keywords: what is, element mnode, management node, mnode 
+summary: 'Le nœud de gestion (mNode) est une machine virtuelle qui fonctionne en parallèle avec un ou plusieurs clusters de stockage basés sur le logiciel Element.  Il est utilisé pour mettre à niveau et fournir des services système, notamment la surveillance et la télémétrie, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et permettre l"accès au support NetApp pour le dépannage.' 
+---
+= Nœud de gestion pour le logiciel Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lelink:../mnode/task_mnode_work_overview.html["nœud de gestion (mNode)"] est une machine virtuelle qui fonctionne en parallèle avec un ou plusieurs clusters de stockage basés sur le logiciel Element.  Il est utilisé pour mettre à niveau et fournir des services système, notamment la surveillance et la télémétrie, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et permettre l'accès au support NetApp pour le dépannage.
+
+Le nœud de gestion interagit avec un cluster de stockage pour effectuer des actions de gestion, mais n'est pas membre de ce cluster.  Les nœuds de gestion collectent périodiquement des informations sur le cluster via des appels API et transmettent ces informations à Active IQ pour la surveillance à distance (si activée).  Les nœuds de gestion sont également responsables de la coordination des mises à jour logicielles des nœuds du cluster.
+
+À partir de la version Element 11.3, le nœud de gestion fonctionne comme un hôte de microservices, permettant des mises à jour plus rapides de certains services logiciels en dehors des versions majeures.  Ces microservices oulink:../concepts/concept_intro_management_services_for_afa.html["services de gestion"] sont fréquemment mis à jour sous forme de packs de services.

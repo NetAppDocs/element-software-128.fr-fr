@@ -1,0 +1,40 @@
+---
+permalink: hardware/concept_rtfi_configure.html 
+sidebar: sidebar 
+keywords: rtfi, return, factory, image, nodes, solidfire, software, image 
+summary: 'Les systèmes de stockage NetApp SolidFire utilisent le processus RTFI pour écrire une image logicielle sur un nouveau nœud ou restaurer un nœud à son état d"usine d"origine.' 
+---
+= Configurer l'image de retour en usine
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les systèmes de stockage NetApp SolidFire utilisent le processus Return To Factory Image (RTFI) pour écrire une image logicielle sur un nouveau nœud ou restaurer un nœud à son état d'usine d'origine.  Le processus RTFI efface en toute sécurité toutes les données et configurations existantes (le cas échéant) et installe une image logicielle NetApp Element non configurée.  Le processus RTFI est disponible pour tous les nœuds SolidFire .
+
+Les systèmes SolidFire utilisent un seul processus RTFI pour toutes les installations logicielles Element.  Cela inclut les installations manuelles internes réalisées par les développeurs, les installations automatiques effectuées par les tests automatisés du framework, les installations sur le terrain réalisées par les techniciens de maintenance et les clients, ainsi que les installations réalisées par divers intégrateurs et partenaires.  Le même processus RTFI est utilisé sur tous les nœuds SolidFire , quel que soit le châssis ou le type de nœud utilisé, afin de corriger automatiquement tout problème.
+
+Ce guide s'adresse aux intégrateurs qui installent, configurent, utilisent ou dépannent les problèmes liés au stockage.
+
+* Linux : Vous avez quelques connaissances de base sur les systèmes Linux.
+* Réseautage : Vous avez une bonne connaissance des réseaux de serveurs et du stockage en réseau, notamment des adresses IP, des masques de sous-réseau et des passerelles.
+
+
+
+WARNING: Le processus RTFI est destructeur de données et efface de manière sécurisée toutes les données et les détails de configuration du nœud, puis installe un nouveau système d'exploitation.  Vérifiez que le nœud utilisé pour le processus RTFI n'est pas actif au sein d'un cluster.
+
+Déployez et installez l'image RTFI de l'Organisation internationale de normalisation (ISO) et exécutez le processus RTFI :
+
+* xref:task_rtfi_deployment_and_install_options.adoc[options de déploiement et d'installation de RTFI]
+* xref:task_rtfi_process.adoc[Effectuez le processus RTFI]
+* xref:task_rtfi_options_menu.adoc[menu des options RTFI]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

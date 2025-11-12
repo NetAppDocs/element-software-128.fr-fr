@@ -1,0 +1,75 @@
+---
+permalink: api/concept_element_api_node_api_methods.html 
+sidebar: sidebar 
+keywords: node,api,methods 
+summary: 'Vous pouvez utiliser les méthodes de l"API Node pour configurer chaque nœud individuellement.  Ces méthodes fonctionnent sur des nœuds individuels qui doivent être configurés, qui sont configurés mais ne participent pas encore à un cluster, ou qui participent activement à un cluster.  Les méthodes de l"API Node vous permettent de visualiser et de modifier les paramètres des nœuds individuels et du réseau du cluster utilisé pour communiquer avec le nœud.  Vous devez exécuter ces méthodes sur des nœuds individuels ; vous ne pouvez pas exécuter des méthodes d’API par nœud sur l’adresse du cluster.' 
+---
+= Méthodes de l'API Node
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser les méthodes de l'API Node pour configurer chaque nœud individuellement.  Ces méthodes fonctionnent sur des nœuds individuels qui doivent être configurés, qui sont configurés mais ne participent pas encore à un cluster, ou qui participent activement à un cluster.  Les méthodes de l'API Node vous permettent de visualiser et de modifier les paramètres des nœuds individuels et du réseau du cluster utilisé pour communiquer avec le nœud.  Vous devez exécuter ces méthodes sur des nœuds individuels ; vous ne pouvez pas exécuter des méthodes d’API par nœud sur l’adresse du cluster.
+
+* xref:reference_element_api_checkpingonvlan.adoc[VérifierPingSurVlan]
+* xref:reference_element_api_checkproposednodeadditions.adoc[Vérifier les ajouts de nœuds proposés]
+* xref:reference_element_api_createclustersupportbundle.adoc[CréerClusterSupportBundle]
+* xref:reference_element_api_createsupportbundle.adoc[Créer un bundle de support]
+* xref:reference_element_api_deleteallsupportbundles.adoc[Supprimer tous les modules de support]
+* xref:reference_element_api_disablemaintenancemode.adoc[Désactiver le mode maintenance]
+* xref:reference_element_api_disablessh.adoc[DésactiverSSH]
+* xref:reference_element_api_enablemaintenancemode.adoc[Activer le mode maintenance]
+* xref:reference_element_api_enablessh.adoc[ActiverSsh]
+* xref:reference_element_api_getclusterconfig.adoc[Obtenir la configuration du cluster]
+* xref:reference_element_api_getclusterstate.adoc[Obtenir l'état du cluster]
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getdriveconfig.adoc[GetDriveConfig]
+* xref:reference_element_api_gethardwareconfig.adoc[ObtenirConfigurationMatérielle]
+* xref:reference_element_api_gethardwareinfo.adoc[GetHardwareInfo]
+* xref:reference_element_api_getipmiconfig.adoc[Obtenir la configuration IPMI]
+* xref:reference_element_api_getipmiinfo.adoc[GetIpmiInfo]
+* xref:reference_element_api_getnetworkconfig.adoc[Obtenir la configuration réseau]
+* xref:reference_element_api_getnetworkinterface.adoc[Obtenir l'interface réseau]
+* xref:reference_element_api_getnodeactivetlsciphers.adoc[Obtenir les chiffrements Tls actifs du nœud]
+* xref:reference_element_api_node_getnodefipsdrivesreport.adoc[Rapport GetNodeFipsDrives]
+* xref:reference_element_api_getnodesslcertificate.adoc[Obtenir le certificat SSL du nœud]
+* xref:reference_element_api_getnodesupportedtlsciphers.adoc[Obtenir les chiffrements TLS pris en charge par le nœud]
+* xref:reference_element_api_getpendingoperation.adoc[Obtenir l'opération en attente]
+* xref:reference_element_api_getsshinfo.adoc[GetSshInfo]
+* xref:reference_element_api_listdrivehardware.adoc[Liste des disques durs]
+* xref:reference_element_api_listnetworkinterfaces.adoc[Lister les interfaces réseau]
+* xref:reference_element_api_listtests.adoc[ListeTests]
+* xref:reference_element_api_listutilities.adoc[Liste des utilitaires]
+* xref:reference_element_api_removenodesslcertificate.adoc[Supprimer le certificat SSL du nœud]
+* xref:reference_element_api_resetdrives.adoc[Réinitialiser les disques]
+* xref:reference_element_api_resetnode.adoc[Réinitialiser le nœud]
+* xref:reference_element_api_resetnodesupplementaltlsciphers.adoc[Réinitialiser les chiffrements TLS supplémentaires du nœud]
+* xref:reference_element_api_restartnetworking.adoc[Redémarrer le réseau]
+* xref:reference_element_api_restartservices.adoc[Redémarrer les services]
+* xref:reference_element_api_setclusterconfig.adoc[Configurer le cluster]
+* xref:reference_element_api_setconfig.adoc[Configurer]
+* xref:reference_element_api_setnetworkconfig.adoc[Configurer le réseau]
+* xref:reference_element_api_setnodesslcertificate.adoc[Définir le certificat SSL du nœud]
+* xref:reference_element_api_setnodesupplementaltlsciphers.adoc[Définir les chiffrements TLS supplémentaires du nœud]
+* xref:reference_element_api_node_shutdown.adoc[Fermer]
+* xref:reference_element_api_testconnectensemble.adoc[TestConnectEnsemble]
+* xref:reference_element_api_testconnectmvip.adoc[TestConnectMvip]
+* xref:reference_element_api_testconnectsvip.adoc[TestConnectSvip]
+* xref:reference_element_api_testdrives.adoc[Essais routiers]
+* xref:reference_element_api_testhardwareconfig.adoc[Configuration matérielle de test]
+* xref:reference_element_api_testlocatecluster.adoc[TestLocateCluster]
+* xref:reference_element_api_testlocalconnectivity.adoc[Test de connectivité locale]
+* xref:reference_element_api_testnetworkconfig.adoc[Configuration du réseau de test]
+* xref:reference_element_api_testping.adoc[TestPing]
+* xref:reference_element_api_testremoteconnectivity.adoc[Test de connectivité à distance]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

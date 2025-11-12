@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_roll_back_volumes_to_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: volumes, rollback, group snapshot, purge 
+summary: 'Vous pouvez à tout moment restaurer un groupe de volumes à partir d"un instantané de groupe.' 
+---
+= Restaurez les volumes à partir d'un instantané de groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez à tout moment restaurer un groupe de volumes à partir d'un instantané de groupe.
+
+Lorsque vous restaurez un groupe de volumes, tous les volumes du groupe sont rétablis dans l'état où ils se trouvaient au moment de la création de l'instantané du groupe.  La restauration de la version précédente rétablit également les tailles de volume à la taille enregistrée dans l'instantané d'origine.  Si le système a purgé un volume, tous les instantanés de ce volume ont également été supprimés au moment de la purge ; le système ne restaure aucun instantané de volume supprimé.
+
+. Cliquez sur *Protection des données* > *Instantanés de groupe*.
+. Cliquez sur l'icône Actions correspondant à l'instantané de groupe que vous souhaitez utiliser pour la restauration du volume.
+. Dans le menu qui s'affiche, sélectionnez *Restaurer les volumes à partir de l'instantané de groupe*.
+. *Facultatif* : Pour enregistrer l’état actuel des volumes avant de revenir à l’instantané :
++
+.. Dans la boîte de dialogue *Restaurer à partir d'un instantané*, sélectionnez *Enregistrer l'état actuel des volumes sous forme d'instantané de groupe*.
+.. Saisissez un nom pour le nouveau snapshot.
+
+
+. Cliquez sur *Rétablir l'instantané du groupe*.
+

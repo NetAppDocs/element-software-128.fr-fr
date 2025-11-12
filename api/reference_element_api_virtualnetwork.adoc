@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_virtualnetwork.html 
+sidebar: sidebar 
+keywords: object,objects,virtualNetwork 
+summary: 'L"objet virtualNetwork contient des informations sur un réseau virtuel spécifique.  Vous pouvez utiliser la méthode API ListVirtualNetworks pour récupérer une liste de ces informations pour tous les réseaux virtuels du système.' 
+---
+= réseau virtuel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet virtualNetwork contient des informations sur un réseau virtuel spécifique.  Vous pouvez utiliser le `ListVirtualNetworks` Méthode API permettant de récupérer une liste de ces informations pour tous les réseaux virtuels du système.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+blocs d'adresses
+ a| 
+La plage de blocs d'adresses actuellement attribuée au réseau virtuel.  Membres :
+
+* disponible : chaîne binaire composée de « 1 » et de « 0 ». « 1 » indique que l’adresse IP est disponible et « 0 » indique qu’elle ne l’est pas.  La chaîne se lit de droite à gauche, le chiffre le plus à droite correspondant à la première adresse IP de la liste des blocs d'adresses.
+* taille : La taille de ce bloc d'adresses.
+* début : La première adresse IP du bloc.
+
+ a| 
+tableau d'objets JSON
+
+
+
+ a| 
+attributs
+ a| 
+Liste de paires nom-valeur au format objet JSON.
+ a| 
+objet JSON
+
+
+
+ a| 
+nom
+ a| 
+Le nom attribué au réseau virtuel.
+ a| 
+chaîne
+
+
+
+ a| 
+masque de sous-réseau
+ a| 
+L'adresse IP du masque de sous-réseau pour le réseau virtuel.
+ a| 
+chaîne
+
+
+
+ a| 
+VIP
+ a| 
+Adresse IP de stockage pour le réseau virtuel.
+ a| 
+chaîne
+
+
+
+ a| 
+porte
+ a| 
+La passerelle utilisée pour le réseau virtuel.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de réseau virtuel
+ a| 
+L'identifiant unique d'un réseau virtuel.
+ a| 
+entier
+
+
+
+ a| 
+VirtualNetworkTag
+ a| 
+L'identifiant de l'étiquette VLAN.
+ a| 
+entier
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listvirtualnetworks.adoc[Lister les réseaux virtuels]

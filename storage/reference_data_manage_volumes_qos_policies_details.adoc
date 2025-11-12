@@ -1,0 +1,40 @@
+---
+permalink: storage/reference_data_manage_volumes_qos_policies_details.html 
+sidebar: sidebar 
+keywords: qos policies 
+summary: 'Vous pouvez consulter les détails des politiques QoS depuis l"onglet Gestion.' 
+---
+= Détails des politiques QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les détails des politiques QoS depuis l'onglet Gestion.
+
+* *IDENTIFIANT*
++
+L'identifiant généré par le système pour la politique QoS.
+
+* *Nom*
++
+Nom défini par l'utilisateur pour la politique QoS.
+
+* *IOPS min.*
++
+Le nombre minimum d'IOPS garanti pour le volume.
+
+* *IOPS max.*
++
+Le nombre maximal d'IOPS autorisé pour le volume.
+
+* *IOPS en rafale*
++
+Le nombre maximal d'IOPS autorisé sur une courte période pour le volume.  Valeur par défaut = 15 000.
+
+* *Volumes*
++
+Affiche le nombre de volumes utilisant cette politique.  Ce numéro renvoie à un tableau des volumes auxquels la politique est appliquée.
+
+

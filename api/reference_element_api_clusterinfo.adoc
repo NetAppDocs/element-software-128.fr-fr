@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_clusterinfo.html 
+sidebar: sidebar 
+keywords: element, api, object, objects, clusterInfo 
+summary: 'L"objet clusterInfo contient les informations que le nœud utilise pour communiquer avec le cluster.  Vous pouvez obtenir ces informations grâce à la méthode API GetClusterInfo.' 
+---
+= clusterInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet clusterInfo contient les informations que le nœud utilise pour communiquer avec le cluster.  Vous pouvez obtenir ces informations grâce à la méthode API GetClusterInfo.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+attributs
+ a| 
+Liste de paires nom-valeur au format objet JSON.
+ a| 
+objet JSON
+
+
+
+ a| 
+schéma de protection par défaut
+ a| 
+Le schéma de protection utilisé par défaut pour les nouveaux volumes, sauf si un schéma de protection est fourni avec lexref:reference_element_api_createvolume.adoc[CréerVolume] appel de méthode.  Ce système de protection doit toujours figurer parmi les systèmes de protection activés.
+ a| 
+chaîne
+
+
+
+ a| 
+schémas de protection activés
+ a| 
+Liste de tous les schémas de protection activés sur ce cluster de stockage.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+chiffrementAuRepos
+ a| 
+État de la fonctionnalité de chiffrement au repos. Valeurs possibles :
+
+* Activation : Le chiffrement au repos est en cours d’activation.
+* Activé : Le chiffrement au repos est activé.
+* Désactivation : Le chiffrement au repos est désactivé.
+* Désactivé : le chiffrement au repos est désactivé.
+
+ a| 
+chaîne
+
+
+
+ a| 
+ensemble
+ a| 
+Les nœuds qui participent au cluster.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+VIP
+ a| 
+L'adresse IP flottante (virtuelle) du cluster sur le réseau de gestion.
+ a| 
+chaîne
+
+
+
+ a| 
+Interface mvip
+ a| 
+L'interface physique associée à l'adresse MVIP.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de nœud mvip
+ a| 
+Le nœud qui détient l'adresse MVIP principale.
+ a| 
+entier
+
+
+
+ a| 
+mvipVlanTag
+ a| 
+L'identifiant VLAN de l'adresse MVIP.
+ a| 
+chaîne
+
+
+
+ a| 
+nom
+ a| 
+Le nom unique du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+repCount
+ a| 
+Le nombre de répliques de chaque donnée à stocker dans le cluster.  La valeur valide est « 2 ».
+ a| 
+entier
+
+
+
+ a| 
+Chiffrement logiciel à l'état de repos
+ a| 
+État de chiffrement au repos basé sur un logiciel.
+ a| 
+chaîne
+
+
+
+ a| 
+programmes de protection pris en charge
+ a| 
+Liste de tous les schémas de protection pris en charge sur ce cluster de stockage.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+VIP
+ a| 
+L'adresse IP flottante (virtuelle) du cluster sur le réseau de stockage (iSCSI).
+ a| 
+chaîne
+
+
+
+ a| 
+Interface VIP
+ a| 
+L'interface physique associée à l'adresse SVIP principale.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de nœud svip
+ a| 
+Le nœud détenant l'adresse SVIP principale.
+ a| 
+entier
+
+
+
+ a| 
+svipVlanTag
+ a| 
+L'identifiant VLAN pour l'adresse SVIP principale.
+ a| 
+chaîne
+
+
+
+ a| 
+identifiant unique
+ a| 
+L'identifiant unique du cluster.
+ a| 
+chaîne
+
+
+
+ a| 
+uuid
+ a| 
+L'identifiant unique du cluster.
+ a| 
+UUID
+
+
+
+ a| 
+Équilibrage de charge du volume sur l'état des IOPS réelles
+ a| 
+L'état de l'équilibrage des tranches basé sur les IOPS réelles plutôt que sur la fonctionnalité IOPS minimales.  Disponible à partir d'Element 12.8.
+ a| 
+chaîne
+
+|===
+[discrete]
+== Trouver plus d'informations
+
+* link:reference_element_api_getclusterinfo.html["Obtenir les informations du cluster"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: 'Vous devez surveiller le système à des fins de diagnostic et pour obtenir des informations sur les tendances de performance et l"état des différentes opérations du système.  Il pourrait être nécessaire de remplacer des nœuds ou des disques SSD pour des raisons de maintenance.' 
+---
+= Dépannage de votre système
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez surveiller le système à des fins de diagnostic et pour obtenir des informations sur les tendances de performance et l'état des différentes opérations du système.  Il pourrait être nécessaire de remplacer des nœuds ou des disques SSD pour des raisons de maintenance.
+
+* link:task_monitor_information_about_system_events.html["Afficher les informations relatives aux événements système"]
+* link:reference_monitor_status_of_running_tasks.html["Afficher l'état des tâches en cours"]
+* link:task_monitor_system_alerts.html["Afficher les alertes système"]
+* link:task_monitor_node_performance_activity.html["Afficher l'activité de performance du nœud"]
+* link:task_monitor_volume_performance.html["Afficher les performances en volume"]
+* link:task_monitor_iscsi_sessions.html["Afficher les sessions iSCSI"]
+* link:task_monitor_fibre_channel_sessions.html["Visionnez les sessions Fibre Channel"]
+* link:concept_troubleshoot_drives.html["Dépannage des disques"]
+* link:concept_remove_nodes_from_cluster.html["Dépannage des nœuds"]
+* link:concept_per_node_work_with_utilities.html["Utilisez les utilitaires par nœud pour les nœuds de stockage"]
+* link:concept_mnode_work_with_the_management_node.html["Collaborer avec le nœud de gestion"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["Comprendre les niveaux de remplissage des grappes"]
+
+
+
+
+== Pour plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

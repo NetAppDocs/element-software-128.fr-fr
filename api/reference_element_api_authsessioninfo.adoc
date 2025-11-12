@@ -1,0 +1,110 @@
+---
+permalink: api/reference_element_api_authsessioninfo.html 
+sidebar: sidebar 
+keywords: objects,object,authSessionInfo 
+summary: 'L"objet authSessionInfo contient des informations sur une session d"authentification.' 
+---
+= authSessionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `authSessionInfo` Cet objet contient des informations sur une session d'authentification.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+`accessGroupList`
+ a| 
+Liste des groupes d'accès de l'utilisateur.
+ a| 
+tableau de chaînes
+
+
+
+ a| 
+`authMethod`
+ a| 
+Le type d'autorisation dont dispose l'utilisateur administrateur du cluster. Valeurs possibles :
+
+* LDAP - authentification via LDAP.
+* Cluster - authentification via un nom d'utilisateur et un mot de passe stockés dans la base de données du cluster.
+* IdP - authentifié via un fournisseur d'identité tiers.
+
+ a| 
+chaîne
+
+
+
+ a| 
+`clusterAdminIDs`
+ a| 
+Liste des ID d'administrateur de cluster associés à cette session.  Pour les sessions liées à LDAP ou à un fournisseur d'identité tiers (IdP), il s'agira d'une liste agrégée des ID d'administrateur de cluster correspondants associés à cette session.
+ a| 
+tableau d'entiers
+
+
+
+ a| 
+`finalTimeout`
+ a| 
+Durée après laquelle la session devient invalide. Cette durée est définie lors de la création de la session et ne peut pas être modifiée.
+ a| 
+chaîne
+
+
+
+ a| 
+`idpConfigVersion`
+ a| 
+Version de la configuration IdP lors de la création de la session.
+ a| 
+entier
+
+
+
+ a| 
+`lastAccessTimeout`
+ a| 
+Durée pendant laquelle la session devient invalide en raison de l'inactivité. Cette valeur est mise à jour lors de l'accès à la session, jusqu'à ce que la session devienne invalide en raison de l'expiration du délai final.
+ a| 
+chaîne
+
+
+
+ a| 
+`sessionCreationTime`
+ a| 
+Heure de création de la session.
+ a| 
+chaîne
+
+
+
+ a| 
+`sessionID`
+ a| 
+UUID de cette session.
+ a| 
+UUID
+
+
+
+ a| 
+`username`
+ a| 
+Nom d'utilisateur associé à cette session.  Pour les sessions liées à LDAP, il s'agira du DN LDAP de l'utilisateur.  Pour les sessions liées à un fournisseur d'identité tiers, il s'agira d'une paire nom-valeur arbitraire qui sera utilisée pour les opérations d'audit au sein de la session.  Cela ne correspondra pas nécessairement au nom d'un administrateur de cluster sur le cluster.  Par exemple, un NameID de sujet SAML, mais celui-ci sera dicté par la configuration du fournisseur d'identité et le contenu résultant de l'assertion SAML.
+ a| 
+chaîne
+
+|===

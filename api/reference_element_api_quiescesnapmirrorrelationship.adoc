@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_quiescesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: snapmirror,relationship,relationships,quiesce,quiescing,quiescescnapmirrorrelationship 
+summary: 'L"interface utilisateur Web du logiciel Element utilise la méthode QuiesceSnapMirrorRelationship pour désactiver les futurs transferts de données pour une relation SnapMirror .  Si un transfert est en cours, le statut de la relation passe à « en suspens » jusqu"à ce que le transfert soit terminé.  Si le transfert en cours est interrompu, il ne redémarrera pas.  Vous pouvez réactiver les transferts de données pour la relation à l"aide de la méthode API ResumeSnapMirrorRelationship.' 
+---
+= QuiesceSnapMirrorRelation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web du logiciel Element utilise `QuiesceSnapMirrorRelationship` Méthode permettant de désactiver les futurs transferts de données pour une relation SnapMirror .  Si un transfert est en cours, le statut de la relation passe à « en suspens » jusqu'à ce que le transfert soit terminé.  Si le transfert en cours est interrompu, il ne redémarrera pas.  Vous pouvez réactiver les transferts de données pour la relation en utilisant `ResumeSnapMirrorRelationship` Méthode API.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'identifiant du point de terminaison du système de stockage ONTAP distant communiquant avec le cluster de stockage Element.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+destinationVolume
+ a| 
+Le volume de destination dans la relation SnapMirror .
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorRelation
+ a| 
+Un objet contenant des informations sur la relation SnapMirror mise au repos.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirrorRelation]
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,1

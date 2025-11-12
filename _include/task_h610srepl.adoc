@@ -1,0 +1,77 @@
+= Meilleures pratiques pour l'ajout et la suppression de disques
+:allow-uri-read: 
+
+
+Vous pourriez devoir remplacer le châssis si le ventilateur, l'unité centrale de traitement (CPU) ou le module de mémoire double en ligne (DIMM) tombe en panne, ou pour résoudre des problèmes de surchauffe ou des problèmes liés au processus de démarrage.  Le voyant LED orange clignotant situé à l'avant du châssis indique qu'un remplacement du châssis peut être nécessaire.  Vous devriez contacter le support NetApp avant de continuer.
+
+
+NOTE: Voir lelink:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/NetApp_H610S_installation_requirements_for_replacement_or_expansion_nodes["Article de la base de connaissances"^] pour plus d'informations sur les exigences d'installation des nœuds H610S.  Les nouveaux nœuds de stockage H610S et les nœuds de rechange peuvent avoir des exigences d'installation supplémentaires en fonction de la version logicielle Element existante du cluster de stockage.  Contactez le support NetApp pour plus d'informations.
+
+
+TIP: Les termes « nœud » et « châssis » sont utilisés de manière interchangeable dans le cas du H610S, qui est un châssis d'une unité de rack (1U).
+
+
+
+== Meilleures pratiques pour l'ajout et la suppression de disques
+
+Vous devriez suivre ces bonnes pratiques pour ajouter des disques au cluster :
+
+* Ajoutez tous les disques de blocs et assurez-vous que la synchronisation des blocs est terminée avant d'ajouter les disques de tranches.
+* Pour les versions 10.x et ultérieures du logiciel Element, ajoutez tous les disques de stockage par blocs en une seule fois.  Veillez à ne pas effectuer cette opération pour plus de trois nœuds simultanément.
+* Pour les versions 9.x et antérieures du logiciel Element, ajoutez trois disques à la fois en leur permettant de se synchroniser complètement avant d'ajouter le groupe suivant de trois.
+* Retirez le disque de partition et assurez-vous que la synchronisation des partitions est terminée avant de retirer les disques de blocs.
+* Retirez tous les disques de stockage par blocs d'un seul nœud en une seule fois.  Assurez-vous que la synchronisation de tous les blocs est terminée avant de passer au nœud suivant.
+
+
+.Ce dont vous aurez besoin
+* Vous avez contacté le support NetApp .  Si vous commandez un remplacement, vous devez ouvrir un ticket auprès du support NetApp .
+* Vous avez obtenu le nœud de remplacement.
+* Vous avez un bracelet antistatique (ESD) ou vous avez pris d'autres protections antistatiques.
+* Si vous devez effectuer la procédure de restauration à l'image d'usine (RTFI), vous avez obtenu la clé USB.  L'assistance NetApp peut vous aider à déterminer si vous devez effectuer la procédure RTFI.
+* Vous avez un clavier et un écran.
+* Vous avez correctement supprimé le nœud défaillant du cluster.
+* Si une barrette DIMM a échoué, vous devez retirer les disques avant de retirer le nœud du cluster.
+
+
+.À propos de cette tâche
+Les alarmes de l'interface utilisateur Element vous avertissent en cas de défaillance d'un hôte.  Vous devez faire correspondre le numéro de série de l'hôte défaillant affiché dans le client Web VMware vSphere avec le numéro de série figurant sur l'étiquette située à l'arrière du nœud.
+
+.Étapes
+. Repérez l'étiquette de service à l'avant du châssis défectueux.
++
+image::h610s-servicetag.gif[Affiche l'étiquette de service à l'avant du châssis H610S.]
+
+. Vérifiez que le numéro de série figurant sur l'étiquette de service correspond au numéro de dossier du support NetApp lors duquel vous avez commandé le châssis de remplacement.
+. Branchez le clavier et le moniteur à l'arrière du châssis défectueux.
+. Vérifiez le numéro de série du nœud défaillant auprès du support NetApp .
+. Mettez le châssis hors tension.
+. Étiquetez les disques durs à l'avant et les câbles à l'arrière en indiquant leur emplacement, afin de pouvoir les remettre aux mêmes endroits après le remplacement.  Voir l'image suivante pour l'emplacement des disques dans le châssis :
++
+image::h610s-drives.gif[Montre la face avant du châssis H610S avec les disques étiquetés.]
+
+. Retirez les câbles.
+. Retirez le châssis en dévissant les vis moletées des pattes de fixation.  Vous devez emballer et renvoyer le châssis défectueux à NetApp.
+. Installez le châssis de remplacement.
+. Retirez soigneusement les disques durs du châssis défectueux et insérez-les dans le châssis de remplacement.
++
+
+NOTE: Vous devez insérer les disques dans les mêmes emplacements qu'avant de les retirer.
+
+. Retirez les blocs d'alimentation du châssis défectueux et insérez-les dans le châssis de remplacement.
+. Insérez les câbles d'alimentation et les câbles réseau dans leurs ports d'origine.
+. Des émetteurs-récepteurs enfichables à petit facteur de forme (SFP) pourraient être insérés dans les ports 10GbE du nœud de remplacement.  Vous devez les retirer avant de câbler les ports 10GbE.
++
+
+NOTE: Si votre commutateur ne reconnaît pas les câbles, consultez la documentation de son fournisseur.
+
+. Mettez le châssis sous tension en appuyant sur le bouton d'alimentation situé à l'avant.  Le démarrage du nœud prend environ cinq minutes et trente secondes.
+. Effectuez les étapes de configuration.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

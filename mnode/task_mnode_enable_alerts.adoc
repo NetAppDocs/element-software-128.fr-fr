@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_alerts.html 
+summary: 'Vous ne pouvez pas configurer les paramètres de surveillance des alertes sur votre système de stockage 100 % flash SolidFire .' 
+keywords: netapp, Element, management node, mnode, ui, alerts, alert monitoring 
+---
+= Configurer la surveillance des alertes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les outils de surveillance des alertes sont configurés pour la surveillance des alertes NetApp HCI .  Ces outils ne sont ni configurés ni utilisés pour le stockage 100 % flash SolidFire .  L'exécution des outils pour ces clusters génère l'erreur 405 suivante, ce qui est normal compte tenu de la configuration : `webUIParseError : Invalid response from server. 405`
+
+Pour plus d'informations sur la configuration de la surveillance des alertes pour NetApp HCI, consultezlink:https://docs.netapp.com/us-en/hci/docs/task_mnode_enable_alerts.html["Configurer la surveillance des alertes"^]

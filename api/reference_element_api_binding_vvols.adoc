@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_binding_vvols.html 
+sidebar: sidebar 
+keywords: binding,object,objects,volume,volumes,virtual 
+summary: 'L"objet de liaison contient des informations sur la liaison d"un volume virtuel.  Vous pouvez récupérer une liste de ces informations pour tous les volumes virtuels à l"aide de la méthode API ListVirtualVolumeBindings.' 
+---
+= reliure (volumes virtuels)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet de liaison contient des informations sur la liaison d'un volume virtuel.  Vous pouvez récupérer une liste de ces informations pour tous les volumes virtuels en utilisant `ListVirtualVolumeBindings` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+`protocolEndpointID`
+ a| 
+L'identifiant unique du point de terminaison du protocole.
+ a| 
+UUID
+
+
+
+ a| 
+`protocolEndpointInBandID`
+ a| 
+L'identifiant scsiNAADeviceID du point de terminaison du protocole.
+ a| 
+chaîne
+
+
+
+ a| 
+`protocolEndpointType`
+ a| 
+Le type de point de terminaison du protocole.  SCSI est la seule valeur renvoyée pour le type de point de terminaison de protocole.
+ a| 
+chaîne
+
+
+
+ a| 
+`virtualVolumeBindingID`
+ a| 
+L'identifiant unique de l'objet de liaison de volume virtuel.
+ a| 
+entier
+
+
+
+ a| 
+`virtualVolumeHostID`
+ a| 
+L'identifiant unique de l'hôte du volume virtuel.
+ a| 
+UUID
+
+
+
+ a| 
+`virtualVolumeID`
+ a| 
+L'identifiant unique du volume virtuel.
+ a| 
+UUID
+
+
+
+ a| 
+`virtualVolumeSecondaryID`
+ a| 
+L'identifiant secondaire du volume virtuel.
+ a| 
+chaîne
+
+|===
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_listvirtualvolumebindings.adoc[ListerVirtualVolumeBindings]
+* xref:reference_element_api_protocolendpoint.adoc[point de terminaison du protocole]
+

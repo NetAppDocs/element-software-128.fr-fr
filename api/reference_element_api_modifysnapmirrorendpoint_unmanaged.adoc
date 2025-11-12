@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: 'Le logiciel Element utilise cette version de la méthode ModifySnapMirrorEndpoint pour modifier le nom du cluster de stockage ou les attributs d"adresse IP d"un point de terminaison SnapMirror non géré.  Les points de terminaison non gérés ne peuvent pas être administrés à l"aide des API Element SnapMirror .  Elles doivent être gérées à l"aide du logiciel de gestion ONTAP ou d"API.' 
+---
+= ModifierSnapMirrorEndpoint (non géré)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le logiciel Element utilise cette version de `ModifySnapMirrorEndpoint` méthode permettant de modifier le nom du cluster de stockage ou les attributs d'adresse IP d'un point de terminaison SnapMirror non géré.  Les points de terminaison non gérés ne peuvent pas être administrés à l'aide des API Element SnapMirror .  Elles doivent être gérées à l'aide du logiciel de gestion ONTAP ou d'API.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+
+
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+SnapMirrorEndpointID
+ a| 
+Le point de terminaison SnapMirror à modifier.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+nom du cluster
+ a| 
+Le nouveau nom du point de terminaison.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+Adresses IP
+ a| 
+Voici la nouvelle liste des adresses IP d'un cluster de systèmes de stockage ONTAP qui doivent communiquer avec ce cluster de stockage Element.
+ a| 
+tableau de chaînes
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+Informations concernant le point de terminaison SnapMirror modifié.
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,3

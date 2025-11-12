@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview.html 
+summary: 'Vous pouvez utiliser le nœud de gestion (mNode) pour utiliser les services système, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système, configurer Active IQ pour la surveillance du système et activer l"accès au support NetApp pour le dépannage.' 
+keywords: netapp, mnode, api, rest api, mnode ui, management node ui 
+---
+= Vue d'ensemble du nœud de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le nœud de gestion (mNode) pour utiliser les services système, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système, configurer Active IQ pour la surveillance du système et activer l'accès au support NetApp pour le dépannage.
+
+
+NOTE: Il est recommandé, par mesure de précaution, d'associer un seul nœud de gestion à une seule instance VMware vCenter et d'éviter de définir les mêmes ressources de stockage et de calcul ou les mêmes instances vCenter sur plusieurs nœuds de gestion.
+
+Pour les clusters exécutant la version 11.3 ou ultérieure du logiciel Element, vous pouvez interagir avec le nœud de gestion en utilisant l'une des deux interfaces suivantes :
+
+* Avec l'interface utilisateur du nœud de gestion(`https://[mNode IP]:442` ), vous pouvez modifier les paramètres réseau et de cluster, exécuter des tests système ou utiliser les utilitaires système.
+* Avec l'interface utilisateur de l'API REST intégrée(`https://[mNode IP]/mnode` ), vous pouvez exécuter ou comprendre les API relatives aux services du nœud de gestion, notamment la configuration du serveur proxy, les mises à jour du niveau de service ou la gestion des actifs.
+
+
+Installer ou récupérer un nœud de gestion :
+
+* link:task_mnode_install.html["Installer un nœud de gestion"]
+* link:task_mnode_install_add_storage_NIC.html["Configurer un contrôleur d'interface réseau (NIC) de stockage"]
+* link:task_mnode_recover.html["Récupérer un nœud de gestion"]
+
+
+Accédez au nœud de gestion :
+
+* link:task_mnode_access_ui.html["Accéder au nœud de gestion (interface utilisateur ou API REST)"]
+
+
+Modifier le certificat SSL par défaut :
+
+* link:reference_change_mnode_default_ssl_certificate.html["Modifier le certificat SSL par défaut du nœud de gestion"]
+
+
+Effectuez des tâches avec l'interface utilisateur du nœud de gestion :
+
+* link:task_mnode_work_overview_UI.html["Aperçu de l'interface utilisateur du nœud de gestion"]
+
+
+Effectuez des tâches avec les API REST du nœud de gestion :
+
+* link:task_mnode_work_overview_API.html["Présentation de l'interface utilisateur de l'API REST du nœud de gestion"]
+
+
+Activez ou désactivez la fonctionnalité SSH à distance ou démarrez une session de tunnel d'assistance à distance avec le support NetApp pour vous aider à résoudre le problème :
+
+* link:task_mnode_enable_node_troubleshooting_sessions.html["Accès aux nœuds de stockage via SSH pour le dépannage de base"]
++
+** link:task_mnode_enable_remote_support_connections.html["Activer les connexions d'assistance NetApp à distance"]
+** link:task_mnode_ssh_management.html["Gérer la fonctionnalité SSH sur le nœud de gestion"]
+
+
+
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

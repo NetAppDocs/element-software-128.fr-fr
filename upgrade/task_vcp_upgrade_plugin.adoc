@@ -1,0 +1,214 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_vcp_upgrade_plugin.html 
+summary: 'Dans le cadre d"une mise à niveau d"un système de stockage NetApp SolidFire , vous pouvez mettre à niveau le plug-in Element pour vCenter Server.' 
+keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 5.0 
+---
+= Mettez à niveau le plug-in Element pour vCenter Server.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour les environnements vSphere existants disposant d'un plug-in NetApp Element enregistré pour VMware vCenter Server, vous pouvez mettre à jour l'enregistrement de votre plug-in après avoir mis à jour le package de services de gestion qui contient le service de plug-in.
+
+Vous pouvez mettre à jour l'enregistrement du plug-in sur vCenter Server Virtual Appliance (vCSA) ou Windows à l'aide de l'utilitaire d'enregistrement.  Vous devez modifier votre enregistrement pour le plug-in vCenter sur chaque serveur vCenter sur lequel vous devez utiliser le plug-in.
+
+[NOTE]
+====
+Le pack de services de gestion 2.27 inclut le plug-in Element pour vCenter Server 5.5, qui est uniquement compatible avec le nœud de gestion 12.8. Lorsque vous effectuez une mise à jour vers les services de gestion 2.27, vous devez modifier la séquence de mise à niveau et mettre à jour le bundle de services de gestion _après_ la mise à niveau vers Element 12.8 pour assurer la compatibilité entre le nœud de gestion et les services de gestion.
+
+Le pack de services de gestion 2.22.7 inclut le plug-in Element pour vCenter Server 5.0, qui contient le plug-in distant. Si vous utilisez le plug-in Element, vous devez mettre à niveau vos services de gestion vers la version 2.22.7 ou ultérieure afin de vous conformer à la directive VMware qui supprime la prise en charge des plug-ins locaux. https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/developing-local-plug-ins-client-sdk/about-this-book-local/deprecation-of-local-plug-in-architecture.html["Apprendre encore plus"^].
+
+====
+[role="tabbed-block"]
+====
+.Module d'extension Element vCenter 5.0 ou version ultérieure
+--
+Cette procédure de mise à niveau couvre les scénarios de mise à niveau suivants :
+
+* Vous effectuez une mise à niveau vers Element Plug-in pour vCenter Server 5.5, 5.4, 5.3, 5.2, 5.1 ou 5.0.
+* Vous effectuez une mise à niveau vers un client Web vSphere HTML5 8.0 ou 7.0.
++
+
+IMPORTANT: Le plug-in Element pour vCenter 5.0 ou version ultérieure n'est pas compatible avec vCenter Server 6.7 et 6.5.
+
+
+
+
+NOTE: Lors de la mise à niveau du plug-in Element pour vCenter Server 4.x vers la version 5.x, les clusters déjà configurés avec le plug-in sont perdus, car les données ne peuvent pas être copiées d'une instance vCenter vers un plug-in distant. Vous devez rajouter les clusters au plug-in distant. Cette opération n'est nécessaire qu'une seule fois lors de la mise à niveau d'un plug-in local vers un plug-in distant.
+
+--
+.Module d'extension Element vCenter 4.10 ou version antérieure
+--
+Cette procédure de mise à niveau couvre les scénarios de mise à niveau suivants :
+
+* Vous effectuez une mise à niveau vers Element Plug-in pour vCenter Server 4.10, 4.9, 4.8, 4.7, 4.6, 4.5 ou 4.4.
+* Vous effectuez une mise à niveau vers un client Web vSphere HTML5 7.0, 6.7 ou 6.5.
++
+[IMPORTANT]
+====
+** Le plug-in n'est pas compatible avec VMware vCenter Server 8.0 pour Element Plug-in pour VMware vCenter Server 4.x.
+** Le plug-in n'est pas compatible avec VMware vCenter Server 6.5 pour Element Plug-in pour VMware vCenter Server 4.6, 4.7 et 4.8.
+
+
+====
+* Vous effectuez une mise à niveau vers un client Web vSphere Flash 6.7.
++
+
+IMPORTANT: Le plug-in est compatible avec vSphere Web Client version 6.7 U2 pour Flash, 6.7 U3 (Flash et HTML5) et 7.0 U1.  Le plug-in n'est pas compatible avec la version 6.7 U2 build 13007421 du client Web HTML5 vSphere et les autres versions 6.7 U2 publiées avant la mise à jour 2a (build 13643870).  Pour plus d'informations sur les versions vSphere prises en charge, consultez les notes de version de https://docs.netapp.com/us-en/vcp/rn_relatedrn_vcp.html#netapp-element-plug-in-for-vcenter-server["votre version du plug-in"^] .
+
+
+
+--
+====
+.Ce dont vous aurez besoin
+* *Privilèges d'administrateur* : Vous disposez des privilèges de rôle d'administrateur vCenter pour installer un plug-in.
+* *Mises à niveau vSphere* : Vous avez effectué toutes les mises à niveau vCenter requises avant de mettre à niveau le plug-in NetApp Element pour vCenter Server.  Cette procédure suppose que les mises à niveau de vCenter ont déjà été effectuées.
+* *Serveur vCenter* : Votre plug-in vCenter version 4.x ou 5.x est enregistré auprès d’un serveur vCenter.  À partir de l'utilitaire d'enregistrement(`https://<ManagementNodeIP>:9443` ), sélectionnez *État de l'enregistrement*, remplissez les champs nécessaires et sélectionnez *Vérifier l'état* pour vérifier que le plug-in vCenter est déjà enregistré et le numéro de version de l'installation actuelle.
+* *Mises à jour des services de gestion* : Vous avez mis à jour votre https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["ensemble de services de gestion"^] à la dernière version.  Les mises à jour du plug-in vCenter sont distribuées via des mises à jour des services de gestion publiées en dehors des mises à jour majeures des produits pour le stockage 100% flash NetApp SolidFire .
+* *Mises à niveau du nœud de gestion* :
++
+[role="tabbed-block"]
+====
+.Module d'extension Element vCenter 5.0 ou version ultérieure
+--
+Vous exécutez un nœud de gestion qui a étélink:task_hcc_upgrade_management_node.html["mise à niveau"] à la version 12.3.x ou ultérieure.
+
+--
+.Module d'extension Element vCenter 4.10 ou version antérieure
+--
+Pour le plug-in Element vCenter 4.4 à 4.10, vous exécutez un nœud de gestion qui a étélink:task_hcc_upgrade_management_node.html["mise à niveau"] à la version 11.3 ou ultérieure. Le plug-in vCenter 4.4 ou ultérieur nécessite un nœud de gestion 11.3 ou ultérieur doté d'une architecture modulaire fournissant des services individuels.  Votre nœud de gestion doit être allumé et son adresse IP ou DHCP doit être configurée.
+
+--
+====
+* *Améliorations du stockage des éléments* :
++
+** À partir du plug-in Element vCenter 5.0, vous disposez d'un cluster exécutant le logiciel NetApp Element 12.3.x ou une version ultérieure.
+** Pour le plug-in Element vCenter 4.10 ou antérieur, vous devez disposer d'un cluster exécutant le logiciel NetApp Element 11.3 ou ultérieur.
+
+
+* *Client Web vSphere* : Vous vous êtes déconnecté du client Web vSphere avant de commencer toute mise à niveau de plug-in.  Le client web ne reconnaîtra pas les mises à jour apportées à votre plug-in au cours de ce processus si vous ne vous déconnectez pas.
+
+
+.Étapes
+. Saisissez l'adresse IP de votre nœud de gestion dans un navigateur, y compris le port TCP pour l'enregistrement :
+`https://<ManagementNodeIP>:9443` L'interface utilisateur de l'utilitaire d'enregistrement s'ouvre sur la page *Gérer les informations d'identification du service QoSSIOC* pour le plug-in.
++
+image::vcp_registration_utility_ui_qossioc.png[représente l'interface utilisateur de l'utilitaire d'enregistrement du plug-in]
+
+. Sélectionnez *Enregistrement du plug-in vCenter*.
++
+[role="tabbed-block"]
+====
+.Module d'extension Element vCenter 5.0 ou version ultérieure
+--
+La page d'enregistrement du plug-in vCenter s'affiche :
+
+image::vcp_remote_plugin_registration_ui.png[représente l'interface utilisateur de l'utilitaire d'enregistrement du plug-in]
+
+--
+.Module d'extension Element vCenter 4.10 ou version antérieure
+--
+La page d'enregistrement du plug-in vCenter s'affiche :
+
+image::vcp_registration_utility_ui.png[représente l'interface utilisateur de l'utilitaire d'enregistrement du plug-in]
+
+--
+====
+. Dans *Gérer le plug-in vCenter*, sélectionnez *Mettre à jour le plug-in*.
+. Confirmez ou mettez à jour les informations suivantes :
++
+.. L'adresse IPv4 ou le nom de domaine complet (FQDN) du service vCenter sur lequel vous enregistrerez votre plug-in.
+.. Nom d'utilisateur de l'administrateur vCenter.
++
+
+NOTE: Les identifiants (nom d'utilisateur et mot de passe) que vous saisissez doivent correspondre à un utilisateur disposant des privilèges du rôle d'administrateur vCenter.
+
+.. Le mot de passe de l'administrateur vCenter.
+.. (Pour les serveurs internes/sites cachés) Selon votre version du plug-in Element pour vCenter, une URL personnalisée pour le fichier JSON ou le fichier ZIP du plug-in :
++
+[role="tabbed-block"]
+====
+.Module d'extension Element vCenter 5.0 ou version ultérieure
+--
+URL personnalisée pour le fichier JSON du plug-in.
+
+
+NOTE: Vous pouvez sélectionner *URL personnalisée* pour personnaliser l'URL si vous utilisez un serveur HTTP ou HTTPS (site clandestin) ou si vous avez modifié le nom du fichier JSON ou les paramètres réseau.  Pour connaître les étapes de configuration supplémentaires si vous souhaitez personnaliser une URL, consultez la documentation du plug-in Element pour vCenter Server concernant la modification des propriétés vCenter pour un serveur HTTP interne (site caché).
+
+--
+.Module d'extension Element vCenter 4.10 ou version antérieure
+--
+URL personnalisée pour le fichier ZIP du plugin.
+
+
+NOTE: Vous pouvez sélectionner *URL personnalisée* pour personnaliser l'URL si vous utilisez un serveur HTTP ou HTTPS (site clandestin) ou si vous avez modifié le nom du fichier ZIP ou les paramètres réseau.  Pour connaître les étapes de configuration supplémentaires si vous souhaitez personnaliser une URL, consultez la documentation du plug-in Element pour vCenter Server concernant la modification des propriétés vCenter pour un serveur HTTP interne (site caché).
+
+--
+====
+
+
+. Sélectionnez *Mettre à jour*.
++
+Une bannière apparaît dans l'interface utilisateur de l'utilitaire d'inscription lorsque l'inscription est réussie.
+
+. Connectez-vous au client Web vSphere en tant qu'administrateur vCenter.  Si vous êtes déjà connecté au client Web vSphere, vous devez d'abord vous déconnecter, attendre deux à trois minutes, puis vous reconnecter.
++
+
+NOTE: Cette action crée une nouvelle base de données et termine l'installation dans le client Web vSphere.
+
+. Dans le client Web vSphere, vérifiez que l'installation est terminée en consultant le moniteur de tâches. `Download plug-in` et `Deploy plug-in` .
+. Vérifiez que les points d'extension du plug-in apparaissent dans l'onglet *Raccourcis* du client Web vSphere et dans le panneau latéral.
++
+[role="tabbed-block"]
+====
+.Module d'extension Element vCenter 5.0 ou version ultérieure
+--
+Le point d'extension du plugin NetApp Element Remote apparaît :
+
+image::vcp_remote_plugin_icons_home_page.png[Illustre les points d'extension du plug-in après une mise à niveau ou une installation réussie d'Element Plug-in 5.1 ou version ultérieure.]
+
+--
+.Module d'extension Element vCenter 4.10 ou version antérieure
+--
+Les points d'extension de configuration et de gestion de NetApp Element apparaissent :
+
+image::vcp_shortcuts_page_accessing_plugin.png[Illustre les points d'extension du plug-in après une mise à niveau ou une installation réussie d'Element Plug-in 4.10 ou version antérieure.]
+
+--
+====
++
+[NOTE]
+====
+Si les icônes du plug-in vCenter ne sont pas visibles, consultezlink:https://docs.netapp.com/us-en/vcp/vcp_reference_troubleshoot_vcp.html#plug-in-registration-successful-but-icons-do-not-appear-in-web-client["Module d'extension Element pour vCenter Server"^] documentation relative au dépannage du plug-in.
+
+Après la mise à niveau vers NetApp Element Plug-in pour vCenter Server 4.8 ou version ultérieure avec VMware vCenter Server 6.7U1, si les clusters de stockage ne sont pas répertoriés ou si une erreur de serveur apparaît dans les sections *Clusters* et *Paramètres QoSSIOC* de la configuration de NetApp Element , consultezlink:https://docs.netapp.com/us-en/vcp/vcp_reference_troubleshoot_vcp.html#error_vcp48_67u1["Module d'extension Element pour vCenter Server"^] documentation relative au dépannage de ces erreurs.
+
+====
+. Vérifiez le changement de version dans l'onglet *À propos* du point d'extension *Configuration de NetApp Element * du plug-in.
++
+Vous devriez voir les détails de la version suivants :
+
++
+[listing]
+----
+NetApp Element Plug-in Version: 5.5
+NetApp Element Plug-in Build Number: 16
+----
+
+
+
+NOTE: Le plug-in vCenter contient du contenu d'aide en ligne.  Pour vous assurer que votre Aide contient le contenu le plus récent, videz le cache de votre navigateur après la mise à jour de votre module complémentaire.
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

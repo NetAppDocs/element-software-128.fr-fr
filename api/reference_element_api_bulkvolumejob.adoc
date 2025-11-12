@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: 'L"objet bulkVolumeJob contient des informations sur les opérations de lecture ou d"écriture de volumes en masse, telles que le clonage ou la création d"instantanés.' 
+---
+= Travail de volume en masse
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le `bulkVolumeJob` L'objet contient des informations sur les opérations de lecture ou d'écriture en masse, telles que le clonage ou la création d'instantanés.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+`attributes`
+ a| 
+Attribut JSON de la tâche de traitement en masse.
+ a| 
+objet JSON
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+L'identifiant de la tâche de traitement interne en masse.
+ a| 
+entier
+
+
+
+ a| 
+`createTime`
+ a| 
+Horodatage créé pour le traitement de volume en masse au format UTC+0.
+ a| 
+Chaîne de date ISO 8601
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+Le nombre de secondes écoulées depuis le début de la tâche.
+ a| 
+chaîne
+
+
+
+ a| 
+`format`
+ a| 
+Format de l'opération de traitement en vrac. Valeurs possibles :
+
+* indigène
+* non compressé
+
+ a| 
+chaîne
+
+
+
+ a| 
+`key`
+ a| 
+La clé unique créée par la session de volume en masse.
+ a| 
+chaîne
+
+
+
+ a| 
+`percentComplete`
+ a| 
+Le pourcentage d'achèvement indiqué par l'opération.
+ a| 
+entier
+
+
+
+ a| 
+`remainingTime`
+ a| 
+Temps restant estimé en secondes.
+ a| 
+entier
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+L'identifiant du volume source.
+ a| 
+entier
+
+
+
+ a| 
+`status`
+ a| 
+État d'avancement de l'opération. Valeurs possibles :
+
+* se préparer
+* en cours d'exécution
+* Terminé
+* échoué
+
+ a| 
+chaîne
+
+
+
+ a| 
+`script`
+ a| 
+Le nom du script, le cas échéant.
+ a| 
+chaîne
+
+
+
+ a| 
+`snapshotID`
+ a| 
+L'identifiant de l'instantané si un instantané se trouve dans la source de la tâche de traitement de volume en masse.
+ a| 
+entier
+
+
+
+ a| 
+`type`
+ a| 
+Le type d'opération en vrac. Valeurs possibles :
+
+* lire
+* écrire
+
+ a| 
+chaîne
+
+|===

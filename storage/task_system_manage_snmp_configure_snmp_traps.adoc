@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_snmp_configure_snmp_traps.html 
+sidebar: sidebar 
+keywords: snmp, config, traps, notifications, monitor, health, enable, disable 
+summary: 'Les administrateurs système peuvent utiliser les traps SNMP, également appelés notifications, pour surveiller l"état du cluster SolidFire .' 
+---
+= Configurer les traps SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les administrateurs système peuvent utiliser les traps SNMP, également appelés notifications, pour surveiller l'état du cluster SolidFire .
+
+Lorsque les traps SNMP sont activés, le cluster SolidFire génère des traps associés aux entrées du journal des événements et aux alertes système.  Pour recevoir des notifications SNMP, vous devez choisir les traps à générer et identifier les destinataires des informations de trap.  Par défaut, aucun piège n'est généré.
+
+. Cliquez sur *Cluster* > *SNMP*.
+. Dans la section *Paramètres des traps SNMP*, sélectionnez un ou plusieurs types de traps que le système doit générer :
++
+** Pièges à défauts de cluster
+** Pièges de défauts résolus par cluster
+** Pièges à événements de cluster
+
+
+. Dans la section *Destinataires du piège*, saisissez les informations d'hôte, de port et de chaîne communautaire d'un destinataire.
+. *Facultatif* : Pour ajouter un autre destinataire de trap, cliquez sur *Ajouter un destinataire de trap* et saisissez les informations d’hôte, de port et de chaîne communautaire.
+. Cliquez sur *Enregistrer les modifications*.
+

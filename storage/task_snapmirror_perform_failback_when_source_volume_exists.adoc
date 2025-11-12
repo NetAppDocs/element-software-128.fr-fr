@@ -1,0 +1,40 @@
+---
+permalink: storage/task_snapmirror_perform_failback_when_source_volume_exists.html 
+sidebar: sidebar 
+keywords: element, ui, failback, perform, source volume, snapmirror 
+summary: 'Vous pouvez resynchroniser le volume source d"origine et revenir en arrière à l"aide de l"interface utilisateur de NetApp Element .  Cette procédure s"applique aux scénarios où le volume source d"origine existe toujours.' 
+---
+= Effectuer une restauration lorsque le volume source existe toujours.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez resynchroniser le volume source d'origine et revenir en arrière à l'aide de l'interface utilisateur de NetApp Element .  Cette procédure s'applique aux scénarios où le volume source d'origine existe toujours.
+
+. Dans l'interface utilisateur de l'élément, recherchez la relation que vous avez interrompue pour effectuer le basculement.
+. Cliquez sur l'icône Actions, puis sur *Resynchronisation inversée*.
+. Confirmez l'action.
++
+
+NOTE: L'opération de resynchronisation inversée crée une nouvelle relation dans laquelle les rôles des volumes source et de destination d'origine sont inversés (cela crée deux relations, la relation d'origine persistant).  Toutes les nouvelles données provenant du volume de destination d'origine sont transférées vers le volume source d'origine dans le cadre de l'opération de resynchronisation inverse.  Vous pouvez continuer à accéder aux données et à y écrire sur le volume actif côté destination, mais vous devrez déconnecter tous les hôtes du volume source et effectuer une mise à jour SnapMirror avant de rediriger vers le volume principal d'origine.
+
+. Cliquez sur l'icône Actions de la relation inverse que vous venez de créer, puis cliquez sur *Mettre à jour*.
++
+Maintenant que vous avez terminé la resynchronisation inverse et vérifié qu'aucune session active n'est connectée au volume de destination et que les données les plus récentes se trouvent sur le volume principal d'origine, vous pouvez effectuer les étapes suivantes pour terminer le retour en arrière et réactiver le volume principal d'origine :
+
+. Cliquez sur l'icône Actions de la relation inverse et cliquez sur *Interrompre*.
+. Cliquez sur l'icône Actions de la relation d'origine, puis sur *Resynchroniser*.
++
+
+NOTE: Le volume principal d'origine peut désormais être monté pour reprendre les charges de travail de production sur ce volume.  La réplication SnapMirror d'origine reprend selon la politique et la planification configurées pour la relation.
+
+. Après avoir confirmé que le statut de la relation d'origine est « `snapmirrored` », cliquez sur l'icône Actions de la relation inverse et cliquez sur *Supprimer*.
+
+
+
+
+== Trouver plus d'informations
+
+xref:concept_snapmirror_failback_scenarios.adoc[Scénarios de restauration SnapMirror]

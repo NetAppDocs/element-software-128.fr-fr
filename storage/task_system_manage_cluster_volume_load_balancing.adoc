@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: 'À partir d"Element 12.8, vous pouvez activer l"équilibrage de charge des volumes pour répartir les volumes entre les nœuds en fonction des IOPS réelles de chaque volume au lieu des IOPS minimales configurées dans la politique QoS.' 
+---
+= Activer et désactiver l'équilibrage de charge des volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+À partir d'Element 12.8, vous pouvez utiliser l'équilibrage de charge des volumes pour répartir les volumes entre les nœuds en fonction des IOPS réelles de chaque volume au lieu des IOPS minimales configurées dans la politique QoS.  Vous pouvez activer et désactiver l'équilibrage de charge volumétrique, désactivé par défaut, via l'interface utilisateur ou l'API d'Element.
+
+.Étapes
+. Sélectionnez *Cluster* > *Paramètres*.
+. Dans la section Spécifique au cluster, modifiez l'état de l'équilibrage de charge des volumes :
++
+[role="tabbed-block"]
+====
+.Activer l'équilibrage de charge volumétrique
+--
+Sélectionnez *Activer l'équilibrage de charge sur les IOPS réelles*, puis confirmez votre sélection.
+
+--
+.Désactiver l'équilibrage de charge volumétrique :
+--
+Sélectionnez *Désactiver l'équilibrage de charge sur les IOPS réelles*, puis confirmez votre sélection.
+
+--
+====
+. Vous pouvez également sélectionner *Rapports* > *Aperçu* pour confirmer le changement d'état du solde des IOPS réelles.  Vous devrez peut-être faire défiler vers le bas les informations sur l'état du cluster pour en consulter le statut.
+
+
+
+
+== Trouver plus d'informations
+
+* link:../api/reference_element_api_enablefeature.html["Activez l'équilibrage de charge volumétrique à l'aide de l'API"]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["Désactiver l'équilibrage de charge volumétrique via l'API"]
+* link:../hccstorage/task-hcc-qos-policies.html["Créer et gérer des politiques QoS de volume"]
+

@@ -1,0 +1,47 @@
+---
+permalink: setup/task_post_deploy_access_the_element_software_user_interface.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez accéder à l"interface utilisateur Element en utilisant l"adresse IP virtuelle de gestion (MVIP) du nœud principal du cluster.' 
+---
+= Accéder à l'interface utilisateur du logiciel Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez accéder à l'interface utilisateur Element en utilisant l'adresse IP virtuelle de gestion (MVIP) du nœud principal du cluster.
+
+Vous devez vous assurer que les bloqueurs de fenêtres contextuelles et les paramètres NoScript sont désactivés dans votre navigateur.
+
+Vous pouvez accéder à l'interface utilisateur en utilisant une adresse IPv4 ou IPv6, selon la configuration effectuée lors de la création du cluster.
+
+.Étapes
+. Choisissez l’une des options suivantes :
++
+** IPv6 : Entrez `https://[IPv6_MVIP_address]` . Par exemple:
++
+[listing]
+----
+https://[fd20:8b1e:b256:45a::1234]/
+----
+** IPv4 : Entrez `https://[IPv4 MVIP address]` . Par exemple:
++
+[listing]
+----
+https://10.123.456.789/
+----
+
+
+. Pour le DNS, saisissez le nom d'hôte.
+. Cliquez sur les messages relatifs au certificat d'authentification.
+
+
+
+
+== Pour plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

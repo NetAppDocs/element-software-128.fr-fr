@@ -1,0 +1,15 @@
+---
+permalink: storage/reference_trademark.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Marque déposée
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+NETAPP, le logo NETAPP et les marques répertoriées sur la page Marques NetApp sont des marques commerciales de NetApp, Inc. Les autres noms de sociétés et de produits peuvent être des marques commerciales de leurs propriétaires respectifs.
+
+https://www.netapp.com/company/legal/trademarks/[]

@@ -1,0 +1,120 @@
+---
+permalink: storage/concept_data_manage_vvol_manage_storage_containers.html 
+sidebar: sidebar 
+keywords: storage container, storage containers, about storage containers, cluster, vvols, create, view details, chap, edit, delete 
+summary: Un conteneur de stockage est une représentation de datastore vSphere créée sur un cluster exécutant le logiciel Element. 
+---
+= Gérer les conteneurs de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un conteneur de stockage est une représentation de datastore vSphere créée sur un cluster exécutant le logiciel Element.
+
+Des conteneurs de stockage sont créés et associés à des comptes NetApp Element .  Un conteneur de stockage créé sur un stockage Element apparaît comme un datastore vSphere dans vCenter et ESXi.  Les conteneurs de stockage n'allouent aucun espace sur le stockage Element.  Ils servent simplement à associer logiquement des volumes virtuels.
+
+Un maximum de quatre conteneurs de stockage par cluster est pris en charge.  Un conteneur de stockage minimum est requis pour activer la fonctionnalité VVols.
+
+
+
+== Créer un conteneur de stockage
+
+Vous pouvez créer des conteneurs de stockage dans l'interface utilisateur d'Element et les découvrir dans vCenter.  Vous devez créer au moins un conteneur de stockage pour commencer à provisionner des machines virtuelles basées sur VVol.
+
+Avant de commencer, activez la fonctionnalité VVols dans l'interface utilisateur Element pour le cluster.
+
+.Étapes
+. Sélectionnez *VVols* > *Conteneurs de stockage*.
+. Cliquez sur le bouton *Créer des conteneurs de stockage*.
+. Saisissez les informations du conteneur de stockage dans la boîte de dialogue *Créer un nouveau conteneur de stockage* :
++
+.. Saisissez un nom pour le conteneur de stockage.
+.. Configurez les secrets de l'initiateur et de la cible pour CHAP.
++
+
+TIP: Laissez les champs Paramètres CHAP vides pour générer automatiquement les secrets.
+
+.. Cliquez sur le bouton *Créer un conteneur de stockage*.
+
+
+. Vérifiez que le nouveau conteneur de stockage apparaît bien dans la liste de l'onglet *Conteneurs de stockage*.
++
+
+NOTE: Comme un ID de compte NetApp Element est créé automatiquement et attribué au conteneur de stockage, il n'est pas nécessaire de créer un compte manuellement.
+
+
+
+
+
+== Afficher les détails du conteneur de stockage
+
+Sur la page « Conteneurs de stockage » de l’onglet VVols, vous pouvez consulter les informations relatives à tous les conteneurs de stockage actifs sur le cluster.
+
+* *ID du compte* : L’identifiant du compte NetApp Element associé au conteneur de stockage.
+* *Nom* : Le nom du conteneur de stockage.
+* *Statut* : L’état du conteneur de stockage. Valeurs possibles :
++
+** Actif : Le conteneur de stockage est en cours d'utilisation.
+** Verrouillé : Le conteneur de stockage est verrouillé.
+
+
+* *Type PE* : Le type de point de terminaison du protocole (SCSI est le seul protocole disponible pour le logiciel Element).
+* *ID du conteneur de stockage* : L’UUID du conteneur de stockage du volume virtuel.
+* *Volumes virtuels actifs* : Nombre de volumes virtuels actifs associés au conteneur de stockage.
+
+
+
+
+== Afficher les détails de chaque conteneur de stockage
+
+Vous pouvez consulter les informations relatives à un conteneur de stockage individuel en le sélectionnant sur la page « Conteneurs de stockage » de l’onglet VVols.
+
+* *ID du compte* : L’identifiant du compte NetApp Element associé au conteneur de stockage.
+* *Nom* : Le nom du conteneur de stockage.
+* *Statut* : L’état du conteneur de stockage. Valeurs possibles :
++
+** Actif : Le conteneur de stockage est en cours d'utilisation.
+** Verrouillé : Le conteneur de stockage est verrouillé.
+
+
+* *Secret de l'initiateur CHAP* : Le secret unique du CHAP pour l'initiateur.
+* *Secret cible CHAP* : Le secret CHAP unique pour la cible.
+* *ID du conteneur de stockage* : L’UUID du conteneur de stockage du volume virtuel.
+* *Type de point de terminaison de protocole* : Indique le type de point de terminaison de protocole (SCSI est le seul protocole disponible).
+
+
+
+
+== Modifier un conteneur de stockage
+
+Vous pouvez modifier l'authentification CHAP du conteneur de stockage dans l'interface utilisateur Element.
+
+. Sélectionnez *VVols* > *Conteneurs de stockage*.
+. Cliquez sur l'icône *Actions* du conteneur de stockage que vous souhaitez modifier.
+. Dans le menu qui s'affiche, sélectionnez *Modifier*.
+. Dans les paramètres CHAP, modifiez les informations d'identification secrètes de l'initiateur et de la cible utilisées pour l'authentification.
++
+
+TIP: Si vous ne modifiez pas les informations d'identification des paramètres CHAP, elles restent inchangées.  Si vous laissez les champs d'identification vides, le système génère automatiquement de nouveaux secrets.
+
+. Cliquez sur *Enregistrer les modifications*.
+
+
+
+
+== Supprimer un conteneur de stockage
+
+Vous pouvez supprimer les conteneurs de stockage depuis l'interface utilisateur d'Element.
+
+.Ce dont vous aurez besoin
+Assurez-vous que toutes les machines virtuelles ont été supprimées du datastore VVol.
+
+.Étapes
+. Sélectionnez *VVols* > *Conteneurs de stockage*.
+. Cliquez sur l'icône *Actions* correspondant au conteneur de stockage que vous souhaitez supprimer.
+. Dans le menu qui s'affiche, sélectionnez *Supprimer*.
+. Confirmez l'action.
+. Actualisez la liste des conteneurs de stockage dans l'onglet *Conteneurs de stockage* pour confirmer que le conteneur de stockage a bien été supprimé.
+

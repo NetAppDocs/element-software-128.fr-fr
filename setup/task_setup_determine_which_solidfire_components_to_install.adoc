@@ -1,0 +1,67 @@
+---
+permalink: setup/task_setup_determine_which_solidfire_components_to_install.html 
+sidebar: sidebar 
+keywords: setup, element, solidfire active iq 
+summary: 'Vous pouvez vérifier quels composants SolidFire , tels que le nœud de gestion, Active IQ et l"agent de surveillance NetApp (NMA), vous devez installer, en fonction des choix de configuration et de déploiement.' 
+---
+= Déterminez les composants SolidFire à installer.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez vérifier quels composants SolidFire , tels que le nœud de gestion, Active IQ et l'agent de surveillance NetApp (NMA), vous devez installer, en fonction des choix de configuration et de déploiement.
+
+Le tableau suivant répertorie les composants supplémentaires et indique s'il est nécessaire de les installer.
+
+[cols="3*"]
+|===
+| Composant | Cluster de stockage SolidFire autonome | Cluster NetApp HCI 
+
+
+ a| 
+Nœud de gestion
+ a| 
+Recommandé
+ a| 
+Installé par défaut, requis
+
+
+
+ a| 
+Active IQ
+ a| 
+Recommandé*
+ a| 
+Recommandé*
+
+
+
+ a| 
+Agent de surveillance NetApp
+ a| 
+Non pris en charge
+ a| 
+Recommandé
+
+|===
+* Active IQ est requis pour les clusters de stockage SolidFire sous licence de capacité.
+
+.Étapes
+. Déterminer les composants à installer.
+. Terminez l'installation conformément aux instructions.link:../mnode/task_mnode_install.html["installer le nœud de gestion"] procédure.
++
+
+NOTE: Pour configurer Active IQ, utilisez le `--telemetry_active` paramètre dans le script d'installation pour activer la collecte de données à des fins d'analyse par Active IQ.
+
+. Pour plus d'informations sur l'agent de surveillance NetApp , consultez ce document.link:../mnode/task_mnode_enable_activeIQ.html["procédure"] .
+
+
+
+
+== Pour plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

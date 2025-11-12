@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_management_services_for_afa.html 
+sidebar: sidebar 
+keywords: management services, aff 
+summary: 'Les services de gestion offrent des fonctionnalités de gestion centralisées et étendues pour le stockage 100 % flash SolidFire .  Ces services comprennent la télémétrie du système Active IQ , la journalisation et les mises à jour de service, ainsi que le service QoSSIOC pour le plug-in Element pour vCenter.' 
+---
+= Services de gestion pour le stockage 100% flash SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les services de gestion offrent des fonctionnalités de gestion centralisées et étendues pour le stockage 100 % flash SolidFire .  Ces services comprennent la télémétrie du système Active IQ , la journalisation et les mises à jour de service, ainsi que le service QoSSIOC pour le plug-in Element pour vCenter.

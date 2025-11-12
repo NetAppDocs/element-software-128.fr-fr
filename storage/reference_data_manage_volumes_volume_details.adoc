@@ -1,0 +1,88 @@
+---
+permalink: storage/reference_data_manage_volumes_volume_details.html 
+sidebar: sidebar 
+keywords: volume, size of volume 
+summary: 'La page Volumes de l"onglet Gestion fournit des informations sur les volumes actifs, telles que le nom, le compte, les groupes d"accès associés au volume et la taille du volume.' 
+---
+= Détails du volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page Volumes de l'onglet Gestion fournit des informations sur les volumes actifs, telles que le nom, le compte, les groupes d'accès associés au volume et la taille du volume.
+
+* *IDENTIFIANT*
++
+L'identifiant généré par le système pour le volume.
+
+* *Nom*
++
+Le nom donné au volume lors de sa création.
+
+* *Compte*
++
+Le nom du compte associé au volume.
+
+* *Groupes d'accès*
++
+Le nom du ou des groupes d'accès au volume auxquels appartient le volume.
+
+* *Accéder*
++
+Le type d'accès attribué au volume lors de sa création. Valeurs possibles :
+
++
+** Lecture / Écriture : Toutes les lectures et écritures sont acceptées.
+** Lecture seule : toutes les opérations de lecture sont autorisées ; aucune écriture n’est autorisée.
+** Verrouillé : Accès réservé aux administrateurs.
+** ReplicationTarget : volume cible désigné dans une paire de volumes répliqués.
+
+
+* *Utilisé*
++
+Le pourcentage d'espace utilisé dans le volume.
+
+* *Taille*
++
+La taille totale (en Go) du volume.
+
+* *Instantanés*
++
+Le nombre d'instantanés créés pour le volume.
+
+* *Politique de QoS*
++
+Le nom et le lien vers la politique QoS définie par l'utilisateur.
+
+* *IOPS min.*
++
+Le nombre minimum d'IOPS garanti pour le volume.
+
+* *IOPS max.*
++
+Le nombre maximal d'IOPS autorisé pour le volume.
+
+* *IOPS en rafale*
++
+Le nombre maximal d'IOPS autorisé sur une courte période pour le volume.  Valeur par défaut = 15 000.
+
+* *Attributs*
++
+Attributs qui ont été attribués au volume sous forme de paire clé/valeur via une méthode API.
+
+* *512e*
++
+Indication indiquant si le protocole 512e est activé sur un volume. Valeurs possibles :
+
++
+** Oui
+** Non
+
+
+* *Créé le*
++
+La date et l'heure de création du volume.
+
+

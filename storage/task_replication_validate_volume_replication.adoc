@@ -1,0 +1,24 @@
+---
+permalink: storage/task_replication_validate_volume_replication.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, validate volume replication 
+summary: Une fois un volume répliqué, vous devez vous assurer que les volumes source et cible sont actifs.  En mode actif, les volumes sont appariés, les données sont envoyées de la source au volume cible et les données sont synchronisées. 
+---
+= Valider la réplication du volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une fois un volume répliqué, vous devez vous assurer que les volumes source et cible sont actifs.  En mode actif, les volumes sont appariés, les données sont envoyées de la source au volume cible et les données sont synchronisées.
+
+. Dans les deux clusters, sélectionnez *Protection des données* > *Paires de volumes*.
+. Vérifiez que l'état du volume est Actif.
+
+
+
+
+== Trouver plus d'informations
+
+xref:reference_replication_volume_pairing_warnings.adoc[Avertissements de couplage de volume]

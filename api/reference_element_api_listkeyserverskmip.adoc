@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_listkeyserverskmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,key,server,listing,list,listkeyserverskmip 
+summary: 'Vous pouvez utiliser la méthode ListKeyServersKmip pour lister tous les serveurs de clés du protocole d"interopérabilité de gestion des clés (KMIP) qui ont été créés.  Vous pouvez filtrer les résultats en spécifiant des paramètres supplémentaires.' 
+---
+= ListKeyServersKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ListKeyServersKmip` méthode permettant de lister tous les serveurs de clés KMIP (Key Management Interoperability Protocol) qui ont été créés.  Vous pouvez filtrer les résultats en spécifiant des paramètres supplémentaires.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+ID du fournisseur de clés
+ a| 
+Lorsqu'elle est spécifiée, la méthode ne renvoie que les serveurs de clés KMIP affectés au fournisseur de clés KMIP spécifié.  Si cette option est omise, les serveurs de clés KMIP renvoyés ne seront pas filtrés en fonction de leur appartenance ou non au fournisseur de clés KMIP spécifié.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+Les filtres ont renvoyé les objets serveur de clés KMIP en fonction de leur état d'activité. Valeurs possibles :
+
+* vrai : renvoie uniquement les serveurs de clés KMIP actifs (fournissant les clés actuellement utilisées).
+* false : Renvoie uniquement les serveurs de clés KMIP inactifs (ne fournissant aucune clé et pouvant être supprimés).
+
+
+Si cette option est omise, les serveurs de clés KMIP renvoyés ne sont pas filtrés en fonction de leur état (actif ou non).
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+kmipHasProviderAssigned
+ a| 
+Les filtres ont renvoyé les serveurs de clés KMIP en fonction de la présence ou non d'un fournisseur de clés KMIP attribué. Valeurs possibles :
+
+* vrai : renvoie uniquement les serveurs de clés KMIP auxquels un fournisseur de clés KMIP est attribué.
+* false : Renvoie uniquement les serveurs de clés KMIP auxquels aucun fournisseur de clés KMIP n’est attribué.
+
+
+Si cette option est omise, les serveurs de clés KMIP renvoyés ne sont pas filtrés en fonction de la présence ou non d'un fournisseur de clés KMIP attribué.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+Serveurs de clés kmip
+ a| 
+Liste complète des serveurs de clés KMIP créés.
+ a| 
+link:reference_element_api_keyserverkmip.html["KeyServerKmip"]tableau
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "ListKeyServersKmip",
+  "params": {},
+"id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+    "kmipKeyServers": [
+        {
+            "kmipKeyServerName": "keyserverName",
+            "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "keyServerID": 15,
+            "kmipAssignedProviderIsActive": true,
+            "kmipKeyServerPort": 5696,
+            "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames": [
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID": 1
+        }
+    ]
+}
+----
+
+
+== Nouveautés depuis la version
+
+11,7

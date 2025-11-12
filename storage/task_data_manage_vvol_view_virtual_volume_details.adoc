@@ -1,0 +1,86 @@
+---
+permalink: storage/task_data_manage_vvol_view_virtual_volume_details.html 
+sidebar: sidebar 
+keywords: virtual volumes, view details vvols, vvols performance activity, vSphere 
+summary: 'Vous pouvez consulter les informations sur les volumes virtuels pour tous les volumes virtuels actifs sur le cluster dans l"interface utilisateur d"Element.  Vous pouvez également consulter l"activité de performance de chaque volume virtuel, notamment les entrées, les sorties, le débit, la latence, la profondeur de la file d"attente et les informations sur le volume.' 
+---
+= Afficher les détails du volume virtuel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les informations sur les volumes virtuels pour tous les volumes virtuels actifs sur le cluster dans l'interface utilisateur d'Element.  Vous pouvez également consulter l'activité de performance de chaque volume virtuel, notamment les entrées, les sorties, le débit, la latence, la profondeur de la file d'attente et les informations sur le volume.
+
+.Ce dont vous aurez besoin
+* Vous auriez dû activer la fonctionnalité VVols dans l'interface utilisateur Element pour le cluster.
+* Vous auriez dû créer un conteneur de stockage associé.
+* Vous auriez dû configurer votre cluster vSphere pour utiliser la fonctionnalité VVols du logiciel Element.
+* Vous auriez dû créer au moins une machine virtuelle dans vSphere.
+
+
+.Étapes
+. Cliquez sur *VVols* > *Volumes virtuels*.
++
+Les informations relatives à tous les volumes virtuels actifs sont affichées.
+
+. Cliquez sur l'icône *Actions* correspondant au volume virtuel que vous souhaitez consulter.
+. Dans le menu qui s'affiche, sélectionnez *Afficher les détails*.
+
+
+
+
+== Détails
+
+La page Volumes virtuels de l'onglet VVols fournit des informations sur chaque volume virtuel actif du cluster, telles que l'ID du volume, l'ID de l'instantané, l'ID du volume virtuel parent et l'ID du volume virtuel.
+
+* *ID du volume* : L’identifiant du volume sous-jacent.
+* *ID de l'instantané* : L'identifiant de l'instantané du volume sous-jacent.  La valeur est 0 si le volume virtuel ne représente pas un instantané SolidFire .
+* *ID du volume virtuel parent* : L’ID du volume virtuel parent.  Si l'identifiant est composé uniquement de zéros, le volume virtuel est indépendant et n'est lié à aucun volume parent.
+* *ID du volume virtuel* : L’UUID du volume virtuel.
+* *Nom* : Le nom attribué au volume virtuel.
+* *Conteneur de stockage* : Le conteneur de stockage qui possède le volume virtuel.
+* *Type de système d'exploitation invité* : Système d'exploitation associé au volume virtuel.
+* *Type de volume virtuel* : Le type de volume virtuel : Config, Données, Mémoire, Swap ou Autre.
+* *Accès* : Les autorisations de lecture et d’écriture attribuées au volume virtuel.
+* *Taille* : La taille du volume virtuel en Go ou GiB.
+* *Instantanés* : Le nombre d’instantanés associés.  Cliquez sur le numéro pour accéder aux détails de l'instantané.
+* *IOPS min* : Paramètre QoS IOPS minimal du volume virtuel.
+* *IOPS max* : Paramètre QoS IOPS maximal du volume virtuel.
+* *IOPS en rafale* : Paramètre QoS en rafale maximal du volume virtuel.
+* *VMW_VmID* : Les informations contenues dans les champs précédés de « VMW_ » sont définies par VMware.
+* *Heure de création* : Heure à laquelle la tâche de création du volume virtuel a été terminée.
+
+
+
+
+== Détails individuels du volume virtuel
+
+La page Volumes virtuels de l'onglet VVols fournit les informations suivantes sur le volume virtuel lorsque vous sélectionnez un volume virtuel individuel et que vous consultez ses détails.
+
+* *VMW_XXX* : Les informations contenues dans les champs précédés de « VMW_ » sont définies par VMware.
+* *ID du volume virtuel parent* : L’ID du volume virtuel parent.  Si l'identifiant est composé uniquement de zéros, le volume virtuel est indépendant et n'est lié à aucun volume parent.
+* *ID du volume virtuel* : L’UUID du volume virtuel.
+* *Type de volume virtuel* : Le type de volume virtuel : Config, Données, Mémoire, Swap ou Autre.
+* *ID du volume* : L’identifiant du volume sous-jacent.
+* *Accès* : Les autorisations de lecture et d’écriture attribuées au volume virtuel.
+* *Nom du compte* : Nom du compte contenant le volume.
+* *Groupes d'accès* : Groupes d'accès aux volumes associés.
+* *Taille totale du volume* : Capacité totale provisionnée en octets.
+* *Blocs non nuls* : Nombre total de blocs de 4 Kio contenant des données après la dernière opération de nettoyage de la mémoire.
+* *Zéro bloc* : Nombre total de blocs de 4 Kio sans données après la dernière opération de nettoyage de la mémoire.
+* *Instantanés* : Le nombre d’instantanés associés.  Cliquez sur le numéro pour accéder aux détails de l'instantané.
+* *IOPS min* : Paramètre QoS IOPS minimal du volume virtuel.
+* *IOPS max* : Paramètre QoS IOPS maximal du volume virtuel.
+* *IOPS en rafale* : Paramètre QoS en rafale maximal du volume virtuel.
+* *Activer 512* : Étant donné que les volumes virtuels utilisent toujours une émulation de taille de bloc de 512 octets, la valeur est toujours oui.
+* *Volumes appariés* : Indique si un volume est apparié.
+* *Heure de création* : Heure à laquelle la tâche de création du volume virtuel a été terminée.
+* *Taille des blocs* : Taille des blocs dans le volume.
+* *Écritures non alignées* : Pour les volumes 512e, le nombre d’opérations d’écriture qui n’étaient pas sur une limite de secteur de 4 k.  Un nombre élevé d'écritures non alignées peut indiquer un alignement incorrect des partitions.
+* *Lectures non alignées* : Pour les volumes 512e, le nombre d’opérations de lecture qui n’étaient pas sur une limite de secteur de 4 k.  Un nombre élevé de lectures non alignées peut indiquer un alignement incorrect des partitions.
+* *scsiEUIDeviceID* : Identifiant unique global du périphérique SCSI pour le volume au format 16 octets basé sur EUI-64.
+* *scsiNAADeviceID* : Identifiant unique global du périphérique SCSI pour le volume au format NAA IEEE Registered Extended.
+* *Attributs* : Liste de paires nom-valeur au format objet JSON.
+

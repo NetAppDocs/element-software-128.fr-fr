@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: 'L"objet session contient des informations sur chaque session Fibre Channel visible par le cluster et sur les ports cibles sur lesquels elle est visible.  Vous pouvez récupérer ces informations avec la méthode API ListFibreChannelSessions.' 
+---
+= session (Fibre Channel)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet session contient des informations sur chaque session Fibre Channel visible par le cluster et sur les ports cibles sur lesquels elle est visible.  Vous pouvez récupérer ces informations avec le `ListFibreChannelSessions` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+initiateurWWPN
+ a| 
+Le nom de port mondial (WWPN) de l'initiateur connecté au port cible.
+ a| 
+chaîne
+
+
+
+ a| 
+ID du nœud
+ a| 
+Le nœud qui possède la session Fibre Channel.
+ a| 
+entier
+
+
+
+ a| 
+initiateur
+ a| 
+Informations concernant le serveur initiateur de cette session Fibre Channel.  Membres :
+
+* alias : Le nom convivial attribué à l’initiateur.
+* attributs : Les attributs de cet initiateur.
+* initiatorID : L’identifiant de cet initiateur.
+* initiatorName : Le nom de cet initiateur.
+* volumeAccessGroups : Liste des groupes d’accès aux volumes associés à cet initiateur.
+
+ a| 
+objet JSON
+
+
+
+ a| 
+serviceID
+ a| 
+L'identifiant de service du port cible impliqué dans cette session.
+ a| 
+entier
+
+
+
+ a| 
+cibleWWPN
+ a| 
+Le WWPN du port cible concerné par cette session.
+ a| 
+chaîne
+
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+L'identifiant du groupe d'accès au volume auquel appartient l'initiateurWWPN.  Si cette valeur n'appartient pas à un groupe d'accès aux volumes, elle est nulle.
+ a| 
+entier
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listfibrechannelsessions.adoc[Lister les sessions Fibre Channel]

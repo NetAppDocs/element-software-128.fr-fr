@@ -1,0 +1,21 @@
+---
+permalink: storage/concept_intro_persistent_volumes.html 
+sidebar: sidebar 
+keywords: persistent volumes, what are persistent volumes 
+summary: Les volumes persistants permettent de stocker les données de configuration du nœud de gestion sur un cluster de stockage spécifié, plutôt que localement sur une machine virtuelle, afin que les données puissent être préservées en cas de perte ou de suppression du nœud de gestion.  Les volumes persistants constituent une configuration de nœud de gestion optionnelle mais recommandée. 
+---
+= Volumes persistants
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les volumes persistants permettent de stocker les données de configuration du nœud de gestion sur un cluster de stockage spécifié, plutôt que localement sur une machine virtuelle, afin que les données puissent être préservées en cas de perte ou de suppression du nœud de gestion.  Les volumes persistants constituent une configuration de nœud de gestion optionnelle mais recommandée.
+
+Une option permettant d'activer les volumes persistants est incluse dans les scripts d'installation et de mise à niveau lors du déploiement d'un nouveau nœud de gestion.  Les volumes persistants sont des volumes sur un cluster de stockage basé sur le logiciel Element qui contiennent des informations de configuration du nœud de gestion pour la machine virtuelle du nœud de gestion hôte et qui persistent au-delà de la durée de vie de la machine virtuelle.  Si le nœud de gestion est perdu, une machine virtuelle de remplacement peut se reconnecter et récupérer les données de configuration de la machine virtuelle perdue.
+
+La fonctionnalité de volumes persistants, si elle est activée lors de l'installation ou de la mise à niveau, crée automatiquement plusieurs volumes avec NetApp-HCI- ajouté au nom sur le cluster attribué.  Ces volumes, comme tout volume basé sur le logiciel Element, peuvent être visualisés à l'aide de l'interface utilisateur Web du logiciel Element, du plug-in NetApp Element pour vCenter Server ou de l'API, selon vos préférences et votre installation.  Les volumes persistants doivent être opérationnels avec une connexion iSCSI au nœud de gestion pour conserver les données de configuration actuelles pouvant être utilisées pour la récupération.
+
+
+IMPORTANT: Les volumes persistants associés aux services de gestion sont créés et affectés à un nouveau compte lors de l'installation ou de la mise à niveau.  Si vous utilisez des volumes persistants, ne modifiez ni ne supprimez les volumes ou leur compte associé.

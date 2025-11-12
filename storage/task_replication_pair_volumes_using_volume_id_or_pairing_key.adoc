@@ -1,0 +1,34 @@
+---
+permalink: storage/task_replication_pair_volumes_using_volume_id_or_pairing_key.html 
+sidebar: sidebar 
+keywords: volume pairings, pairing key, volume id, replication 
+summary: 'Le processus d"appairage consiste à associer deux volumes en utilisant soit un identifiant de volume, soit une clé d"appairage.' 
+---
+= Associer les volumes à l'aide d'un identifiant de volume ou d'une clé d'association
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le processus d'appairage consiste à associer deux volumes en utilisant soit un identifiant de volume, soit une clé d'appairage.
+
+. Appariez les volumes en sélectionnant l'une des méthodes suivantes :
++
+** Utilisation d'un ID de volume : utilisez cette méthode si vous disposez d'un accès d'administrateur de cluster aux deux clusters sur lesquels les volumes doivent être appariés. Cette méthode utilise l'identifiant du volume sur le cluster distant pour établir une connexion.
+** Utilisation d'une clé d'appairage : utilisez cette méthode si vous disposez d'un accès d'administrateur de cluster uniquement au cluster source.  Cette méthode génère une clé d'appairage qui peut être utilisée sur le cluster distant pour compléter la paire de volumes.
++
+
+NOTE: La clé d'appairage des volumes contient une version chiffrée des informations relatives aux volumes et peut contenir des informations sensibles.  Ne partagez cette clé que de manière sécurisée.
+
+
+
+
+
+
+
+== Trouver plus d'informations
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[Associer les volumes à l'aide d'un ID de volume]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[Appairer les volumes à l'aide d'une clé d'appairage]
+

@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: 'L"interface du logiciel NetApp Element affiche des icônes représentant les actions que vous pouvez effectuer sur les ressources système.' 
+---
+= Icônes dans l'interface Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface du logiciel NetApp Element affiche des icônes représentant les actions que vous pouvez effectuer sur les ressources système.
+
+Le tableau suivant fournit un aperçu rapide :
+
+|===
+
+
+| Icône | Description 
+
+
+ a| 
+image:../media/element_icon_action.gif["Icône Actions dans l'interface web Element OS"]
+ a| 
+Actions
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Icône de sauvegarde dans l'interface web Element OS"]
+ a| 
+Sauvegarde de
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Icône de clonage dans l'interface web Element OS"]
+ a| 
+Cloner ou copier
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Icône Supprimer dans l'interface web Element OS"]
+ a| 
+Supprimer ou purger
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Icône Modifier dans l'interface web Element OS"]
+ a| 
+Modifier
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Icône de filtre dans l'interface web Element OS"]
+ a| 
+Filtre
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Icône de paire dans l'interface web Element OS"]
+ a| 
+Paire
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Icône de rafraîchissement dans l'interface web Element OS"]
+ a| 
+Rafraîchir
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["Restaurer l'icône dans l'interface web Element OS"]
+ a| 
+Restaurer
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["Restaurer à partir de l'icône dans l'interface web Element OS"]
+ a| 
+Restaurer à partir de
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Icône de restauration dans l'interface utilisateur web Element OS"]
+ a| 
+Annulation
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Icône de capture d'écran dans l'interface web Element OS"]
+ a| 
+Instantané
+
+|===

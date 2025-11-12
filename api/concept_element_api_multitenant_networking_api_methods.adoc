@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_multitenant_networking_api_methods.html 
+sidebar: sidebar 
+keywords: multitenant,network,networking,api,prerequisites,requirements,virtual,tenant 
+summary: 'La mise en réseau multitenant dans les clusters de stockage Element permet au trafic entre plusieurs clients situés sur des réseaux logiques distincts d"être connecté à un seul cluster de stockage Element sans routage de couche 3.' 
+---
+= Méthodes d'API de réseau multitenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La mise en réseau multitenant dans les clusters de stockage Element permet au trafic entre plusieurs clients situés sur des réseaux logiques distincts d'être connecté à un seul cluster de stockage Element sans routage de couche 3.
+
+Les connexions au cluster de stockage sont segmentées dans la pile réseau grâce à l'utilisation du balisage VLAN.
+
+
+
+== Prérequis pour la mise en place d'un réseau virtuel mutualisé
+
+* Vous devez avoir identifié le bloc d'adresses IP du réseau client à attribuer aux réseaux virtuels sur les nœuds de stockage.
+* Vous devez avoir identifié une adresse IP de réseau de stockage client (SVIP) à utiliser comme point de terminaison pour tout le trafic de stockage.
+
+
+
+
+== Ordre des opérations de mise en réseau virtuelle
+
+. Utilisez la méthode AddVirtualNetwork pour provisionner en masse les adresses IP que vous saisissez.
++
+Après l'ajout d'un réseau virtuel, le cluster effectue automatiquement les étapes suivantes :
+
++
+** Chaque nœud de stockage crée une interface réseau virtuelle.
+** Chaque nœud de stockage se voit attribuer une adresse VLAN qui peut être routée à l'aide du SVIP virtuel.
+** Les adresses IP VLAN sont conservées sur chaque nœud en cas de redémarrage de celui-ci.
+
+
+. Une fois l'interface réseau virtuelle et les adresses VLAN attribuées, vous pouvez affecter le trafic réseau client à l'interface SVIP virtuelle.
+
+
+
+
+== Trouver plus d'informations
+
+* xref:concept_element_api_virtual_network_naming_conventions.adoc[Conventions d'appellation des réseaux virtuels]
+* xref:reference_element_api_addvirtualnetwork.adoc[Ajouter un réseau virtuel]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[Modifier le réseau virtuel]
+* xref:reference_element_api_listvirtualnetworks.adoc[Lister les réseaux virtuels]
+* xref:reference_element_api_removevirtualnetwork.adoc[Supprimer le réseau virtuel]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

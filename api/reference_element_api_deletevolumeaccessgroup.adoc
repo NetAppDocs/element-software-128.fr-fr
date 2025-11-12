@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_deletevolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,delete,deleting,DeleteVolumeAccessGroup 
+summary: 'Vous pouvez utiliser DeleteVolumeAccessGroup pour supprimer un groupe d"accès aux volumes.' 
+---
+= Supprimer le groupe d'accès au volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser `DeleteVolumeAccessGroup` supprimer un groupe d'accès au volume.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+L'identifiant du groupe d'accès au volume à supprimer.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+supprimerOrphanInitiators
+ a| 
+Indique s'il faut supprimer ou non les objets initiateurs. Valeurs possibles :
+
+* true : Supprime les objets initiateurs après leur suppression d’un groupe d’accès au volume.
+* Faux : Ne supprimez pas les objets initiateurs après leur suppression d’un groupe d’accès au volume. C'est la valeur par défaut.
+
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+
+
+ a| 
+forcer
+ a| 
+L'ajout de cet indicateur forcera la suppression du groupe d'accès au volume même s'il possède un ID ou une étiquette de réseau virtuel. Valeurs possibles :
+
+* Vrai : Le groupe d’accès au volume sera supprimé.
+* faux : valeur par défaut.  Ne supprimez pas le groupe d'accès au volume s'il possède un ID ou une étiquette de réseau virtuel.
+
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "DeleteVolumeAccessGroup",
+   "params": {
+          "force": true,
+	  "volumeAccessGroupID"  : 3
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {}
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

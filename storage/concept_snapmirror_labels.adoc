@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_snapmirror_labels.html 
+sidebar: sidebar 
+keywords: labels, snapmirror, retention rules 
+summary: 'Une étiquette SnapMirror sert de marqueur pour le transfert d"un instantané spécifique selon les règles de conservation de la relation.' 
+---
+= Étiquettes SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une étiquette SnapMirror sert de marqueur pour le transfert d'un instantané spécifique selon les règles de conservation de la relation.
+
+L'attribution d'une étiquette à un instantané le désigne comme cible pour la réplication SnapMirror .  Le rôle de cette relation est de faire respecter les règles de transfert de données en sélectionnant l'instantané étiqueté correspondant, en le copiant sur le volume de destination et en veillant à conserver le nombre correct de copies.  Il s'agit de la politique visant à déterminer le nombre de documents à conserver et la durée de conservation.  La politique peut comporter un nombre quelconque de règles et chaque règle possède une étiquette unique.  Cette étiquette sert de lien entre l'instantané et la règle de conservation.
+
+C’est l’étiquette SnapMirror qui indique quelle règle est appliquée à l’instantané, à l’instantané de groupe ou à la planification sélectionnés.

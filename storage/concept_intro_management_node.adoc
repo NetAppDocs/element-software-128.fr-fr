@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_intro_management_node.html 
+sidebar: sidebar 
+keywords: what is the management node, what is the mNode 
+summary: 'Le nœud de gestion (mNode) est une machine virtuelle qui fonctionne en parallèle avec un ou plusieurs clusters de stockage basés sur le logiciel Element.  Il est utilisé pour mettre à niveau et fournir des services système, notamment la surveillance et la télémétrie, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et permettre l"accès au support NetApp pour le dépannage.' 
+---
+= Nœud de gestion pour le logiciel Element
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le nœud de gestion (mNode) est une machine virtuelle qui fonctionne en parallèle avec un ou plusieurs clusters de stockage basés sur le logiciel Element.  Il est utilisé pour mettre à niveau et fournir des services système, notamment la surveillance et la télémétrie, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système et permettre l'accès au support NetApp pour le dépannage.
+
+À partir de la version Element 11.3, le nœud de gestion fonctionne comme un hôte de microservices, permettant des mises à jour plus rapides de certains services logiciels en dehors des versions majeures.  Ces microservices ou services de gestion, tels que le collecteur Active IQ , le QoSSIOC pour le plug-in vCenter et le service mNode, sont fréquemment mis à jour sous forme de groupes de services.  Des services supplémentaires pour les mises à niveau logicielles des nœuds de stockage et les outils de support (tunneling de support à distance) sont également disponibles depuis le nœud de gestion.
+
+
+NOTE: Il est recommandé, par mesure de précaution, d'associer un seul nœud de gestion à une seule instance VMware vCenter et d'éviter de définir les mêmes ressources de stockage et de calcul ou les mêmes instances vCenter sur plusieurs nœuds de gestion.

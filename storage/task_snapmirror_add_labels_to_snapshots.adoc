@@ -1,0 +1,31 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshots.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, retention, policies, group, snapshots 
+summary: Les étiquettes SnapMirror spécifient la politique de conservation des instantanés sur le point de terminaison SnapMirror .  Vous pouvez ajouter des étiquettes aux instantanés et regrouper les instantanés. 
+---
+= Ajouter des étiquettes SnapMirror aux instantanés
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les étiquettes SnapMirror spécifient la politique de conservation des instantanés sur le point de terminaison SnapMirror .  Vous pouvez ajouter des étiquettes aux instantanés et regrouper les instantanés.
+
+Vous pouvez consulter les étiquettes disponibles à partir d'une boîte de dialogue de relation SnapMirror existante ou du gestionnaire système NetApp ONTAP .
+
+
+IMPORTANT: Lorsque vous ajoutez une étiquette à un instantané de groupe, toutes les étiquettes existantes sur les instantanés individuels sont écrasées.
+
+.Ce dont vous aurez besoin
+* SnapMirror est activé sur le cluster.
+* L'étiquette que vous souhaitez ajouter existe déjà dans ONTAP.
+
+
+.Étapes
+. Cliquez sur *Protection des données* > *Instantanés* ou *Instantanés de groupe*.
+. Cliquez sur l'icône *Actions* de l'instantané ou de l'instantané de groupe auquel vous souhaitez ajouter une étiquette SnapMirror .
+. Dans la boîte de dialogue *Modifier l'instantané*, saisissez du texte dans le champ *Étiquette SnapMirror *.  L'étiquette doit correspondre à une étiquette de règle dans la politique appliquée à la relation SnapMirror .
+. Cliquez sur *Enregistrer les modifications*.
+

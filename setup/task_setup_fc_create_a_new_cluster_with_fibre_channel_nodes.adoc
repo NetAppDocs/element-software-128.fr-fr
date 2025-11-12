@@ -1,0 +1,53 @@
+---
+permalink: setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Vous pouvez créer un nouveau cluster après avoir configuré les nœuds Fibre Channel individuels.  Lorsque vous créez un cluster, un compte utilisateur d"administrateur de cluster est automatiquement créé pour vous.  L"administrateur du cluster a l"autorisation de gérer tous les attributs du cluster et peut créer d"autres comptes d"administrateur de cluster.' 
+---
+= Créer un nouveau cluster avec des nœuds Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer un nouveau cluster après avoir configuré les nœuds Fibre Channel individuels.  Lorsque vous créez un cluster, un compte utilisateur d'administrateur de cluster est automatiquement créé pour vous.  L'administrateur du cluster a l'autorisation de gérer tous les attributs du cluster et peut créer d'autres comptes d'administrateur de cluster.
+
+Lors de la configuration d'un nouveau nœud, des adresses IP de gestion (MIP) 1G ou 10G sont attribuées à chaque nœud.  Vous devez utiliser l'une des adresses IP des nœuds créées lors de la configuration pour ouvrir la page « Créer un nouveau cluster ».  L'adresse IP que vous utilisez dépend du réseau que vous avez choisi pour la gestion du cluster.
+
+.Ce dont vous aurez besoin
+Vous avez configuré les nœuds Fibre Channel individuels.
+
+.Étapes
+. Dans une fenêtre de navigateur, saisissez l'adresse MIP du nœud.
+. Dans la section « Créer un nouveau cluster », saisissez les informations suivantes :
++
+** Adresse IP virtuelle de gestion (VIP) : adresse IP virtuelle routable sur le réseau 1 GbE ou 10 GbE pour les tâches de gestion du réseau.
+** iSCSI (stockage) VIP : Adresse IP virtuelle sur le réseau 10GbE pour le stockage et la découverte iSCSI.
++
+
+NOTE: Vous ne pouvez pas modifier le SVIP après avoir créé le cluster.
+
+** Nom d'utilisateur : Nom d'utilisateur principal de l'administrateur du cluster pour l'accès authentifié au cluster.  Vous devez conserver le nom d'utilisateur pour référence ultérieure.
++
+
+NOTE: Vous pouvez utiliser des lettres majuscules et minuscules, des caractères spéciaux et des chiffres pour le nom d'utilisateur.
+
+** Mot de passe : Mot de passe permettant l’accès authentifié au cluster.  Vous devez conserver le nom d'utilisateur pour référence ultérieure.  La protection bidirectionnelle des données est activée par défaut.  Vous ne pouvez pas modifier ce paramètre.
+
+
+. Lisez le contrat de licence utilisateur final et cliquez sur *J'accepte*.
+. *Facultatif* : Dans la liste des nœuds, assurez-vous que les cases à cocher des nœuds qui ne doivent pas être inclus dans le cluster ne sont pas sélectionnées.
+. Cliquez sur *Créer un cluster*.
++
+La création du cluster peut prendre plusieurs minutes, selon le nombre de nœuds qui le composent.  Sur un réseau correctement configuré, un petit groupe de cinq nœuds devrait prendre moins d'une minute.  Une fois le cluster créé, la fenêtre « Créer un nouveau cluster » est redirigée vers l’adresse URL MVIP du cluster et affiche l’interface utilisateur Web.
+
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

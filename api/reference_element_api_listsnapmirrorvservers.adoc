@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_listsnapmirrorvservers.html 
+sidebar: sidebar 
+keywords: snapmirror,vserver,vservers,list,listing,listsnapmirrorvservers 
+summary: 'L"interface utilisateur Web du logiciel Element utilise la méthode ListSnapMirrorVservers pour lister tous les serveurs virtuels SnapMirror disponibles sur un système ONTAP distant.' 
+---
+= ListSnapMirrorVservers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web du logiciel Element utilise `ListSnapMirrorVservers` Méthode permettant de lister tous les serveurs virtuels SnapMirror disponibles sur un système ONTAP distant.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+N'afficher que les serveurs virtuels associés à l'ID de point de terminaison spécifié.  Si aucun ID de point de terminaison n'est fourni, le système liste les serveurs virtuels de tous les points de terminaison SnapMirror connus.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+Type de serveur virtuel
+ a| 
+N'afficher que les serveurs virtuels du type spécifié. Valeurs possibles :
+
+* administrateur
+* données
+* nœud
+* système
+
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+Nom du serveur virtuel
+ a| 
+Afficher uniquement les serveurs virtuels portant le nom spécifié.
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorVservers
+ a| 
+Liste des serveurs virtuels SnapMirror disponibles sur le système de stockage ONTAP .
+ a| 
+xref:reference_element_api_snapmirrorvserver.adoc[snapMirrorVserver]tableau
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,1

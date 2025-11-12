@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_nodes_node_versioning_and_compatibility.html 
+sidebar: sidebar 
+keywords: compatibility, node version, clusters, software version, compatible versions, major, minor, micro 
+summary: 'La compatibilité des nœuds dépend de la version du logiciel Element installée sur un nœud.  Les clusters de stockage basés sur le logiciel Element créent automatiquement une image d"un nœud avec la version du logiciel Element présente sur le cluster si le nœud et le cluster ne sont pas à des versions compatibles.' 
+---
+= Versionnage et compatibilité des nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La compatibilité des nœuds dépend de la version du logiciel Element installée sur un nœud.  Les clusters de stockage basés sur le logiciel Element créent automatiquement une image d'un nœud avec la version du logiciel Element présente sur le cluster si le nœud et le cluster ne sont pas à des versions compatibles.
+
+La liste suivante décrit les niveaux de signification des versions logicielles qui composent le numéro de version du logiciel Element :
+
+* *Majeur*
++
+Le premier chiffre désigne une version du logiciel.  Un nœud avec un numéro de composant majeur ne peut pas être ajouté à un cluster contenant des nœuds avec un numéro de correctif majeur différent, et il est impossible de créer un cluster avec des nœuds de versions majeures mixtes.
+
+* *Mineure*
++
+Le deuxième chiffre désigne des fonctionnalités logicielles mineures ou des améliorations apportées à des fonctionnalités logicielles existantes et ajoutées à une version majeure.  Ce composant est incrémenté au sein d'une version majeure pour indiquer que cette version incrémentale n'est compatible avec aucune autre version incrémentale du logiciel Element comportant un composant mineur différent.  Par exemple, la version 11.0 n'est pas compatible avec la version 11.1, et la version 11.1 n'est pas compatible avec la version 11.2.
+
+* *Micro*
++
+Le troisième chiffre désigne un correctif compatible (version incrémentale) à la version du logiciel Element représentée par les composants majeur.mineur.  Par exemple, la version 11.0.1 est compatible avec la version 11.0.2, et la version 11.0.2 est compatible avec la version 11.0.3.
+
+
+
+Pour assurer la compatibilité, les numéros de version majeure et mineure doivent correspondre.  Les numéros de microcontrôleur n'ont pas besoin de correspondre pour assurer la compatibilité.

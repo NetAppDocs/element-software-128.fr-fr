@@ -1,0 +1,36 @@
+---
+permalink: storage/task_replication_pair_cluster_using_mvip.html 
+sidebar: sidebar 
+keywords: pair clusters, mvip, connection 
+summary: 'Vous pouvez coupler deux clusters pour une réplication en temps réel en utilisant le MVIP d"un cluster pour établir une connexion avec l"autre cluster.  L"accès administrateur de cluster sur les deux clusters est requis pour utiliser cette méthode.  Le nom d"utilisateur et le mot de passe de l"administrateur du cluster sont utilisés pour authentifier l"accès au cluster avant que les clusters puissent être appariés.' 
+---
+= Clusters appariés utilisant MVIP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez coupler deux clusters pour une réplication en temps réel en utilisant le MVIP d'un cluster pour établir une connexion avec l'autre cluster.  L'accès administrateur de cluster sur les deux clusters est requis pour utiliser cette méthode.  Le nom d'utilisateur et le mot de passe de l'administrateur du cluster sont utilisés pour authentifier l'accès au cluster avant que les clusters puissent être appariés.
+
+. Sur le cluster local, sélectionnez *Protection des données* > *Paires de clusters*.
+. Cliquez sur *Pair Cluster*.
+. Cliquez sur *Démarrer l'appairage* et sur *Oui* pour indiquer que vous avez accès au cluster distant.
+. Saisissez l'adresse MVIP du cluster distant.
+. Cliquez sur *Terminer l'appairage sur le cluster distant*.
++
+Dans la fenêtre *Authentification requise*, saisissez le nom d'utilisateur et le mot de passe de l'administrateur du cluster distant.
+
+. Sur le cluster distant, sélectionnez *Protection des données* > *Paires de clusters*.
+. Cliquez sur *Pair Cluster*.
+. Cliquez sur *Terminer l'appairage*.
+. Cliquez sur le bouton *Terminer l'appairage*.
+
+
+
+
+== Trouver plus d'informations
+
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[Apparier les clusters à l'aide d'une clé d'appariement]
+* https://www.youtube.com/watch?v=HbKxPZnNvn4&feature=youtu.be["Appariement de clusters à l'aide de MVIP (vidéo)"]
+

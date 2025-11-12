@@ -1,0 +1,108 @@
+---
+permalink: api/reference_element_api_testhardwareconfig.html 
+sidebar: sidebar 
+keywords: node,test,testing,hardware,config,configuration,testhardwareconfig 
+summary: Vous pouvez utiliser la méthode TestHardwareConfig pour effectuer des tests matériels sur un nœud.  Les options de test comprennent la vérification des configurations matérielles, des versions du firmware et de la présence de tous les disques. 
+---
+= Configuration matérielle de test
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `TestHardwareConfig` méthode pour effectuer des tests matériels sur un nœud.  Les options de test comprennent la vérification des configurations matérielles, des versions du firmware et de la présence de tous les disques.
+
+
+
+== Paramètres
+
+
+NOTE: Ces tests ne sont pas destinés à détecter les pannes matérielles.
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+faire le ménage
+ a| 
+Démarre le test de configuration matérielle avec un cache vierge. Valeurs possibles :
+
+* true : Supprime le fichier de résultats de test mis en cache et relance les tests.
+* false : Récupère les résultats de test mis en cache.
+
+ a| 
+booléen
+ a| 
+FAUX
+ a| 
+Non
+
+
+
+ a| 
+forcer
+ a| 
+Le paramètre de force doit être inclus dans cette méthode pour que la réinitialisation du nœud réussisse.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+détails
+ a| 
+Détails de la configuration matérielle.
+ a| 
+objet JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "TestHardwareConfig",
+   "params": {
+      "force": true
+     },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+En raison de sa longueur, cet exemple de réponse est documenté dans un sujet supplémentaire.
+
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_response_example_testhardwareconfig.adoc[Configuration matérielle de test]

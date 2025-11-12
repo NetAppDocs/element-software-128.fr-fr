@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgroupefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,access,group,efficiency,GetVolumeAccessGroupEfficiency 
+summary: 'Vous pouvez utiliser la méthode GetVolumeAccessGroupEfficiency pour obtenir des informations sur l"efficacité d"un groupe d"accès aux volumes.  Seul le groupe d"accès aux volumes que vous fournissez comme paramètre dans cette méthode API est utilisé pour calculer la capacité.' 
+---
+= GetVolumeAccessGroupEfficiency
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetVolumeAccessGroupEfficiency` méthode pour obtenir des informations sur l'efficacité d'un groupe d'accès au volume.  Seul le groupe d'accès aux volumes que vous fournissez comme paramètre dans cette méthode API est utilisé pour calculer la capacité.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Spécifie le groupe d'accès au volume pour lequel la capacité est calculée.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+compression
+ a| 
+Quantité d'espace économisé grâce à la compression des données pour tous les volumes du groupe d'accès aux volumes.  Exprimé sous forme de ratio, où une valeur de 1 signifie que les données ont été stockées sans compression.
+ a| 
+flotter
+
+
+
+ a| 
+déduplication
+ a| 
+L'espace économisé en évitant la duplication des données pour tous les volumes du groupe d'accès aux volumes.  Exprimé sous forme de ratio.
+ a| 
+flotter
+
+
+
+ a| 
+ThinProvisioning
+ a| 
+Le rapport entre l'espace utilisé et l'espace alloué au stockage des données.  Exprimé sous forme de ratio.
+ a| 
+flotter
+
+
+
+ a| 
+horodatage
+ a| 
+La dernière collecte des données d'efficacité a eu lieu après la collecte des ordures.
+ a| 
+Chaîne de données ISO 8601
+
+
+
+ a| 
+volumes manquants
+ a| 
+Les volumes pour lesquels il a été impossible d'obtenir des données d'efficacité.  L'absence de volumes peut être due à un nettoyage récent de la mémoire, à une perte de réseau temporaire ou à des services redémarrés depuis le dernier cycle de nettoyage.
+ a| 
+tableau d'entiers
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupEfficiency",
+   "params": {
+      "volumeAccessGroupID": 1
+   },
+   "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.006012925331075,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T17:05:27Z"
+   }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

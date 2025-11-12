@@ -1,0 +1,83 @@
+---
+permalink: storage/concept_data_manage_volumes_quality_of_service_policies.html 
+sidebar: sidebar 
+keywords: qos policies, manage, volumes, create, edit, delete 
+summary: 'Une politique de qualité de service (QoS) vous permet de créer et d"enregistrer un paramètre de qualité de service standardisé qui peut être appliqué à de nombreux volumes.  Vous pouvez créer, modifier et supprimer des politiques QoS à partir de la page Politiques QoS de l"onglet Gestion.' 
+---
+= Politiques de gestion de la qualité de service
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Une politique de qualité de service (QoS) vous permet de créer et d'enregistrer un paramètre de qualité de service standardisé qui peut être appliqué à de nombreux volumes.  Vous pouvez créer, modifier et supprimer des politiques QoS à partir de la page Politiques QoS de l'onglet Gestion.
+
+
+NOTE: Si vous utilisez des politiques QoS, n'utilisez pas de QoS personnalisée sur un volume.  La QoS personnalisée remplacera et ajustera les valeurs de stratégie QoS pour les paramètres QoS de volume.
+
+https://www.youtube.com/embed/q9VCBRDtrnI?rel=0["Vidéo NetApp : Politiques de qualité de service SolidFire"]
+
+Voirlink:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["Performance et qualité du service"] .
+
+* Créer une politique QoS
+* Modifier une politique QoS
+* Supprimer une politique QoS
+
+
+
+
+== Créer une politique QoS
+
+Vous pouvez créer des politiques QoS et les appliquer lors de la création de volumes.
+
+. Sélectionnez *Gestion* > *Stratégies QoS*.
+. Cliquez sur *Créer une politique QoS*.
+. Saisissez le *Nom de la politique*.
+. Saisissez les valeurs **IOPS min**, *IOPS max* et *IOPS en rafale*.
+. Cliquez sur *Créer une politique QoS*.
+
+
+
+
+== Modifier une politique QoS
+
+Vous pouvez modifier le nom d'une politique QoS existante ou modifier les valeurs associées à cette politique.  La modification d'une politique QoS affecte tous les volumes associés à cette politique.
+
+. Sélectionnez *Gestion* > *Stratégies QoS*.
+. Cliquez sur l'icône Actions de la politique QoS que vous souhaitez modifier.
+. Dans le menu qui apparaît, sélectionnez **Modifier**.
+. Dans la boîte de dialogue *Modifier la stratégie QoS*, modifiez les propriétés suivantes selon vos besoins :
++
+** Nom de la politique
+** IOPS minimales
+** IOPS max
+** IOPS en rafale
+
+
+. Cliquez sur *Enregistrer les modifications*.
+
+
+
+
+== Supprimer une politique QoS
+
+Vous pouvez supprimer une politique QoS si elle n'est plus nécessaire.  Lorsque vous supprimez une stratégie QoS, tous les volumes associés à cette stratégie conservent leurs paramètres QoS mais ne sont plus associés à une stratégie.
+
+
+NOTE: Si vous souhaitez plutôt dissocier un volume d'une stratégie QoS, vous pouvez modifier les paramètres QoS de ce volume en les personnalisant.
+
+. Sélectionnez *Gestion* > *Stratégies QoS*.
+. Cliquez sur l'icône Actions correspondant à la politique QoS que vous souhaitez supprimer.
+. Dans le menu qui s'affiche, sélectionnez *Supprimer*.
+. Confirmez l'action.
+
+
+
+
+== Trouver plus d'informations
+
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["Supprimer l'association de stratégie QoS d'un volume"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

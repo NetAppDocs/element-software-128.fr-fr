@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Un système de stockage tout flash SolidFire est composé de composants matériels discrets (disque et nœuds) combinés en un seul pool de ressources de stockage.  Ce cluster unifié se présente comme un système de stockage unique destiné aux clients externes et est géré par le logiciel NetApp Element .' 
+---
+= Présentation du produit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un système de stockage 100 % flash SolidFire est composé de composants matériels distincts (disques et nœuds) combinés en un seul pool de ressources de stockage.  Ce cluster unifié se présente comme un système de stockage unique destiné aux clients externes et est géré par le logiciel NetApp Element .
+
+À l'aide de l'interface Element, de l'API ou d'autres outils de gestion, vous pouvez surveiller la capacité et les performances de stockage du cluster SolidFire et gérer l'activité de stockage sur une infrastructure mutualisée.
+
+
+
+== Fonctionnalités SolidFire
+
+Un système Solidfire offre les fonctionnalités suivantes :
+
+* Offre un stockage haute performance pour votre infrastructure de cloud privé à grande échelle.
+* Offre une capacité de stockage flexible qui vous permet de répondre à vos besoins changeants.
+* Utilise une interface logicielle Element de gestion du stockage pilotée par API
+* Garantit la performance grâce à des politiques de qualité de service
+* Inclut l'équilibrage de charge automatique sur tous les nœuds du cluster
+* Rééquilibre automatiquement les clusters lorsque des nœuds sont ajoutés ou supprimés.
+
+
+
+
+== Déploiement SolidFire
+
+Utilisez les nœuds de stockage fournis par NetApp et intégrés au logiciel NetApp Element .
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["Présentation de l'architecture de stockage 100 % flash SolidFire"]
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

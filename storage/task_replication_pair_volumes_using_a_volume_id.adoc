@@ -1,0 +1,63 @@
+---
+permalink: storage/task_replication_pair_volumes_using_a_volume_id.html 
+sidebar: sidebar 
+keywords: volume pairings, volume id, replication 
+summary: 'Vous pouvez associer un volume à un autre volume sur un cluster distant si vous disposez des informations d"identification d"administrateur de cluster pour ce cluster distant.' 
+---
+= Associer les volumes à l'aide d'un ID de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez associer un volume à un autre volume sur un cluster distant si vous disposez d'un accès d'administrateur de cluster aux deux clusters sur lesquels les volumes doivent être associés. Cette méthode utilise l'identifiant du volume sur le cluster distant pour établir une connexion.
+
+.Ce dont vous aurez besoin
+* Assurez-vous que les clusters contenant les volumes soient appariés.
+* Créez un nouveau volume sur le cluster distant.
++
+
+NOTE: Vous pouvez attribuer une source et une cible de réplication après le processus d'appairage.  Une source ou une cible de réplication peut être l'un ou l'autre volume d'une paire de volumes.  Vous devez créer un volume cible ne contenant aucune donnée et possédant les caractéristiques exactes du volume source, telles que la taille, le paramètre de taille de bloc pour les volumes (soit 512e, soit 4k) et la configuration QoS.  Si vous désignez un volume existant comme cible de réplication, les données de ce volume seront écrasées.  Le volume cible peut être supérieur ou égal au volume source, mais il ne peut pas être inférieur.
+
+* Connaître l'ID du volume cible.
+
+
+.Étapes
+. Sélectionnez *Gestion* > *Volumes*.
+. Cliquez sur l'icône *Actions* correspondant au volume que vous souhaitez appairer.
+. Cliquez sur *Associer*.
+. Dans la boîte de dialogue *Appairer le volume*, sélectionnez *Démarrer l'appairage*.
+. Sélectionnez *Oui* pour indiquer que vous avez accès au cluster distant.
+. Sélectionnez un *mode de réplication* dans la liste :
++
+** *Temps réel (asynchrone)* : Les écritures sont confirmées auprès du client après leur validation sur le cluster source.
+** *Temps réel (synchrone)* : Les écritures sont confirmées au client après leur validation sur les clusters source et cible.
+** *Instantanés uniquement* : Seuls les instantanés créés sur le cluster source sont répliqués.  Les écritures actives provenant du volume source ne sont pas répliquées.
+
+
+. Sélectionnez un cluster distant dans la liste.
+. Choisissez un ID de volume distant.
+. Cliquez sur *Démarrer l'appairage*.
++
+Le système ouvre un onglet de navigateur Web qui se connecte à l'interface utilisateur Element du cluster distant.  Il se peut que vous deviez vous connecter au cluster distant avec des identifiants d'administrateur de cluster.
+
+. Dans l'interface utilisateur Element du cluster distant, sélectionnez *Finaliser l'appairage*.
+. Veuillez confirmer les détails dans *Confirmer le couplage du volume*.
+. Cliquez sur *Terminer l'appairage*.
++
+Une fois l'appairage confirmé, les deux clusters entament le processus de connexion des volumes pour l'appairage.  Pendant le processus d'appairage, vous pouvez voir des messages dans la colonne *État du volume* de la fenêtre *Paires de volumes*.  La paire de volumes affiche `PausedMisconfigured` jusqu'à ce que la paire de volumes source et cible soit attribuée.
+
++
+Une fois l'appairage terminé avec succès, il est recommandé d'actualiser le tableau Volumes pour supprimer l'option *Apparier* de la liste *Actions* du volume apparié.  Si vous ne rafraîchissez pas le tableau, l'option *Paire* reste disponible pour la sélection.  Si vous sélectionnez à nouveau l'option *Associer*, un nouvel onglet s'ouvre et, comme le volume est déjà associé, le système signale un `StartVolumePairing Failed: xVolumeAlreadyPaired` Message d'erreur dans la fenêtre *Volume de la paire* de la page Element UI.
+
+
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_replication_volume_pairing_messages.adoc[Messages de couplage de volume]
+* xref:reference_replication_volume_pairing_warnings.adoc[Avertissements de couplage de volume]
+* xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Attribuer une source et une cible de réplication aux volumes appariés]
+

@@ -1,0 +1,989 @@
+= 
+:allow-uri-read: 
+
+
+* *erreur de service d'authentification*
++
+Le service d'authentification sur un ou plusieurs nœuds du cluster ne fonctionne pas comme prévu.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *AdressesIPRéseauVirtuelDisponiblesFaibles*
++
+Le nombre d'adresses de réseau virtuel dans le bloc d'adresses IP est faible.
+
++
+Pour résoudre ce problème, ajoutez des adresses IP supplémentaires au bloc d'adresses réseau virtuelles.
+
+* *blockClusterFull*
++
+L'espace de stockage libre par blocs est insuffisant pour supporter la perte d'un seul nœud.  Consultez la méthode API GetClusterFullThreshold pour plus de détails sur les niveaux de remplissage du cluster.  Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** stage3Low (Avertissement) : Le seuil défini par l'utilisateur a été franchi.  Ajustez les paramètres du cluster complet ou ajoutez des nœuds.
+** stage4Critique (Erreur) : Il n’y a pas assez d’espace pour récupérer après la défaillance d’un nœud.  La création de volumes, d'instantanés et de clones n'est pas autorisée.
+** étape5CompletelyConsumed (Critique)1; Aucune écriture ni nouvelle connexion iSCSI n'est autorisée.  Les connexions iSCSI actuelles seront maintenues.  Les opérations d'écriture échoueront jusqu'à ce que davantage de capacité soit ajoutée au cluster.
+
+
++
+Pour résoudre ce problème, purgez ou supprimez les volumes ou ajoutez un autre nœud de stockage au cluster de stockage.
+
+* *blocs dégradés*
++
+Les données par blocs ne sont plus entièrement répliquées en raison d'une panne.
+
++
+|===
+
+
+| Gravité | Description 
+
+
+ a| 
+Avertissement
+ a| 
+Seules deux copies complètes des données du bloc sont accessibles.
+
+
+
+ a| 
+Erreur
+ a| 
+Seule une copie complète des données du bloc est accessible.
+
+
+
+ a| 
+Primordial
+ a| 
+Aucune copie complète des données du bloc n'est accessible.
+
+|===
++
+*Remarque :* Ce statut d’avertissement ne peut apparaître que sur un système Triple Helix.
+
++
+Pour résoudre ce problème, restaurez les nœuds hors ligne ou bloquez les services, ou contactez le support NetApp pour obtenir de l'aide.
+
+* *blockServiceTooFull*
++
+Un service de bloc utilise trop d'espace.
+
++
+Pour résoudre ce problème, ajoutez de la capacité provisionnée.
+
+* *blockServiceUnhealthy*
++
+Un service de bloc a été détecté comme étant défaillant :
+
++
+** Gravité = Avertissement : Aucune mesure n'est prise.  Cette période d'avertissement expirera dans cTimeUntilBSIsKilledMSec=330000 millisecondes.
+** Gravité = Erreur : Le système désactive automatiquement les données et les réplique sur d’autres disques sains.
+** Gravité = Critique : Des services de blocs ont échoué sur plusieurs nœuds, un nombre supérieur ou égal au nombre de réplications (2 pour la double hélice).  Les données sont indisponibles et la synchronisation des fichiers ne pourra pas se terminer.
++
+Vérifiez la connectivité réseau et les erreurs matérielles.  D'autres pannes surviendront si certains composants matériels tombent en panne.  Le problème disparaîtra lorsque le service sera accessible ou lorsque le service aura été mis hors service.
+
+
+
+* *Échec du test BmcSelfTest*
++
+Le contrôleur de gestion de la carte mère (BMC) a échoué à un autotest.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
++
+Lors d'une mise à niveau vers Element 12.5 ou une version ultérieure, `BmcSelfTestFailed` Aucune erreur n'est générée pour un nœud dont le BMC est déjà défaillant, ou lorsque le BMC d'un nœud tombe en panne pendant la mise à niveau.  Les BMC qui échouent aux autotests lors de la mise à niveau émettront un `BmcSelfTestFailed` Un défaut d'avertissement s'est produit après la mise à niveau complète du cluster.
+
+* *Le décalage d'horloge dépasse le seuil de défaut*
++
+Le décalage temporel entre le maître du cluster et le nœud qui présente un jeton dépasse le seuil recommandé.  Le cluster de stockage ne peut pas corriger automatiquement le décalage horaire entre les nœuds.
+
++
+Pour résoudre ce problème, utilisez des serveurs NTP internes à votre réseau plutôt que les serveurs par défaut de l'installation.  Si vous utilisez un serveur NTP interne, contactez le support NetApp pour obtenir de l'aide.
+
+* *clusterCannotSync*
++
+L'espace disque est insuffisant et les données des disques de stockage bloc hors ligne ne peuvent pas être synchronisées avec les disques encore actifs.
+
++
+Pour résoudre ce problème, ajoutez du stockage.
+
+* *clusterFull*
++
+Il n'y a plus d'espace de stockage libre dans le cluster de stockage.
+
++
+Pour résoudre ce problème, ajoutez du stockage.
+
+* *clusterIOPSAreOverProvisioned*
++
+Les IOPS du cluster sont surdimensionnées.  La somme de toutes les IOPS minimales de QoS est supérieure aux IOPS attendues du cluster.  Il est impossible de maintenir un niveau de qualité de service (QoS) minimal pour tous les volumes simultanément.
+
++
+Pour résoudre ce problème, abaissez les paramètres IOPS QoS minimaux pour les volumes.
+
+* *Seuil d'événement thermique du processeur*
++
+Le nombre d'événements thermiques du processeur sur un ou plusieurs processeurs dépasse le seuil configuré.
+
++
+Si aucun nouvel événement thermique du processeur n'est détecté dans les dix minutes qui suivent, l'avertissement disparaîtra automatiquement.
+
+* *disableDriveSecurityFailed*
++
+Le cluster n'est pas configuré pour activer la sécurité des disques (chiffrement au repos), mais au moins un disque a la sécurité des disques activée, ce qui signifie que la désactivation de la sécurité des disques sur ces disques a échoué.  Ce défaut est enregistré avec le niveau de gravité « Avertissement ».
+
++
+Pour résoudre ce problème, consultez les détails de l'erreur pour connaître la raison pour laquelle la sécurité du lecteur n'a pas pu être désactivée.  Les raisons possibles sont :
+
++
+** Impossible d'obtenir la clé de chiffrement. Veuillez vérifier le problème d'accès à la clé ou au serveur de clés externe.
+** L'opération de désactivation a échoué sur le lecteur ; veuillez déterminer si une clé incorrecte a pu être saisie.
+
+
++
+Si aucune de ces causes n'est à l'origine du problème, il faudra peut-être remplacer le disque dur.
+
++
+Vous pouvez tenter de récupérer un disque dont la sécurité n'est pas désactivée même lorsque la clé d'authentification correcte est fournie.  Pour effectuer cette opération, retirez le ou les disques du système en les déplaçant vers l'état Disponible, effectuez un effacement sécurisé du disque et replacez-le dans l'état Actif.
+
+* *paire de cluster déconnectée*
++
+Une paire de clusters est déconnectée ou mal configurée.
+
++
+Vérifiez la connectivité réseau entre les clusters.
+
+* *nœud distant déconnecté*
++
+Un nœud distant est soit déconnecté, soit mal configuré.
+
++
+Vérifiez la connectivité réseau entre les nœuds.
+
+* *point de terminaison SnapMirror déconnecté*
++
+Un point de terminaison SnapMirror distant est déconnecté ou mal configuré.
+
++
+Vérifiez la connectivité réseau entre le cluster et le point de terminaison SnapMirror distant.
+
+* *driveDisponible*
++
+Un ou plusieurs disques sont disponibles dans le cluster.  En règle générale, tous les clusters doivent avoir tous les disques ajoutés et aucun à l'état disponible.  Si ce problème survient de manière inattendue, contactez l'assistance NetApp .
+
++
+Pour résoudre ce problème, ajoutez les disques disponibles au cluster de stockage.
+
+* *Lecteur défaillant*
++
+Le cluster renvoie cette erreur lorsqu'un ou plusieurs disques sont défaillants, indiquant l'une des conditions suivantes :
+
++
+** Le gestionnaire de lecteur ne peut pas accéder au lecteur.
+** Le service de découpage ou de bloc a échoué trop de fois, probablement en raison d'échecs de lecture ou d'écriture sur le disque, et ne peut pas redémarrer.
+** Le disque dur est manquant.
+** Le service principal du nœud est inaccessible (tous les disques du nœud sont considérés comme manquants/défaillants).
+** Le disque est verrouillé et la clé d'authentification du disque ne peut être obtenue.
+** Le lecteur est verrouillé et l'opération de déverrouillage a échoué.
++
+Pour résoudre ce problème :
+
+** Vérifiez la connectivité réseau du nœud.
+** Remplacez le disque dur.
+** Assurez-vous que la clé d'authentification est disponible.
+
+
+* *driveHealthFault*
++
+Un disque dur a échoué au contrôle d'intégrité SMART et, par conséquent, ses fonctions sont réduites.  Ce défaut présente un niveau de gravité critique :
+
++
+** Le disque portant le numéro de série : <numéro de série> dans l’emplacement : <emplacement du nœud><emplacement du disque> a échoué au contrôle d’intégrité global SMART.
+
+
++
+Pour résoudre ce problème, remplacez le disque dur.
+
+* *défaut d'usure du disque dur*
++
+La durée de vie restante d'un disque dur est passée sous les seuils critiques, mais il fonctionne toujours. Ce défaut peut avoir deux niveaux de gravité : critique et avertissement.
+
++
+** Le disque avec le numéro de série : <numéro de série> dans l'emplacement : <emplacement du nœud><emplacement du disque> présente des niveaux d'usure critiques.
+** Le disque avec le numéro de série : <numéro de série> dans l'emplacement : <emplacement du nœud><emplacement du disque> a de faibles réserves d'usure.
++
+Pour résoudre ce problème, remplacez le disque dur rapidement.
+
+
+
+* *candidats ClusterMaster en double*
++
+Plusieurs candidats maîtres de cluster de stockage ont été détectés.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *Échec de l'activation de la sécurité du lecteur*
++
+Le cluster est configuré pour exiger la sécurité des disques (chiffrement au repos), mais la sécurité des disques n'a pas pu être activée sur au moins un disque.  Ce défaut est enregistré avec le niveau de gravité « Avertissement ».
+
++
+Pour résoudre ce problème, consultez les détails de l'erreur pour connaître la raison pour laquelle la sécurité du lecteur n'a pas pu être activée.  Les raisons possibles sont :
+
++
+** Impossible d'obtenir la clé de chiffrement. Veuillez vérifier le problème d'accès à la clé ou au serveur de clés externe.
+** L'opération d'activation a échoué sur le lecteur ; veuillez déterminer si une clé incorrecte a pu être saisie.  Si aucune de ces causes n'est à l'origine du problème, il faudra peut-être remplacer le disque dur.
+
+
++
+Vous pouvez tenter de récupérer un disque dont la sécurité ne s'active pas correctement, même lorsque la clé d'authentification correcte est fournie.  Pour effectuer cette opération, retirez le ou les disques du système en les déplaçant vers l'état Disponible, effectuez un effacement sécurisé du disque et replacez-le dans l'état Actif.
+
+* *ensembleDegraded*
++
+La connectivité réseau ou l'alimentation électrique a été perdue pour un ou plusieurs nœuds de l'ensemble.
+
++
+Pour résoudre ce problème, rétablissez la connectivité réseau ou l'alimentation électrique.
+
+* *exception*
++
+Un défaut signalé qui n'est pas un défaut de routine.  Ces défauts ne sont pas automatiquement supprimés de la file d'attente des défauts.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *échecEspaceTropPlein*
++
+Un service de bloc ne répond pas aux requêtes d'écriture de données.  Cela provoque une saturation de l'espace du service de découpage pour stocker les écritures ayant échoué.
+
++
+Pour résoudre ce problème, rétablissez la fonctionnalité des services de blocs afin de permettre aux écritures de se poursuivre normalement et à l'espace défaillant d'être vidé par le service de tranches.
+
+* *FanSensor*
++
+Un capteur de ventilateur est défectueux ou manquant.
+
++
+Pour résoudre ce problème, remplacez tout matériel défectueux.
+
+* *Accès fibre Channel dégradé*
++
+Un nœud Fibre Channel ne répond pas aux autres nœuds du cluster de stockage via son adresse IP de stockage pendant un certain temps.  Dans cet état, le nœud sera alors considéré comme non réactif et générera une erreur de cluster.
+
++
+Vérifiez la connectivité réseau.
+
+* *Accès fibre indisponible*
++
+Tous les nœuds Fibre Channel ne répondent pas.  Les identifiants des nœuds sont affichés.
+
++
+Vérifiez la connectivité réseau.
+
+* *fibreChannelActiveIxL*
++
+Le nombre de Nexus IxL approche la limite prise en charge de 8000 sessions actives par nœud Fibre Channel.
+
++
+** La limite recommandée est de 5500.
+** La limite d'alerte est de 7500.
+** La limite maximale (non appliquée) est de 8192.
+
+
++
+Pour résoudre ce problème, réduisez le nombre de Nexus IxL en dessous de la limite recommandée de 5500.
+
+* *fibreChannelConfig*
++
+Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** Il y a un port Fibre Channel inattendu sur un emplacement PCI.
+** Il existe un modèle HBA Fibre Channel inattendu.
+** Il y a un problème avec le firmware d'un contrôleur HBA Fibre Channel.
+** Un port Fibre Channel n'est pas en ligne.
+** Il existe un problème persistant lors de la configuration du transfert Fibre Channel.
+
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *fibreChannelIOPS*
++
+Le nombre total d'IOPS approche la limite d'IOPS pour les nœuds Fibre Channel du cluster.  Les limites sont :
+
++
+** FC0025 : Limite de 450 000 IOPS à une taille de bloc de 4 Ko par nœud Fibre Channel.
+** FCN001 : Limite de 625 000 OPS à une taille de bloc de 4 Ko par nœud Fibre Channel.
+
+
++
+Pour résoudre ce problème, répartissez la charge sur tous les nœuds Fibre Channel disponibles.
+
+* *fibreChannelStaticIxL*
++
+Le nombre de Nexus IxL approche la limite prise en charge de 16 000 sessions statiques par nœud Fibre Channel.
+
++
+** La limite recommandée est de 11 000.
+** La limite d'alerte est de 15 000.
+** La limite maximale (appliquée) est de 16384.
+
+
++
+Pour résoudre ce problème, réduisez le nombre de Nexus IxL en dessous de la limite recommandée de 11 000.
+
+* *Capacité du système de fichiers faible*
++
+L'espace disponible sur l'un des systèmes de fichiers est insuffisant.
+
++
+Pour résoudre ce problème, augmentez la capacité du système de fichiers.
+
+* *Le système de fichiers est en lecture seule*
++
+Le système de fichiers est passé en mode lecture seule.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *fipsDrivesMismatch*
++
+Un disque non conforme à la norme FIPS a été physiquement inséré dans un nœud de stockage compatible FIPS ou un disque conforme à la norme FIPS a été physiquement inséré dans un nœud de stockage non conforme à la norme FIPS.  Un seul défaut est généré par nœud et répertorie tous les disques affectés.
+
++
+Pour résoudre ce problème, retirez ou remplacez le ou les disques incompatibles.
+
+* *fipsDrivesOutOfCompliance*
++
+Le système a détecté que le chiffrement au repos a été désactivé après l'activation de la fonctionnalité des lecteurs FIPS.  Ce défaut est également généré lorsque la fonctionnalité FIPS Drives est activée et qu'un disque ou un nœud non-FIPS est présent dans le cluster de stockage.
+
++
+Pour résoudre ce problème, activez le chiffrement au repos ou retirez le matériel non conforme à la norme FIPS du cluster de stockage.
+
+* *fipsSelfTestFailure*
++
+Le sous-système FIPS a détecté une défaillance lors de l'autotest.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *Configuration matérielle incompatible*
++
+Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** La configuration ne correspond pas à la définition du nœud.
+** La taille du disque est incorrecte pour ce type de nœud.
+** Un disque non pris en charge a été détecté.  Une des raisons possibles est que la version d'Element installée ne reconnaît pas ce lecteur.  Il est recommandé de mettre à jour le logiciel Element sur ce nœud.
+** Il y a une incompatibilité au niveau du firmware du disque dur.
+** L'état de chiffrement du disque ne correspond pas au nœud.
+
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *Expiration du certificat d'identité*
++
+Le certificat SSL du fournisseur de services du cluster, destiné à être utilisé avec un fournisseur d'identité tiers (IdP), arrive à expiration ou a déjà expiré.  Ce défaut utilise les niveaux de gravité suivants en fonction de l'urgence :
+
++
+|===
+
+
+| Gravité | Description 
+
+
+ a| 
+Avertissement
+ a| 
+Le certificat expire dans 30 jours.
+
+
+
+ a| 
+Erreur
+ a| 
+Le certificat expire dans 7 jours.
+
+
+
+ a| 
+Primordial
+ a| 
+Le certificat expire dans 3 jours ou a déjà expiré.
+
+|===
++
+Pour résoudre ce problème, mettez à jour le certificat SSL avant son expiration.  Utilisez la méthode d'API UpdateIdpConfiguration avec `refreshCertificateExpirationTime=true` fournir le certificat SSL mis à jour.
+
+* *Modes de liaison incohérents*
++
+Les modes de liaison sur le périphérique VLAN sont manquants.  Ce code d'erreur affichera le mode de liaison attendu et le mode de liaison actuellement utilisé.
+
+
+
+* *incohérentMtus*
++
+Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** Incompatibilité Bond1G : des MTU incohérentes ont été détectées sur les interfaces Bond1G.
+** Incompatibilité Bond10G : des MTU incohérentes ont été détectées sur les interfaces Bond10G.
+
+
++
+Ce code d'erreur affiche le ou les nœuds concernés ainsi que la valeur MTU associée.
+
+* *règles de routage incohérentes*
++
+Les règles de routage pour cette interface sont incohérentes.
+
+* *Masques de sous-réseau incohérents*
++
+Le masque de réseau sur le périphérique VLAN ne correspond pas au masque de réseau enregistré en interne pour le VLAN.  Ce message d'erreur affiche le masque de réseau attendu et le masque de réseau actuellement utilisé.
+
+* *incorrectBondPortCount*
++
+Le nombre de ports de liaison est incorrect.
+
+* *invalidConfigureFibreChannelNodeCount*
++
+L'une des deux connexions de nœud Fibre Channel attendues est dégradée.  Ce défaut apparaît lorsqu'un seul nœud Fibre Channel est connecté.
+
++
+Pour résoudre ce problème, vérifiez la connectivité du réseau du cluster et le câblage réseau, et recherchez les services défaillants.  S'il n'y a aucun problème de réseau ou de service, contactez le support NetApp pour le remplacement d'un nœud Fibre Channel.
+
+* *irqBalanceFailed*
++
+Une exception s'est produite lors de la tentative d'équilibrage des interruptions.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *kmipCertificateFault*
++
+** Le certificat de l'autorité de certification racine (CA) arrive bientôt à expiration.
++
+Pour résoudre ce problème, obtenez un nouveau certificat auprès de l'autorité de certification racine avec une date d'expiration d'au moins 30 jours et utilisez ModifyKeyServerKmip pour fournir le certificat de l'autorité de certification racine mis à jour.
+
+** Le certificat client arrive bientôt à expiration.
++
+Pour résoudre ce problème, créez une nouvelle CSR à l'aide de GetClientCertificateSigningRequest, faites-la signer en veillant à ce que la nouvelle date d'expiration soit d'au moins 30 jours, et utilisez ModifyKeyServerKmip pour remplacer le certificat client KMIP expirant par le nouveau certificat.
+
+** Le certificat de l'autorité de certification racine (CA) a expiré.
++
+Pour résoudre ce problème, obtenez un nouveau certificat auprès de l'autorité de certification racine avec une date d'expiration d'au moins 30 jours et utilisez ModifyKeyServerKmip pour fournir le certificat de l'autorité de certification racine mis à jour.
+
+** Le certificat client a expiré.
++
+Pour résoudre ce problème, créez une nouvelle CSR à l'aide de GetClientCertificateSigningRequest, faites-la signer en veillant à ce que la nouvelle date d'expiration soit d'au moins 30 jours, et utilisez ModifyKeyServerKmip pour remplacer le certificat client KMIP expiré par le nouveau certificat.
+
+** Erreur de certificat de l'autorité de certification racine (CA).
++
+Pour résoudre ce problème, vérifiez que le certificat correct a été fourni et, si nécessaire, récupérez-le auprès de l'autorité de certification racine.  Utilisez ModifyKeyServerKmip pour installer le certificat client KMIP correct.
+
+** Erreur de certificat client.
++
+Pour résoudre ce problème, vérifiez que le certificat client KMIP correct est installé.  L'autorité de certification racine du certificat client doit être installée sur EKS.  Utilisez ModifyKeyServerKmip pour installer le certificat client KMIP correct.
+
+
+
+* *kmipServerFault*
++
+** Échec de la connexion
++
+Pour résoudre ce problème, vérifiez que le serveur de clés externe est opérationnel et accessible via le réseau.  Utilisez TestKeyServerKimp et TestKeyProviderKmip pour tester votre connexion.
+
+** Échec de l'authentification
++
+Pour résoudre ce problème, vérifiez que les certificats d'autorité de certification racine et les certificats clients KMIP corrects sont utilisés, et que la clé privée et le certificat client KMIP correspondent.
+
+** Erreur serveur
++
+Pour résoudre ce problème, consultez les détails de l'erreur.  Un dépannage sur le serveur de clés externe pourrait être nécessaire en fonction de l'erreur renvoyée.
+
+
+
+* *seuil d'Ecc de mémoire*
++
+Un grand nombre d'erreurs ECC, corrigibles ou non, ont été détectées.  Ce défaut utilise les niveaux de gravité suivants en fonction de l'urgence :
+
++
+|===
+
+
+| Événement | Gravité | Description 
+
+
+ a| 
+Un seul DIMM cErrorCount atteint le seuil cDimmCorrectableErrWarnThreshold.
+ a| 
+Avertissement
+ a| 
+Erreurs de mémoire ECC corrigibles supérieures au seuil sur la barrette DIMM : <Processeur> <Emplacement DIMM>
+
+
+
+ a| 
+Un seul DIMM cErrorCount reste au-dessus de cDimmCorrectableErrWarnThreshold jusqu'à ce que cErrorFaultTimer expire pour le DIMM.
+ a| 
+Erreur
+ a| 
+Erreurs de mémoire ECC corrigibles supérieures au seuil sur la barrette DIMM : <Processeur> <DIMM>
+
+
+
+ a| 
+Un contrôleur de mémoire signale un cErrorCount supérieur à cMemCtlrCorrectableErrWarnThreshold, et cMemCtlrCorrectableErrWarnDuration est spécifié.
+ a| 
+Avertissement
+ a| 
+Erreurs de mémoire ECC corrigibles supérieures au seuil sur le contrôleur de mémoire : <Processeur> <Contrôleur de mémoire>
+
+
+
+ a| 
+Un contrôleur de mémoire signale un cErrorCount supérieur à cMemCtlrCorrectableErrWarnThreshold jusqu'à ce que cErrorFaultTimer expire pour le contrôleur de mémoire.
+ a| 
+Erreur
+ a| 
+Erreurs de mémoire ECC corrigibles supérieures au seuil sur la barrette DIMM : <Processeur> <DIMM>
+
+
+
+ a| 
+Une seule barrette DIMM signale un uErrorCount supérieur à zéro, mais inférieur à cDimmUncorrectableErrFaultThreshold.
+ a| 
+Avertissement
+ a| 
+Erreur(s) de mémoire ECC non corrigible(s) détectée(s) sur la barrette DIMM : <Processeur> <Emplacement DIMM>
+
+
+
+ a| 
+Une seule barrette DIMM signale un uErrorCount d'au moins cDimmUncorrectableErrFaultThreshold.
+ a| 
+Erreur
+ a| 
+Erreur(s) de mémoire ECC non corrigible(s) détectée(s) sur la barrette DIMM : <Processeur> <Emplacement DIMM>
+
+
+
+ a| 
+Un contrôleur de mémoire signale un uErrorCount supérieur à zéro, mais inférieur à cMemCtlrUncorrectableErrFaultThreshold.
+ a| 
+Avertissement
+ a| 
+Erreur(s) de mémoire ECC non corrigible(s) détectée(s) sur le contrôleur de mémoire : <Processeur> <Contrôleur de mémoire>
+
+
+
+ a| 
+Un contrôleur de mémoire signale un uErrorCount d'au moins cMemCtlrUncorrectableErrFaultThreshold.
+ a| 
+Erreur
+ a| 
+Erreur(s) de mémoire ECC non corrigible(s) détectée(s) sur le contrôleur de mémoire : <Processeur> <Contrôleur de mémoire>
+
+|===
++
+Pour résoudre ce problème, contactez le support NetApp .
+
+* *seuil d'utilisation de la mémoire*
++
+L'utilisation de la mémoire est supérieure à la normale.  Ce défaut utilise les niveaux de gravité suivants en fonction de l'urgence :
+
++
+
+NOTE: Consultez la rubrique *Détails* du code d'erreur pour obtenir des informations plus détaillées sur le type de panne.
+
++
+|===
+
+
+| Gravité | Description 
+
+
+ a| 
+Avertissement
+ a| 
+La mémoire système est faible.
+
+
+
+ a| 
+Erreur
+ a| 
+La mémoire système est très faible.
+
+
+
+ a| 
+Primordial
+ a| 
+La mémoire système est entièrement consommée.
+
+|===
++
+Pour résoudre ce problème, contactez le support NetApp .
+
+* *metadataClusterFull*
++
+L'espace de stockage libre des métadonnées est insuffisant pour supporter la perte d'un seul nœud.  Consultez la méthode API GetClusterFullThreshold pour plus de détails sur les niveaux de remplissage du cluster.  Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** stage3Low (Avertissement) : Le seuil défini par l'utilisateur a été franchi.  Ajustez les paramètres du cluster complet ou ajoutez des nœuds.
+** stage4Critique (Erreur) : Il n’y a pas assez d’espace pour récupérer après la défaillance d’un nœud.  La création de volumes, d'instantanés et de clones n'est pas autorisée.
+** étape5CompletelyConsumed (Critique)1; Aucune écriture ni nouvelle connexion iSCSI n'est autorisée.  Les connexions iSCSI actuelles seront maintenues.  Les opérations d'écriture échoueront jusqu'à ce que davantage de capacité soit ajoutée au cluster.  Purgez ou supprimez des données ou ajoutez des nœuds.
+
+
++
+Pour résoudre ce problème, purgez ou supprimez les volumes ou ajoutez un autre nœud de stockage au cluster de stockage.
+
+* *Échec de la vérification mtu*
++
+Le périphérique réseau n'est pas configuré pour la taille MTU appropriée.
+
++
+Pour résoudre ce problème, assurez-vous que toutes les interfaces réseau et les ports du commutateur sont configurés pour les trames jumbo (MTU jusqu'à 9000 octets).
+
+* *configuration réseau*
++
+Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** L'interface attendue est absente.
+** Une interface dupliquée est présente.
+** Une interface configurée est hors service.
+** Un redémarrage du réseau est nécessaire.
+
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *Aucune adresse IP de réseau virtuel disponible*
++
+Aucune adresse réseau virtuelle n'est disponible dans le bloc d'adresses IP.
+
++
+** virtualNetworkID # TAG(\###) ne dispose d'aucune adresse IP de stockage disponible.  Il est impossible d'ajouter des nœuds supplémentaires au cluster.
+
+
++
+Pour résoudre ce problème, ajoutez des adresses IP supplémentaires au bloc d'adresses réseau virtuelles.
+
+* *nodeHardwareFault (L'interface réseau <nom> est hors service ou le câble est débranché)*
++
+L'interface réseau est soit hors service, soit le câble est débranché.
+
++
+Pour résoudre ce problème, vérifiez la connectivité réseau du ou des nœuds.
+
+* *nodeHardwareFault (L'état de capacité de chiffrement du disque ne correspond pas à l'état de capacité de chiffrement du nœud pour le disque dans l'emplacement <emplacement du nœud><emplacement du disque>)*
++
+Les capacités de chiffrement d'un disque ne correspondent pas à celles du nœud de stockage dans lequel il est installé.
+
+* *nodeHardwareFault (Taille du disque <type de disque> incorrecte <taille réelle> pour le disque dans l'emplacement <emplacement du nœud><emplacement du disque> pour ce type de nœud - taille attendue <taille attendue>)*
++
+Un nœud de stockage contient un disque dur dont la taille est incorrecte pour ce nœud.
+
+* *nodeHardwareFault (Disque non pris en charge détecté dans l'emplacement <emplacement du nœud><emplacement du disque> ; les statistiques et les informations sur l'état du disque ne seront pas disponibles)*
++
+Un nœud de stockage contient un lecteur qu'il ne prend pas en charge.
+
+* *nodeHardwareFault (Le disque dans l'emplacement <node slot><drive slot> devrait utiliser la version de firmware <expected version>, mais utilise une version non prise en charge <actual version>)*
++
+Un nœud de stockage contient un disque exécutant une version de firmware non prise en charge.
+
+* *nodeMaintenanceMode*
++
+Un nœud a été placé en mode maintenance.  Ce défaut utilise les niveaux de gravité suivants en fonction de l'urgence :
+
++
+|===
+
+
+| Gravité | Description 
+
+
+ a| 
+Avertissement
+ a| 
+Indique que le nœud est toujours en mode maintenance.
+
+
+
+ a| 
+Erreur
+ a| 
+Indique que le mode maintenance n'a pas pu être désactivé, probablement en raison de pannes ou d'activations de systèmes de secours.
+
+|===
++
+Pour résoudre ce problème, désactivez le mode maintenance une fois la maintenance terminée.  Si l'erreur persiste, contactez le support NetApp pour obtenir de l'aide.
+
+* *nœudHorsLigne*
++
+Le logiciel Element ne peut pas communiquer avec le nœud spécifié.  Vérifiez la connectivité réseau.
+
+* *notUsingLACPBondMode*
++
+Le mode de liaison LACP n'est pas configuré.
+
++
+Pour résoudre ce problème, utilisez l'agrégation de liens LACP lors du déploiement des nœuds de stockage ; les clients peuvent rencontrer des problèmes de performances si LACP n'est pas activé et correctement configuré.
+
+* *Serveur NTP inaccessible*
++
+Le cluster de stockage ne peut pas communiquer avec le ou les serveurs NTP spécifiés.
+
++
+Pour résoudre ce problème, vérifiez la configuration du serveur NTP, du réseau et du pare-feu.
+
+* *ntpTimeNotInSync*
++
+La différence entre l'heure du cluster de stockage et l'heure du serveur NTP spécifié est trop importante.  Le cluster de stockage ne peut pas corriger automatiquement la différence.
+
++
+Pour résoudre ce problème, utilisez des serveurs NTP internes à votre réseau plutôt que les serveurs par défaut de l'installation.  Si vous utilisez des serveurs NTP internes et que le problème persiste, contactez le support NetApp pour obtenir de l'aide.
+
+* *nvramDeviceStatus*
++
+Un périphérique NVRAM présente une erreur, est en panne ou est tombé en panne.  Ce défaut présente les degrés de gravité suivants :
+
++
+|===
+
+
+| Gravité | Description 
+
+
+ a| 
+Avertissement
+ a| 
+Un avertissement a été détecté par le matériel.  Cette situation peut être transitoire, comme par exemple une alerte de température.
+
+** nvmLifetimeError
+** nvmLifetimeStatus
+** Durée de vie de la source d'énergie
+** état de la source d'énergie
+** Seuil d'avertissement dépassé
+
+
+
+
+ a| 
+Erreur
+ a| 
+Un état d'erreur ou critique a été détecté par le matériel.  Le maître du cluster tente de retirer le disque de partition du fonctionnement (ceci génère un événement de retrait de disque).  Si les services de tranche secondaire ne sont pas disponibles, le disque ne sera pas retiré.  Erreurs renvoyées en plus des erreurs de niveau Avertissement :
+
+** Le point de montage du périphérique NVRAM n'existe pas.
+** La partition du périphérique NVRAM n'existe pas.
+** La partition du périphérique NVRAM existe, mais elle n'est pas montée.
+
+
+
+
+ a| 
+Primordial
+ a| 
+Un état d'erreur ou critique a été détecté par le matériel.  Le maître du cluster tente de retirer le disque de partition du fonctionnement (ceci génère un événement de retrait de disque).  Si les services de tranche secondaire ne sont pas disponibles, le disque ne sera pas retiré.
+
+** persistancePerdue
+** armStatusSaveNArmé
+** Erreur csaveStatusError
+
+
+|===
++
+Remplacez tout matériel défectueux dans le nœud.  Si le problème persiste, contactez le support NetApp pour obtenir de l'aide.
+
+* *Erreur d'alimentation*
++
+Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** L'alimentation électrique est absente.
+** Une alimentation électrique est défaillante.
+** L'alimentation électrique est absente ou hors de portée.
+
+
++
+Pour résoudre ce problème, vérifiez que tous les nœuds sont alimentés par une alimentation redondante.  Contactez le support NetApp pour obtenir de l'aide.
+
+* *Espace réservé Trop plein*
++
+La capacité totale allouée au cluster est trop élevée.
+
++
+Pour résoudre ce problème, ajoutez de l'espace provisionné ou supprimez et purgez les volumes.
+
+* *remoteRepAsyncDelayExceeded*
++
+Le délai asynchrone configuré pour la réplication a été dépassé.  Vérifier la connectivité réseau entre les clusters.
+
+* *remoteRepClusterFull*
++
+La réplication à distance des volumes a été suspendue car le cluster de stockage cible est trop plein.
+
++
+Pour résoudre ce problème, libérez de l'espace sur le cluster de stockage cible.
+
+* *remoteRepSnapshotClusterFull*
++
+La réplication à distance des instantanés a été suspendue car le cluster de stockage cible est saturé.
+
++
+Pour résoudre ce problème, libérez de l'espace sur le cluster de stockage cible.
+
+* *remoteRepSnapshotsExceededLimit*
++
+La réplication à distance des instantanés a été suspendue car le volume du cluster de stockage cible a dépassé sa limite d'instantanés.
+
++
+Pour résoudre ce problème, augmentez la limite de snapshots sur le cluster de stockage cible.
+
+* *erreur de planification d'action*
++
+Une ou plusieurs des activités planifiées ont été exécutées, mais ont échoué.
+
++
+Le problème disparaît si l'activité planifiée s'exécute à nouveau et réussit, si l'activité planifiée est supprimée ou si l'activité est mise en pause puis reprise.
+
+* *Échec de la lecture du capteur*
++
+Un capteur n'a pas pu communiquer avec le contrôleur de gestion de la carte mère (BMC).
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *serviceNotRunning*
++
+Un service requis n'est pas en cours d'exécution.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *ServiceDeTrancheTropPlein*
++
+La capacité allouée à un service de tranche est insuffisante.
+
++
+Pour résoudre ce problème, ajoutez de la capacité provisionnée.
+
+* *sliceServiceUnhealthy*
++
+Le système a détecté qu'un service de tranche est défaillant et le désactive automatiquement.
+
++
+** Gravité = Avertissement : Aucune mesure n'est prise.  Ce délai d'avertissement expirera dans 6 minutes.
+** Gravité = Erreur : Le système désactive automatiquement les données et les réplique sur d’autres disques sains.
+
+
++
+Vérifiez la connectivité réseau et les erreurs matérielles.  D'autres pannes surviendront si certains composants matériels tombent en panne.  Le problème disparaîtra lorsque le service de tranche sera accessible ou lorsque le service aura été mis hors service.
+
+* *sshEnabled*
++
+Le service SSH est activé sur un ou plusieurs nœuds du cluster de stockage.
+
++
+Pour résoudre ce problème, désactivez le service SSH sur le ou les nœuds concernés ou contactez le support NetApp pour obtenir de l'aide.
+
+* *Expiration du certificat SSL*
++
+Le certificat SSL associé à ce nœud arrive bientôt à expiration ou a expiré.  Ce défaut utilise les niveaux de gravité suivants en fonction de l'urgence :
+
++
+|===
+
+
+| Gravité | Description 
+
+
+ a| 
+Avertissement
+ a| 
+Le certificat expire dans 30 jours.
+
+
+
+ a| 
+Erreur
+ a| 
+Le certificat expire dans 7 jours.
+
+
+
+ a| 
+Primordial
+ a| 
+Le certificat expire dans 3 jours ou a déjà expiré.
+
+|===
++
+Pour résoudre ce problème, renouvelez le certificat SSL.  En cas de besoin, contactez le support NetApp pour obtenir de l'aide.
+
+* *capacité bloquée*
++
+Un seul nœud représente plus de la moitié de la capacité du cluster de stockage.
+
++
+Afin de maintenir la redondance des données, le système réduit la capacité du plus grand nœud de sorte qu'une partie de sa capacité de bloc soit inutilisée.
+
++
+Pour résoudre ce problème, ajoutez des disques supplémentaires aux nœuds de stockage existants ou ajoutez des nœuds de stockage au cluster.
+
+* *capteur de température*
++
+Un capteur de température signale des températures supérieures à la normale.  Ce défaut peut être déclenché conjointement à une erreur d'alimentation ou à un défaut du capteur de ventilateur.
+
++
+Pour résoudre ce problème, vérifiez la présence d'obstructions au flux d'air à proximité du bloc de stockage.  En cas de besoin, contactez le support NetApp pour obtenir de l'aide.
+
+* *mise à niveau*
++
+Une mise à jour est en cours depuis plus de 24 heures.
+
++
+Pour résoudre ce problème, reprenez la mise à niveau ou contactez le support NetApp pour obtenir de l'aide.
+
+* *Service non réactif*
++
+Un service ne répond plus.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *virtualNetworkConfig*
++
+Ce défaut de cluster indique l'une des conditions suivantes :
+
++
+** Aucune interface n'est présente.
+** L'espace de noms d'une interface est incorrect.
+** Le masque de sous-réseau est incorrect.
+** L'adresse IP est incorrecte.
+** L'interface n'est pas opérationnelle.
+** Il existe une interface superflue sur un nœud.
+
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+* *volumesDegraded*
++
+La réplication et la synchronisation des volumes secondaires ne sont pas terminées.  Le message disparaît une fois la synchronisation terminée.
+
+* *volumesOffline*
++
+Un ou plusieurs volumes du cluster de stockage sont hors ligne.  Le défaut *volumeDegraded* sera également présent.
+
++
+Contactez le support NetApp pour obtenir de l'aide.
+
+

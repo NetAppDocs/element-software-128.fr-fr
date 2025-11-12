@@ -1,0 +1,237 @@
+---
+permalink: api/concept_element_api_about_the_api.html 
+sidebar: sidebar 
+keywords: SolidFire,API,overview,about,Element 
+summary: 'L"API Element est basée sur le protocole JSON-RPC via HTTPS.  JSON-RPC est un protocole RPC simple, basé sur du texte et utilisant le format d"échange de données léger JSON.  Des bibliothèques clientes sont disponibles pour tous les principaux langages de programmation.' 
+---
+= Découvrez comment gérer le stockage avec l'API Element.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'API Element est basée sur le protocole JSON-RPC via HTTPS.  JSON-RPC est un protocole RPC simple, basé sur du texte et utilisant le format d'échange de données léger JSON.  Des bibliothèques clientes sont disponibles pour tous les principaux langages de programmation.
+
+Vous pouvez effectuer des requêtes API via des requêtes HTTPS POST vers le point de terminaison de l'API.  Le corps de la requête POST est un objet de requête JSON-RPC.  L'API ne prend actuellement pas en charge les requêtes par lots (plusieurs objets de requête dans une seule requête POST).  Lors de l'envoi de requêtes API, vous devez utiliser « application/json-rpc » comme type de contenu de la requête et vous assurer que le corps n'est pas encodé en formulaire.
+
+
+NOTE: L'interface utilisateur web d'Element utilise les méthodes API décrites dans ce document.  Vous pouvez surveiller les opérations de l'API dans l'interface utilisateur en activant le journal de l'API ; cela vous permet de voir les méthodes qui sont envoyées au système.  Vous pouvez activer à la fois les requêtes et les réponses pour voir comment le système réagit aux méthodes émises.
+
+Sauf indication contraire, toutes les chaînes de date dans les réponses de l'API sont au format UTC+0.
+
+
+NOTE: Lorsque le cluster de stockage est fortement chargé ou que vous soumettez de nombreuses requêtes API consécutives sans délai intermédiaire, une méthode peut échouer et renvoyer l'erreur « xDBVersionMismatch ».  Si cela se produit, réessayez l'appel de méthode.
+
+
+
+== objets courants
+
+L'API du logiciel Element utilise des objets JSON pour représenter des concepts de données organisés.  Bon nombre de ces méthodes d'API utilisent ces objets pour la saisie et la sortie de données.  Cette section documente les objets couramment utilisés ; les objets qui ne sont utilisés que dans une seule méthode sont documentés avec cette méthode et non dans cette section.
+
+link:../api/reference_element_api_account.html["Apprenez-en davantage sur les objets courants"]
+
+
+
+== méthodes courantes
+
+Les méthodes communes sont des méthodes utilisées pour récupérer des informations sur le cluster de stockage, l'API elle-même ou les opérations d'API en cours.
+
+link:../api/reference_element_api_getapi.html["Découvrez les méthodes courantes"]
+
+
+
+== Méthodes de l'API de compte
+
+Les méthodes de gestion des comptes vous permettent d'ajouter, de supprimer, de consulter et de modifier les informations relatives aux comptes et à la sécurité.
+
+link:../api/reference_element_api_addaccount.html["Découvrez les méthodes de l'API de compte"]
+
+
+
+== Méthodes de l'API d'administration
+
+Vous pouvez utiliser les méthodes de l'API d'administration pour créer, modifier, afficher et supprimer des administrateurs de cluster de stockage et attribuer des niveaux d'accès et de privilèges aux personnes ayant accès à un cluster de stockage.
+
+link:../api/reference_element_api_addclusteradmin.html["Découvrez les méthodes de l'API d'administration"]
+
+
+
+== Méthodes d'API de cluster
+
+Les méthodes de l'API du cluster logiciel Element vous permettent de gérer la configuration et la topologie du cluster de stockage ainsi que les nœuds qui appartiennent à ce cluster.
+
+Certaines méthodes de l'API de cluster fonctionnent sur des nœuds faisant partie d'un cluster ou ayant été configurés pour rejoindre un cluster.  Vous pouvez ajouter des nœuds à un nouveau cluster ou à un cluster existant.  Les nœuds prêts à être ajoutés à un cluster sont dans un état « en attente », ce qui signifie qu'ils ont été configurés mais pas encore ajoutés au cluster.
+
+link:../api/reference_element_api_addnodes.html["Découvrez les méthodes de l'API de cluster"]
+
+
+
+== Méthodes de l'API de création de cluster
+
+Vous pouvez utiliser ces méthodes d'API pour créer un cluster de stockage.  Toutes ces méthodes doivent être utilisées sur le point de terminaison de l'API sur un seul nœud.
+
+link:../api/reference_element_api_checkproposedcluster.html["Découvrez les méthodes de l'API de création de clusters"]
+
+
+
+== Méthodes de l'API Drive
+
+Vous pouvez utiliser les méthodes de l'API Drive pour ajouter et gérer les disques disponibles pour un cluster de stockage.  Lorsque vous ajoutez un nœud de stockage au cluster de stockage ou que vous installez de nouveaux disques dans un nœud de stockage existant, ces disques peuvent être ajoutés au cluster de stockage.
+
+link:../api/reference_element_api_adddrives.html["Découvrez les méthodes de l'API Drive"]
+
+
+
+== Méthodes d'API Fibre Channel
+
+Vous pouvez utiliser les méthodes de l'API Fibre Channel pour ajouter, modifier ou supprimer des nœuds Fibre Channel membres d'un cluster de stockage.
+
+link:../api/reference_element_api_getvolumeaccessgrouplunassignments.html["Découvrez les méthodes de l'API Fibre Channel"]
+
+
+
+== Méthodes de l'API Initiateur
+
+Les méthodes d'initiation vous permettent d'ajouter, de supprimer, d'afficher et de modifier les objets d'initiation iSCSI, qui gèrent la communication entre le système de stockage et les clients de stockage externes.
+
+link:../api/reference_element_api_createinitiators.html["Découvrez les méthodes de l'API d'initiation"]
+
+
+
+== Méthodes de l'API LDAP
+
+Vous pouvez utiliser le protocole LDAP (Lightweight Directory Access Protocol) pour authentifier l'accès au stockage Element.  Les méthodes de l'API LDAP décrites dans cette section vous permettent de configurer l'accès LDAP au cluster de stockage.
+
+link:../api/reference_element_api_addldapclusteradmin.html["Découvrez les méthodes de l'API LDAP"]
+
+
+
+== Méthodes d'API d'authentification multifactorielle
+
+Vous pouvez utiliser l'authentification multifactorielle (MFA) pour gérer les sessions utilisateur à l'aide d'un fournisseur d'identité tiers (IdP) via le langage de balisage d'assertion de sécurité (SAML).
+
+link:../api/reference_element_api_addidpclusteradmin.html["Découvrez les méthodes d'authentification multifactorielle via API"]
+
+
+
+== Méthodes d'API d'authentification de session
+
+Vous pouvez utiliser l'authentification par session pour gérer les sessions utilisateur.
+
+link:../api/reference_element_api_listauthsessionbyclusteradmin.html["Découvrez les méthodes d'API d'authentification de session"]
+
+
+
+== Méthodes de l'API Node
+
+Vous pouvez utiliser les méthodes de l'API Node pour configurer chaque nœud individuellement.  Ces méthodes fonctionnent sur des nœuds individuels qui doivent être configurés, qui sont configurés mais ne participent pas encore à un cluster, ou qui participent activement à un cluster.  Les méthodes de l'API Node vous permettent de visualiser et de modifier les paramètres des nœuds individuels et du réseau du cluster utilisé pour communiquer avec le nœud.  Vous devez exécuter ces méthodes sur des nœuds individuels ; vous ne pouvez pas exécuter des méthodes d’API par nœud sur l’adresse du cluster.
+
+link:../api/reference_element_api_checkpingonvlan.html["Découvrez les méthodes de l'API Node.js"]
+
+
+
+== Méthodes de l'API de réplication
+
+Les méthodes de l'API de réplication vous permettent de connecter deux clusters pour une protection continue des données (CDP).  Lorsque vous connectez deux clusters, les volumes actifs d'un cluster peuvent être répliqués en continu sur un second cluster afin d'assurer la récupération des données.  En associant des volumes pour la réplication, vous pouvez protéger vos données contre les événements susceptibles de les rendre inaccessibles.
+
+link:../api/reference_element_api_cluster_pairing_order_of_operations.html["Découvrez les méthodes de l'API de réplication"]
+
+
+
+== Méthodes de l'API de sécurité
+
+Vous pouvez intégrer le logiciel Element à des services externes liés à la sécurité, tels qu'un serveur de gestion de clés externe.  Ces méthodes liées à la sécurité vous permettent de configurer les fonctionnalités de sécurité d'Element, telles que la gestion des clés externes pour le chiffrement au repos.
+
+link:../api/reference_element_api_addkeyservertoproviderkmip.html["Découvrez les méthodes d'API de sécurité"]
+
+
+
+== Méthodes de l'API SnapMirror
+
+Les méthodes de l'API SnapMirror sont utilisées par l'interface utilisateur Web d'Element pour gérer les instantanés mis en miroir avec des systèmes ONTAP distants.  Ces méthodes sont destinées à être utilisées exclusivement par l'interface utilisateur web d'Element.  Si vous avez besoin d'un accès API aux fonctionnalités de SnapMirror , utilisez les API ONTAP .  Aucun exemple de requête et de retour n'est fourni pour les méthodes de l'API SnapMirror .
+
+link:../api/reference_element_api_abortsnapmirrorrelationship.html["Découvrez les méthodes de l'API SnapMirror"]
+
+
+
+== Méthodes de l'API de configuration système
+
+Les méthodes de l'API de configuration système vous permettent d'obtenir et de définir des valeurs de configuration qui s'appliquent à tous les nœuds du cluster.
+
+link:../api/reference_element_api_disablebmccoldreset.html["Découvrez les méthodes de l'API de configuration système"]
+
+
+
+== Méthodes d'API de réseau multitenant
+
+La mise en réseau multitenant dans les clusters de stockage Element permet au trafic entre plusieurs clients situés sur des réseaux logiques distincts d'être connecté à un seul cluster de stockage Element sans routage de couche 3.
+
+Les connexions au cluster de stockage sont segmentées dans la pile réseau grâce à l'utilisation du balisage VLAN.
+
+
+
+=== Prérequis pour la mise en place d'un réseau virtuel mutualisé
+
+* Vous devez avoir identifié le bloc d'adresses IP du réseau client à attribuer aux réseaux virtuels sur les nœuds de stockage.
+* Vous devez avoir identifié une adresse IP de réseau de stockage client (SVIP) à utiliser comme point de terminaison pour tout le trafic de stockage.
+
+
+
+
+=== Ordre des opérations de mise en réseau virtuelle
+
+. Utilisez la méthode AddVirtualNetwork pour provisionner en masse les adresses IP que vous saisissez.
++
+Après l'ajout d'un réseau virtuel, le cluster effectue automatiquement les étapes suivantes :
+
++
+** Chaque nœud de stockage crée une interface réseau virtuelle.
+** Chaque nœud de stockage se voit attribuer une adresse VLAN qui peut être routée à l'aide du SVIP virtuel.
+** Les adresses IP VLAN sont conservées sur chaque nœud en cas de redémarrage de celui-ci.
+
+
+. Une fois l'interface réseau virtuelle et les adresses VLAN attribuées, vous pouvez affecter le trafic réseau client à l'interface SVIP virtuelle.
+
+
+link:../api/concept_element_api_virtual_network_naming_conventions.html["Découvrez les méthodes d'API de réseau mutualisé."]
+
+
+
+== Méthodes de l'API Volume
+
+Les méthodes de l'API de volume du logiciel Element vous permettent de gérer les volumes résidant sur un nœud de stockage.  Vous pouvez créer, modifier, cloner et supprimer des volumes grâce à ces méthodes.  Vous pouvez également utiliser les méthodes de l'API Volume pour collecter et afficher les mesures de données relatives à un volume.
+
+link:../api/reference_element_api_cancelclone.html["Découvrez les méthodes de l'API de volume"]
+
+
+
+== Méthodes d'API des groupes d'accès au volume
+
+Les méthodes de groupe d'accès aux volumes vous permettent d'ajouter, de supprimer, d'afficher et de modifier des groupes d'accès aux volumes, qui sont des ensembles de volumes auxquels les utilisateurs peuvent accéder à l'aide d'initiateurs iSCSI ou Fibre Channel.
+
+link:../api/reference_element_api_addinitiatorstovolumeaccessgroup.html["Découvrez les méthodes de l'API des groupes d'accès aux volumes"]
+
+
+
+== Méthodes de l'API d'instantané de volume
+
+Les méthodes de l'API Element Software Volume Snapshot vous permettent de gérer les instantanés de volume.  Vous pouvez créer, modifier, cloner et supprimer des instantanés de volume à l'aide des méthodes de l'API d'instantané de volume.
+
+link:../api/concept_element_api_snapshots_overview.html["Découvrez les méthodes de l'API d'instantané de volume."]
+
+
+
+== Méthodes d'API de volume virtuel
+
+Les méthodes de l'API de volume virtuel du logiciel Element vous permettent de gérer les volumes virtuels (VVols).  Vous pouvez consulter les VVols existants grâce à ces méthodes d'API, ainsi que créer, modifier et supprimer des conteneurs de stockage de volumes virtuels.  Bien que vous ne puissiez pas utiliser ces méthodes pour opérer sur des volumes normaux, vous pouvez utiliser les méthodes de l'API de volume normale pour lister les informations relatives aux VVols.
+
+link:../api/reference_element_api_createstoragecontainer.html["Découvrez les méthodes de l'API des volumes virtuels"]
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

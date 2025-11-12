@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_clearclusterfaults.html 
+sidebar: sidebar 
+keywords: cluster,clear,clearing,fault,faults,support bundles,ClearClusterFaults 
+summary: 'Vous pouvez utiliser la méthode ClearClusterFaults pour effacer les informations relatives aux défauts actuels et précédemment détectés.  Les défauts, qu"ils soient résolus ou non, peuvent être effacés.' 
+---
+= Effacer les défauts de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ClearClusterFaults` méthode permettant d'effacer les informations relatives aux défauts actuels et à ceux détectés précédemment.  Les défauts, qu'ils soient résolus ou non, peuvent être effacés.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+types de défauts
+ a| 
+Détermine les types de défauts à éliminer. Valeurs possibles :
+
+* actuel:
++
+Pannes actuellement détectées et non résolues.
+
+* résolus : défauts qui avaient été précédemment détectés et résolus.
+* Tous : défauts actuels et résolus.  L'état du défaut peut être déterminé par le champ « `resolved` » de l'objet défaut.
+
+ a| 
+chaîne
+ a| 
+résolu
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "ClearClusterFaults",
+   "params": {},
+  "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id" : 1,
+    "result" : {}
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

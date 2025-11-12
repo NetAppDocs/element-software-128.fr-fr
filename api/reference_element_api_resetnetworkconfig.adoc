@@ -1,0 +1,52 @@
+---
+permalink: api/reference_element_api_resetnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,reset,restetting,factory,default,resetnetworkconfig 
+summary: 'Vous pouvez utiliser la méthode ResetNetworkConfig pour résoudre les problèmes de configuration réseau d"un nœud individuel.  Cette méthode réinitialise la configuration réseau d"un nœud individuel aux paramètres d"usine par défaut.' 
+---
+= Réinitialiser la configuration réseau
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ResetNetworkConfig` méthode permettant de résoudre les problèmes de configuration réseau d'un nœud individuel.  Cette méthode réinitialise la configuration réseau d'un nœud individuel aux paramètres d'usine par défaut.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== valeur de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "ResetNetworkConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode ne renvoie pas de réponse.
+
+
+
+== Nouveautés depuis la version
+
+11,0

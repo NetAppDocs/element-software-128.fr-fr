@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: 'Vous pouvez utiliser la méthode GetFeatureStatus pour récupérer l"état d"une fonctionnalité de cluster.' 
+---
+= Obtenir le statut de la fonctionnalité
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetFeatureStatus` méthode pour récupérer l'état d'une fonctionnalité de cluster.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+fonctionnalité
+ a| 
+L'état d'une fonctionnalité de cluster.  Si aucune valeur n'est fournie, le système renvoie l'état de toutes les fonctionnalités. Valeurs possibles :
+
+* `Vvols`: Récupérer l'état de la fonctionnalité de cluster VVols.
+* `SnapMirror`: Récupérer l'état de la fonctionnalité de cluster de réplication SnapMirror .
+* `Fips`: Récupérer l'état de la fonction de chiffrement FIPS 140-2 pour la communication HTTPS.
+* `FipsDrives`: Récupérer l'état de la fonction de chiffrement de lecteur FIPS 140-2.
+* `VolumeLoadBalanceOnActualIOPS`: Récupérer l'état de l'équilibrage de la tranche sur la base des IOPS réelles plutôt que sur la fonctionnalité IOPS minimales.  Disponible à partir d'Element 12.8.
+
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+caractéristiques
+ a| 
+Un tableau d'objets de fonctionnalités indiquant le nom de la fonctionnalité et son statut.  Membres de l'objet :
+
+* fonctionnalité : (chaîne de caractères) Le nom de la fonctionnalité.
+* activé : (booléen) Indique si la fonctionnalité est activée ou non.
+
+ a| 
+tableau d'objets JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

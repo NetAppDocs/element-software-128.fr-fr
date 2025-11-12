@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_snapmirrornetworkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNetworkInterface 
+summary: 'L"objet snapMirrorNetworkInterface contient des informations sur les interfaces logiques inter-clusters (LIF).' 
+---
+= snapMirrorNetworkInterface
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet snapMirrorNetworkInterface contient des informations sur les interfaces logiques inter-clusters (LIF).
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+Statut administratif
+ a| 
+Indique si l'interface logique (LIF) est activée ou désactivée administrativement. Valeurs possibles :
+
+* en haut
+* vers le bas
+
+ a| 
+chaîne
+
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'identifiant du système ONTAP de destination.
+ a| 
+entier
+
+
+
+ a| 
+nom_interface
+ a| 
+Le nom du LIF.
+ a| 
+chaîne
+
+
+
+ a| 
+adresse réseau
+ a| 
+L'adresse IP du LIF.
+ a| 
+chaîne
+
+
+
+ a| 
+masque de réseau
+ a| 
+Le masque de réseau du LIF.
+ a| 
+chaîne
+
+
+
+ a| 
+rôle d'interface
+ a| 
+Le rôle du LIF. Valeurs possibles :
+
+* indéfini
+* grappe
+* données
+* gestion_node
+* intercluster
+* gestion_cluster
+
+ a| 
+chaîne
+
+
+
+ a| 
+État opérationnel
+ a| 
+L'état opérationnel du LIF (qu'il ait ou non établi une connexion réussie).  Ce statut peut différer du statut administratif en cas de problème réseau empêchant le fonctionnement de l'interface. Valeurs possibles :
+
+* en haut
+* vers le bas
+
+ a| 
+chaîne
+
+
+
+ a| 
+Nom du serveur virtuel
+ a| 
+Le nom du serveur virtuel.
+ a| 
+chaîne
+
+|===

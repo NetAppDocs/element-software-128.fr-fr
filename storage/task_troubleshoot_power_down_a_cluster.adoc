@@ -1,0 +1,44 @@
+---
+permalink: storage/task_troubleshoot_power_down_a_cluster.html 
+sidebar: sidebar 
+keywords: cluster, power down, mvip 
+summary: Vous pouvez mettre hors tension un cluster entier après avoir contacté le support NetApp et effectué les étapes préliminaires. 
+---
+= Mise hors tension d'un groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Pour mettre hors tension un cluster entier, procédez comme suit.
+
+.Étapes
+. (Facultatif) Contactez le support NetApp pour obtenir de l'aide concernant les étapes préliminaires.
+. Vérifiez que toutes les entrées/sorties sont arrêtées.
+. Déconnectez toutes les sessions iSCSI :
++
+.. Accédez à l'adresse IP virtuelle de gestion (MVIP) sur le cluster pour ouvrir l'interface utilisateur Element.
+.. Notez les nœuds répertoriés dans la liste des nœuds.
+.. Exécutez la méthode d'API Shutdown avec l'option halt spécifiée sur chaque ID de nœud du cluster.
+
+
+
+
+[NOTE]
+====
+Lorsque vous redémarrez le cluster, vous devez suivre certaines étapes pour vérifier que tous les nœuds sont mis en ligne :
+
+. Vérifiez que tous les niveaux de gravité critique et `volumesOffline` Les défauts du cluster ont été résolus.
+. Attendez 10 à 15 minutes que l'amas se stabilise.
+. Commencez par mettre en service les hôtes pour accéder aux données.
+
+
+Si vous souhaitez prévoir plus de temps lors de la mise sous tension des nœuds et de la vérification de leur bon fonctionnement après la maintenance, contactez le support technique pour obtenir de l'aide concernant le report de la synchronisation des données afin d'éviter une synchronisation inutile des fichiers binaires.
+
+====
+
+
+== Trouver plus d'informations
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/How_to_gracefully_shut_down_and_power_on_a_NetApp_Solidfire_HCI_storage_cluster["Comment arrêter et redémarrer correctement un cluster de stockage NetApp Solidfire/HCI"^]

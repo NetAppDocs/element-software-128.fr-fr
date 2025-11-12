@@ -1,0 +1,67 @@
+---
+permalink: storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html 
+sidebar: sidebar 
+keywords: mdss drives, troubleshoot, multi-drive slice service 
+summary: 'Vous pouvez récupérer les disques de métadonnées (ou de partition) en les réintégrant au cluster si l"un ou les deux disques de métadonnées tombent en panne.  Vous pouvez effectuer l"opération de récupération dans l"interface utilisateur de NetApp Element si la fonctionnalité MDSS est déjà activée sur le nœud.' 
+---
+= Dépannage de base des lecteurs MDSS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez récupérer les disques de métadonnées (ou de partition) en les réintégrant au cluster si l'un ou les deux disques de métadonnées tombent en panne.  Vous pouvez effectuer l'opération de récupération dans l'interface utilisateur de NetApp Element si la fonctionnalité MDSS est déjà activée sur le nœud.
+
+Si l'un ou les deux disques de métadonnées d'un nœud tombent en panne, le service de découpage s'arrêtera et les données des deux disques seront sauvegardées sur des disques différents du nœud.
+
+Les scénarios suivants décrivent les cas de défaillance possibles et fournissent des recommandations de base pour corriger le problème :
+
+
+
+== Le disque de partition système tombe en panne.
+
+* Dans ce scénario, l'emplacement 2 est vérifié et remis dans un état disponible.
+* Le lecteur de partition système doit être rempli à nouveau avant que le service de partition puisse être remis en ligne.
+* Vous devriez remplacer le disque système. Lorsque celui-ci sera disponible, ajoutez-le ainsi que le disque de l'emplacement 2.
+
+
+
+NOTE: Vous ne pouvez pas ajouter le disque dans l'emplacement 2 seul en tant que disque de métadonnées.  Vous devez rajouter les deux disques au nœud simultanément.
+
+
+
+== L'emplacement 2 est défaillant
+
+* Dans ce scénario, le lecteur de partition système est vérifié et remis dans un état disponible.
+* Vous devriez remplacer l'emplacement 2 par un emplacement de rechange. Lorsque l'emplacement 2 sera disponible, ajoutez simultanément le disque système et le disque de l'emplacement 2.
+
+
+
+
+== Le disque système et l'emplacement 2 tombent en panne.
+
+* Vous devriez remplacer à la fois le disque système et le lecteur d'emplacement 2 par un disque de rechange.  Lorsque les deux disques seront disponibles, ajoutez simultanément le disque système et le disque de l'emplacement 2.
+
+
+
+
+== Ordre des opérations
+
+* Remplacez le disque dur défectueux par un disque de rechange (remplacez les deux disques si les deux sont défectueux).
+* Réintégrez les disques au cluster une fois qu'ils auront été réutilisés et seront disponibles.
+
+
+
+
+== Vérifier les opérations
+
+* Vérifiez que les disques dans l'emplacement 0 (ou interne) et l'emplacement 2 sont identifiés comme disques de métadonnées dans la liste des disques actifs.
+* Vérifiez que l'équilibrage de toutes les tranches est terminé (aucun autre message de déplacement de tranches ne doit apparaître dans le journal des événements pendant au moins 30 minutes).
+
+
+
+
+== Pour plus d'informations
+
+xref:task_troubleshoot_add_mdss_drives.adoc[Ajouter des lecteurs MDSS]

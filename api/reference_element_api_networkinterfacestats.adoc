@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_networkinterfacestats.html 
+sidebar: sidebar 
+keywords: object,objects,stats,statistics,networkInterfacestats 
+summary: 'L"objet networkInterfaceStats contient des statistiques réseau et des informations d"erreur pour chaque interface réseau d"un nœud de stockage.' 
+---
+= statistiques d'interface réseau
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet networkInterfaceStats contient des statistiques réseau, le nombre total de paquets transmis et reçus, ainsi que des informations sur les erreurs pour chaque interface réseau d'un nœud de stockage.  Vous pouvez utiliser le `ListNetworkInterfaceStats` Méthode API permettant de lister ces informations pour les interfaces réseau d'un nœud de stockage.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+| collisions | Nombre de collisions détectées. | entier 
+
+
+| nom | Nom de l'interface réseau. | chaîne 
+
+
+| rxBytes | Le nombre total d'octets reçus. | entier 
+
+
+| Erreurs rxCrc | Le nombre de paquets reçus présentant une erreur CRC. | entier 
+
+
+| rxDropped | Le nombre de paquets reçus qui ont été abandonnés. | entier 
+
+
+| rxErrors | Le nombre de paquets défectueux ou malformés reçus. | entier 
+
+
+| rxFifoErrors | Le nombre d'erreurs de dépassement de capacité FIFO dans les données reçues. | entier 
+
+
+| rxFrameErrors | Nombre de paquets reçus présentant des erreurs d'alignement de trame. | entier 
+
+
+| Erreurs de longueur rx | Le nombre de paquets reçus présentant une erreur de longueur. | entier 
+
+
+| rxMissedErrors | Le nombre de paquets manqués par le récepteur. | entier 
+
+
+| rxOverErrors | Le nombre d'erreurs de dépassement de tampon annulaire du récepteur pour cette interface. | entier 
+
+
+| rxPackets | Nombre total de paquets reçus. | entier 
+
+
+| txBytes | Le nombre total d'octets transmis. | entier 
+
+
+| Erreurs de transporteur de transmission | Le nombre d'erreurs de porteuse côté émission. | entier 
+
+
+| txErrors | Le nombre d'erreurs de transmission de paquets. | entier 
+
+
+| txFifoErrors | Le nombre d'erreurs de dépassement de capacité FIFO côté transmission. | entier 
+
+
+| paquets de transmission | Le nombre total de paquets transmis. | entier 
+|===

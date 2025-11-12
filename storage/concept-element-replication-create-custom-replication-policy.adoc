@@ -1,0 +1,73 @@
+---
+permalink: storage/concept-element-replication-create-custom-replication-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, custom, replication, policy, relationship, 
+summary: 'Vous pouvez créer une stratégie de réplication personnalisée si la stratégie par défaut d"une relation ne convient pas.' 
+---
+= Créer une politique de réplication personnalisée
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser une stratégie par défaut ou personnalisée lors de la création d'une relation de réplication.  Pour une politique de réplication unifiée personnalisée, vous devez définir une ou plusieurs _règles_ qui déterminent quelles copies d'instantané sont transférées lors de l'initialisation et de la mise à jour.
+
+Vous pouvez créer une stratégie de réplication personnalisée si la stratégie par défaut d'une relation ne convient pas.  Vous pourriez par exemple vouloir compresser les données lors d'un transfert réseau, ou modifier le nombre de tentatives effectuées par SnapMirror pour transférer les copies d'instantané.
+
+.À propos de cette tâche
+Le _type de politique_ de la politique de réplication détermine le type de relation qu'elle prend en charge.  Le tableau ci-dessous présente les types de polices disponibles.
+
+[cols="2*"]
+|===
+
+
+| Type de politique | Type de relation 
+
+
+ a| 
+miroir asynchrone
+ a| 
+SnapMirror DR
+
+
+
+ a| 
+coffre-miroir
+ a| 
+Réplication unifiée
+
+|===
+.Étape
+. Créer une stratégie de réplication personnalisée :
++
+`snapmirror policy create -vserver _SVM_ -policy policy -type async-mirror|mirror-vault -comment _comment_ -tries _transfer_tries_ -transfer-priority low|normal -is-network-compression-enabled true|false`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+À partir d' ONTAP 9.5, vous pouvez spécifier la planification de création d'une planification de copie d'instantané commune pour les relations synchrones SnapMirror en utilisant `-common-snapshot-schedule` paramètre.  Par défaut, la fréquence de copie des instantanés pour les relations synchrones SnapMirror est d'une heure.  Vous pouvez spécifier une valeur comprise entre 30 minutes et deux heures pour la planification de la copie d'instantané pour les relations synchrones SnapMirror .
+
++
+L'exemple suivant crée une stratégie de réplication personnalisée pour SnapMirror DR qui active la compression réseau pour les transferts de données :
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy DR_compressed -type async-mirror -comment “DR with network compression enabled” -is-network-compression-enabled true
+----
++
+L'exemple suivant crée une stratégie de réplication personnalisée pour la réplication unifiée :
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy my_unified -type mirror-vault
+----
+
+
+.Après avoir terminé
+Pour les types de politiques « `mirror-vault` », vous devez définir des règles qui déterminent quelles copies d'instantané sont transférées lors de l'initialisation et de la mise à jour.
+
+Utilisez le `snapmirror policy show` commande permettant de vérifier que la politique SnapMirror a été créée.  Pour connaître la syntaxe complète des commandes, consultez la page de manuel.

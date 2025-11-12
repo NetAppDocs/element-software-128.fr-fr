@@ -1,0 +1,38 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html 
+sidebar: sidebar 
+keywords: ntp, broadcasts, server, config, server list, broadcast client 
+summary: 'En utilisant le mode de diffusion, vous pouvez demander à chaque nœud d"un cluster d"écouter sur le réseau les messages de diffusion du protocole NTP (Network Time Protocol) provenant d"un serveur particulier.' 
+---
+= Configurez le cluster pour qu'il écoute les diffusions NTP.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+En utilisant le mode de diffusion, vous pouvez demander à chaque nœud d'un cluster d'écouter sur le réseau les messages de diffusion du protocole NTP (Network Time Protocol) provenant d'un serveur particulier.
+
+Le protocole NTP est utilisé pour synchroniser les horloges sur un réseau.  La connexion à un serveur NTP interne ou externe doit faire partie de la configuration initiale du cluster.
+
+.Ce dont vous aurez besoin
+* Vous devez disposer des privilèges d'administrateur de cluster pour configurer ce paramètre.
+* Vous devez configurer un serveur NTP sur votre réseau en tant que serveur de diffusion.
+
+
+.Étapes
+. Cliquez sur *Cluster* > *Paramètres*.
+. Saisissez le ou les serveurs NTP utilisant le mode de diffusion dans la liste des serveurs.
+. Dans les paramètres du protocole de temps réseau, sélectionnez *Oui* pour utiliser un client de diffusion.
+. Pour configurer le client de diffusion, dans le champ *Serveur*, saisissez le serveur NTP que vous avez configuré en mode diffusion.
+. Cliquez sur *Enregistrer les modifications*.
+
+
+
+
+== Trouver plus d'informations
+
+* link:../storage/task_system_manage_cluster_ntp_configure.html["Configurer les serveurs NTP (Network Time Protocol) pour que le cluster puisse interroger les serveurs."]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

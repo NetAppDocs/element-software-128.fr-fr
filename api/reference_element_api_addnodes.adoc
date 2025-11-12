@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_addnodes.html 
+sidebar: sidebar 
+keywords: addnodes,node,add,adding,nodes,cluster 
+summary: Vous pouvez utiliser la méthode AddNodes pour ajouter un ou plusieurs nouveaux nœuds à un cluster. 
+---
+= Ajouter des nœuds
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `AddNodes` méthode permettant d'ajouter un ou plusieurs nouveaux nœuds à un cluster.
+
+Lorsqu'un nœud non configuré démarre pour la première fois, vous êtes invité à le configurer.  Une fois le nœud configuré, il est enregistré comme « nœud en attente » auprès du cluster.  Les clusters de stockage exécutant le logiciel Element créent automatiquement une image d'un nœud à partir de la version présente sur le cluster.  Lorsque vous ajoutez un nœud en attente, la réponse de la méthode inclut une valeur asyncHandle que vous pouvez utiliser avec le `GetAsyncResult` méthode pour interroger l'état du processus d'imagerie automatique.
+
+Le processus d'ajout d'un nœud Fibre Channel est identique à celui d'ajout de nœuds de stockage Element iSCSI à un cluster.  Les nœuds Fibre Channel sont enregistrés dans le système avec un NodeID.  Lorsqu'elles deviennent accessibles, elles sont placées dans un statut de « nœud en attente ».  Le `ListAllNodes` Cette méthode renverra l'identifiant de nœud en attente (pendingNodeID) pour les nœuds iSCSI ainsi que pour tous les nœuds Fibre Channel disponibles pour être ajoutés au cluster.
+
+Lorsque vous ajoutez un nœud à un cluster que vous avez configuré pour la mise en réseau virtuelle, le système a besoin d'un nombre suffisant d'adresses IP de stockage virtuel pour allouer une adresse IP virtuelle au nouveau nœud.  S'il n'y a pas d'adresses IP virtuelles disponibles pour le nouveau nœud, `AddNode` L'opération a échoué.  Utilisez le `ModifyVirtualNetwork` Méthode pour ajouter des adresses IP de stockage supplémentaires à votre réseau virtuel.
+
+Une fois un nœud ajouté, tous les disques présents sur ce nœud deviennent disponibles et vous pouvez les ajouter à l'aide de l'interface d'administration. `AddDrives` méthode pour augmenter la capacité de stockage du cluster.
+
+
+NOTE: Il peut s'écouler plusieurs secondes après l'ajout d'un nouveau nœud avant qu'il ne démarre et que ses disques ne soient enregistrés comme disponibles.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+autoInstall
+ a| 
+Si cette option est activée, une restauration de l'image d'usine (RTFI) sera effectuée sur le nœud lors de son ajout.  Le comportement par défaut consiste à effectuer une analyse en temps réel (RTFI).  Si le `cEnableAutoInstall` La constante de cluster est fausse, elle est prioritaire sur ce paramètre.  Si une mise à niveau est en cours, le processus RTFI n'aura pas lieu, quelle que soit la valeur de ce paramètre.
+ a| 
+booléen
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+nœuds en attente
+ a| 
+Identifiants de nœuds en attente pour les nœuds à ajouter.  Vous pouvez lister tous les nœuds en attente à l'aide de la méthode ListPendingNodes.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Oui
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+autoInstall
+ a| 
+Indique si les nœuds ajoutés sont ou non réintégrés à l'image d'usine.
+ a| 
+booléen
+
+
+
+ a| 
+nœuds
+ a| 
+Un tableau d'objets associant l'ancien « pendingNodeID » à l'« nodeID ».  Lorsque vous ajoutez un nœud en attente exécutant une version logicielle incompatible, ce tableau inclut une valeur asyncHandle que vous pouvez utiliser avec la méthode GetAsyncResult pour interroger l'état du processus d'imagerie automatique.
+ a| 
+tableau d'objets JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "AddNodes",
+   "params": {
+     "autoInstall" : true,
+     "pendingNodes" : [1]
+   },
+   "id":1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  id: null,
+  result: {
+    autoInstall: true,
+    nodes: [
+      {
+        activeNodeKey: "giAm2ep1hA",
+        assignedNodeID: 6,
+        asyncHandle: 3,
+        cip: "10.10.5.106",
+        mip: "192.168.133.106",
+        pendingNodeID: 2,
+        platformInfo: {
+          chassisType: "R620",
+          cpuModel: "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+          nodeMemoryGB: 72,
+          nodeType: "SF3010"
+        },
+        sip: "10.10.5.106",
+        softwareVersion: "9.0.0.1077"
+      }
+    ]
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_adddrives.adoc[Ajouter des lecteurs]
+* xref:reference_element_api_getasyncresult.adoc[GetAsyncResult]
+* xref:reference_element_api_listallnodes.adoc[Lister tous les nœuds]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[Modifier le réseau virtuel]
+

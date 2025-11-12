@@ -1,0 +1,50 @@
+---
+permalink: storage/reference_monitor_fibre_channel_session_details.html 
+sidebar: sidebar 
+keywords: fibre channel sessions, fc, FC, sessions 
+summary: 'Vous pouvez trouver des informations sur les sessions Fibre Channel (FC) actives connectées au cluster.' 
+---
+= Détails de la session Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez trouver des informations sur les sessions Fibre Channel (FC) actives connectées au cluster.
+
+La liste suivante décrit les informations que vous pouvez trouver sur les sessions FC connectées au cluster :
+
+* *ID du nœud*
++
+Le nœud hébergeant la session pour la connexion.
+
+* *Nom du nœud*
++
+Nom du nœud généré par le système.
+
+* *ID de l'initiateur*
++
+Un identifiant généré par le système pour l'initiateur.
+
+* *Initiateur WWPN*
++
+Le nom du port d'origine à l'échelle mondiale.
+
+* *Alias de l'initiateur*
++
+Un nom facultatif pour l'initiateur, qui facilite sa recherche dans une longue liste.
+
+* *Cible WWPN*
++
+Nom du port cible mondial.
+
+* *Groupe d'accès aux volumes*
++
+Nom du groupe d'accès au volume auquel appartient la session.
+
+* *ID du groupe d'accès au volume*
++
+Identifiant généré par le système pour le groupe d'accès.
+
+

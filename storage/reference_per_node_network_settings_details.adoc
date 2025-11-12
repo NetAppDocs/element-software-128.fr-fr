@@ -1,0 +1,93 @@
+---
+permalink: storage/reference_per_node_network_settings_details.html 
+sidebar: sidebar 
+keywords: network settings, per-node UI, storage node, ui 
+summary: 'Vous pouvez modifier les paramètres réseau du nœud de stockage pour lui attribuer un nouvel ensemble d"attributs réseau.' 
+---
+= Détails des paramètres réseau depuis l'interface utilisateur de chaque nœud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres réseau du nœud de stockage pour lui attribuer un nouvel ensemble d'attributs réseau.
+
+Vous pouvez consulter les paramètres réseau d'un nœud de stockage sur la page *Paramètres réseau* une fois connecté au nœud. (`https://<node_IP>:442/hcc/node/network-settings`). Vous pouvez sélectionner les paramètres *Bond1G* (gestion) ou *Bond10G* (stockage). La liste suivante décrit les paramètres que vous pouvez modifier lorsqu'un nœud de stockage est à l'état Disponible, En attente ou Actif :
+
+* *Méthode*
++
+La méthode utilisée pour configurer l'interface.  Méthodes possibles :
+
++
+** interface de bouclage : utilisée pour définir l’interface de bouclage IPv4.
+** manuel : Permet de définir les interfaces pour lesquelles aucune configuration n’est effectuée par défaut.
+** DHCP : Utilisé pour obtenir une adresse IP via DHCP.
+** statique : Utilisé pour définir des interfaces Ethernet avec des adresses IPv4 allouées statiquement.
+
+
+* *Vitesse de liaison*
++
+La vitesse négociée par la carte réseau virtuelle.
+
+* *Adresse IPv4*
++
+L'adresse IPv4 du réseau eth0.
+
+* *Masque de sous-réseau IPv4*
++
+Subdivisions d'adresses du réseau IPv4.
+
+* *Adresse de la passerelle IPv4*
++
+Adresse réseau du routeur pour envoyer des paquets hors du réseau local.
+
+* *Adresse IPv6*
++
+L'adresse IPv6 du réseau eth0.
+
+* *Adresse de passerelle IPv6*
++
+Adresse réseau du routeur pour envoyer des paquets hors du réseau local.
+
+* *MTU*
++
+Taille maximale des paquets qu'un protocole réseau peut transmettre.  Doit être supérieur ou égal à 1500.  Si vous ajoutez une deuxième carte réseau de stockage, la valeur doit être de 9000.
+
+* *Serveurs DNS*
++
+Interface réseau utilisée pour la communication au sein du cluster.
+
+* *Rechercher des domaines*
++
+Rechercher les adresses MAC supplémentaires disponibles pour le système.
+
+* *Mode Bond*
++
+Peut prendre l'un des modes suivants :
+
++
+** Actif/Passif (par défaut)
+** ALB
+** LACP
+
+
+* *Statut*
++
+Valeurs possibles :
+
++
+** Opérationnel
+** Vers le bas
+** En haut
+
+
+* *Étiquette de réseau virtuel*
++
+Étiquette attribuée lors de la création du réseau virtuel.
+
+* *Itinéraires*
++
+Routes statiques vers des hôtes ou des réseaux spécifiques via l'interface associée que les routes sont configurées pour utiliser.
+
+

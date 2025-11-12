@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrornodes.html 
+sidebar: sidebar 
+keywords: snapmirror,node,nodes,list,listing,listsnapmirrornodes 
+summary: 'L"interface utilisateur Web du logiciel Element utilise la méthode ListSnapMirrorNodes pour obtenir une liste de nœuds dans un cluster ONTAP distant.' 
+---
+= ListSnapMirrorNodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web du logiciel Element utilise `ListSnapMirrorNodes` Méthode permettant d'obtenir la liste des nœuds d'un cluster ONTAP distant.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Si cette information est fournie, le système liste les nœuds du point de terminaison avec l'identifiant snapMirrorEndpointID spécifié.  Si aucune information n'est fournie, le système liste les nœuds de tous les points de terminaison SnapMirror connus.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorNodes
+ a| 
+Liste des nœuds du cluster ONTAP .
+ a| 
+xref:reference_element_api_snapmirrornode.adoc[snapMirrorNode]tableau
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,1

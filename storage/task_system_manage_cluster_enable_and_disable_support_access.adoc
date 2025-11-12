@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_support_access.html 
+sidebar: sidebar 
+keywords: support access, enable, disable 
+summary: 'Vous pouvez activer l"accès de support pour permettre temporairement au personnel de support NetApp d"accéder aux nœuds de stockage via SSH à des fins de dépannage.' 
+---
+= Activer et désactiver l'accès au support
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez activer l'accès de support pour permettre temporairement au personnel de support NetApp d'accéder aux nœuds de stockage via SSH à des fins de dépannage.
+
+Vous devez disposer des privilèges d'administrateur de cluster pour modifier l'accès au support.
+
+. Cliquez sur *Cluster* > *Paramètres*.
+. Dans la section Activer/Désactiver l'accès au support, saisissez la durée (en heures) pendant laquelle vous souhaitez autoriser le support à avoir accès.
+. Cliquez sur *Activer l'accès au support*.
+. *Facultatif :* Pour désactiver l’accès au support, cliquez sur *Désactiver l’accès au support*.
+

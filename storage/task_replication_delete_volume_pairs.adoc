@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_pairs.html 
+sidebar: sidebar 
+keywords: volume pairs, delete 
+summary: Vous pouvez supprimer une paire de volumes si vous souhaitez supprimer une association entre deux volumes. 
+---
+= Supprimer les paires de volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez supprimer une paire de volumes si vous souhaitez supprimer une association entre deux volumes.
+
+. Sélectionnez *Protection des données* > *Paires de volumes*.
+. Cliquez sur l'icône Actions correspondant à la paire de volumes que vous souhaitez supprimer.
+. Cliquez sur *Supprimer*.
+. Confirmez le message.
+

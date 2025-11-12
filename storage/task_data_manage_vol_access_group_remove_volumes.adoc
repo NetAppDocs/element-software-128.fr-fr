@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_manage_vol_access_group_remove_volumes.html 
+sidebar: sidebar 
+keywords: access group, remove volumes from, initiators, chap 
+summary: 'Lorsque vous retirez un volume d"un groupe d"accès, ce groupe n"a plus accès à ce volume.' 
+---
+= Supprimer des volumes d'un groupe d'accès
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Lorsque vous retirez un volume d'un groupe d'accès, ce groupe n'a plus accès à ce volume.
+
+La modification des paramètres CHAP dans un compte ou la suppression d'initiateurs ou de volumes d'un groupe d'accès peut entraîner une perte d'accès inattendue aux volumes pour les initiateurs.  Pour éviter toute perte d'accès inattendue aux volumes, déconnectez systématiquement les sessions iSCSI qui seront affectées par une modification de compte ou de groupe d'accès, et vérifiez que les initiateurs peuvent se reconnecter aux volumes une fois les modifications apportées aux paramètres d'initiateur et aux paramètres de cluster terminées.
+
+. Cliquez sur *Gestion* > *Groupes d'accès*.
+. Cliquez sur l'icône Actions du groupe d'accès dont vous souhaitez supprimer des volumes.
+. Cliquez sur *Modifier*.
+. Sous Ajouter des volumes dans la boîte de dialogue *Modifier le groupe d'accès aux volumes*, cliquez sur la flèche de la liste *Volumes attachés*.
+. Sélectionnez le volume que vous souhaitez supprimer de la liste et cliquez sur l'icône *x* pour le supprimer.
++
+Vous pouvez supprimer davantage de volumes en répétant cette étape.
+
+. Cliquez sur *Enregistrer les modifications*.
+

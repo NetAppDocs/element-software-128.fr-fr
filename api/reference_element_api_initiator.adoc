@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_initiator.html 
+sidebar: sidebar 
+keywords: object,objects,initiator 
+summary: 'L"objet initiateur contient des informations sur un initiateur iSCSI ou Fibre Channel.  Un objet initiateur peut contenir des identifiants IQN ou WWPN.  Vous pouvez utiliser la méthode ListInitiators pour obtenir la liste de tous les initiateurs connus sur le système.  Vous utilisez des objets initiateurs pour configurer l"accès de l"initiateur SCSI à un ensemble de volumes via des groupes d"accès aux volumes.  Un initiateur ne peut être membre que d"un seul groupe d"accès aux volumes à la fois.  Vous pouvez limiter l"accès des initiateurs à un ou plusieurs VLAN en spécifiant un ou plusieurs virtualNetworkID à l"aide des méthodes CreateInitiators et ModifyInitiators.  Si vous ne spécifiez aucun réseau virtuel, l"initiateur peut accéder à tous les réseaux.' 
+---
+= initiateur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet initiateur contient des informations sur un initiateur iSCSI ou Fibre Channel.  Un objet initiateur peut contenir des identifiants IQN ou WWPN.  Vous pouvez utiliser le `ListInitiators` Méthode permettant d'obtenir la liste de tous les initiateurs connus sur le système.  Vous utilisez des objets initiateurs pour configurer l'accès de l'initiateur SCSI à un ensemble de volumes via des groupes d'accès aux volumes.  Un initiateur ne peut être membre que d'un seul groupe d'accès aux volumes à la fois.  Vous pouvez limiter l'accès de l'initiateur à un ou plusieurs VLAN en spécifiant un ou plusieurs ID de réseau virtuel à l'aide de `CreateInitiators` et `ModifyInitiators` méthodes.  Si vous ne spécifiez aucun réseau virtuel, l'initiateur peut accéder à tous les réseaux.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+alias
+ a| 
+Le surnom convivial attribué à l'initiateur, le cas échéant.
+ a| 
+chaîne
+
+
+
+ a| 
+attributs
+ a| 
+Un ensemble d'attributs JSON attribués à cet initiateur.  Laisser vide si aucun attribut n'est attribué.
+ a| 
+objet JSON
+
+
+
+ a| 
+Nom d'utilisateur du chapitre
+ a| 
+Nom d'utilisateur CHAP unique pour cet initiateur.
+ a| 
+chaîne
+
+
+
+ a| 
+ID de l'initiateur
+ a| 
+L'identifiant numérique de l'initiateur.
+ a| 
+entier
+
+
+
+ a| 
+nom_initiateur
+ a| 
+Le nom de l'initiateur, au format IQN ou WWPN.
+ a| 
+chaîne
+
+
+
+ a| 
+initiateurSecret
+ a| 
+Le secret CHAP utilisé pour authentifier l'initiateur.
+ a| 
+chaîne
+
+
+
+ a| 
+exigerChap
+ a| 
+Vrai si CHAP est requis pour cet initiateur.
+ a| 
+booléen
+
+
+
+ a| 
+cible secrète
+ a| 
+Le secret CHAP utilisé pour authentifier la cible (lors de l'utilisation de l'authentification CHAP mutuelle).
+ a| 
+chaîne
+
+
+
+ a| 
+ID de réseau virtuel
+ a| 
+Liste des identifiants de réseau virtuel associés à cet initiateur.  Si un ou plusieurs réseaux virtuels sont définis, cet initiateur ne pourra se connecter qu'aux réseaux virtuels spécifiés.  Si aucun réseau virtuel n'est défini, cet initiateur peut se connecter à tous les réseaux.
+ a| 
+entier
+
+
+
+ a| 
+groupes d'accès au volume
+ a| 
+Liste des identifiants des groupes d'accès aux volumes auxquels appartient cet initiateur.
+ a| 
+tableau d'entiers
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_listinitiators.adoc[Initiateurs de listes]

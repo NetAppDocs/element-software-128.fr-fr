@@ -1,0 +1,27 @@
+---
+permalink: storage/task_replication_change_the_mode.html 
+sidebar: sidebar 
+keywords: volume pairings, replication mode, change, volume pair properties 
+summary: Vous pouvez modifier les propriétés de la paire de volumes pour changer le mode de réplication de la relation entre les paires de volumes. 
+---
+= Modifier le mode de réplication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les propriétés de la paire de volumes pour changer le mode de réplication de la relation entre les paires de volumes.
+
+. Sélectionnez *Protection des données* > *Paires de volumes*.
+. Cliquez sur l'icône Actions pour la paire de volumes.
+. Cliquez sur *Modifier*.
+. Dans le volet *Modifier la paire de volumes*, sélectionnez un nouveau mode de réplication :
++
+** *Temps réel (asynchrone)* : Les écritures sont confirmées auprès du client après leur validation sur le cluster source.
+** *Temps réel (synchrone)* : Les écritures sont confirmées au client après leur validation sur les clusters source et cible.
+** *Instantanés uniquement* : Seuls les instantanés créés sur le cluster source sont répliqués.  Les écritures actives provenant du volume source ne sont pas répliquées.  *Attention :* Modifier le mode de réplication modifie immédiatement le mode.  Assurez-vous d'avoir coordonné ces changements sur les deux sites.
+
+
+. Cliquez sur *Enregistrer les modifications*.
+

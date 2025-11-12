@@ -1,0 +1,430 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_storage_firmware.html 
+summary: 'Dans le cadre d"une mise à niveau d"un système NetApp SolidFire , vous mettez à niveau le firmware associé à vos nœuds de stockage.' 
+keywords: netapp, element, hcc, firmware, storage firmware 
+---
+= Mise à jour du micrologiciel de stockage
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+À partir d'Element 12.0 et de la version 2.14 des services de gestion, vous pouvez effectuer des mises à niveau du firmware uniquement sur vos nœuds de stockage à l'aide de l'interface utilisateur et de l'API REST de NetApp Hybrid Cloud Control.  Cette procédure ne met pas à niveau le logiciel Element et vous permet de mettre à niveau le firmware du stockage en dehors d'une version majeure d'Element.
+
+.Ce dont vous aurez besoin
+* *Privilèges d'administrateur* : Vous disposez des autorisations d'administrateur de cluster de stockage pour effectuer la mise à niveau.
+* *Synchronisation de l'heure système* : Vous avez vérifié que l'heure système sur tous les nœuds est synchronisée et que le protocole NTP est correctement configuré pour le cluster de stockage et les nœuds.  Chaque nœud doit être configuré avec un serveur de noms DNS dans l'interface web dédiée.(`https://[IP address]:442` ) sans défauts de cluster non résolus liés au décalage temporel.
+* *Ports système* : Si vous utilisez NetApp Hybrid Cloud Control pour les mises à niveau, vous avez vérifié que les ports nécessaires sont ouverts. Voirlink:../storage/reference_prereq_network_port_requirements.html["ports réseau"] pour plus d'informations.
+* *Nœud de gestion* : Pour l’interface utilisateur et l’API de NetApp Hybrid Cloud Control, le nœud de gestion de votre environnement exécute la version 11.3.
+* *Services de gestion* : Vous avez mis à jour votre pack de services de gestion vers la dernière version.
+
+
+
+IMPORTANT: Pour les nœuds de stockage H610S exécutant la version 12.0 du logiciel Element, vous devez appliquer le correctif D SUST-909 avant de mettre à niveau vers le bundle de firmware de stockage 2.27.  Contactez le support NetApp pour obtenir le correctif D avant de procéder à la mise à niveau. Voirlink:http://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.27.html["Notes de version du module complémentaire de microprogramme de stockage 2.27"^] .
+
+
+IMPORTANT: Vous devez effectuer la mise à niveau vers la dernière version du pack de services de gestion avant de mettre à niveau le firmware de vos nœuds de stockage.  Si vous mettez à jour votre logiciel Element vers la version 12.2 ou ultérieure, vous avez besoin des services de gestion 2.14.60 ou ultérieurs pour continuer.
+
+* *État du cluster* : Vous avez effectué des contrôles d’état. Voirlink:task_hcc_upgrade_element_prechecks.html["Effectuez des contrôles d'intégrité du stockage Element avant de mettre à niveau le stockage."] .
+* *Contrôleur de gestion de carte mère (BMC) mis à jour pour les nœuds H610S* : Vous avez mis à niveau la version du BMC pour vos nœuds H610S. Voirlink:https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["notes de version et instructions de mise à niveau"^] .
+
+
+
+NOTE: Pour obtenir une matrice complète des microprogrammes et des microprogrammes de pilotes pour votre matériel, consultezlink:../hardware/fw_storage_nodes.html["Versions de firmware de stockage prises en charge pour les nœuds de stockage SolidFire"] .
+
+[[storage-firmware-upgrade]]
+* *Durée du processus de mise à niveau* : Vous avez prévu suffisamment de temps pour effectuer votre mise à niveau.  Lors de la mise à niveau vers le logiciel Element 12.5 ou une version ultérieure, la durée du processus de mise à niveau varie en fonction de votre version actuelle du logiciel Element et des mises à jour du micrologiciel.
++
+[cols="20,20,20,20,20"]
+|===
+| Nœud de stockage | Version actuelle du logiciel Element | Temps d'installation approximatif des logiciels et micrologiciels par nœud^1^ | Temps approximatif de synchronisation des données par nœud^2^ | Durée totale approximative de mise à niveau par nœud 
+
+
+| Tous les nœuds SolidFire et NetApp série H avec firmware à jour^3^ | 12.x | 15 minutes | 10 à 15 minutes | 20 à 30 minutes 
+
+
+| H610S et H410S | 12.x et 11.8 | 60 minutes | 30 à 60 minutes | 90 à 120 minutes 
+
+
+| H610S | 11.7 et versions antérieures | 90 minutes | 40 à 70 minutes | 130 à 160 minutes Vous devez également https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["effectuer un arrêt complet du nœud et une déconnexion de l'alimentation"^] pour chaque nœud H610S. 
+|===
++
+^1^Pour obtenir une matrice complète des microprogrammes et des microprogrammes de pilotes pour votre matériel, voirlink:../hardware/fw_storage_nodes.html["Versions de firmware de stockage prises en charge pour les nœuds de stockage SolidFire"] .
+
++
+^2^Si vous combinez un cluster avec une charge d'EOPS d'écriture importante avec un temps de mise à jour du firmware plus long, le temps de synchronisation des données augmentera.
+
++
+^3^ Les nœuds suivants ne sont pas pris en charge.  Si vous tentez de mettre à niveau l'un de ces nœuds vers une version Element non prise en charge, vous verrez une erreur indiquant que le nœud n'est pas pris en charge par Element 12.x :
+
++
+** À commencer par les nœuds de stockage Element 12.8, SF4805, SF9605, SF19210 et SF38410.
+** À commencer par l'élément 12.7, les nœuds de stockage SF2405 et SF9608 et les nœuds FC FC0025 et SF-FCN-01.
+
+
+* *Contrat de licence utilisateur final (CLUF)* : À partir des services de gestion 2.20.69, vous devez accepter et enregistrer le CLUF avant d’utiliser l’interface utilisateur ou l’API de NetApp Hybrid Cloud Control pour mettre à niveau le microprogramme de stockage :
++
+.. Ouvrez l'adresse IP du nœud de gestion dans un navigateur Web :
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants de l'administrateur du cluster de stockage.
+.. Sélectionnez *Mise à niveau* en haut à droite de l'interface.
+.. Le CLUF s'affiche.  Faites défiler vers le bas, sélectionnez *J'accepte les mises à jour actuelles et futures*, puis sélectionnez *Enregistrer*.
+
+
+
+
+.Options de mise à niveau
+Choisissez l'une des options de mise à niveau du micrologiciel de stockage suivantes :
+
+* <<Utilisez l'interface utilisateur de NetApp Hybrid Cloud Control pour mettre à niveau le firmware du stockage.>>
+* <<Utilisez l'API NetApp Hybrid Cloud Control pour mettre à niveau le firmware du stockage.>>
+
+
+
+
+== Utilisez l'interface utilisateur de NetApp Hybrid Cloud Control pour mettre à niveau le firmware du stockage.
+
+Vous pouvez utiliser l'interface utilisateur de NetApp Hybrid Cloud Control pour mettre à niveau le firmware des nœuds de stockage de votre cluster.
+
+.Ce dont vous aurez besoin
+* Si votre nœud de gestion n'est pas connecté à Internet, vous avez https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/Storage_Firmware_Bundle["J'ai téléchargé le pack de microprogrammes de stockage"^] .
+
+
+
+CAUTION: Pour connaître les problèmes potentiels rencontrés lors de la mise à niveau des clusters de stockage à l'aide de NetApp Hybrid Cloud Control et leurs solutions de contournement, consultez la documentation. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["Article de la base de connaissances"^] .
+
+
+TIP: Le processus de mise à niveau prend environ 30 minutes par nœud de stockage.  Si vous mettez à niveau un cluster de stockage Element vers un firmware de stockage plus récent que la version 2.76, les nœuds de stockage individuels ne redémarreront pendant la mise à niveau que si un nouveau firmware a été écrit sur le nœud.
+
+.Étapes
+. Ouvrez l'adresse IP du nœud de gestion dans un navigateur Web :
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Connectez-vous à NetApp Hybrid Cloud Control en fournissant les identifiants de l'administrateur du cluster de stockage.
+. Sélectionnez *Mise à niveau* en haut à droite de l'interface.
+. Sur la page *Mises à niveau*, sélectionnez *Stockage*.
++
+[NOTE]
+====
+L'onglet *Stockage* répertorie les clusters de stockage qui font partie de votre installation.  Si un cluster est inaccessible à NetApp Hybrid Cloud Control, il ne sera pas affiché sur la page *Mises à niveau*.  Si vous avez des clusters exécutant Element 12.0 ou une version ultérieure, vous verrez la version actuelle du firmware indiquée pour ces clusters.  Si les nœuds d'un même cluster possèdent des versions de firmware différentes ou au fur et à mesure de la mise à niveau, vous verrez *Plusieurs* dans la colonne *Version actuelle du firmware*.  Vous pouvez sélectionner *Plusieurs* pour accéder à la page *Nœuds* et comparer les versions du firmware.  Si tous vos clusters exécutent des versions d'Element antérieures à la version 12.0, vous ne verrez aucune information concernant les numéros de version des modules de firmware.
+
+Si le cluster est à jour et/ou qu'aucun package de mise à niveau n'est disponible, les onglets *Élément* et *Firmware uniquement* ne sont pas affichés.  Ces onglets ne sont pas non plus affichés lorsqu'une mise à niveau est en cours.  Si l'onglet *Élément* est affiché, mais pas l'onglet *Firmware uniquement*, aucun package de firmware n'est disponible.
+
+====
+. Sélectionnez la flèche déroulante en regard du cluster que vous mettez à niveau.
+. Sélectionnez *Parcourir* pour télécharger le package de mise à niveau que vous avez téléchargé.
+. Veuillez patienter jusqu'à la fin du téléchargement.  Une barre de progression indique l'état du téléchargement.
++
+
+CAUTION: Le fichier téléchargé sera perdu si vous quittez la fenêtre du navigateur.
+
++
+Un message s'affiche à l'écran une fois le fichier téléchargé et validé avec succès.  La validation peut prendre plusieurs minutes.  Si vous quittez la fenêtre du navigateur à ce stade, le fichier téléchargé est conservé.
+
+. Sélectionnez *Micrologiciel uniquement*, puis choisissez parmi les versions de mise à niveau disponibles.
+. Sélectionnez *Démarrer la mise à niveau*.
++
+
+TIP: L'état de la mise à niveau change au cours de celle-ci pour refléter l'état du processus.  Il change également en fonction des actions que vous entreprenez, comme par exemple la suspension de la mise à niveau, ou si celle-ci renvoie une erreur. Voir<<changements d'état de la mise à niveau>> .
+
++
+
+NOTE: Pendant la mise à jour, vous pouvez quitter la page et y revenir plus tard pour continuer à suivre son évolution.  La page ne met pas à jour dynamiquement l'état et la version actuelle si la ligne du cluster est réduite.  Il faut développer la ligne du groupe pour mettre à jour le tableau ou vous pouvez actualiser la page.
+
+
+
+Vous pourrez télécharger les journaux une fois la mise à niveau terminée.
+
+
+
+=== changements d'état de la mise à niveau
+
+Voici les différents états affichés par la colonne *État de la mise à niveau* dans l'interface utilisateur avant, pendant et après le processus de mise à niveau :
+
+[cols="2*"]
+|===
+| État de mise à niveau | Description 
+
+
+| À jour | Le groupe de fonctions a été mis à niveau vers la dernière version Element disponible ou le micrologiciel a été mis à niveau vers la dernière version. 
+
+
+| Impossible de détecter | Ce statut s'affiche lorsque l'API du service de stockage renvoie un statut de mise à niveau qui ne figure pas dans la liste énumérée des statuts de mise à niveau possibles. 
+
+
+| Versions disponibles | Des versions plus récentes du firmware Element et/ou du stockage sont disponibles pour la mise à niveau. 
+
+
+| En cours | La mise à niveau est en cours.  Une barre de progression indique l'état de la mise à niveau.  Les messages à l'écran indiquent également les défauts au niveau des nœuds et affichent l'identifiant de chaque nœud du cluster au fur et à mesure de la progression de la mise à niveau.  Vous pouvez surveiller l'état de chaque nœud à l'aide de l'interface utilisateur Element ou du plug-in NetApp Element pour l'interface utilisateur de vCenter Server. 
+
+
+| Mise à niveau en pause | Vous pouvez choisir de suspendre la mise à niveau.  Selon l'état du processus de mise à niveau, l'opération de pause peut réussir ou échouer.  Vous verrez apparaître une invite d'interface utilisateur vous demandant de confirmer l'opération de pause.  Pour garantir que le cluster se trouve dans une zone sécurisée avant de suspendre une mise à niveau, la suspension complète de l'opération peut prendre jusqu'à deux heures.  Pour reprendre la mise à niveau, sélectionnez *Reprendre*. 
+
+
+| En pause | Vous avez interrompu la mise à niveau.  Sélectionnez *Reprendre* pour poursuivre le processus. 
+
+
+| Erreur | Une erreur s'est produite lors de la mise à niveau.  Vous pouvez télécharger le journal des erreurs et l'envoyer au support NetApp .  Une fois l'erreur résolue, vous pouvez retourner à la page et sélectionner *Reprendre*.  Lorsque vous reprenez la mise à niveau, la barre de progression recule pendant quelques minutes pendant que le système effectue le contrôle d'intégrité et vérifie l'état actuel de la mise à niveau. 
+|===
+
+
+== Que se passe-t-il si une mise à niveau échoue avec NetApp Hybrid Cloud Control ?
+
+Si un disque ou un nœud tombe en panne pendant une mise à niveau, l'interface utilisateur d'Element affichera les défauts du cluster.  Le processus de mise à niveau ne passe pas au nœud suivant et attend que les erreurs du cluster soient résolues.  La barre de progression dans l'interface utilisateur indique que la mise à niveau est en attente de la résolution des erreurs du cluster.  À ce stade, la sélection de *Pause* dans l'interface utilisateur ne fonctionnera pas, car la mise à niveau attend que le cluster soit sain.  Vous devrez faire appel au support NetApp pour vous aider dans l'enquête sur la panne.
+
+NetApp Hybrid Cloud Control prévoit une période d'attente de trois heures, durant laquelle l'un des scénarios suivants peut se produire :
+
+* Les pannes du cluster sont résolues dans un délai de trois heures, et la mise à niveau reprend.  Vous n'avez aucune action à entreprendre dans ce cas de figure.
+* Le problème persiste après trois heures et l'état de la mise à niveau affiche *Erreur* avec une bannière rouge.  Vous pouvez reprendre la mise à niveau en sélectionnant *Reprendre* une fois le problème résolu.
+* Le support NetApp a déterminé que la mise à niveau doit être temporairement interrompue afin de prendre des mesures correctives avant l'expiration du délai de trois heures.  Le service d'assistance utilisera l'API pour annuler la mise à niveau.
+
+
+
+CAUTION: L'interruption de la mise à niveau du cluster pendant la mise à jour d'un nœud peut entraîner le retrait brutal des disques du nœud.  Si les disques sont retirés de manière inappropriée, leur réinstallation lors d'une mise à niveau nécessitera une intervention manuelle du support NetApp .  Le nœud peut prendre plus de temps pour effectuer les mises à jour du micrologiciel ou les activités de synchronisation post-mise à jour.  Si la progression de la mise à niveau semble bloquée, contactez le support NetApp pour obtenir de l'aide.
+
+
+
+== Utilisez l'API NetApp Hybrid Cloud Control pour mettre à niveau le firmware du stockage.
+
+Vous pouvez utiliser des API pour mettre à niveau les nœuds de stockage d'un cluster vers la dernière version du logiciel Element.  Vous pouvez utiliser l'outil d'automatisation de votre choix pour exécuter les API.  Le flux de travail API décrit ici utilise comme exemple l'interface utilisateur de l'API REST disponible sur le nœud de gestion.
+
+.Étapes
+. Téléchargez le package de mise à jour du firmware de stockage sur un périphérique accessible par le nœud de gestion ; accédez au logiciel Element. https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["page de téléchargements"^] et téléchargez la dernière image du firmware de stockage.
+. Téléversez le package de mise à jour du firmware de stockage sur le nœud de gestion :
++
+.. Ouvrez l'interface utilisateur de l'API REST du nœud de gestion sur ce dernier :
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+.. Sélectionnez *Autoriser* et complétez les informations suivantes :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+... Fermez la fenêtre d'autorisation.
+
+
+.. Dans l'interface utilisateur de l'API REST, sélectionnez *POST /packages*.
+.. Sélectionnez *Essayer*.
+.. Sélectionnez *Parcourir* et choisissez le pack de mise à niveau.
+.. Sélectionnez *Exécuter* pour lancer le téléchargement.
+.. À partir de la réponse, copiez et enregistrez l'identifiant du paquet.(`"id"` ) pour une utilisation ultérieure.
+
+
+. Vérifiez l'état du téléchargement.
++
+.. Dans l'interface utilisateur de l'API REST, sélectionnez *GET /packages/{id}/status*.
+.. Sélectionnez *Essayer*.
+.. Saisissez l'identifiant du package de firmware que vous avez copié à l'étape précédente dans *id*.
+.. Sélectionnez *Exécuter* pour lancer la demande de statut.
++
+La réponse indique `state` comme `SUCCESS` une fois terminé.
+
+
+
+. Localisez l'identifiant de l'élément d'installation :
++
+.. Ouvrez l'interface utilisateur de l'API REST du nœud de gestion sur ce dernier :
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Sélectionnez *Autoriser* et complétez les informations suivantes :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+... Fermez la fenêtre d'autorisation.
+
+
+.. Dans l'interface utilisateur de l'API REST, sélectionnez *GET /installations*.
+.. Sélectionnez *Essayer*.
+.. Sélectionnez *Exécuter*.
+.. À partir de la réponse, copiez l'identifiant de l'actif d'installation.(`id` ).
++
+[listing, subs="+quotes"]
+----
+*"id": "abcd01e2-xx00-4ccf-11ee-11f111xx9a0b",*
+"management": {
+  "errors": [],
+  "inventory": {
+    "authoritativeClusterMvip": "10.111.111.111",
+    "bundleVersion": "2.14.19",
+    "managementIp": "10.111.111.111",
+    "version": "1.4.12"
+----
+.. Dans l'interface utilisateur de l'API REST, sélectionnez *GET /installations/{id}*.
+.. Sélectionnez *Essayer*.
+.. Collez l'identifiant de l'élément d'installation dans le champ *id*.
+.. Sélectionnez *Exécuter*.
+.. À partir de la réponse, copiez et enregistrez l'ID du cluster de stockage(`"id"` ) du cluster que vous avez l'intention de mettre à niveau pour une utilisation ultérieure.
++
+[listing, subs="+quotes"]
+----
+"storage": {
+  "errors": [],
+  "inventory": {
+    "clusters": [
+      {
+        "clusterUuid": "a1bd1111-4f1e-46zz-ab6f-0a1111b1111x",
+        *"id": "a1bd1111-4f1e-46zz-ab6f-a1a1a111b012",*
+----
+
+
+. Exécutez la mise à jour du micrologiciel de stockage :
++
+.. Ouvrez l'interface utilisateur de l'API REST de stockage sur le nœud de gestion :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. Sélectionnez *Autoriser* et complétez les informations suivantes :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+... Ferme la fenêtre.
+
+
+.. Sélectionnez *POST /upgrades*.
+.. Sélectionnez *Essayer*.
+.. Saisissez l'identifiant du package de mise à niveau dans le champ paramètre.
+.. Saisissez l'ID du cluster de stockage dans le champ paramètre.
+.. Sélectionnez *Exécuter* pour lancer la mise à niveau.
++
+La réponse doit indiquer l'état comme `initializing` :
+
++
+[listing, subs="+quotes"]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  *"state": "initializing",*
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. Copiez l'identifiant de mise à niveau(`"upgradeId"` ) qui fait partie de la réponse.
+
+
+. Vérifier l'avancement et les résultats de la mise à niveau :
++
+.. Sélectionnez *GET /upgrades/{upgradeId}*.
+.. Sélectionnez *Essayer*.
+.. Saisissez l'ID de mise à niveau de l'étape précédente dans *upgradeId*.
+.. Sélectionnez *Exécuter*.
+.. En cas de problèmes ou d'exigences particulières lors de la mise à niveau, procédez comme suit :
++
+[cols="2*"]
+|===
+| Option | Étapes 
+
+
+| Vous devez corriger les problèmes de santé du cluster dus à `failedHealthChecks` message dans le corps de la réponse.  a| 
+... Consultez l'article de la base de connaissances spécifique indiqué pour chaque problème ou appliquez la solution indiquée.
+... Si une base de connaissances est spécifiée, suivez la procédure décrite dans l'article correspondant.
+... Une fois les problèmes de cluster résolus, réauthentifiez-vous si nécessaire et sélectionnez *PUT /upgrades/{upgradeId}*.
+... Sélectionnez *Essayer*.
+... Saisissez l'ID de mise à niveau de l'étape précédente dans *upgradeId*.
+... Entrer `"action":"resume"` dans le corps de la requête.
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... Sélectionnez *Exécuter*.
+
+
+
+
+| Vous devez interrompre la mise à niveau car la fenêtre de maintenance arrive à son terme ou pour une autre raison.  a| 
+... Réauthentifiez-vous si nécessaire et sélectionnez *PUT /upgrades/{upgradeId}*.
+... Sélectionnez *Essayer*.
+... Saisissez l'ID de mise à niveau de l'étape précédente dans *upgradeId*.
+... Entrer `"action":"pause"` dans le corps de la requête.
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... Sélectionnez *Exécuter*.
+
+
+|===
+.. Exécutez l'API *GET /upgrades/{upgradeId}* plusieurs fois, selon les besoins, jusqu'à ce que le processus soit terminé.
++
+Lors de la mise à niveau, le `status` indique `running` si aucune erreur n'est rencontrée.  À mesure que chaque nœud est mis à niveau, `step` la valeur change à `NodeFinished` .
+
++
+La mise à niveau s'est terminée avec succès lorsque `percent` la valeur est `100` et le `state` indique `finished` .
+
+
+
+
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

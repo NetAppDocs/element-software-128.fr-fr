@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_back_up_and_restore_volumes.html 
+sidebar: sidebar 
+keywords: volumes, backup and restore 
+summary: 'Vous pouvez sauvegarder et restaurer des volumes sur d"autres systèmes de stockage SolidFire , ainsi que sur des systèmes de stockage d"objets secondaires compatibles avec Amazon S3 ou OpenStack Swift.' 
+---
+= Sauvegarder et restaurer des volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez sauvegarder et restaurer des volumes sur d'autres systèmes de stockage SolidFire , ainsi que sur des systèmes de stockage d'objets secondaires compatibles avec Amazon S3 ou OpenStack Swift.
+
+Lorsque vous restaurez des volumes à partir d'OpenStack Swift ou d'Amazon S3, vous avez besoin des informations du manifeste issues du processus de sauvegarde d'origine.  Si vous restaurez un volume sauvegardé sur un système de stockage SolidFire , aucune information de manifeste n'est requise.
+
+
+
+== Trouver plus d'informations
+
+* xref:task_data_protection_back_up_volume_to_amazon_s3.adoc[Sauvegardez un volume sur un stockage d'objets Amazon S3]
+* xref:task_data_protection_back_up_volume_to_openstack_swift.adoc[Sauvegarder un volume sur un stockage d'objets OpenStack Swift]
+* xref:task_data_protection_back_up_volume_to_solidfire.adoc[Sauvegardez un volume sur un cluster de stockage SolidFire]
+* xref:task_data_protection_restore_volume_from_backup_on_amazon_s3.adoc[Restaurez un volume à partir d'une sauvegarde sur un stockage d'objets Amazon S3.]
+* xref:task_data_protection_restore_volume_from_backup_on_openstack_swift.adoc[Restaurez un volume à partir d'une sauvegarde sur un magasin d'objets OpenStack Swift]
+* xref:task_data_protection_restore_volume_from_backup_on_solidfire.adoc[Restaurez un volume à partir d'une sauvegarde sur un cluster de stockage SolidFire .]
+

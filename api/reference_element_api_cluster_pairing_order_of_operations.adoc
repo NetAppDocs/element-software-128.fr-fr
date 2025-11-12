@@ -1,0 +1,38 @@
+---
+permalink: api/reference_element_api_cluster_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: cluster,pairing,pair,order,operations,clusters 
+summary: Vous devez établir une connexion entre deux clusters de stockage exécutant le logiciel Element avant de pouvoir utiliser la réplication à distance. 
+---
+= ordre des opérations d'appariement des clusters
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez établir une connexion entre deux clusters de stockage exécutant le logiciel Element avant de pouvoir utiliser la réplication à distance.
+
+Utilisez l'ensemble de méthodes API suivant pour établir une connexion au cluster :
+
+* xref:reference_element_api_startclusterpairing.adoc[Début de l'appairage du cluster]:
++
+Cette méthode API crée et renvoie une clé d'appariement utilisée pour établir une paire de clusters.  La clé est encodée et contient des informations utilisées pour établir des communications entre les clusters.  Un seul cluster peut être associé à un maximum de quatre autres clusters.  Toutefois, une nouvelle clé doit être générée pour chaque paire de clusters.  Lexref:reference_element_api_startclusterpairing.adoc[Début de l'appairage du cluster] Cette méthode génère une nouvelle clé à chaque appel.  Utilisez chaque clé unique avec lexref:reference_element_api_completeclusterpairing.adoc[Appariement complet du cluster] méthode pour apparier chaque cluster supplémentaire.
+
++
+
+NOTE: Pour des raisons de sécurité, la clé d'appairage ne doit pas être envoyée à d'autres utilisateurs par e-mail.  La clé contient un nom d'utilisateur et un mot de passe.
+
+* xref:reference_element_api_completeclusterpairing.adoc[Appariement complet du cluster]:
++
+Cette méthode utilise la clé d'appairage créée avec lexref:reference_element_api_startclusterpairing.adoc[Début de l'appairage du cluster] Méthode API pour créer une paire de clusters.  Émettre lexref:reference_element_api_completeclusterpairing.adoc[Appariement complet du cluster] Méthode API avec le paramètre clusterPairingKey vers la destination.  Le cluster d'origine est le cluster qui a créé la clé.
+
+
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_element_api_startclusterpairing.adoc[Début de l'appairage du cluster]
+* xref:reference_element_api_completeclusterpairing.adoc[Appariement complet du cluster]
+

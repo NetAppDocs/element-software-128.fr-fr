@@ -1,0 +1,134 @@
+---
+permalink: storage/task_data_manage_accounts_work_with_accounts_task.html 
+sidebar: sidebar 
+keywords: element, solidfire, accounts, create, delete, change, chap, view, edit 
+summary: 'Dans les systèmes de stockage SolidFire , les locataires peuvent utiliser des comptes pour permettre aux clients de se connecter aux volumes d"un nœud.  Un compte contient l"authentification CHAP requise pour accéder aux volumes qui lui sont attribués.  Lorsque vous créez un volume, celui-ci est affecté à un compte spécifique.' 
+---
+= Travailler avec des comptes utilisant CHAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dans les systèmes de stockage SolidFire , les locataires peuvent utiliser des comptes pour permettre aux clients de se connecter aux volumes d'un cluster.  Un compte contient l'authentification par protocole CHAP (Challenge-Handshake Authentication Protocol) requise pour accéder aux volumes qui lui sont attribués.  Lorsque vous créez un volume, celui-ci est affecté à un compte spécifique.
+
+Un compte peut se voir attribuer jusqu'à deux mille volumes, mais un volume ne peut appartenir qu'à un seul compte.
+
+
+
+== Algorithmes CHAP
+
+À partir de l'élément 12.7, les algorithmes CHAP sécurisés conformes à la norme FIPS SHA1, SHA-256 et SHA3-256 sont pris en charge.  Lorsqu'un initiateur iSCSI hôte crée une session iSCSI avec une cible iSCSI Element, il demande une liste d'algorithmes CHAP à utiliser.  La cible iSCSI Element choisit le premier algorithme qu'elle prend en charge parmi la liste demandée par l'initiateur iSCSI hôte.  Pour confirmer que la cible iSCSI Element choisit l'algorithme le plus sécurisé, vous devez configurer l'initiateur iSCSI hôte pour envoyer une liste d'algorithmes classés du plus sécurisé, par exemple SHA3-256, au moins sécurisé, par exemple SHA1 ou MD5.  Lorsque les algorithmes SHA ne sont pas demandés par l'initiateur iSCSI hôte, la cible iSCSI Element choisit MD5, en supposant que la liste d'algorithmes proposée par l'hôte contienne MD5.  Vous devrez peut-être mettre à jour la configuration de l'initiateur iSCSI hôte pour activer la prise en charge des algorithmes sécurisés.
+
+Lors d'une mise à niveau vers Element 12.7 ou une version ultérieure, si vous avez déjà mis à jour la configuration de l'initiateur iSCSI de l'hôte pour envoyer une requête de session avec une liste incluant les algorithmes SHA, lors du redémarrage des nœuds de stockage, les nouveaux algorithmes sécurisés sont activés et les sessions iSCSI nouvelles ou reconnectées sont établies à l'aide du protocole le plus sécurisé.  Toutes les sessions iSCSI existantes passeront de MD5 à SHA lors de la mise à niveau.  Si vous ne mettez pas à jour la configuration de l'initiateur iSCSI hôte pour demander SHA, les sessions iSCSI existantes continueront d'utiliser MD5.  Ultérieurement, après la mise à jour des algorithmes CHAP de l'initiateur iSCSI hôte, les sessions iSCSI devraient passer progressivement de MD5 à SHA au fil du temps en fonction des activités de maintenance qui entraînent des reconnexions de session iSCSI.
+
+Par exemple, l'initiateur iSCSI hôte par défaut dans Red Hat Enterprise Linux (RHEL) 8.3 possède le `node.session.auth.chap_algs = SHA3-256,SHA256,SHA1,MD5` Le paramètre a été commenté, ce qui a pour conséquence que l'initiateur iSCSI utilise uniquement MD5.  Décommenter ce paramètre sur l'hôte et redémarrer l'initiateur iSCSI déclenche l'utilisation de SHA3-256 par les sessions iSCSI de cet hôte.
+
+Si nécessaire, vous pouvez utiliser le https://docs.netapp.com/us-en/element-software/api/reference_element_api_listiscsisessions.html["Liste des sessions ISCSI"] Méthode API permettant de visualiser les algorithmes CHAP utilisés pour chaque session.
+
+
+
+== Créer un compte
+
+Vous pouvez créer un compte pour autoriser l'accès aux volumes.
+
+Chaque nom de compte dans le système doit être unique.
+
+. Sélectionnez *Gestion* > *Comptes*.
+. Cliquez sur *Créer un compte*.
+. Veuillez saisir un *nom d'utilisateur*.
+. Dans la section *Paramètres CHAP*, saisissez les informations suivantes :
++
+
+NOTE: Laissez les champs d'identification vides pour générer automatiquement un mot de passe.
+
++
+** *Secret de l'initiateur* pour l'authentification de session du nœud CHAP.
+** *Secret cible* pour l'authentification de session du nœud CHAP.
+
+
+. Cliquez sur *Créer un compte*.
+
+
+
+
+== Afficher les détails du compte
+
+Vous pouvez consulter les performances de chaque compte sous forme graphique.
+
+Les informations graphiques fournissent des données sur les E/S et le débit du compte.  Les niveaux d'activité moyens et de pointe sont affichés par incréments de périodes de rapport de 10 secondes.  Ces statistiques incluent l'activité de tous les volumes attribués au compte.
+
+. Sélectionnez *Gestion* > *Comptes*.
+. Cliquez sur l'icône Actions pour un compte.
+. Cliquez sur *Afficher les détails*.
+
+
+Voici quelques détails :
+
+* *Statut* : Le statut du compte. Valeurs possibles :
++
+** actif : Un compte actif.
+** verrouillé : Un compte verrouillé.
+** supprimé : Un compte qui a été supprimé et purgé.
+
+
+* *Volumes actifs* : Le nombre de volumes actifs attribués au compte.
+* *Compression* : Score d’efficacité de la compression pour les volumes attribués au compte.
+* *Déduplication* : Score d’efficacité de la déduplication pour les volumes attribués au compte.
+* *Provisionnement fin* : Score d’efficacité du provisionnement fin pour les volumes affectés au compte.
+* *Efficacité globale* : Score d’efficacité global pour les volumes attribués au compte.
+
+
+
+
+== Modifier un compte
+
+Vous pouvez modifier un compte pour en changer le statut, les secrets CHAP ou le nom.
+
+La modification des paramètres CHAP dans un compte ou la suppression d'initiateurs ou de volumes d'un groupe d'accès peut entraîner une perte d'accès inattendue aux volumes pour les initiateurs.  Pour éviter toute perte d'accès inattendue aux volumes, déconnectez systématiquement les sessions iSCSI qui seront affectées par une modification de compte ou de groupe d'accès, et vérifiez que les initiateurs peuvent se reconnecter aux volumes une fois les modifications apportées aux paramètres d'initiateur et aux paramètres de cluster terminées.
+
+
+IMPORTANT: Les volumes persistants associés aux services de gestion sont affectés à un nouveau compte créé lors de l'installation ou de la mise à niveau.  Si vous utilisez des volumes persistants, ne modifiez ni ne supprimez le compte associé.
+
+. Sélectionnez *Gestion* > *Comptes*.
+. Cliquez sur l'icône Actions pour un compte.
+. Dans le menu qui s'affiche, sélectionnez *Modifier*.
+. *Facultatif :* Modifier le *nom d’utilisateur*.
+. *Facultatif :* Cliquez sur la liste déroulante *Statut* et sélectionnez un autre statut.
++
+
+IMPORTANT: Le passage au statut *verrouillé* met fin à toutes les connexions iSCSI vers le compte, et celui-ci n'est plus accessible.  Les volumes associés au compte sont conservés ; cependant, ces volumes ne sont pas détectables via iSCSI.
+
+. *Facultatif :* Dans les *Paramètres CHAP*, modifiez les informations d’identification *Secret de l’initiateur* et *Secret cible* utilisées pour l’authentification de la session du nœud.
++
+
+NOTE: Si vous ne modifiez pas les informations d'identification *Paramètres CHAP*, elles restent inchangées.  Si vous laissez les champs d'identification vides, le système génère de nouveaux mots de passe.
+
+. Cliquez sur *Enregistrer les modifications*.
+
+
+
+
+== Supprimer un compte
+
+Vous pouvez supprimer un compte lorsqu'il n'est plus nécessaire.
+
+Supprimez et purgez tous les volumes associés au compte avant de supprimer le compte.
+
+
+IMPORTANT: Les volumes persistants associés aux services de gestion sont affectés à un nouveau compte créé lors de l'installation ou de la mise à niveau.  Si vous utilisez des volumes persistants, ne modifiez ni ne supprimez le compte associé.
+
+. Sélectionnez *Gestion* > *Comptes*.
+. Cliquez sur l'icône Actions du compte que vous souhaitez supprimer.
+. Dans le menu qui s'affiche, sélectionnez *Supprimer*.
+. Confirmez l'action.
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

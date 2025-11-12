@@ -1,0 +1,106 @@
+---
+permalink: storage/task_monitor_system_alerts.html 
+sidebar: sidebar 
+keywords: system alerts, view, cluster faults, system errors 
+summary: Vous pouvez consulter les alertes pour obtenir des informations sur les pannes de cluster ou les erreurs du système.  Les alertes peuvent être des informations, des avertissements ou des erreurs et constituent un bon indicateur du bon fonctionnement du cluster.  La plupart des erreurs se résolvent automatiquement. 
+---
+= Afficher les alertes système
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les alertes pour obtenir des informations sur les pannes de cluster ou les erreurs du système.  Les alertes peuvent être des informations, des avertissements ou des erreurs et constituent un bon indicateur du bon fonctionnement du cluster.  La plupart des erreurs se résolvent automatiquement.
+
+Vous pouvez utiliser la méthode API ListClusterFaults pour automatiser la surveillance des alertes.  Cela vous permet d'être informé de toutes les alertes qui se produisent.
+
+. Dans l'interface utilisateur d'Element, sélectionnez *Rapports* > *Alertes*.
++
+Le système actualise les alertes sur la page toutes les 30 secondes.
+
++
+Pour chaque événement, vous trouverez les informations suivantes :
+
++
+|===
+
+
+| Article | Description 
+
+
+ a| 
+ID
+ a| 
+Identifiant unique associé à une alerte de cluster.
+
+
+
+ a| 
+Gravité
+ a| 
+Le degré d'importance de l'alerte. Valeurs possibles :
+
+** Avertissement : Un problème mineur qui pourrait bientôt nécessiter une attention particulière.  Les mises à niveau du système sont toujours autorisées.
+** erreur : Une défaillance pouvant entraîner une dégradation des performances ou une perte de haute disponibilité (HA).  Les erreurs ne devraient généralement pas affecter le service.
+** Critique : Une défaillance grave qui affecte le service.  Le système est incapable de traiter les requêtes d'E/S API ou client.  Le fonctionnement dans cet état pourrait entraîner une perte potentielle de données.
+** Meilleure pratique : Une bonne pratique de configuration système recommandée n’est pas appliquée.
+
+
+
+
+ a| 
+Type
+ a| 
+Le composant affecté par la panne.  Peut être un nœud, un lecteur, un cluster, un service ou un volume.
+
+
+
+ a| 
+Nœud
+ a| 
+Identifiant du nœud auquel cette erreur fait référence.  Inclus pour les défauts de nœud et de lecteur, sinon réglé sur - (tiret).
+
+
+
+ a| 
+ID du lecteur
+ a| 
+Identifiant du lecteur auquel ce défaut fait référence.  Inclus pour les défauts de transmission, sinon réglé sur - (tiret).
+
+
+
+ a| 
+Code d'erreur
+ a| 
+Un code descriptif indiquant la cause de la panne.
+
+
+
+ a| 
+Détails
+ a| 
+Description du défaut avec des détails supplémentaires.
+
+
+
+ a| 
+Date
+ a| 
+Date et heure d'enregistrement du défaut.
+
+|===
+. Cliquez sur *Afficher les détails* pour une alerte individuelle afin de consulter les informations la concernant.
+. Pour afficher le détail de toutes les alertes sur la page, cliquez sur la colonne Détails.
++
+Une fois qu'une alerte est résolue par le système, toutes les informations la concernant, y compris la date de résolution, sont déplacées vers la zone « Résolu ».
+
+
+
+
+
+== Trouver plus d'informations
+
+* xref:reference_monitor_cluster_fault_codes.adoc[Codes d'erreur du groupe d'outils]
+* link:../api/concept_element_api_about_the_api.html["Gérez le stockage avec l'API Element"]
+

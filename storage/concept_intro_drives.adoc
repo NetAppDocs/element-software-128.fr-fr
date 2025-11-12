@@ -1,0 +1,30 @@
+---
+permalink: storage/concept_intro_drives.html 
+sidebar: sidebar 
+keywords: drives, physical drives, cluster data, storage node, volume metadata, block drives, clusters 
+summary: Un nœud de stockage contient un ou plusieurs disques physiques utilisés pour stocker une partie des données du cluster.  Le cluster utilise la capacité et les performances du disque une fois celui-ci ajouté avec succès au cluster. 
+---
+= Conduites
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Un nœud de stockage contient un ou plusieurs disques physiques utilisés pour stocker une partie des données du cluster.  Le cluster utilise la capacité et les performances du disque une fois celui-ci ajouté avec succès au cluster.
+
+Un nœud de stockage contient deux types de disques :
+
+* *Disques de métadonnées de volume*
++
+Ces disques stockent des informations compressées qui définissent chaque volume, clone ou instantané au sein d'un cluster.  La capacité totale du disque de métadonnées du système détermine la quantité maximale de stockage pouvant être provisionnée sous forme de volumes.  La capacité de stockage maximale pouvant être provisionnée est indépendante de la quantité de données réellement stockées sur les disques de blocs du cluster.  Les disques de métadonnées de volume stockent les données de manière redondante sur un cluster grâce à la protection des données Double Helix.
+
++
+
+NOTE: Certains messages du journal des événements système et des erreurs font référence aux lecteurs de métadonnées de volume comme à des lecteurs de partition.
+
+* *Disques durs*
++
+Ces disques stockent les blocs de données compressés et dédupliqués pour les volumes d'applications serveur.  Les disques durs par blocs constituent la majeure partie de la capacité de stockage du système.  La majorité des requêtes de lecture de données déjà stockées sur le cluster SolidFire , ainsi que les requêtes d'écriture de données, s'effectuent sur les disques de blocs.  La capacité totale du disque de stockage par blocs du système détermine la quantité maximale de données pouvant être stockées, en tenant compte des effets de la compression, de l'allocation dynamique et de la déduplication.
+
+

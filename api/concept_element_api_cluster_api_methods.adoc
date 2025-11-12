@@ -1,0 +1,59 @@
+---
+permalink: api/concept_element_api_cluster_api_methods.html 
+sidebar: sidebar 
+keywords: cluster,API,methods,method,manage 
+summary: 'Les méthodes de l"API du cluster logiciel Element vous permettent de gérer la configuration et la topologie du cluster de stockage ainsi que les nœuds qui appartiennent à ce cluster.' 
+---
+= Méthodes d'API de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les méthodes de l'API du cluster logiciel Element vous permettent de gérer la configuration et la topologie du cluster de stockage ainsi que les nœuds qui appartiennent à ce cluster.
+
+Certaines méthodes de l'API de cluster fonctionnent sur des nœuds faisant partie d'un cluster ou ayant été configurés pour rejoindre un cluster.  Vous pouvez ajouter des nœuds à un nouveau cluster ou à un cluster existant.  Les nœuds prêts à être ajoutés à un cluster sont dans un état « en attente », ce qui signifie qu'ils ont été configurés mais pas encore ajoutés au cluster.
+
+* xref:reference_element_api_addnodes.adoc[Ajouter des nœuds]
+* xref:reference_element_api_clearclusterfaults.adoc[Effacer les défauts de cluster]
+* xref:reference_element_api_createclusterinterfacepreference.adoc[Préférence de création d'interface de cluster]
+* xref:reference_element_api_deleteclusterinterfacepreference.adoc[Préférence de suppression d'interface de cluster]
+* xref:reference_element_api_disablefeature.adoc[Désactiver la fonctionnalité]
+* xref:reference_element_api_enablefeature.adoc[Activer la fonctionnalité]
+* xref:reference_element_api_getclustercapacity.adoc[Obtenir la capacité du cluster]
+* xref:reference_element_api_getclusterfullthreshold.adoc[Seuil complet du cluster]
+* xref:reference_element_api_getclusterhardwareinfo.adoc[GetClusterHardwareInfo]
+* xref:reference_element_api_getclusterinfo.adoc[Obtenir les informations du cluster]
+* xref:reference_element_api_getclusterinterfacepreference.adoc[Préférence GetClusterInterface]
+* xref:reference_element_api_getclustermasternodeid.adoc[GetClusterMasterNodeID]
+* xref:reference_element_api_getclusterstats.adoc[Obtenir les statistiques du cluster]
+* xref:reference_element_api_getclusterversioninfo.adoc[GetClusterVersionInfo]
+* xref:reference_element_api_getfeaturestatus.adoc[Obtenir le statut de la fonctionnalité]
+* xref:reference_element_api_getloginsessioninfo.adoc[Obtenir les informations de session de connexion]
+* xref:reference_element_api_getnodehardwareinfo.adoc[GetNodeHardwareInfo]
+* xref:reference_element_api_getnodestats.adoc[GetNodeStats]
+* xref:reference_element_api_listactivenodes.adoc[Lister les nœuds actifs]
+* xref:reference_element_api_listallnodes.adoc[Lister tous les nœuds]
+* xref:reference_element_api_listclusterfaults.adoc[ListClusterFaults]
+* xref:reference_element_api_listclusterinterfacepreferences.adoc[Préférences d'interface ListCluster]
+* xref:reference_element_api_listevents.adoc[ListEvents]
+* xref:reference_element_api_listnodestats.adoc[ListNodeStats]
+* xref:reference_element_api_listiscsisessions.adoc[Liste des sessions ISCSI]
+* xref:reference_element_api_listservices.adoc[ListServices]
+* xref:reference_element_api_listpendingnodes.adoc[ListPendingNodes]
+* xref:reference_element_api_listpendingactivenodes.adoc[Liste des nœuds actifs en attente]
+* xref:reference_element_api_modifyclusterfullthreshold.adoc[Seuil complet de modification du cluster]
+* xref:reference_element_api_modifyclusterinterfacepreference.adoc[Préférence de modification de l'interface du cluster]
+* xref:reference_element_api_removenodes.adoc[Supprimer les nœuds]
+* xref:reference_element_api_setloginsessioninfo.adoc[Définir les informations de session de connexion]
+* xref:reference_element_api_cluster_shutdown.adoc[Fermer]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Documentation relative aux versions antérieures des produits NetApp SolidFire et Element"^]
+

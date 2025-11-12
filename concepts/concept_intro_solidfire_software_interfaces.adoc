@@ -1,0 +1,122 @@
+---
+permalink: concepts/concept_intro_solidfire_software_interfaces.html 
+sidebar: sidebar 
+keywords: interfaces, integration, user interface, Plug-in, vCenter, API, node UIs, command line, snapshots, shadow copies, Element software, Element, Element UI, UI, manage storage, utilities, integration utilities 
+summary: 'Vous pouvez gérer un système de stockage SolidFire à l"aide des interfaces logicielles et des utilitaires d"intégration de NetApp Element .' 
+---
+= Interfaces logicielles SolidFire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez gérer un système de stockage SolidFire à l'aide de différentes interfaces logicielles et utilitaires d'intégration NetApp Element .
+
+.Options
+* <<interface utilisateur du logiciel NetApp Element>>
+* <<API logicielle NetApp Element>>
+* <<Module d'extension NetApp Element pour vCenter Server>>
+* <<Contrôle du cloud hybride NetApp>>
+* <<Interfaces utilisateur des nœuds de gestion>>
+* <<utilitaires et outils d'intégration supplémentaires>>
+
+
+
+
+== interface utilisateur du logiciel NetApp Element
+
+Permet de configurer le stockage Element, de surveiller la capacité et les performances du cluster et de gérer l'activité de stockage sur une infrastructure mutualisée.  Element est le système d'exploitation de stockage au cœur d'un cluster SolidFire .  Le logiciel Element s'exécute indépendamment sur tous les nœuds du cluster et permet à ces nœuds de combiner des ressources qui sont présentées comme un système de stockage unique aux clients externes.  Le logiciel Element est responsable de la coordination, de la mise à l'échelle et de la gestion de l'ensemble du système.  L'interface logicielle est construite sur l'API Element.
+
+link:../storage/index.html["Gérez le stockage avec le logiciel Element"]
+
+
+
+== API logicielle NetApp Element
+
+Permet d'utiliser un ensemble d'objets, de méthodes et de routines pour gérer le stockage des éléments.  L'API Element est basée sur le protocole JSON-RPC via HTTPS.  Vous pouvez surveiller les opérations de l'API dans l'interface utilisateur d'Element en activant le journal de l'API ; cela vous permet de voir les méthodes qui sont envoyées au système.  Vous pouvez activer à la fois les requêtes et les réponses pour voir comment le système réagit aux méthodes émises.
+
+link:../api/concept_element_api_about_the_api.html["Gérez le stockage avec l'API Element"]
+
+
+
+== Module d'extension NetApp Element pour vCenter Server
+
+Permet de configurer et de gérer des clusters de stockage exécutant le logiciel Element à l'aide d'une interface alternative pour l'interface utilisateur Element au sein de VMware vSphere.
+
+https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+
+
+
+== Contrôle du cloud hybride NetApp
+
+Permet de mettre à niveau les services de stockage et de gestion Element et de gérer les ressources de stockage à l'aide de l'interface NetApp Hybrid Cloud Control.
+
+link:../hccstorage/task-hcc-manage-storage-clusters.html["Gérez et surveillez le stockage avec NetApp Hybrid Cloud Control."]
+
+
+
+== Interfaces utilisateur des nœuds de gestion
+
+Le nœud de gestion contient deux interfaces utilisateur : une interface utilisateur pour la gestion des services basés sur REST et une interface utilisateur par nœud pour la gestion des paramètres réseau et de cluster, ainsi que des tests et utilitaires du système d’exploitation.  Depuis l'interface utilisateur de l'API REST, vous pouvez accéder à un menu d'API liées aux services qui contrôlent les fonctionnalités du système basé sur les services à partir du nœud de gestion.
+
+
+
+== utilitaires et outils d'intégration supplémentaires
+
+Bien que vous gériez généralement votre stockage avec NetApp Element, l'API NetApp Element et le plug-in NetApp Element pour vCenter Server, vous pouvez utiliser des utilitaires et des outils d'intégration supplémentaires pour accéder au stockage.
+
+
+
+=== Element CLI
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-cli["Element CLI"^]permet de contrôler un système de stockage SolidFire à l'aide d'une interface de ligne de commande sans avoir à utiliser l'API Element.
+
+
+
+=== Outils PowerShell d'Element
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools["Outils PowerShell d'Element"^]vous permet d'utiliser une collection de fonctions Microsoft Windows PowerShell qui utilisent l'API Element pour gérer un système de stockage SolidFire .
+
+
+
+=== Kits de développement logiciel (SDK) Element
+
+https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab["Kits de développement logiciel (SDK) Element"^]vous permettent de gérer votre cluster SolidFire à l'aide de ces outils :
+
+* Kit de développement logiciel (SDK) Element Java : permet aux programmeurs d’intégrer l’API Element au langage de programmation Java.
+* Kit de développement logiciel (SDK) Element .NET : permet aux programmeurs d’intégrer l’API Element à la plateforme de programmation .NET.
+* Kit de développement logiciel (SDK) Element pour Python : permet aux programmeurs d’intégrer l’API Element au langage de programmation Python.
+
+
+
+
+=== Suite de tests de l'API Postman de SolidFire
+
+Permet aux programmeurs d'utiliser une collection delink:https://github.com/solidfire/postman["Facteur"^] fonctions qui testent les appels à l'API Element.
+
+
+
+=== Adaptateur de réplication de stockage SolidFire
+
+https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab["Adaptateur de réplication de stockage SolidFire"^]s'intègre avec VMware Site Recovery Manager (SRM) pour permettre la communication avec les clusters de stockage SolidFire répliqués et exécuter les flux de travail pris en charge.
+
+
+
+=== SolidFire vRO
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab["SolidFire vRO"^]offre un moyen pratique d'utiliser l'API Element pour administrer votre système de stockage SolidFire avec VMware vRealize Orchestrator.
+
+
+
+=== Fournisseur SolidFire VSS
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab["Fournisseur SolidFire VSS"^]Intègre les copies fantômes VSS aux instantanés et clones Element.
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

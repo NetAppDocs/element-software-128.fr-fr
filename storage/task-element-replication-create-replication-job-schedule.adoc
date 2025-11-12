@@ -1,0 +1,43 @@
+---
+permalink: storage/task-element-replication-create-replication-job-schedule.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, replication, job, schedule 
+summary: 'Vous pouvez utiliser la commande `job schedule cron create` pour créer une planification de tâche de réplication.  La planification des tâches détermine à quel moment SnapMirror met automatiquement à jour la relation de protection des données à laquelle cette planification est associée.' 
+---
+= Créer une planification de tâche de réplication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Que vous répliquiez des données d'Element vers ONTAP ou d' ONTAP vers Element, vous devez configurer une planification de tâches, spécifier une stratégie, puis créer et initialiser la relation.  Vous pouvez utiliser une stratégie par défaut ou personnalisée.
+
+Vous pouvez utiliser le `job schedule cron create` commande permettant de créer une planification de tâche de réplication.  La planification des tâches détermine à quel moment SnapMirror met automatiquement à jour la relation de protection des données à laquelle cette planification est associée.
+
+.À propos de cette tâche
+Vous définissez un planning de travail lorsque vous créez une relation de protection des données.  Si vous n'attribuez pas de calendrier de travail, vous devez mettre à jour la relation manuellement.
+
+.Étape
+. Créer un planning de travail :
++
+`job schedule cron create -name _job_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+Pour `-month` , `-dayofweek` , et `-hour` , vous pouvez spécifier `all` pour exécuter la tâche respectivement chaque mois, chaque jour de la semaine et chaque heure.
+
++
+À partir d' ONTAP 9.10.1, vous pouvez inclure le serveur virtuel dans votre planification des tâches :
+
++
+`job schedule cron create -name _job_name_ -vserver _Vserver_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+L'exemple suivant crée une planification de tâches nommée `my_weekly` qui a lieu le samedi à 3h00 du matin :
+
++
+[listing]
+----
+cluster_dst::> job schedule cron create -name my_weekly -dayofweek "Saturday" -hour 3 -minute 0
+----
+

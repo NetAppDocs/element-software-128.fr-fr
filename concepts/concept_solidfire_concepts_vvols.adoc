@@ -1,0 +1,62 @@
+---
+permalink: concepts/concept_solidfire_concepts_vvols.html 
+sidebar: sidebar 
+keywords: netapp, vvol, virtual volume, storage container, protocol endpoint, vcp, vcenter, element 
+summary: 'vSphere Virtual Volumes est un paradigme de stockage pour VMware qui déplace une grande partie de la gestion du stockage de vSphere du système de stockage vers VMware vCenter.  Avec les volumes virtuels (vVols), vous pouvez allouer du stockage en fonction des besoins de chaque machine virtuelle.' 
+---
+= Volumes virtuels (vVols)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+vSphere Virtual Volumes est un paradigme de stockage pour VMware qui déplace une grande partie de la gestion du stockage de vSphere du système de stockage vers VMware vCenter.  Avec les volumes virtuels (vVols), vous pouvez allouer du stockage en fonction des besoins de chaque machine virtuelle.
+
+
+
+== Reliures
+
+Le cluster NetApp Element choisit un point de terminaison de protocole optimal, crée une liaison qui associe l'hôte ESXi et le volume virtuel à ce point de terminaison, et renvoie cette liaison à l'hôte ESXi.  Une fois lié, l'hôte ESXi peut effectuer des opérations d'E/S avec le volume virtuel lié.
+
+
+
+== Points de terminaison du protocole
+
+Les hôtes VMware ESXi utilisent des proxys d'E/S logiques, appelés points de terminaison de protocole, pour communiquer avec les volumes virtuels.  Les hôtes ESXi lient les volumes virtuels à des points de terminaison de protocole pour effectuer des opérations d'E/S.  Lorsqu'une machine virtuelle sur l'hôte effectue une opération d'E/S, le point de terminaison de protocole associé dirige les E/S vers le volume virtuel auquel il est associé.
+
+Les points de terminaison de protocole dans un cluster NetApp Element fonctionnent comme des unités logiques administratives SCSI.  Chaque point de terminaison de protocole est créé automatiquement par le cluster.  Pour chaque nœud d'un cluster, un point de terminaison de protocole correspondant est créé.  Par exemple, un cluster à quatre nœuds aura quatre points de terminaison de protocole.
+
+iSCSI est le seul protocole pris en charge par le logiciel NetApp Element .  Le protocole Fibre Channel n'est pas pris en charge.  Les points de terminaison de protocole ne peuvent être ni supprimés ni modifiés par un utilisateur, ne sont pas associés à un compte et ne peuvent pas être ajoutés à un groupe d'accès aux volumes.
+
+
+
+== Conteneurs de stockage
+
+Les conteneurs de stockage sont des structures logiques qui correspondent à des comptes NetApp Element et sont utilisés pour la création de rapports et l'allocation des ressources.  Ils mettent en commun la capacité de stockage brute ou agrègent les capacités de stockage que le système de stockage peut fournir aux volumes virtuels.  Un datastore VVol créé dans vSphere est mappé à un conteneur de stockage individuel.  Un seul conteneur de stockage dispose par défaut de toutes les ressources disponibles du cluster NetApp Element .  Si une gouvernance plus granulaire est nécessaire pour la mutualisation, plusieurs conteneurs de stockage peuvent être créés.
+
+Les conteneurs de stockage fonctionnent comme des comptes traditionnels et peuvent contenir à la fois des volumes virtuels et des volumes traditionnels.  Un maximum de quatre conteneurs de stockage par cluster est pris en charge.  Un conteneur de stockage minimum est requis pour utiliser les fonctionnalités de VVols.  Vous pouvez découvrir les conteneurs de stockage dans vCenter lors de la création des VVols.
+
+
+
+== Fournisseur VASA
+
+Pour que vSphere prenne en compte la fonctionnalité vVol sur le cluster NetApp Element , l'administrateur vSphere doit enregistrer le fournisseur VASA NetApp Element auprès de vCenter.  Le fournisseur VASA constitue le chemin de contrôle hors bande entre vSphere et le cluster Element.  Il est chargé d'exécuter les requêtes sur le cluster Element au nom de vSphere, telles que la création de machines virtuelles, la mise à disposition de machines virtuelles à vSphere et la publicité des capacités de stockage auprès de vSphere.
+
+Le fournisseur VASA s'exécute dans le cadre du maître de cluster du logiciel Element.  Le nœud maître du cluster est un service à haute disponibilité qui bascule vers n'importe quel nœud du cluster en cas de besoin.  Si le maître du cluster bascule, le fournisseur VASA le suit, garantissant ainsi une haute disponibilité pour le fournisseur VASA.  Toutes les tâches de provisionnement et de gestion du stockage utilisent le fournisseur VASA, qui gère toutes les modifications nécessaires sur le cluster Element.
+
+
+NOTE: Pour Element 12.5 et versions antérieures, n'enregistrez pas plus d'un fournisseur NetApp Element VASA sur une seule instance vCenter.  Lorsqu'un deuxième fournisseur NetApp Element VASA est ajouté, toutes les banques de données VVOL deviennent inaccessibles.
+
+
+NOTE: La prise en charge VASA pour un maximum de 10 vCenters est disponible sous forme de correctif de mise à niveau si vous avez déjà enregistré un fournisseur VASA auprès de votre vCenter.  Pour l'installer, suivez les instructions du manifeste VASA39 et téléchargez le fichier .tar.gz depuis lelink:https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/vasa39["Téléchargements de logiciels NetApp"^] site.  Le fournisseur NetApp Element VASA utilise un certificat NetApp .  Grâce à ce correctif, le certificat est utilisé sans modification par vCenter pour prendre en charge plusieurs vCenters pour l'utilisation de VASA et VVols.  Ne modifiez pas le certificat.  Les certificats SSL personnalisés ne sont pas pris en charge par VASA.
+
+[discrete]
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_getnodesupportedtlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,ciphers,get,getting,supported,getnodesupportedtlsciphers 
+summary: Vous pouvez utiliser la méthode GetNodeSupportedTlsCiphers sur un nœud unique pour obtenir la liste des chiffrements TLS actuellement pris en charge sur ce nœud.  Vous pouvez utiliser cette méthode sur les nœuds de gestion et de stockage. 
+---
+= Obtenir les chiffrements TLS pris en charge par le nœud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `GetNodeSupportedTlsCiphers` méthode sur un nœud unique pour obtenir la liste des chiffrements TLS actuellement pris en charge sur ce nœud.  Vous pouvez utiliser cette méthode sur les nœuds de gestion et de stockage.
+
+
+
+== Paramètre
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+Chiffres obligatoires
+ a| 
+Liste des suites de chiffrement TLS obligatoires pour le nœud.  Ce sont des chiffrements qui sont toujours actifs sur le nœud.
+ a| 
+chaîne
+
+
+
+ a| 
+chiffrements supplémentaires par défaut
+ a| 
+Liste des suites de chiffrement TLS supplémentaires par défaut pour le nœud.  Les chiffrements supplémentaires sont rétablis dans cette liste lorsque vous exécutez la méthode API ResetNodeSupplementalTlsCiphers.
+ a| 
+chaîne
+
+
+
+ a| 
+Chiffrements supplémentaires pris en charge
+ a| 
+Liste des suites de chiffrement TLS supplémentaires disponibles que vous pouvez configurer avec la méthode API SetNodeSupplementalTlsCiphers.
+ a| 
+chaîne
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "GetNodeSupportedTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+	"defaultSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256"
+	],
+	"mandatoryCiphers": [
+		"DHE-RSA-AES256-SHA256",
+		"DHE-RSA-AES256-GCM-SHA384",
+		"ECDHE-RSA-AES256-SHA384",
+		"ECDHE-RSA-AES256-GCM-SHA384"
+	],
+	"supportedSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256",
+		"DHE-RSA-AES256-SHA",
+		"ECDHE-RSA-AES256-SHA",
+		"DHE-RSA-CAMELLIA256-SHA",
+		"DHE-RSA-AES128-SHA",
+		"ECDHE-RSA-AES128-SHA",
+		"DHE-RSA-CAMELLIA128-SHA"
+	]
+}
+}
+----

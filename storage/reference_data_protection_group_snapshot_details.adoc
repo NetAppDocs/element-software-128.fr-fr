@@ -1,0 +1,59 @@
+---
+permalink: storage/reference_data_protection_group_snapshot_details.html 
+sidebar: sidebar 
+keywords: snapshots, group snapshots, volumes, replication 
+summary: 'La page « Instantanés de groupe » de l"onglet « Protection des données » fournit des informations sur les instantanés de groupe.' 
+---
+= Détails de l'instantané de groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La page « Instantanés de groupe » de l'onglet « Protection des données » fournit des informations sur les instantanés de groupe.
+
+* *IDENTIFIANT*
++
+L'identifiant généré par le système pour l'instantané du groupe.
+
+* *UUID*
++
+L'identifiant unique de l'instantané du groupe.
+
+* *Nom*
++
+Nom défini par l'utilisateur pour l'instantané du groupe.
+
+* *Créer du temps*
++
+L'heure à laquelle l'instantané de groupe a été créé.
+
+* *Statut*
++
+État actuel de l'instantané. Valeurs possibles :
+
++
+** Préparation : L’instantané est en cours de préparation et n’est pas encore modifiable.
+** Terminé : cette capture d’écran a terminé sa préparation et est maintenant utilisable.
+** Actif : L’instantané correspond à la branche active.
+
+
+* *# Volumes*
++
+Le nombre de volumes dans le groupe.
+
+* *À conserver jusqu'au*
++
+Le jour et l'heure de suppression de l'instantané.
+
+* *Réplication à distance*
++
+Indication indiquant si la réplication de l'instantané vers un cluster SolidFire distant est activée ou non. Valeurs possibles :
+
++
+** Activé : La réplication à distance de l’instantané est activée.
+** Désactivé : la réplication à distance de l’instantané n’est pas activée.
+
+
+

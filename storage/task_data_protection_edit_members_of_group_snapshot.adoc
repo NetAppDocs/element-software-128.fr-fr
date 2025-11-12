@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_edit_members_of_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot members, edit 
+summary: 'Vous pouvez modifier les paramètres de conservation des données pour les membres d"un instantané de groupe existant.' 
+---
+= Modification des membres de la capture d'écran du groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez modifier les paramètres de conservation des données pour les membres d'un instantané de groupe existant.
+
+. Cliquez sur *Protection des données* > *Instantanés*.
+. Cliquez sur l'onglet *Membres*.
+. Cliquez sur l'icône Actions du membre du groupe que vous souhaitez modifier.
+. Dans le menu qui s'affiche, sélectionnez *Modifier*.
+. Pour modifier les paramètres de réplication de l'instantané, sélectionnez parmi les options suivantes :
++
+** Cliquez sur *Conserver indéfiniment* pour conserver l'instantané sur le système de façon permanente.
+** Cliquez sur *Définir la période de conservation* et utilisez les champs de date pour choisir la durée pendant laquelle le système conservera l'instantané.
+
+
+. Cliquez sur *Enregistrer les modifications*.
+

@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_enablebmccoldreset.html 
+sidebar: sidebar 
+keywords: BMC cold reset,BMC reset,enable BMC 
+summary: 'Vous pouvez utiliser la méthode EnableBmcColdReset pour activer une tâche en arrière-plan qui réinitialise périodiquement le contrôleur de gestion de la carte mère (BMC) pour tous les nœuds du cluster.' 
+---
+= ActiverBmcColdReset
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `EnableBmcColdReset` méthode permettant d'activer une tâche en arrière-plan qui réinitialise périodiquement le contrôleur de gestion de la carte mère (BMC) pour tous les nœuds du cluster.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+temps mort
+ a| 
+Le temps entre les opérations de réinitialisation du BMC , en minutes.
+ a| 
+entier
+ a| 
+20160 minutes
+ a| 
+Non
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+cBmcResetDurationMinutes
+ a| 
+Renvoie le temps écoulé entre les intervalles de réinitialisation.  L'intervalle doit toujours être égal à 0 une fois la commande terminée.
+ a| 
+entier
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+    "method": "EnableBmcColdReset",
+    "params": {
+                "timeout": 36000
+    },
+    "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "cBmcResetDurationMinutes": 36000
+    }
+}
+----
+
+
+== Nouveautés depuis la version
+
+12,0

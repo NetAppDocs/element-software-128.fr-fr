@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_setloginsessioninfo.html 
+sidebar: sidebar 
+keywords: authentication,login,session,info,timeout,setloginsessioninfo 
+summary: 'Vous pouvez utiliser la méthode SetLoginSessionInfo pour définir la durée de validité d"une authentification de connexion pour une session.  Une fois la période de connexion écoulée sans activité sur le système, l"authentification expire.  De nouveaux identifiants de connexion sont nécessaires pour continuer à accéder au cluster après l"expiration de la période de connexion.' 
+---
+= Définir les informations de session de connexion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `SetLoginSessionInfo` Méthode permettant de définir la durée de validité d'une authentification de connexion pour une session.  Une fois la période de connexion écoulée sans activité sur le système, l'authentification expire.  De nouveaux identifiants de connexion sont nécessaires pour continuer à accéder au cluster après l'expiration de la période de connexion.
+
+
+
+== Paramètre
+
+Cette méthode possède le paramètre d'entrée suivant :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+temps mort
+ a| 
+Délai d'expiration de l'authentification du cluster.  Formaté en HH:mm:ss.  Par exemple : 01:30:00, 00:90:00 et 00:00:5400 peuvent tous être utilisés pour correspondre à une période d’expiration de 90 minutes.  La valeur minimale du délai d'expiration est de 1 minute.  Lorsqu'aucune valeur n'est fournie ou qu'elle est égale à zéro, la session de connexion n'a pas de valeur de délai d'expiration.
+ a| 
+chaîne
+ a| 
+30 minutes
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode ne renvoie aucune valeur.
+
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+  "method": "SetLoginSessionInfo",
+  "params": {
+    "timeout" : "01:30:00"
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

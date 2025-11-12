@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_listnodestats.html 
+sidebar: sidebar 
+keywords: node,nodes,stats,list,listing,listnodestats 
+summary: 'Vous pouvez utiliser la méthode ListNodeStats pour afficher les mesures d"activité de haut niveau pour tous les nœuds de stockage d"un cluster de stockage.' 
+---
+= ListNodeStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ListNodeStats` méthode permettant de visualiser les mesures d'activité de haut niveau pour tous les nœuds de stockage d'un cluster de stockage.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+statistiques des nœuds
+ a| 
+Informations sur l'activité du nœud de stockage.
+ a| 
+xref:reference_element_api_nodestats.adoc[statistiques des nœuds]
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "ListNodeStats",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "nodeStats": {
+       "nodes": [
+         {
+           "cBytesIn": 223022159806,
+           "cBytesOut": 206324217921,
+           "count": 17274,
+           "cpu": 0,
+           "cpuTotal": 9796,
+           "mBytesIn": 608219007,
+           "mBytesOut": 3487659798,
+           "networkUtilizationCluster": 0,
+           "networkUtilizationStorage": 0,
+           "nodeHeat": {
+             "primaryTotalHeat": 0.00028,
+             "recentPrimaryTotalHeat": 0.0,
+             "recentTotalHeat": 0.00097,
+             "totalHeat": 0.00138
+           },
+           "nodeID": 1,
+           "readLatencyUSecTotal": 8964,
+           "readOps": 29544,
+           "sBytesIn": 223022159806,
+           "sBytesOut": 206324217921,
+           "ssLoadHistogram": {
+             "Bucket0": 5083,
+             "Bucket1To19": 5637426,
+             "Bucket20To39": 19389,
+             "Bucket40To59": 156,
+             "Bucket60To79": 0,
+             "Bucket80To100": 0
+           },
+           "timestamp": "2024-02-27T18:21:26.183659Z",
+           "usedMemory": 104828780544,
+           "writeLatencyUSecTotal": 271773335,
+           "writeOps": 23898
+         }
+       ]
+     }
+ }
+----
+
+
+== Nouveautés depuis la version
+
+9,6

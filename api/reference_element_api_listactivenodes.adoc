@@ -1,0 +1,70 @@
+---
+permalink: api/reference_element_api_listactivenodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,active,node,nodes,listactivenodes 
+summary: Vous pouvez utiliser la méthode ListActiveNodes pour obtenir la liste des nœuds actuellement actifs dans le cluster. 
+---
+= Lister les nœuds actifs
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ListActiveNodes` Méthode permettant de renvoyer la liste des nœuds actuellement actifs dans le cluster.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+nœuds
+ a| 
+Liste des nœuds actifs du cluster.
+ a| 
+xref:reference_element_api_node.adoc[nœud]tableau
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "ListActiveNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+En raison de sa longueur, cet exemple de réponse est documenté dans un sujet supplémentaire.
+
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_response_example_listactivenodes.adoc[Lister les nœuds actifs]

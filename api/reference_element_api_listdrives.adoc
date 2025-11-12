@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_listdrives.html 
+sidebar: sidebar 
+keywords: drives,drive,list,listing,listdrives,cluster 
+summary: 'Vous pouvez utiliser la méthode ListDrives pour lister les disques présents sur les nœuds actifs du cluster.  Cette méthode renvoie les disques qui ont été ajoutés en tant que métadonnées de volume ou disques de blocs, ainsi que les disques qui n"ont pas été ajoutés et qui sont disponibles.' 
+---
+= ListDrives
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `ListDrives` Méthode permettant de lister les disques présents dans les nœuds actifs du cluster.  Cette méthode renvoie les disques qui ont été ajoutés en tant que métadonnées de volume ou disques de blocs, ainsi que les disques qui n'ont pas été ajoutés et qui sont disponibles.
+
+
+
+== Paramètres
+
+Cette méthode ne requiert aucun paramètre d'entrée.
+
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+lecteurs
+ a| 
+Liste des disques du cluster.
+ a| 
+xref:reference_element_api_drive.adoc[conduire]tableau
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "ListDrives",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+     "drives" : [
+       {
+         "attributes" : {},
+         "capacity" : 299917139968,
+         "driveID" : 35,
+         "nodeID" : 5,
+         "serial" : "scsi-SATA_INTEL_SSDSA2CW6CVPR141502R3600FGN-part2",
+         "slot" : 0,
+         "status" : "active",
+         "type" : "volume"
+       },
+       {
+         "attributes" : {},
+         "capacity" : 600127266816,
+         "driveID" : 36,
+         "nodeID" : 5,
+         "serial" : "scsi-SATA_INTEL_SSDSA2CW6CVPR1415037R600FGN",
+         "slot" : 6,
+         "status" : "active",
+         "type" : "block"
+       }
+     }
+   ]
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

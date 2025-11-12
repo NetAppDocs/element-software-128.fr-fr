@@ -1,0 +1,26 @@
+---
+permalink: setup/concept_requirements_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: Avant de commencer, vous devriez consulter les prérequis. 
+---
+= Exigences
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Avant de commencer, vous devez passer en revue les prérequis au déploiement du logiciel NetApp Element , notamment les exigences en matière de réseau et de ports.
+
+* link:../storage/concept_prereq_networking.html["Exigences de mise en réseau"]
+* link:../storage/concept_prereq_switch_configuration_for_solidfire_clusters.html["Configuration du commutateur"]
+* link:../storage/reference_prereq_network_port_requirements.html["Exigences relatives aux ports réseau"]
+
+
+
+
+== Trouver plus d'informations
+
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

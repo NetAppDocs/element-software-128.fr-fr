@@ -1,0 +1,44 @@
+---
+permalink: storage/task_data_protection_create_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot, create, volumes, schedule, automate group snapshots 
+summary: 'Vous pouvez créer un instantané d"un groupe de volumes, et vous pouvez également créer une planification d"instantanés de groupe pour automatiser les instantanés de groupe.  Une seule capture instantanée de groupe peut capturer simultanément jusqu"à 32 volumes.' 
+---
+= Création d'un instantané de groupe
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez créer un instantané d'un groupe de volumes, et vous pouvez également créer une planification d'instantanés de groupe pour automatiser les instantanés de groupe.  Une seule capture instantanée de groupe peut capturer simultanément jusqu'à 32 volumes.
+
+.Étapes
+. Cliquez sur *Gestion* > *Volumes*.
+. Utilisez les cases à cocher pour sélectionner plusieurs volumes pour un groupe de volumes.
+. Cliquez sur *Actions groupées*.
+. Cliquez sur *Aperçu du groupe*.
+. Saisissez un nouveau nom pour l'instantané de groupe dans la boîte de dialogue Créer un instantané de groupe de volumes.
+. *Facultatif :* Cochez la case *Inclure chaque membre du snapshot de groupe dans la réplication lors de l’appairage* pour vous assurer que chaque snapshot est capturé dans la réplication lorsque le volume parent est apparié.
+. Sélectionnez une option de conservation pour l'instantané de groupe :
++
+** Cliquez sur *Conserver indéfiniment* pour conserver l'instantané sur le système de façon permanente.
+** Cliquez sur *Définir la période de conservation* et utilisez les champs de date pour choisir la durée pendant laquelle le système conservera l'instantané.
+
+
+. Pour prendre une photo instantanée, procédez comme suit :
++
+.. Cliquez sur *Prendre une photo de groupe maintenant*.
+.. Cliquez sur *Créer un instantané de groupe*.
+
+
+. Pour programmer l'exécution de la capture instantanée à une date ultérieure, procédez comme suit :
++
+.. Cliquez sur *Créer un calendrier de clichés de groupe*.
+.. Saisissez un *Nom pour le nouvel horaire*.
+.. Sélectionnez un *type de planification* dans la liste.
+.. *Facultatif :* Cochez la case *Planification récurrente* pour répéter périodiquement la capture d’écran planifiée.
+.. Cliquez sur *Créer un planning*.
+
+
+

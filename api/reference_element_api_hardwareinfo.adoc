@@ -1,0 +1,200 @@
+---
+permalink: api/reference_element_api_hardwareinfo.html 
+sidebar: sidebar 
+keywords: object,objects,hardwareInfo 
+summary: 'L"objet hardwareInfo contient des informations détaillées sur le matériel et l"état de chaque nœud du cluster.  Vous pouvez récupérer ces informations avec la méthode API GetHardwareInfo.' 
+---
+= Informations matérielles
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet hardwareInfo contient des informations détaillées sur le matériel et l'état de chaque nœud du cluster.  Vous pouvez récupérer ces informations avec le `GetHardwareInfo` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+carte série
+ a| 
+Numéro de série de la carte DMI.
+ a| 
+chaîne
+
+
+
+ a| 
+bus
+ a| 
+Informations sur le bus média de la carte mère.
+ a| 
+objet JSON
+
+
+
+ a| 
+châssisSérie
+ a| 
+Le numéro de série du châssis.
+ a| 
+chaîne
+
+
+
+ a| 
+matériel de disque
+ a| 
+Liste d'informations pour chaque lecteur du nœud.
+ a| 
+tableau d'objets JSON
+
+
+
+ a| 
+Ports fibre Channel
+ a| 
+Liste des ports Fibre Channel sur le nœud.
+ a| 
+tableau d'entiers
+
+
+
+ a| 
+configuration matérielle
+ a| 
+Informations de configuration des périphériques de la carte mère.
+ a| 
+objet JSON
+
+
+
+ a| 
+État de vidage du noyau
+ a| 
+Configuration du fichier de vidage mémoire du noyau du système d'exploitation.
+ a| 
+chaîne
+
+
+
+ a| 
+mémoire
+ a| 
+Informations matérielles relatives au micrologiciel et à la mémoire système.
+ a| 
+objet JSON
+
+
+
+ a| 
+réseau
+ a| 
+Description du matériel de chacune des interfaces réseau du nœud.
+ a| 
+objet JSON
+
+
+
+ a| 
+Interfaces réseau
+ a| 
+État des interfaces réseau du nœud.
+ a| 
+objet JSON
+
+
+
+ a| 
+emplacement de nœud
+ a| 
+Pour les plateformes HCI, la lettre correspondant à l'emplacement du châssis dans lequel se trouve ce nœud (« A », « B », « C » ou « D »).  Pour les plateformes de stockage, cette valeur est nulle.
+ a| 
+chaîne
+
+
+
+ a| 
+NVRAM
+ a| 
+Statistiques NVRAM pour le nœud.
+ a| 
+objet JSON
+
+
+
+ a| 
+origine
+ a| 
+Le fournisseur de la carte mère.
+ a| 
+chaîne
+
+
+
+ a| 
+plate-forme
+ a| 
+Description de la plateforme du châssis.
+ a| 
+objet JSON
+
+
+
+ a| 
+en série
+ a| 
+Le numéro de série du produit.
+ a| 
+chaîne
+
+
+
+ a| 
+stockage
+ a| 
+Informations sur le contrôleur de stockage.
+ a| 
+objet JSON
+
+
+
+ a| 
+système de mémoire
+ a| 
+Informations sur l'utilisation de la mémoire et les performances du système d'exploitation.
+ a| 
+objet JSON
+
+
+
+ a| 
+système
+ a| 
+Le type de châssis du nœud.
+ a| 
+objet JSON
+
+
+
+ a| 
+uuid
+ a| 
+L'identifiant unique du nœud.
+ a| 
+UUID
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_gethardwareinfo.adoc[GetHardwareInfo]

@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_keyproviderkmip.html 
+sidebar: sidebar 
+keywords: key provider,KMIP,keys 
+summary: 'L"objet keyProviderKmip décrit un fournisseur de clés du protocole d"interopérabilité de gestion de clés (KMIP).  Un fournisseur de clés est à la fois un mécanisme et un emplacement permettant de récupérer les clés d"authentification à utiliser avec des fonctionnalités de cluster telles que le chiffrement au repos.' 
+---
+= keyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet keyProviderKmip décrit un fournisseur de clés du protocole d'interopérabilité de gestion des clés (KMIP).  Un fournisseur de clés est à la fois un mécanisme et un emplacement permettant de récupérer les clés d'authentification à utiliser avec des fonctionnalités de cluster telles que le chiffrement au repos.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+ID du fournisseur de clés
+ a| 
+L'identifiant du fournisseur de clés KMIP.  Il s'agit d'une valeur unique attribuée par le cluster lors de la création du fournisseur de clés et qui ne peut pas être modifiée.
+ a| 
+entier
+
+
+
+ a| 
+keyProviderIsActive
+ a| 
+Vrai si le fournisseur de clés KMIP est actif.  Un fournisseur est considéré comme actif s'il existe des clés en circulation qui ont été créées mais pas encore supprimées et qui sont donc supposées être toujours utilisées.
+ a| 
+booléen
+
+
+
+ a| 
+Nom du fournisseur de clés
+ a| 
+Le nom du fournisseur de clés KMIP.
+ a| 
+chaîne
+
+
+
+ a| 
+ID du serveur de clés
+ a| 
+Un identifiant de serveur clé associé à ce fournisseur.  Le serveur doit être ajouté avant que ce fournisseur puisse devenir actif.  Le serveur ne peut pas être supprimé tant que ce fournisseur est actif.  Un seul identifiant de serveur est pris en charge pour chaque fournisseur.
+ a| 
+tableau d'entiers
+
+
+
+ a| 
+kmipCapabilities
+ a| 
+Les capacités de ce fournisseur de clés KMIP, y compris les détails concernant la bibliothèque sous-jacente, la conformité FIPS, le fournisseur SSL, etc.
+ a| 
+chaîne
+
+|===

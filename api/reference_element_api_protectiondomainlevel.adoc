@@ -1,0 +1,56 @@
+---
+permalink: api/reference_element_api_protectiondomainlevel.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainLevel 
+summary: 'L"objet protectionDomainLevel contient des informations sur les niveaux de tolérance et de résilience actuels du cluster de stockage.  Les niveaux de tolérance indiquent la capacité du cluster à continuer à lire et à écrire des données en cas de panne, et les niveaux de résilience indiquent sa capacité à se réparer automatiquement après une ou plusieurs pannes au sein de son domaine de protection associé.' 
+---
+= niveau de domaine de protection
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet protectionDomainLevel contient des informations sur les niveaux de tolérance et de résilience actuels du cluster de stockage.  Les niveaux de tolérance indiquent la capacité du cluster à continuer à lire et à écrire des données en cas de panne, et les niveaux de résilience indiquent sa capacité à se réparer automatiquement après une ou plusieurs pannes au sein de son domaine de protection associé.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+type de domaine de protection
+ a| 
+Le type de domaine de protection qui présente la tolérance et la résilience associées. Valeurs possibles :
+
+* nœud : N’importe quel nœud individuel.
+* châssis : Nœud individuel ou ensemble des nœuds de stockage dans un seul châssis.
+* personnalisé : Tous les nœuds de stockage dans un seul domaine de protection défini par le client.
+
+ a| 
+chaîne
+
+
+
+ a| 
+élasticité
+ a| 
+La résilience actuelle de ce cluster du point de vue de ce type de domaine de protection.
+ a| 
+xref:reference_element_api_protectiondomainresiliency.adoc[protectionDomainRésilience]
+
+
+
+ a| 
+tolérance
+ a| 
+La tolérance actuelle de ce cluster du point de vue de ce type de domaine de protection.
+ a| 
+xref:reference_element_api_protectiondomaintolerance.adoc[protectionDomainTolerance]
+
+|===

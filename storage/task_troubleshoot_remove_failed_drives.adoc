@@ -1,0 +1,49 @@
+---
+permalink: storage/task_troubleshoot_remove_failed_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, failed drives, remove 
+summary: 'Le système SolidFire place un disque en état de panne si l"autodiagnostic du disque indique au nœud qu"il est défaillant ou si la communication avec le disque est interrompue pendant cinq minutes et demie ou plus.  Le système affiche la liste des disques défaillants.  Vous devez supprimer un disque défaillant de la liste des disques défaillants dans le logiciel NetApp Element .' 
+---
+= Supprimer les disques défaillants du cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le système SolidFire place un disque en état de panne si l'autodiagnostic du disque indique au nœud qu'il est défaillant ou si la communication avec le disque est interrompue pendant cinq minutes et demie ou plus.  Le système affiche la liste des disques défaillants.  Vous devez supprimer un disque défaillant de la liste des disques défaillants dans le logiciel NetApp Element .
+
+Les disques figurant dans la liste *Alertes* apparaissent comme *blockServiceUnhealthy* lorsqu'un nœud est hors ligne.  Lors du redémarrage du nœud, si le nœud et ses disques se remettent en ligne en moins de cinq minutes et demie, les disques se mettent à jour automatiquement et continuent de fonctionner comme disques actifs dans le cluster.
+
+. Dans l'interface utilisateur d'Element, sélectionnez *Cluster* > *Disques*.
+. Cliquez sur *Échec* pour afficher la liste des disques défaillants.
+. Notez le numéro d'emplacement du disque défaillant.
++
+Vous avez besoin de ces informations pour localiser le disque défectueux dans le châssis.
+
+. Retirez les disques défaillants en utilisant l'une des méthodes suivantes :
++
+|===
+
+
+| Option | Étapes 
+
+
+ a| 
+Pour retirer des disques individuels
+ a| 
+.. Cliquez sur *Actions* pour le lecteur que vous souhaitez supprimer.
+.. Cliquez sur *Supprimer*.
+
+
+
+
+ a| 
+Pour retirer plusieurs disques
+ a| 
+.. Sélectionnez tous les disques que vous souhaitez supprimer, puis cliquez sur *Actions groupées*.
+.. Cliquez sur *Supprimer*.
+
+
+|===
+

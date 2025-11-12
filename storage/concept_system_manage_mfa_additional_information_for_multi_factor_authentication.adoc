@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: mfa, idp, certificates, api method 
+summary: 'Vous devez prendre en compte les mises en garde suivantes concernant l"authentification multifacteurs.' 
+---
+= Informations complémentaires concernant l'authentification multifactorielle
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devez prendre en compte les mises en garde suivantes concernant l'authentification multifacteurs.
+
+* Pour actualiser les certificats IdP qui ne sont plus valides, vous devrez utiliser un compte utilisateur administrateur non IdP pour appeler la méthode API suivante : `UpdateIdpConfiguration`
+* L'authentification multifacteur (MFA) est incompatible avec les certificats dont la longueur est inférieure à 2048 bits.  Par défaut, un certificat SSL 2048 bits est créé sur le cluster.  Vous devez éviter d'utiliser un certificat de taille inférieure lors de l'appel de la méthode API : `SetSSLCertificate`
++
+
+NOTE: Si le cluster utilise un certificat de moins de 2048 bits avant la mise à niveau, le certificat du cluster doit être mis à jour avec un certificat de 2048 bits ou plus après la mise à niveau vers Element 12.0 ou une version ultérieure.
+
+* Les utilisateurs administrateurs IdP ne peuvent pas être utilisés pour effectuer directement des appels API (par exemple, via des SDK ou Postman) ni pour d'autres intégrations (par exemple, OpenStack Cinder ou le plug-in vCenter).  Ajoutez des utilisateurs administrateurs de cluster LDAP ou des utilisateurs administrateurs de cluster local si vous devez créer des utilisateurs disposant de ces capacités.
+
+
+
+
+== Trouver plus d'informations
+
+* link:../api/concept_element_api_about_the_api.html["Gestion du stockage avec l'API Element"]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+

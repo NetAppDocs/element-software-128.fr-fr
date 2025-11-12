@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vvol_delete_a_virtual_volume.html 
+sidebar: sidebar 
+keywords: virtual volume, delete, vvols, use Element UI to delete a vvol 
+summary: 'Bien que les volumes virtuels doivent toujours être supprimés de la couche de gestion VMware, la fonctionnalité permettant de supprimer les volumes virtuels est activée depuis l"interface utilisateur d"Element.  Vous ne devez supprimer un volume virtuel de l"interface utilisateur d"Element qu"en cas d"absolue nécessité, par exemple lorsque vSphere ne parvient pas à nettoyer les volumes virtuels sur le stockage SolidFire .' 
+---
+= Supprimer un volume virtuel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bien que les volumes virtuels doivent toujours être supprimés de la couche de gestion VMware, la fonctionnalité permettant de supprimer les volumes virtuels est activée depuis l'interface utilisateur d'Element.  Vous ne devez supprimer un volume virtuel de l'interface utilisateur d'Element qu'en cas d'absolue nécessité, par exemple lorsque vSphere ne parvient pas à nettoyer les volumes virtuels sur le stockage SolidFire .
+
+. Sélectionnez *VVols* > *Volumes virtuels*.
+. Cliquez sur l'icône Actions correspondant au volume virtuel que vous souhaitez supprimer.
+. Dans le menu qui s'affiche, sélectionnez *Supprimer*.
++
+
+IMPORTANT: Vous devez supprimer un volume virtuel de la couche de gestion VMware pour vous assurer que le volume virtuel est correctement délié avant sa suppression.  Vous ne devez supprimer un volume virtuel de l'interface utilisateur d'Element qu'en cas d'absolue nécessité, par exemple lorsque vSphere ne parvient pas à nettoyer les volumes virtuels sur le stockage SolidFire .  Si vous supprimez un volume virtuel depuis l'interface utilisateur d'Element, le volume sera immédiatement purgé.
+
+. Confirmez l'action.
+. Actualisez la liste des volumes virtuels pour confirmer que le volume virtuel a bien été supprimé.
+. *Facultatif* : Sélectionnez *Rapports* > *Journal des événements* pour confirmer que la purge a réussi.
+

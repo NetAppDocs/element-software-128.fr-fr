@@ -1,0 +1,65 @@
+---
+permalink: api/reference_element_api_qospolicy.html 
+sidebar: sidebar 
+keywords: object,objects,QoSPolicy,QoS,policy,policies 
+summary: 'L"objet QoSPolicy contient des informations sur une politique QoS appliquée à un cluster de stockage exécutant le logiciel Element.' 
+---
+= Politique de qualité
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet QoSPolicy contient des informations sur une politique QoS appliquée à un cluster de stockage exécutant le logiciel Element.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+ID de politique qos
+ a| 
+Un identifiant numérique unique pour la stratégie QoSPolicy, attribué automatiquement par le cluster de stockage.
+ a| 
+entier
+
+
+
+ a| 
+nom
+ a| 
+Le nom de la politique QoS.  Par exemple : l'or, le platine ou l'argent.
+ a| 
+chaîne
+
+
+
+ a| 
+qualité de service
+ a| 
+Les paramètres QoS que représente cette politique.
+ a| 
+xref:reference_element_api_qos.adoc[Qualité de service]
+
+
+
+ a| 
+ID de volume
+ a| 
+Liste des volumes associés à cette police d'assurance.
+ a| 
+tableau d'entiers
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_getqospolicy.adoc[Obtenir la politique QoS]

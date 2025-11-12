@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_pause_replication.html 
+sidebar: sidebar 
+keywords: replication, pause, volume pairs 
+summary: Vous pouvez suspendre manuellement la réplication si vous devez interrompre le traitement des E/S pendant une courte période.  Vous pourriez souhaiter suspendre la réplication en cas de forte augmentation du traitement des E/S et si vous souhaitez réduire la charge de traitement. 
+---
+= Pause réplication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez suspendre manuellement la réplication si vous devez interrompre le traitement des E/S pendant une courte période.  Vous pourriez souhaiter suspendre la réplication en cas de forte augmentation du traitement des E/S et si vous souhaitez réduire la charge de traitement.
+
+. Sélectionnez *Protection des données* > *Paires de volumes*.
+. Cliquez sur l'icône Actions pour la paire de volumes.
+. Cliquez sur *Modifier*.
+. Dans le volet *Modifier la paire de volumes*, suspendez manuellement le processus de réplication.
++
+
+IMPORTANT: La mise en pause ou la reprise manuelle de la réplication de volume entraîne l'arrêt ou la reprise de la transmission des données.  Assurez-vous d'avoir coordonné ces changements sur les deux sites.
+
+. Cliquez sur *Enregistrer les modifications*.
+

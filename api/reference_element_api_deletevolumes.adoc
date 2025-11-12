@@ -1,0 +1,165 @@
+---
+permalink: api/reference_element_api_deletevolumes.html 
+sidebar: sidebar 
+keywords: volumes,volume,delete,deleting,multiple,DeleteVolumes 
+summary: 'Vous pouvez utiliser la méthode DeleteVolumes pour marquer plusieurs volumes actifs (jusqu"à 500) à supprimer.  Lorsqu"il est marqué, le volume est purgé (supprimé définitivement) une fois l"intervalle de nettoyage écoulé.' 
+---
+= Supprimer les volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `DeleteVolumes` méthode pour marquer plusieurs (jusqu'à 500) volumes actifs à supprimer.  Lorsqu'il est marqué, le volume est purgé (supprimé définitivement) une fois l'intervalle de nettoyage écoulé.
+
+Après une demande de suppression de volumes, toutes les connexions iSCSI actives vers ces volumes sont immédiatement interrompues et aucune autre connexion n'est autorisée tant que les volumes sont dans cet état.  Un volume marqué n'est pas renvoyé dans les requêtes de découverte de cible.
+
+Les instantanés d'un volume marqué pour suppression ne sont pas affectés.  Les instantanés sont conservés jusqu'à ce que le volume soit purgé du système.  Si un volume est marqué pour suppression et qu'une opération de lecture ou d'écriture en masse est en cours, cette opération est arrêtée.
+
+Si les volumes que vous supprimez sont appariés à un volume, la réplication entre les volumes appariés est suspendue et aucune donnée n'est transférée vers ou depuis ces volumes lorsqu'ils sont supprimés.  Les volumes distants auxquels les volumes supprimés étaient associés passent dans un état PausedMiconfigured et les données ne sont plus envoyées vers eux ni depuis les volumes supprimés.  Tant que les volumes supprimés n'ont pas été purgés, ils peuvent être restaurés et les transferts de données peuvent reprendre.  Si les volumes supprimés sont purgés du système, les volumes auxquels ils étaient associés passent à l'état Arrêté/Mal configuré et l'état d'association des volumes est supprimé.  Les volumes purgés deviennent définitivement indisponibles.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants.
+
+
+NOTE: Au moins un des paramètres suivants est requis, et vous ne devez en utiliser qu'un seul (ils sont tous mutuellement exclusifs).
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+ID de volume
+ a| 
+Liste des identifiants des volumes à supprimer du système.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Voir la note.
+
+
+
+ a| 
+ID de groupe d'accès au volume
+ a| 
+Liste des identifiants des groupes d'accès aux volumes.  Tous les volumes de tous les groupes d'accès aux volumes que vous spécifiez dans cette liste sont supprimés du système.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Voir la note.
+
+
+
+ a| 
+identifiants de compte
+ a| 
+Liste des identifiants de compte.  Tous les volumes provenant de ces comptes sont supprimés du système.
+ a| 
+tableau d'entiers
+ a| 
+Aucune
+ a| 
+Voir la note.
+
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+volumes
+ a| 
+Informations concernant le volume récemment supprimé.
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+
+
+ a| 
+courbe
+ a| 
+La courbe est un ensemble de paires clé-valeur.  Les clés correspondent aux tailles d'E/S en octets.  Les valeurs représentent le coût d'exécution d'une opération d'E/S à une taille d'E/S spécifique.  La courbe est calculée par rapport à une opération de 4096 octets fixée à 100 IOPS.
+ a| 
+objet JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "DeleteVolumes",
+   "params": {
+      "accountIDs" : [1, 2, 3]
+   },
+   "id" : 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+
+{
+  "id" : 1,
+  "result": {
+    "volumes" : [ {
+      "access": "readWrite",
+      "accountID": 1,
+      "attributes": {},
+      "blockSize": 4096,
+      "createTime": "2015-03-06T18:50:56Z",
+      "deleteTime": "",
+      "enable512e": False,
+      "iqn": "iqn.2010-01.com.solidfire:pzsr.vclient-030-v00001.1",
+      "name": "vclient-030-v00001",
+      "qos": {
+        "burstIOPS": 15000,
+        "burstTime": 60,
+        "curve": {},
+        "maxIOPS": 15000,
+        "minIOPS": 100
+      },
+      "purgeTime": "",
+      "sliceCount": 1,
+      "scsiEUIDeviceID": "707a737200000001f47acc0100000000",
+      "scsiNAADeviceID": "6f47acc100000000707a737200000001",
+      "status": "active",
+      "totalSize": 10000003072,
+      "virtualVolumeID": 5,
+      "volumeAccessGroups": [],
+      "volumePairs": [],
+      "volumeID": 1
+    } ]
+  }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6

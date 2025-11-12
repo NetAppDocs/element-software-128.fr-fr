@@ -1,0 +1,247 @@
+---
+permalink: api/reference_element_api_createvolume.html 
+sidebar: sidebar 
+keywords: create,volume,volumes,creating,CreateVolume 
+summary: Vous pouvez utiliser la méthode CreateVolume pour créer un nouveau volume vide sur le cluster.  Dès que la création du volume est terminée, celui-ci est disponible pour la connexion via iSCSI. 
+---
+= CréerVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez utiliser le `CreateVolume` méthode pour créer un nouveau volume vide sur le cluster.  Dès sa création, le volume est disponible pour la connexion via iSCSI.
+
+Les volumes créés sans valeurs QoS spécifiées utilisent les valeurs par défaut.  Vous pouvez consulter les valeurs par défaut d'un volume en utilisant `GetDefaultQoS` méthode.
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+| `access` | Le mode d'accès au volume.  Si ce paramètre est inclus, la seule valeur prise en charge est `snapMirrorTarget` . | chaîne | Aucune | Non 
+
+
+| `accountID` | L'identifiant du compte propriétaire de ce volume. | entier | Aucune | Oui 
+
+
+| `associateWithQoSPolicy`  a| 
+Associez le volume à la politique QoS spécifiée. Valeurs possibles :
+
+* `true`Associez le volume à la politique QoS spécifiée dans le paramètre QoSPolicyID.
+* `false`: Ne pas associer le volume à la stratégie QoS spécifiée dans le paramètre QoSPolicyID.  Si la valeur est fausse, toute association de stratégie existante est supprimée, que vous spécifiiez ou non une stratégie QoS dans le paramètre QoS Policy.
+
+| booléen | true | Non 
+
+
+| `attributes` | Liste de paires nom-valeur au format objet JSON.  La taille totale des attributs doit être inférieure à 1000 octets (ou 1 Ko), caractères de formatage JSON inclus. | objet JSON | Aucune | Non 
+
+
+| `dontMoveforIopsRebalance`  a| 
+Empêcher le déplacement d'un volume lors de l'équilibrage de charge avec les IOPS réelles.  Ce paramètre est disponible à partir d'Element 12.8 et n'est effectif que lorsquelink:reference_element_api_enablefeature.html["Équilibrage de charge du volume sur les IOPS réelles"] est activé. Valeurs possibles :
+
+* `true`: L'équilibrage de charge du volume ne repose pas sur les IOPS réelles.
+* `false`: Le volume effectue un équilibrage de charge basé sur les IOPS réelles.
+
+
+*Remarque* : L’équilibrage pour la haute disponibilité (défaillance de nœud) est prioritaire sur `VolumeLoadBalanceOnActualIOPS` et `dontMoveforIopsRebalance` .
+| booléen | FAUX | Non 
+
+
+| `enable512e`  a| 
+Activer l'émulation de secteur de 512 octets. Valeurs possibles :
+
+* `true`Le volume assure une émulation de secteur de 512 octets.
+* `false`L'émulation 512e n'est pas activée.
+
+| booléen | Aucune | Oui 
+
+
+| `enableSnapMirrorReplication`  a| 
+Détermine si le volume peut être utilisé pour la réplication avec les points de terminaison SnapMirror . Valeurs possibles :
+
+* `true`
+* `false`
+
+| booléen | FAUX | Non 
+
+
+| `fifoSize` | Spécifie le nombre maximal d'instantanés Premier entré, premier sorti (FIFO) pris en charge par le volume.  Notez que les instantanés FIFO et non-FIFO utilisent tous deux le même pool d'emplacements d'instantanés disponibles sur un volume.  Utilisez cette option pour limiter la consommation des emplacements de snapshots FIFO disponibles.  Si cette valeur est omise, la valeur par défaut est 24. | entier | 24 | Non 
+
+
+| `minFifoSize` | Spécifie le nombre minimal d'emplacements d'instantanés FIFO (First-In-First-Out) réservés par le volume.  Cela garantit que si vous utilisez à la fois des instantanés FIFO et des instantanés non-FIFO sur un volume, les instantanés non-FIFO ne consomment pas involontairement trop d'emplacements FIFO.  Cela garantit également qu'au moins ce nombre d'instantanés FIFO sont toujours disponibles.  Étant donné que les instantanés FIFO et non-FIFO partagent le même pool, `minFifoSize` réduit d'autant le nombre total d'instantanés non-FIFO possibles.  Si cette valeur est omise, la valeur par défaut est 0. | entier | 0 | Non 
+
+
+| `name` | Nom du groupe d'accès au volume (peut être spécifié par l'utilisateur).  L'originalité n'est pas obligatoire, mais recommandée.  Doit comporter entre 1 et 64 caractères. | chaîne | Aucune | Oui 
+
+
+| `qos`  a| 
+Paramètres initiaux de qualité de service pour ce volume.  Les valeurs par défaut seront utilisées si aucune n'est spécifiée. Valeurs possibles :
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+| objet QoS | Aucune | Non 
+
+
+| `qosPolicyID` | L'identifiant de la politique dont les paramètres QoS doivent être appliqués aux volumes spécifiés.  Ce paramètre est incompatible avec le `qos` paramètre. | entier | Aucune | Non 
+
+
+| `totalSize` | Taille totale du volume, en octets.  La taille est arrondie au mégaoctet supérieur. | entier | Aucune | Oui 
+|===
+
+
+== Valeurs de retour
+
+Cette méthode renvoie les valeurs suivantes :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+volume
+ a| 
+Objet contenant des informations sur le volume nouvellement créé.
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+
+
+ a| 
+volumeID
+ a| 
+L'identifiant du volume nouvellement créé.
+ a| 
+entier
+
+
+
+ a| 
+courbe
+ a| 
+La courbe est un ensemble de paires clé-valeur.  Les clés correspondent aux tailles d'E/S en octets.  Les valeurs représentent le coût d'exécution d'une opération d'E/S à une taille d'E/S spécifique.  La courbe est calculée par rapport à une opération de 4096 octets fixée à 100 IOPS.
+ a| 
+objet JSON
+
+|===
+
+
+== Exemple de demande
+
+Les requêtes pour cette méthode sont similaires à l'exemple suivant :
+
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+      "name": "testit",
+      "accountID": 22,
+      "dontMoveForIopsRebalance": true,
+      "totalSize": 100000000000,
+      "enable512e": false,
+      "attributes": {},
+      "qos": {
+         "minIOPS": 500,
+         "maxIOPS": 27000,
+         "burstIOPS": 27000,
+         "burstTime": 60
+      }
+   },
+   "id": 1
+}
+----
+
+
+== Exemple de réponse
+
+Cette méthode renvoie une réponse similaire à l'exemple suivant :
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+        },
+        "volume": {
+            "access": "readWrite",
+            "accountID": 22,
+            "attributes": {},
+            "blockSize": 4096,
+            "createTime": "2024-04-02T13:03:02Z",
+            "currentProtectionScheme": "doubleHelix",
+            "deleteTime": "",
+            "dontMoveForIopsRebalance": true,
+            "enable512e": false,
+            "enableSnapMirrorReplication": false,
+            "fifoSize": 24,
+            "iqn": "iqn.2010-01.com.solidfire:mysqldata.677",
+            "lastAccessTime": null,
+            "lastAccessTimeIO": null,
+            "minFifoSize": 0,
+            "name": "testit",
+            "previousProtectionScheme": null,
+            "purgeTime": "",
+            "qos": {
+                "burstIOPS": 27000,
+                "burstTime": 60,
+                "curve": {
+                    "1048576": 15000,
+                    "131072": 1950,
+                    "16384": 270,
+                    "262144": 3900,
+                    "32768": 500,
+                    "4096": 100,
+                    "524288": 7600,
+                    "65536": 1000,
+                    "8192": 160
+                },
+                "maxIOPS": 27000,
+                "minIOPS": 500
+            },
+            "qosPolicyID": null,
+            "scsiEUIDeviceID": "3365657500000140f47acc0100000000",
+            "scsiNAADeviceID": "6f47acc1000000003365657500000140",
+            "sliceCount": 0,
+            "status": "active",
+            "totalSize": 1000000716800,
+            "virtualVolumeID": null,
+            "volumeAccessGroups": [],
+            "volumeConsistencyGroupUUID": "8ed68e57-13ee-47df-8381-29b125142718",
+            "volumeID": 320,
+            "volumePairs": [],
+            "volumeUUID": "e0e2c938-4ecd-4de9-a1be-f6b17c93ce5d"
+        },
+        "volumeID": 320
+    }
+}
+----
+
+
+== Nouveautés depuis la version
+
+9,6
+
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_getdefaultqos.adoc[Obtenir la QoS par défaut]

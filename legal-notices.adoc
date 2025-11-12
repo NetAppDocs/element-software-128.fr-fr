@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: legal-notices.html 
+keywords:  
+summary:  
+---
+= Mentions légales
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+Les mentions légales donnent accès aux déclarations de droits d'auteur, aux marques déposées, aux brevets et bien plus encore.
+
+
+
+== Copyright
+
+link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/company/legal/copyright/"^]
+
+
+
+== Marques de commerce
+
+NETAPP, le logo NETAPP et les marques répertoriées sur la page Marques NetApp sont des marques commerciales de NetApp, Inc. Les autres noms de sociétés et de produits peuvent être des marques commerciales de leurs propriétaires respectifs.
+
+link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/company/legal/trademarks/"^]
+
+
+
+== Brevets
+
+Une liste actuelle des brevets détenus par NetApp est disponible à l'adresse suivante :
+
+link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf"^]
+
+
+
+== Politique de confidentialité
+
+link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
+
+
+
+== Open source
+
+Les fichiers d'avis fournissent des informations sur les droits d'auteur et les licences tiers utilisés dans les logiciels NetApp .
+
+* link:./media/Element_Software_12.8.pdf["Avis concernant le logiciel Element 12.8"^]
+* link:./media/Element_Software_12.7.pdf["Avis concernant le logiciel Element 12.7"^]
+* link:./media/Ember_OS_12.7.pdf["Avis concernant Ember OS 12.7"^]
+* link:./media/mNode_12.7.pdf["Avis concernant le nœud de gestion 12.7"^]
+* link:./media/Element_Software_12.5.pdf["Avis concernant le logiciel Element 12.5"^]
+* link:./media/mNode_12.5.pdf["Avis concernant le nœud de gestion 12.5"^]
+* link:./media/mgmt_svcs_2.27_notice.pdf["Avis concernant les services de gestion 2.27.40 (plug-in NetApp Element pour VMware vCenter Server 5.5.16)"^]
+* link:./media/mgmt_svcs_2.26_notice.pdf["Avis relatif aux services de gestion 2.26.30 (Plug-in NetApp Element pour VMware vCenter Server 5.4.1)"^]
+* link:./media/mgmt_svcs_2.25_notice.pdf["Avis relatif aux services de gestion 2.25.42 (Plug-in NetApp Element pour VMware vCenter Server 5.3.9)"^]
+* link:./media/mgmt_svcs_2.24_notice.pdf["Avis relatif aux services de gestion 2.24.40 (Plug-in NetApp Element pour VMware vCenter Server 5.2.12)"^]
+* link:./media/mgmt_svcs_2.23_notice.pdf["Avis concernant les services de gestion 2.23.64 (Plug-in NetApp Element pour VMware vCenter Server 5.1.12)"^]
+* link:./media/mgmt_svcs_2.22_notice.pdf["Avis concernant les services de gestion 2.22.7 (Plug-in NetApp Element pour VMware vCenter Server 5.0.37)"^]
+* link:./media/mgmt_svcs_2.21_notice.pdf["Avis relatif aux services de gestion 2.21.61 (Plug-in NetApp Element pour VMware vCenter Server 4.10.12)"^]
+* link:./media/mgmt_2.20_notice.pdf["Avis concernant les services de gestion 2.20.69 (module d'extension NetApp Element pour vCenter Server 4.9.14)"^]
+* link:./media/mgmt_2.19_notice.pdf["Avis relatif aux services de gestion 2.19.48 (Plug-in NetApp Element pour vCenter Server 4.8.34)"^]
+* link:./media/mgmt_svcs_2.18.pdf["Avis relatif aux services de gestion 2.18.91 (Plug-in NetApp Element pour vCenter Server 4.7.10)"^]
+* link:./media/mgmt_2.17.56_notice.pdf["Avis concernant les services de gestion 2.17.56 (Plug-in NetApp Element pour vCenter Server 4.6.32)"^]
+* link:./media/mgmt-217.pdf["Avis concernant les services de gestion 2.17.52 (Plug-in NetApp Element pour vCenter Server 4.6.29)"^]
+* link:./media/mgmt-216.pdf["Avis concernant les services de gestion 2.16 (module d'extension NetApp Element pour vCenter Server 4.6.29)"^]
+* link:./media/mgmt-214.pdf["Avis concernant les services de gestion 2.14 (module d'extension NetApp Element pour vCenter Server 4.5.42)"^]
+* link:./media/mgmt-213.pdf["Avis concernant les services de gestion 2.13 (module d'extension NetApp Element pour vCenter Server 4.5.42)"^]
+* link:./media/storage_firmware_bundle_2.182.0_notices.pdf["Avis concernant le module de microprogramme de stockage 2.182.0"^]
+* link:./media/storage_firmware_bundle_2.175.0_notices.pdf["Avis concernant le module de microprogramme de stockage 2.175.0"^]
+* link:./media/storage_firmware_bundle_2.164.0_notices.pdf["Avis concernant le module de microprogramme de stockage 2.164.0"^]
+* link:./media/storage_firmware_bundle_2.150_notices.pdf["Avis concernant le module de microprogramme de stockage 2.150"^]
+* link:./media/storage_firmware_bundle_2.146_notices.pdf["Avis concernant le module de microprogramme de stockage 2.146"^]
+* link:./media/storage_firmware_bundle_2.99_notices.pdf["Avis concernant le pack de microprogrammes de stockage 2.99.2"^]
+* link:./media/storage_firmware_bundle_2.76_notices.pdf["Avis concernant le module complémentaire de microprogramme de stockage 2.76"^]
+* link:./media/storage_firmware_bundle_2.27_notices.pdf["Avis concernant le module de microprogramme de stockage 2.27"^]
+

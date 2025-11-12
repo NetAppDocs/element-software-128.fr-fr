@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_storagecontainer.html 
+sidebar: sidebar 
+keywords: object,objects,storagecontainer 
+summary: 'L"objet storageContainer contient les attributs d"un conteneur de stockage de volume virtuel.  Vous pouvez récupérer ces informations pour chaque conteneur de stockage du cluster à l"aide de la méthode API ListStorageContainers.' 
+---
+= conteneur de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet storageContainer contient les attributs d'un conteneur de stockage de volume virtuel.  Vous pouvez récupérer ces informations pour chaque conteneur de stockage du cluster en utilisant `ListStorageContainers` Méthode API.
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+identifiant de compte
+ a| 
+L'identifiant du compte du système de stockage associé au conteneur de stockage.
+ a| 
+entier
+
+
+
+ a| 
+initiateurSecret
+ a| 
+Le secret d'authentification CHAP pour l'initiateur associé au conteneur de stockage.
+ a| 
+chaîne
+
+
+
+ a| 
+nom
+ a| 
+Le nom du conteneur de stockage.
+ a| 
+chaîne
+
+
+
+ a| 
+type de point de terminaison de protocole
+ a| 
+Type de point de terminaison du protocole du conteneur de stockage.  SCSI est la seule valeur valide.
+ a| 
+chaîne
+
+
+
+ a| 
+statut
+ a| 
+État du conteneur de stockage. Valeurs possibles :
+
+* Actif : Le conteneur de stockage est en cours d'utilisation.
+* Verrouillé : Le conteneur de stockage est verrouillé.
+
+ a| 
+chaîne
+
+
+
+ a| 
+ID du conteneur de stockage
+ a| 
+L'identifiant unique du conteneur de stockage.
+ a| 
+UUID
+
+
+
+ a| 
+cible secrète
+ a| 
+Le secret d'authentification CHAP pour la cible associée au conteneur de stockage.
+ a| 
+chaîne
+
+
+
+ a| 
+volumes virtuels
+ a| 
+Liste des identifiants des volumes virtuels associés au conteneur de stockage.
+ a| 
+tableau UUID
+
+|===
+
+
+== Trouver plus d'informations
+
+xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]

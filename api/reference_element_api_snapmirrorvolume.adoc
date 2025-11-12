@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_snapmirrorvolume.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolume 
+summary: 'L"objet snapMirrorVolume contient des informations sur un volume ONTAP .' 
+---
+= snapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'objet snapMirrorVolume contient des informations sur un volume ONTAP .
+
+
+
+== membres de l'objet
+
+Cet objet contient les membres suivants :
+
+|===
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+L'identifiant du système ONTAP de destination.
+ a| 
+entier
+
+
+
+ a| 
+nom
+ a| 
+Le nom du volume.
+ a| 
+chaîne
+
+
+
+ a| 
+taper
+ a| 
+Le type de volume. Valeurs possibles :
+
+* rw : Volume de lecture-écriture
+* ls : Volume de partage de charge
+* dp : Volume de protection des données
+
+ a| 
+chaîne
+
+
+
+ a| 
+serveur virtuel
+ a| 
+Le nom du serveur virtuel propriétaire de ce volume.
+ a| 
+chaîne
+
+
+
+ a| 
+aggrName
+ a| 
+Le nom de l'agrégat contenant.
+ a| 
+chaîne
+
+
+
+ a| 
+État
+ a| 
+L'état du volume. Valeurs possibles :
+
+* en ligne
+* limité
+* hors ligne
+* mixte
+
+ a| 
+chaîne
+
+
+
+ a| 
+taille
+ a| 
+La taille totale du système de fichiers (en octets) du volume.
+ a| 
+chaîne
+
+
+
+ a| 
+taille disponible
+ a| 
+La taille (en octets) de l'espace disponible dans le volume.
+ a| 
+chaîne
+
+|===

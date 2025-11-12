@@ -1,0 +1,103 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: 'L"interface utilisateur Web du logiciel Element utilise la méthode ModifySnapMirrorEndpoint pour modifier le nom et les attributs de gestion d"un point de terminaison SnapMirror .' 
+---
+= ModifierSnapMirrorEndpoint
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'interface utilisateur Web du logiciel Element utilise `ModifySnapMirrorEndpoint` Méthode permettant de modifier le nom et les attributs de gestion d'un point de terminaison SnapMirror .
+
+
+
+== Paramètres
+
+Cette méthode possède les paramètres d'entrée suivants :
+
+|===
+
+
+| Nom | Description | Type | Valeur par défaut | Obligatoire 
+
+
+ a| 
+SnapMirrorEndpointID
+ a| 
+Le point de terminaison SnapMirror à modifier.
+ a| 
+entier
+ a| 
+Aucune
+ a| 
+Oui
+
+
+
+ a| 
+gestionIP
+ a| 
+Nouvelle adresse IP de gestion pour le système ONTAP .
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+nom d'utilisateur
+ a| 
+Le nouveau nom d'utilisateur de gestion pour le système ONTAP .
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+
+
+ a| 
+mot de passe
+ a| 
+Le nouveau mot de passe de gestion du système ONTAP .
+ a| 
+chaîne
+ a| 
+Aucune
+ a| 
+Non
+
+|===
+
+
+== valeur de retour
+
+Cette méthode a la valeur de retour suivante :
+
+|===
+
+
+| Nom | Description | Type 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+Informations concernant le point de terminaison SnapMirror modifié.
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== Nouveautés depuis la version
+
+10,0

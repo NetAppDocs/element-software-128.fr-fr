@@ -1,0 +1,146 @@
+---
+permalink: storage/reference_system_manage_fips_ssl_cipher_changes.html 
+sidebar: sidebar 
+keywords: fips, ssl ciphers, 140-2, encryption algorithms 
+summary: Les chiffrements SSL sont des algorithmes de chiffrement utilisés par les hôtes pour établir une communication sécurisée.  Le logiciel Element prend en charge des chiffrements standard et des chiffrements non standard lorsque le mode FIPS 140-2 est activé. 
+---
+= Chiffrements SSL
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Les chiffrements SSL sont des algorithmes de chiffrement utilisés par les hôtes pour établir une communication sécurisée.  Le logiciel Element prend en charge des chiffrements standard et des chiffrements non standard lorsque le mode FIPS 140-2 est activé.
+
+Les listes suivantes fournissent les algorithmes de chiffrement SSL (Secure Socket Layer) standard pris en charge par le logiciel Element et les algorithmes de chiffrement SSL pris en charge lorsque le mode FIPS 140-2 est activé :
+
+* *FIPS 140-2 désactivé*
++
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 (dh 2048) - A
+
++
+TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (dh 2048) - A
+
++
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 (dh 2048) - A
+
++
+TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (dh 2048) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_128_CBC_SHA256 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_128_GCM_SHA256 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_256_GCM_SHA384 (secp256r1) - A
+
++
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+
++
+TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_128_CBC_SHA256 (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_128_GCM_SHA256 (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_256_CBC_SHA256 (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_256_GCM_SHA384 (rsa 2048) - A
+
++
+TLS_RSA_WITH_CAMELLIA_128_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_WITH_CAMELLIA_256_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_WITH_IDEA_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_AVEC_RC4_128_MD5 (rsa 2048) - C
+
++
+TLS_RSA_AVEC_RC4_128_SHA (rsa 2048) - C
+
++
+TLS_RSA_WITH_SEED_CBC_SHA (rsa 2048) - A
+
+* *FIPS 140-2 activé*
++
+TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 (dh 2048) - A
+
++
+TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (dh 2048) - A
+
++
+TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 (dh 2048) - A
+
++
+TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (dh 2048) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_128_CBC_SHA256 (sect571r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_128_CBC_SHA256 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_128_GCM_SHA256 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_128_GCM_SHA256 (sect571r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_256_CBC_SHA384 (sect571r1) - A
+
++
+TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_256_GCM_SHA384 (secp256r1) - A
+
++
+TLS_ECDHE_RSA_AVEC_AES_256_GCM_SHA384 (sect571r1) - A
+
++
+TLS_RSA_WITH_3DES_EDE_CBC_SHA (rsa 2048) - C
+
++
+TLS_RSA_WITH_AES_128_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_128_CBC_SHA256 (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_128_GCM_SHA256 (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_256_CBC_SHA (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_256_CBC_SHA256 (rsa 2048) - A
+
++
+TLS_RSA_WITH_AES_256_GCM_SHA384 (rsa 2048) - A
+
+
+
+
+
+== Trouver plus d'informations
+
+xref:task_system_manage_fips_enable_fips_140_2_for_https.adoc[Activez la norme FIPS 140-2 pour HTTPS sur votre cluster]

@@ -1,0 +1,47 @@
+---
+permalink: storage/task_data_protection_create_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, create, volumes, recurring schedule 
+summary: 'Vous pouvez programmer la prise d"un instantané d"un ou plusieurs volumes à intervalles spécifiés.' 
+---
+= Créer un planning instantané
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez programmer la prise d'un instantané d'un ou plusieurs volumes à intervalles spécifiés.
+
+Lorsque vous configurez une planification de capture instantanée, vous pouvez choisir des intervalles de temps basés sur les jours de la semaine ou les jours du mois.  Vous pouvez également créer une planification récurrente et spécifier les jours, les heures et les minutes avant la prochaine prise de cliché.
+
+Si vous programmez une capture instantanée à un intervalle de temps qui n'est pas divisible par 5 minutes, la capture instantanée s'exécutera à la prochaine période de temps divisible par 5 minutes.  Par exemple, si vous programmez une capture instantanée pour qu'elle s'exécute à 12:42:00 UTC, elle s'exécutera à 12:45:00 UTC.  Vous ne pouvez pas programmer l'exécution d'un instantané à des intervalles inférieurs à 5 minutes.
+
+À partir d'Element 12.5, vous pouvez activer la création en série et choisir de conserver les instantanés selon le principe du premier entré, premier sorti (FIFO) depuis l'interface utilisateur.
+
+* L'option *Activer la création en série* spécifie qu'un seul instantané est répliqué à la fois.  La création d'un nouvel instantané échoue lorsqu'une réplication d'instantané précédente est toujours en cours.  Si la case n'est pas cochée, la création d'un instantané est autorisée même si une autre réplication d'instantané est en cours.
+* L'option *FIFO* permet de conserver un nombre constant des derniers instantanés.  Lorsque la case est cochée, les instantanés sont conservés selon le principe du premier entré, premier sorti (FIFO).  Une fois que la file d'attente des instantanés FIFO atteint sa profondeur maximale, l'instantané FIFO le plus ancien est supprimé lorsqu'un nouvel instantané FIFO est inséré.
+
+
+.Étapes
+. Sélectionnez *Protection des données* > *Planifications*.
+. Sélectionnez *Créer un planning*.
+. Dans le champ *ID de volume CSV*, saisissez un seul ID de volume ou une liste d'ID de volume séparés par des virgules à inclure dans l'opération de snapshot.
+. Saisissez un nouveau nom pour le planning.
+. Sélectionnez un type de planification et définissez-la à partir des options proposées.
+. *Facultatif :* Sélectionnez *Planification récurrente* pour répéter indéfiniment la planification de la capture instantanée.
+. *Facultatif :* Saisissez un nom pour le nouvel instantané dans le champ *Nom du nouvel instantané*.
++
+Si vous laissez ce champ vide, le système utilisera la date et l'heure de création de l'instantané comme nom.
+
+. *Facultatif :* Cochez la case *Inclure les instantanés dans la réplication lors du couplage* pour vous assurer que les instantanés sont capturés dans la réplication lorsque le volume parent est couplé.
+. *Facultatif :* Cochez la case *Activer la création en série* pour vous assurer qu’un seul instantané est répliqué à la fois.
+. Pour définir la durée de conservation de l'instantané, sélectionnez parmi les options suivantes :
++
+** *Facultatif :* Cochez la case *FIFO (Premier entré, premier sorti)* pour conserver un nombre constant des derniers instantanés.
+** Sélectionnez *Conserver indéfiniment* pour conserver l'instantané sur le système de manière permanente.
+** Sélectionnez *Définir la période de conservation* et utilisez les champs de date pour choisir la durée pendant laquelle le système conservera l'instantané.
+
+
+. Sélectionnez *Créer un planning*.
+

@@ -1,0 +1,41 @@
+---
+permalink: storage/task-element-replication-update-replication-relationship-manually.html 
+sidebar: sidebar 
+keywords: update, replication, relationship, manually 
+summary: 'Vous devrez peut-être mettre à jour manuellement une relation de réplication si une mise à jour échoue en raison d"une erreur réseau.' 
+---
+= Mettre à jour manuellement une relation de réplication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous devrez peut-être mettre à jour manuellement une relation de réplication si une mise à jour échoue en raison d'une erreur réseau.
+
+.À propos de cette tâche
+Vous devez spécifier le chemin source de l'élément dans le formulaire `<hostip:>/lun/<name>` , où "`lun`" est la chaîne de caractères réelle "`lun`" et `name` est le nom du volume Element.
+
+.Étapes
+. Mettre à jour manuellement une relation de réplication :
++
+`snapmirror update -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Pour connaître la syntaxe complète des commandes, consultez la page de manuel.
+
++
+[NOTE]
+====
+La commande échoue si une copie instantanée commune n'existe pas sur la source et la destination.  Utiliser `snapmirror initialize` pour réinitialiser la relation.
+
+====
++
+L'exemple suivant met à jour la relation entre le volume source `0005` à l'adresse IP 10.0.0.11 et au volume de destination `volA_dst` sur `svm_backup` :
+
++
+[listing]
+----
+cluster_src::> snapmirror update -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

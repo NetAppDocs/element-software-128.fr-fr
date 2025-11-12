@@ -1,0 +1,44 @@
+---
+permalink: storage/reference_replication_volume_pairing_messages.html 
+sidebar: sidebar 
+keywords: volume pairing, messages, replication, data protection 
+summary: 'Vous pouvez consulter les messages de jumelage de volumes pendant le processus de jumelage initial depuis la page « Paires de volumes » sous l’onglet « Protection des données ».  Ces messages peuvent s"afficher à la fois sur la source et sur la cible de la paire dans la vue de liste des volumes répliqués.' 
+---
+= Messages de couplage de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les messages de jumelage de volumes pendant le processus de jumelage initial depuis la page « Paires de volumes » sous l’onglet « Protection des données ».  Ces messages peuvent s'afficher à la fois sur la source et sur la cible de la paire dans la vue de liste des volumes répliqués.
+
+* *PauseDéconnecté*
++
+Les appels de procédure distante (RPC) de réplication ou de synchronisation de la source ont expiré.  La connexion au cluster distant a été perdue.  Vérifiez les connexions réseau au cluster.
+
+* *Reprise de la connexion*
++
+La synchronisation de la réplication distante est maintenant active.  Début du processus de synchronisation et attente des données.
+
+* *Reprise de la synchronisation RR*
++
+Une copie unique des métadonnées du volume est effectuée sur le cluster apparié.
+
+* *Reprise de la synchronisation locale*
++
+Une copie en double hélice des métadonnées du volume est en cours de création pour le cluster apparié.
+
+* *Reprise du transfert de données*
++
+Le transfert de données a repris.
+
+* *Actif*
++
+Les volumes sont appariés et les données sont envoyées de la source au volume cible, et les données sont synchronisées.
+
+* *Inactif*
++
+Aucune activité de réplication n'est en cours.
+
+

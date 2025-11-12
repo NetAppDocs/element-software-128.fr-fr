@@ -1,0 +1,355 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_install.html 
+summary: Vous pouvez installer le nœud de gestion pour votre cluster exécutant le logiciel NetApp Element . 
+keywords: netapp, element, management node, mnode, storage, install 
+---
+= Installer un nœud de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez installer manuellement le nœud de gestion de votre cluster exécutant le logiciel NetApp Element en utilisant l'image appropriée à votre configuration.
+
+Cette procédure manuelle est destinée aux administrateurs de stockage 100 % flash SolidFire qui n'utilisent pas le moteur de déploiement NetApp pour l'installation du nœud de gestion.
+
+.Avant de commencer
+* Votre version de cluster exécute le logiciel NetApp Element 11.3 ou une version ultérieure.
+* Votre installation utilise IPv4.  Le nœud de gestion 11.3 ne prend pas en charge IPv6.
++
+
+NOTE: Si vous avez besoin de la prise en charge IPv6, vous pouvez utiliser le nœud de gestion 11.1.
+
+* Vous êtes autorisé à télécharger des logiciels depuis le site d'assistance NetApp .
+* Vous avez identifié le type d'image de nœud de gestion qui convient à votre plateforme :
++
+[cols="30,30"]
+|===
+| Plate-forme | type d'image d'installation 
+
+
+| Microsoft Hyper-V | .iso 
+
+
+| KVM | .iso 
+
+
+| VMware vSphere | .iso, .ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+* (Nœud de gestion 12.0 et versions ultérieures avec serveur proxy) Vous avez mis à jour NetApp Hybrid Cloud Control vers la version 2.16 des services de gestion avant de configurer un serveur proxy.
+
+
+.À propos de cette tâche
+Le nœud de gestion Element 12.2 est une mise à niveau optionnelle.  Cela n'est pas nécessaire pour les déploiements existants.
+
+Avant de suivre cette procédure, vous devez comprendrelink:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Volumes persistants"] et que vous souhaitiez ou non les utiliser.  Les volumes persistants sont optionnels mais recommandés pour la récupération des données de configuration du nœud de gestion en cas de perte d'une machine virtuelle (VM).
+
+
+
+== Étape 1 : Téléchargez l’ISO ou l’OVA et déployez la machine virtuelle.
+
+Téléchargez le fichier ISO ou OVA approprié depuis le site de support NetApp et installez la machine virtuelle.
+
+.Étapes
+. Téléchargez le fichier OVA ou ISO pour votre installation depuis le site web.link:https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Element Software"^] page sur le site d'assistance NetApp .
++
+.. Sélectionnez *Télécharger la dernière version* et acceptez le CLUF.
+.. Sélectionnez l'image du nœud de gestion que vous souhaitez télécharger.
+
+
+. Si vous avez téléchargé le fichier OVA, suivez ces étapes :
++
+.. Déployez l'OVA.
+.. Si votre cluster de stockage se trouve sur un sous-réseau distinct de votre nœud de gestion (eth0) et que vous souhaitez utiliser des volumes persistants, ajoutez un deuxième contrôleur d'interface réseau (NIC) à la VM sur le sous-réseau de stockage (par exemple, eth1) ou assurez-vous que le réseau de gestion peut router vers le réseau de stockage.
+
+
+. Si vous avez téléchargé l'ISO, suivez ces étapes :
++
+.. Créez une nouvelle machine virtuelle 64 bits à partir de votre hyperviseur avec la configuration suivante :
++
+*** Six processeurs virtuels
+*** 24 Go de RAM
+*** Type d'adaptateur de stockage défini sur LSI Logic Parallel
++
+
+IMPORTANT: Le système de gestion par défaut de votre nœud peut être LSI Logic SAS.  Dans la fenêtre *Nouvelle machine virtuelle*, vérifiez la configuration de l'adaptateur de stockage en sélectionnant *Personnaliser le matériel* > *Matériel virtuel*.  Si nécessaire, remplacez LSI Logic SAS par *LSI Logic Parallel*.
+
+*** Disque virtuel de 400 Go, provisionnement dynamique
+*** Une interface réseau virtuelle avec accès internet et accès au stockage MVIP.
+*** (Optionnel) Une interface réseau virtuelle avec accès au réseau de gestion du cluster de stockage.  Si votre cluster de stockage se trouve sur un sous-réseau distinct de votre nœud de gestion (eth0) et que vous souhaitez utiliser des volumes persistants, ajoutez un deuxième contrôleur d'interface réseau (NIC) à la VM sur le sous-réseau de stockage (eth1) ou assurez-vous que le réseau de gestion peut router vers le réseau de stockage.
++
+
+IMPORTANT: N’allumez pas la machine virtuelle avant l’étape qui vous invitera à le faire plus loin dans cette procédure.
+
+
+
+.. Attachez l'ISO à la VM et démarrez sur l'image d'installation .iso.
++
+
+NOTE: L'installation d'un nœud de gestion à l'aide de cette image peut entraîner un délai de 30 secondes avant l'affichage de l'écran de démarrage.
+
+
+
+. Mettez sous tension la machine virtuelle du nœud de gestion une fois l'installation terminée.
+
+
+
+
+== Étape 2 : Créer le nœud d’administration et configurer le réseau
+
+Une fois l'installation de la machine virtuelle terminée, créez l'utilisateur administrateur du nœud de gestion et configurez le réseau du nœud de gestion.
+
+.Étapes
+. À l'aide de l'interface utilisateur du terminal (TUI), créez un utilisateur administrateur de nœud de gestion.
++
+
+TIP: Pour naviguer dans les options du menu, appuyez sur les touches fléchées Haut ou Bas.  Pour naviguer entre les boutons, appuyez sur Tab.  Pour passer des boutons aux champs, appuyez sur la touche Tab.  Pour naviguer entre les champs, appuyez sur les touches fléchées Haut ou Bas.
+
+. S'il existe un serveur DHCP (Dynamic Host Configuration Protocol) sur le réseau qui attribue des adresses IP avec une unité de transmission maximale (MTU) inférieure à 1500 octets, vous devez effectuer les étapes suivantes :
++
+.. Placez temporairement le nœud de gestion sur un réseau vSphere sans DHCP, tel que iSCSI.
+.. Redémarrez la machine virtuelle ou redémarrez le réseau de la machine virtuelle.
+.. À l'aide de l'interface utilisateur technique (TUI), configurez l'adresse IP correcte sur le réseau de gestion avec une MTU supérieure ou égale à 1500 octets.
+.. Réattribuez le réseau VM correct à la VM.
+
+
++
+
+NOTE: Un serveur DHCP attribuant des adresses IP avec une MTU inférieure à 1500 octets peut vous empêcher de configurer le réseau du nœud de gestion ou d'utiliser l'interface utilisateur du nœud de gestion.
+
+. Configurez le réseau du nœud de gestion (eth0).
++
+
+NOTE: Si vous avez besoin d'une carte réseau supplémentaire pour isoler le trafic de stockage, consultez les instructions relatives à la configuration d'une autre carte réseau :link:task_mnode_install_add_storage_NIC.html["Configurer un contrôleur d'interface réseau (NIC) de stockage"] .
+
+
+
+
+
+== Étape 3 : Configurer la synchronisation de l’heure
+
+Avant de configurer le nœud de gestion, synchronisez l'heure entre le nœud de gestion et le cluster de stockage.
+
+.Étapes
+. Vérifiez que l'heure est synchronisée entre le nœud de gestion et le cluster de stockage à l'aide de NTP :
+
+
+
+NOTE: À partir de l'élément 12.3.1, les sous-étapes (a) à (e) sont exécutées automatiquement.  Pour le nœud de gestion 12.3.1, passez à<<substep_f_install_config_time_sync,sous-étape (f)>> pour terminer la configuration de la synchronisation horaire.
+
+. Connectez-vous au nœud de gestion en utilisant SSH ou la console fournie par votre hyperviseur.
+. Stop NTPD :
++
+[listing]
+----
+sudo service ntpd stop
+----
+. Modifier le fichier de configuration NTP `/etc/ntp.conf` :
++
+.. Commentez les serveurs par défaut(`server 0.gentoo.pool.ntp.org` ) en ajoutant un `#` devant chacun.
+.. Ajoutez une nouvelle ligne pour chaque serveur de temps par défaut que vous souhaitez ajouter. Les serveurs de temps par défaut doivent être les mêmes serveurs NTP que ceux utilisés sur le cluster de stockage que vous utiliserez dans un <<set-up-the-management-node,étape ultérieure>>.
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. Enregistrez le fichier de configuration une fois terminé.
+
+
+. Forcez une synchronisation NTP avec le serveur nouvellement ajouté.
++
+[listing]
+----
+sudo ntpd -gq
+----
+. Redémarrez NTPD.
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_install_config_time_sync]]Désactiver la synchronisation de l'heure avec l'hôte via l'hyperviseur (voici un exemple VMware) :
++
+
+NOTE: Si vous déployez le mNode dans un environnement d'hyperviseur autre que VMware, par exemple à partir de l'image .iso dans un environnement Openstack, reportez-vous à la documentation de l'hyperviseur pour connaître les commandes équivalentes.
+
++
+.. Désactiver la synchronisation horaire périodique :
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. Afficher et confirmer l'état actuel du service :
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. Dans vSphere, vérifiez que le `Synchronize guest time with host` La case correspondante est décochée dans les options de la machine virtuelle.
++
+
+NOTE: Ne pas activer cette option si vous apportez des modifications ultérieures à la machine virtuelle.
+
+
+
+
+
+
+NOTE: Ne modifiez pas le protocole NTP après avoir terminé la configuration de la synchronisation horaire, car cela affectera le protocole NTP lors de son exécution. <<set-up-the-management-node,commande de configuration>> sur le nœud de gestion.
+
+
+
+== Étape 4 : Configurer le nœud de gestion
+
+Configurez le nœud de gestion à l'aide de `setup-mnode` commande.
+
+.Étapes
+. Configurez et exécutez la commande d'installation du nœud de gestion :
++
+
+NOTE: Vous serez invité à saisir vos mots de passe dans une fenêtre sécurisée.  Si votre cluster se trouve derrière un serveur proxy, vous devez configurer les paramètres du proxy pour pouvoir accéder à un réseau public.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/setup-mnode --mnode_admin_user [username] --storage_mvip [mvip] --storage_username [username] --telemetry_active [true]
+----
++
+.. Remplacez la valeur entre crochets [ ] (crochets compris) pour chacun des paramètres obligatoires suivants :
++
+
+NOTE: La forme abrégée du nom de la commande est entre parenthèses ( ) et peut être substituée au nom complet.
+
++
+*** *--mnode_admin_user (-mu) [nom_utilisateur]*: Le nom d'utilisateur du compte administrateur du nœud de gestion.  Il s'agit probablement du nom d'utilisateur du compte utilisateur que vous avez utilisé pour vous connecter au nœud de gestion.
+*** *--storage_mvip (-sm) [Adresse MVIP]*: L'adresse IP virtuelle de gestion (MVIP) du cluster de stockage exécutant le logiciel Element. Configurez le nœud de gestion avec le même cluster de stockage que celui que vous avez utilisé lors de <<configure-time-sync,configuration des serveurs NTP>>.
+*** *--storage_username (-su) [nom_utilisateur]* : Nom d'utilisateur de l'administrateur du cluster de stockage pour le cluster spécifié par le `--storage_mvip` paramètre.
+*** *--telemetry_active (-t) [true]*: Conserver la valeur true qui active la collecte de données pour l'analyse par Active IQ.
+
+
+.. (Facultatif) : Ajoutez les paramètres de point de terminaison Active IQ à la commande :
++
+*** *--remote_host (-rh) [AIQ_endpoint]*: Le point de terminaison où les données de télémétrie Active IQ sont envoyées pour être traitées.  Si le paramètre n'est pas inclus, le point de terminaison par défaut est utilisé.
+
+
+.. (Recommandé) : Ajoutez les paramètres de volume persistants suivants.  Ne modifiez ni ne supprimez le compte et les volumes créés pour la fonctionnalité de volumes persistants, sous peine de perdre vos capacités de gestion.
++
+*** *--use_persistent_volumes (-pv) [true/false, default: false]*: Activer ou désactiver les volumes persistants.  Saisissez la valeur « true » pour activer la fonctionnalité des volumes persistants.
+*** *--persistent_volumes_account (-pva) [nom_du_compte]*: Si `--use_persistent_volumes` Si cette option est activée, utilisez ce paramètre et saisissez le nom du compte de stockage qui sera utilisé pour les volumes persistants.
++
+
+NOTE: Utilisez un nom de compte unique pour les volumes persistants, différent de tout nom de compte existant sur le cluster.  Il est absolument essentiel de séparer le compte des volumes persistants du reste de votre environnement.
+
+*** *--persistent_volumes_mvip (-pvm) [mvip]*: Entrez l'adresse IP virtuelle de gestion (MVIP) du cluster de stockage exécutant le logiciel Element qui sera utilisée avec les volumes persistants.  Cela n'est nécessaire que si plusieurs clusters de stockage sont gérés par le nœud de gestion.  Si plusieurs clusters ne sont pas gérés, le cluster par défaut MVIP sera utilisé.
+
+
+.. Configurer un serveur proxy :
++
+*** *--use_proxy (-up) [true/false, default: false]*: Activer ou désactiver l'utilisation du proxy.  Ce paramètre est nécessaire pour configurer un serveur proxy.
+*** *--proxy_hostname_or_ip (-pi) [hôte]*: Le nom d'hôte ou l'adresse IP du proxy.  Ceci est nécessaire si vous souhaitez utiliser un proxy.  Si vous spécifiez cela, vous serez invité à saisir des informations. `--proxy_port` .
+*** *--proxy_username (-pu) [nom_utilisateur]*: Le nom d'utilisateur du proxy.  Ce paramètre est facultatif.
+*** *--proxy_password (-pp) [mot_de_passe]*: Le mot de passe du proxy.  Ce paramètre est facultatif.
+*** *--proxy_port (-pq) [port, par défaut : 0]*: Le port proxy.  Si vous spécifiez cette option, vous serez invité à saisir le nom d'hôte ou l'adresse IP du proxy.(`--proxy_hostname_or_ip` ).
+*** *--proxy_ssh_port (-ps) [port, par défaut : 443]* : Le port du proxy SSH.  Par défaut, le port utilisé est le 443.
+
+
+.. (Facultatif) Utilisez l'aide relative aux paramètres si vous avez besoin d'informations supplémentaires sur chaque paramètre :
++
+*** *--help (-h)*: Renvoie des informations sur chaque paramètre.  Les paramètres sont définis comme obligatoires ou facultatifs en fonction du déploiement initial.  Les exigences relatives aux paramètres de mise à niveau et de redéploiement peuvent varier.
+
+
+.. Exécutez le `setup-mnode` commande.
+
+
+
+
+
+
+== Étape 5 : Configurer les ressources du contrôleur
+
+Localisez l'ID d'installation et ajoutez une ressource de contrôleur vCenter.
+
+.Étapes
+. Localisez l'identifiant d'installation :
++
+.. Depuis un navigateur, connectez-vous à l'interface utilisateur de l'API REST du nœud de gestion :
+.. Accédez au serveur MVIP de stockage et connectez-vous. Cette action permettra d'accepter le certificat pour l'étape suivante.
+.. Ouvrez l'interface utilisateur de l'API REST du service d'inventaire sur le nœud de gestion :
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Sélectionnez *Autoriser* et complétez les informations suivantes :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+
+
+.. Dans l'interface utilisateur de l'API REST, sélectionnez *GET /installations*.
+.. Sélectionnez *Essayer*.
+.. Sélectionnez *Exécuter*.
+.. À partir du corps de la réponse du code 200, copiez et enregistrez le `id` pour l'installation en vue d'une utilisation ultérieure.
++
+Votre installation possède une configuration de ressources de base qui a été créée lors de l'installation ou de la mise à niveau.
+
+
+
+. Ajoutez un contrôleur vCenter pour NetApp Hybrid Cloud Control aux ressources connues du nœud de gestion :
++
+.. Accédez à l'interface utilisateur de l'API du service mnode sur le nœud de gestion en saisissant l'adresse IP du nœud de gestion suivie de `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Sélectionnez *Autoriser* ou toute icône de verrouillage et procédez comme suit :
++
+... Saisissez le nom d'utilisateur et le mot de passe du cluster.
+... Saisissez l'identifiant du client comme `mnode-client` .
+... Sélectionnez *Autoriser* pour démarrer une session.
+... Ferme la fenêtre.
+
+
+.. Sélectionnez *POST /assets/{asset_id}/controllers* pour ajouter un sous-élément de contrôleur.
++
+
+NOTE: Vous devez créer un nouveau rôle NetApp HCC dans vCenter pour ajouter un sous-actif de contrôleur.  Ce nouveau rôle NetApp HCC limitera la vue des services du nœud de gestion aux seuls actifs NetApp. Voirlink:task_mnode_create_netapp_hcc_role_vcenter.html["Créez un rôle NetApp HCC dans vCenter."] .
+
+.. Sélectionnez *Essayer*.
+.. Saisissez l'identifiant de l'actif de base parent que vous avez copié dans votre presse-papiers dans le champ *asset_id*.
+.. Saisissez les valeurs de charge utile requises avec le type `vCenter` et les identifiants vCenter.
+.. Sélectionnez *Exécuter*.
+
+
+
+
+
+
+== Pour en savoir plus, consultez les informations disponibles.
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Volumes persistants"]
+* link:task_mnode_add_assets.html["Ajouter une ressource de contrôleur au nœud de gestion"]
+* link:task_mnode_install_add_storage_NIC.html["Configurer une carte réseau de stockage"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

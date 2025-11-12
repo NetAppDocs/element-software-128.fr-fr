@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_API.html 
+summary: 'Vous pouvez utiliser l"API du nœud de gestion (mNode) pour mettre à niveau les services système, gérer les ressources et les paramètres du cluster, exécuter des tests et des utilitaires système, configurer Active IQ pour la surveillance du système et activer ou désactiver l"accès SSH du support NetApp pour le dépannage.' 
+keywords: netapp, mnode api, management node api, rest api 
+---
+= Présentation de l'interface utilisateur de l'API REST du nœud de gestion
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+En utilisant l'interface utilisateur de l'API REST intégrée(`https://<ManagementNodeIP>/mnode` ), vous pouvez exécuter ou comprendre les API relatives aux services du nœud de gestion, notamment la configuration du serveur proxy, les mises à jour du niveau de service ou la gestion des actifs.
+
+Tâches que vous pouvez effectuer avec les API REST :
+
+
+
+== Autorisation
+
+* link:task_mnode_api_get_authorizationtouse.html["Obtenir l'autorisation d'utiliser les API REST"]
+
+
+
+
+== Configuration des actifs
+
+* link:task_mnode_enable_activeIQ.html["Activer la surveillance Active IQ et NetApp"]
+* link:task_mnode_configure_proxy_server.html["Configurer un serveur proxy pour le nœud de gestion"]
+* link:task_mnode_multi_vcenter_config.html["Configurer NetApp Hybrid Cloud Control pour plusieurs vCenters"]
+* link:task_mnode_add_assets.html["Ajouter une ressource de contrôleur au nœud de gestion"]
+* link:task_mnode_manage_storage_cluster_assets.html["Créer et gérer des ressources de cluster de stockage"]
+
+
+
+
+== Gestion d'actifs
+
+* link:task_mnode_edit_vcenter_assets.html["Afficher ou modifier les ressources de contrôleur existantes"]
+* link:task_mnode_manage_storage_cluster_assets.html["Créer et gérer des ressources de cluster de stockage"]
+* link:../hccstorage/task-hcc-collectlogs.html#use-the-rest-api-to-collect-netapp-hci-logs["Utilisez l'API REST pour collecter les journaux système Element."]
+* link:task_mnode_api_find_mgmt_svcs_version.html["Vérifier les versions du système d'exploitation et des services du nœud de gestion"]
+* link:task_mnode_logs.html["Récupération des journaux des services de gestion"]
+
+
+[discrete]
+== Trouver plus d'informations
+
+* link:task_mnode_access_ui.html["Accédez au nœud de gestion"]
+* https://docs.netapp.com/us-en/vcp/index.html["Module d'extension NetApp Element pour vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["Documentation logicielle SolidFire et Element"]
+

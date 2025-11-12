@@ -1,0 +1,52 @@
+---
+permalink: storage/task_system_manage_nodes_adding_a_node_to_a_cluster.html 
+sidebar: sidebar 
+keywords: nodes, add, config, cluster, pending, pairs, capacity, rule 
+summary: 'Vous pouvez ajouter des nœuds à un cluster lorsque davantage d"espace de stockage est nécessaire ou après la création du cluster.  Les nœuds nécessitent une configuration initiale lors de leur première mise sous tension.  Une fois le nœud configuré, il apparaît dans la liste des nœuds en attente et vous pouvez l"ajouter à un cluster.' 
+---
+= Ajouter un nœud à un cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez ajouter des nœuds à un cluster lorsque davantage d'espace de stockage est nécessaire ou après la création du cluster.  Les nœuds nécessitent une configuration initiale lors de leur première mise sous tension.  Une fois le nœud configuré, il apparaît dans la liste des nœuds en attente et vous pouvez l'ajouter à un cluster.
+
+La version du logiciel sur chaque nœud d'un cluster doit être compatible.  Lorsque vous ajoutez un nœud à un cluster, celui-ci installe, si nécessaire, la version cluster du logiciel NetApp Element sur le nouveau nœud.
+
+Vous pouvez ajouter des nœuds de capacité inférieure ou supérieure à un cluster existant.  Vous pouvez ajouter des nœuds de plus grande capacité à un cluster pour permettre l'augmentation de sa capacité.  Les nœuds plus volumineux ajoutés à un cluster contenant des nœuds plus petits doivent l'être par paires.  Cela laisse suffisamment d'espace à Double Helix pour déplacer les données en cas de défaillance d'un des nœuds les plus importants.  Vous pouvez ajouter des nœuds de plus petite capacité à un cluster de nœuds plus important pour améliorer les performances.
+
+
+NOTE: Si un nœud nouvellement ajouté représente plus de 50 % de la capacité totale du cluster, une partie de la capacité de ce nœud est rendue inutilisable (« bloquée »), afin qu'il se conforme à la règle de capacité.  Cela restera le cas jusqu'à ce que davantage d'espace de stockage soit ajouté.  Si un nœud très volumineux est ajouté et qu'il enfreint également la règle de capacité, le nœud précédemment bloqué ne le sera plus, tandis que le nœud nouvellement ajouté le deviendra.  Il convient toujours d'ajouter les capacités par paires pour éviter ce problème.  Lorsqu'un nœud devient bloqué, une erreur de cluster strandedCapacity est déclenchée.
+
+https://www.youtube.com/embed/2smVHWkikXY?rel=0["Vidéo NetApp : Faites évoluer votre cluster SolidFire selon vos besoins : étendre un cluster SolidFire"^]
+
+Vous pouvez ajouter des nœuds aux appliances NetApp HCI .
+
+.Étapes
+. Sélectionnez *Cluster* > *Nœuds*.
+. Cliquez sur *En attente* pour afficher la liste des nœuds en attente.
++
+Une fois le processus d'ajout des nœuds terminé, ceux-ci apparaissent dans la liste des nœuds actifs.  D'ici là, les nœuds en attente apparaissent dans la liste des nœuds actifs en attente.
+
++
+SolidFire installe la version logicielle Element du cluster sur les nœuds en attente lorsque vous les ajoutez à un cluster. Cela peut prendre quelques minutes.
+
+. Effectuez l’une des opérations suivantes :
++
+** Pour ajouter des nœuds individuels, cliquez sur l'icône *Actions* du nœud que vous souhaitez ajouter.
+** Pour ajouter plusieurs nœuds, cochez la case des nœuds à ajouter, puis cliquez sur *Actions groupées*.  *Remarque :* Si le nœud que vous ajoutez possède une version du logiciel Element différente de celle exécutée sur le cluster, ce dernier met à jour le nœud de manière asynchrone vers la version du logiciel Element exécutée sur le nœud maître du cluster.  Une fois le nœud mis à jour, il s'ajoute automatiquement au cluster.  Durant ce processus asynchrone, le nœud sera dans un état pendingActive.
+
+
+. Cliquez sur *Ajouter*.
++
+Le nœud apparaît dans la liste des nœuds actifs.
+
+
+
+
+
+== Trouver plus d'informations
+
+xref:concept_system_manage_nodes_node_versioning_and_compatibility.adoc[Versionnage et compatibilité des nœuds]

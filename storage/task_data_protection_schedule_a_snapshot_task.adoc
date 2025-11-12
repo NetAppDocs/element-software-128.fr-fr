@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_schedule_a_snapshot_task.html 
+sidebar: sidebar 
+keywords: snapshot, schedule, volume snapshots, group snapshots 
+summary: 'Vous pouvez protéger les données d"un volume ou d"un groupe de volumes en programmant des instantanés de volume à intervalles spécifiés.  Vous pouvez programmer l"exécution automatique de snapshots de volumes individuels ou de snapshots de groupes.' 
+---
+= Planifiez une prise de vue
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez protéger les données d'un volume ou d'un groupe de volumes en programmant des instantanés de volume à intervalles spécifiés.  Vous pouvez programmer l'exécution automatique de snapshots de volumes individuels ou de snapshots de groupes.
+
+Lorsque vous configurez une planification de capture instantanée, vous pouvez choisir des intervalles de temps basés sur les jours de la semaine ou les jours du mois.  Vous pouvez également spécifier les jours, les heures et les minutes avant la prochaine capture d'écran.  Vous pouvez stocker les instantanés obtenus sur un système de stockage distant si le volume est répliqué.
+
+
+
+== Trouver plus d'informations
+
+* xref:task_data_protection_create_a_snapshot_schedule.adoc[Créer un planning instantané]
+* xref:task_data_protection_edit_a_snapshot_schedule.adoc[Modifier un calendrier instantané]
+* xref:task_data_protection_delete_a_snapshot_schedule.adoc[Supprimer une planification d'instantané]
+* xref:task_data_protection_copy_a_snapshot_schedule.adoc[Copier un planning instantané]
+

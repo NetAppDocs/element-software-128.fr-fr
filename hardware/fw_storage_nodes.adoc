@@ -1,0 +1,380 @@
+---
+permalink: hardware/fw_storage_nodes.html 
+sidebar: sidebar 
+keywords: documentation, earlier, previous, versions, storage, nodes 
+summary: Versions de microprogrammes et de pilotes prises en charge pour les nœuds de stockage. 
+---
+= nœuds de stockage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Versions de firmware prises en charge pour les nœuds de stockage des séries H et SolidFire .
+
+* <<H610S>>
+* <<H410S>>
+* <<sf_nodes,SF38410, SF19210, SF9605 et SF4805>>
+
+
+
+
+== H610S
+
+*Numéro de modèle (partie familiale) :* H610S *Numéros de modèle complets :* H610S-1, H610S-1-NE, H610S-2, H610S-2-NE, H610S-4, H610S-4-NE et H610S-2F
+
+
+
+=== Micrologiciel des composants géré par un ensemble de micrologiciels de stockage
+
+Durant la période 11.x, le logiciel NetApp Element était le seul moyen de diffuser le firmware.  À partir d'Element 12.0, le concept de *Storage Firmware Bundle* a été introduit et les mises à jour du firmware étaient désormais possibles grâce à un Storage Firmware Bundle publié indépendamment ou à un Storage Firmware Bundle inclus dans une version Element 12.x.
+
+
+NOTE: Un tiret (*-*) dans le tableau suivant indique que le composant matériel particulier n'était PAS pris en charge dans ce véhicule de version donné.
+
+[cols="26*"]
+|===
+| Véhicule de libération | Date de sortie | BIOS | BMC | CPLD | Carte réseau 10/25 GbE CX4 | Carte réseau 10/25 GbE CX5 | Cache NVDIMM Module NVDIMM intelligent (Gen1) | Cache NVDIMM Source d'énergie (BPM) Intelligent (Gen1) | Cache NVDIMM Module NVDIMM intelligent (Gen2) | Cache NVDIMM Source d'énergie (BPM) Intelligent (Gen2) | Module NVDIMM cache Micron (Gen1) | Source d'énergie pour mémoire cache NVDIMM (PGEM) Agigatech (Gen1) | Module NVDIMM cache Micron (Gen2) | Source d'énergie pour mémoire cache NVDIMM (PGEM) Agigatech (Gen2) | Source d'énergie pour mémoire cache NVDIMM (PGEM) Agigatech (Gen3) | Lecteur Samsung PM963 (SED) | Lecteur Samsung PM963 (N-SED) | Lecteur Samsung PM983 (SED) | Lecteur Samsung PM983 (N-SED) | Lecteur Kioxia CD5 (SED) | Lecteur Kioxia CD5 (N-SED) | Lecteur CD5 (FIPS) | Lecteur Samsung PM9A3 (SED) | Entraînement SK Hynix PE8010 (SED) | Entraînement SK Hynix PE8010 (N-SED) 
+
+
+| *Pack de micrologiciels de stockage 2.182.0* | 17/10/2024 | 3B14 | 4.01.07 | 122 | 14.25.1020 | 16.32.1010 | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,5 | 2,17 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5A02Q | 11093A10 | 110B3A10 
+
+
+| *Pack de micrologiciels de stockage 2.175.0* | 15/06/2023 | 3B11 | 3.94.07 | 122 | 14.25.1020 | 16.32.1010 | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,5 | 2,17 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5602Q | 11092A10 | 110B2A10 
+
+
+| *Pack de micrologiciels de stockage 2.164.0* | 20/10/2022 | 3B11 | 3.94.07 | 122 | 14.25.1020 | 16.32.1010 | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,3 | 2,16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5602Q | 11092A10 | 110B2A10 
+
+
+| *Pack de micrologiciels de stockage 2.164.0 à NetApp Element 12.7* | 20/10/2022 | 3B11 | 3.94.07 | 122 | 14.25.1020 | 16.32.1010 | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,3 | 2,16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5602Q | 11092A10 | 110B2A10 
+
+
+| *Pack de micrologiciels de stockage 2.150.4* | 08/06/2022 | 3B11 | 3.94.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,3 | 2,16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5502Q | 11092A10 | 110B2A10 
+
+
+| *Pack de micrologiciels de stockage 2.150.4 à NetApp Element 12.5* | 08/06/2022 | 3B11 | 3.94.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,3 | 2,16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5502Q | 11092A10 | 110B2A10 
+
+
+| *Pack de micrologiciels de stockage 2.146.2* | 22/02/2022 | 3B11 | 3.94.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,3 | 2,16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5502Q | 11092A10 | 110B2A10 
+
+
+| *Pack de micrologiciels de stockage 2.99.4 à NetApp Element 12.3.2* | 16/09/2021 | 3B06 | 3.91.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.99.4 à NetApp Element 12.3.1.165* | 06/12/2021 | 3B06 | 3.91.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.99.2* | 06/12/2021 | 3B06 | 3.91.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.99.1 à NetApp Element 12.3.1.103* | 16/09/2021 | 3B06 | 3.86.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.99 via NetApp Element 12.3* | 15/04/2021 | 3B06 | 3.86.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.76.8* | 03/02/2021 | 3B06 | 3.86.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.27.1* | 29/09/2020 | 3B03 | 3.84.07 | 122 | 14.02.1002 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5302Q | EDA5600Q | 0108 | 0108 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.76.8 à NetApp Element 12.2.1* | 02/06/2021 | 3B06 | 3.86.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.21 à NetApp Element 12.2* | 29/09/2020 | 3B03 | 3.84.07 | 122 | 14.22.1002 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5302Q | EDA5600Q | 0108 | 0108 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 2.76.8 à NetApp Element 12.0.1* | 02/06/2021 | 3B06 | 3.86.07 | 122 | 14.25.1020 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | 1,10 | 3,1 | 2,16 | CXV8202Q | CXV8501Q | EDA5402Q | EDA5700Q | 0109 | 0109 | 0108 | - | - | - 
+
+
+| *Pack de micrologiciels de stockage 1.2.17 à NetApp Element 12.0* | 20/03/2020 | 3B03 | 3.78.07 | 122 | 14.22.1002 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | 0108 | - | - | - 
+
+
+| * NetApp Element 11.8 * | 11/03/2020 | 3B03 | 3.78.07 | 122 | 14.22.1002 | - | 3,1 | 2,16 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | 0107 | - | - | - 
+
+
+| * NetApp Element 11.7 * | 21/11/2019 | 3A10 | 3.76.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | 0107 | - | - | - 
+
+
+| * NetApp Element 11.5.1 * | 20/02/2020 | 3A08 | 3.76.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | 0107 | - | - | - 
+
+
+| * NetApp Element 11.5 * | 26/09/2019 | 3A08 | 3.76.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | - | - | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | - | - | 0107 | - | - | - 
+
+
+| * NetApp Element 11.3.2 * | 19/02/2020 | 3A08 | 3.76.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | - | - | - | - 
+
+
+| * NetApp Element 11.3.1 * | 19/08/2019 | 3A08 | 3.76.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | - | - | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | - | - | - | - | - | - 
+
+
+| * NetApp Element 11.1.1 * | 19/02/2020 | 3A06 | 3.70.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | - | - | - | - 
+
+
+| * NetApp Element 11.1 * | 25/04/2019 | 3A06 | 3.70.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | - | - | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | - | - | - | - | - | - 
+
+
+| * NetApp Element 11.0.2 * | 19/02/2020 | 3A06 | 3.70.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | 25.3C | 1,40 | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | 0108 | 0108 | - | - | - | - 
+
+
+| * NetApp Element 11 * | 29/11/2018 | 3A06 | 3.70.07 | 117 | 14.22.1002 | - | 2.C | 2,07 | 26.2C | 1,30 | - | - | - | - | - | CXV8202Q | CXV8501Q | EDA5202Q | EDA5200Q | - | - | - | - | - | - 
+|===
+
+
+=== Le microprogramme des composants n'est pas géré par un ensemble de microprogrammes de stockage.
+
+Le firmware suivant n'est pas géré par un module de firmware de stockage :
+
+[cols="2*"]
+|===
+| Composant | Version actuelle 
+
+
+| Carte réseau 1/10 GbE | 3.2d 0x80000b4b 
+
+
+| périphérique de démarrage | M161225i 
+|===
+
+
+== H410S
+
+*Numéro de modèle (partie familiale) :* H410S *Numéros de modèle complets :* H410S-0, H410S-1, H410S-1-NE et H410S-2
+
+
+
+=== Micrologiciel des composants géré par un ensemble de micrologiciels de stockage
+
+Le micrologiciel des composants est géré par un ensemble de micrologiciels de stockage.
+
+[cols="12*"]
+|===
+| Véhicule de libération | Date de sortie | BIOS | BMC | Carte réseau SMCI 10/25 GbE Mellanox | Cache NVDIMM RMS200 | Cache NVDIMM RMS300 | Lecteur Samsung PM863 (SED) | Lecteur Samsung PM863 (N-SED) | Lecteur Toshiba Hawk-4 (SED) | Lecteur Toshiba Hawk-4 (N-SED) | Lecteur Samsung PM883 (SED) 
+
+
+| *Pack de micrologiciels de stockage 2.182.0* | 17/10/2024 | NAT3.6 | 07.02.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.175.0* | 15/06/2023 | NAT3.4 | 07.02.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.164.0 à NetApp Element 12.7* | 20/10/2022 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.164.0* | 20/10/2022 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.164.0 à NetApp Element 12.7* | 20/10/2022 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.150.4 à NetApp Element 12.5* | 08/06/2022 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.99 via NetApp Element 12.3* | 15/04/2021 | NA2.1 | 6.84.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.76.8 à NetApp Element 12.2.1* | 02/06/2021 | NA2.1 | 6.84.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 1.2.17 à NetApp Element 12.0* | 20/03/2020 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.8.2 * | 22/02/2022 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.8.1 * | 02/06/2021 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.8 * | 11/03/2020 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.7 * | 21/11/2019 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.5.1 * | 19/02/2020 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.5 * | 26/09/2019 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.3.2 * | 19/02/2020 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.3.1 * | 19/08/2019 | NA2.1 | 3,25 | 14.21.1000 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.1.1 * | 19/02/2020 | NA2.1 | 3,25 | 14.17.2020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.1 * | 25/04/2019 | NA2.1 | 3,25 | 14.17.2020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.0.2 * | 19/02/2020 | NA2.1 | 3,25 | 14.17.2020 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| * NetApp Element 11.0 * | 29/11/2018 | NA2.1 | 3,25 | 14.17.2020 | ae3b8cc | - | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+|===
+
+
+=== Le microprogramme des composants n'est pas géré par un ensemble de microprogrammes de stockage.
+
+Le firmware suivant n'est pas géré par un module de firmware de stockage :
+
+[cols="2*"]
+|===
+| Composant | Version actuelle 
+
+
+| CPLD | 01.A1.06 
+
+
+| Adaptateur SAS | 16.00.01.00 
+
+
+| Unité de microcontrôleur (MCU) | 1,18 
+
+
+| Carte réseau SIOM 1/10 GbE | 1,93 
+
+
+| Alimentation | 1,3 
+
+
+| Périphérique de démarrage SSDSCKJB240G7 | N2010121 
+
+
+| Périphérique de démarrage MTFDDAV240TCB1AR | DOMU037 
+|===
+
+
+== [[sf_nodes]]SF38410, SF19210, SF9605 et SF4805
+
+*Numéros de modèle complets :* SF38410, SF19210, SF9605 et SF4805
+
+
+
+=== Micrologiciel des composants géré par un ensemble de micrologiciels de stockage
+
+Durant la période 11.x, le logiciel NetApp Element était le seul moyen de diffuser le firmware.  À partir d'Element 12.0, le concept de *Storage Firmware Bundle* a été introduit et les mises à jour du firmware étaient désormais possibles grâce à un Storage Firmware Bundle publié indépendamment ou à un Storage Firmware Bundle inclus dans une version Element 12.x.
+
+
+NOTE: Un tiret (*-*) dans le tableau suivant indique que le composant matériel particulier n'était PAS pris en charge dans ce véhicule de version donné.
+
+[cols="10*"]
+|===
+| Véhicule de libération | Date de sortie | NIC | Cache NVDIMM RMS200 (RMS200) | Cache NVDIMM RMS200 (RMS300) | Lecteur Samsung PM863 (SED) | Lecteur Samsung PM863 (N-SED) | Lecteur Toshiba Hawk-4 (SED) | Lecteur Toshiba Hawk-4 (N-SED) | Lecteur Samsung PM883 (SED) 
+
+
+| *Pack de micrologiciels de stockage 2.164.0* | 20/10/2022 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.164.0 à NetApp Element 12.7* | 20/10/2022 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.150.4* | 08/06/2022 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.150.4 à NetApp Element 12.5* | 08/06/2022 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.146.2* | 22/02/2022 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
+
+
+| *Pack de micrologiciels de stockage 2.99.4 à NetApp Element 12.3.2* | 16/09/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.99.4 à NetApp Element 12.3.1.165* | 06/12/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.99.2* | 03/08/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.99.1 à NetApp Element 12.3.1.103* | 16/09/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.99 via NetApp Element 12.3* | 15/04/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.76.8* | 03/02/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.27.1* | 29/09/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| *Pack de micrologiciels de stockage 2.76.8 à NetApp Element 12.2.1* | 02/06/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 2.21 à NetApp Element 12.2* | 29/09/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| *Pack de micrologiciels de stockage 2.76.8 à NetApp Element 12.0.1* | 02/06/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
+
+
+| *Pack de micrologiciels de stockage 1.2.17 à NetApp Element 12.0* | 20/03/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.8.2 * | 22/02/2022 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.8.1 * | 02/06/2021 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.8 * | 11/03/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.7 * | 21/11/2019 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.5.1 * | 19/02/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.5 * | 26/09/2019 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.3.2 * | 19/02/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.3.1 * | 19/08/2019 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.1.1 * | 19/02/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.1 * | 25/04/2019 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11.0.2 * | 19/02/2020 | 7.10.18 | ae3b8cc | 7d8422bc | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+
+
+| * NetApp Element 11 * | 29/11/2018 | 7.10.18 | ae3b8cc | - | GXT5404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7104Q 
+|===
+
+
+=== Le microprogramme des composants n'est pas géré par un ensemble de microprogrammes de stockage.
+
+Le firmware suivant n'est pas géré par un module de firmware de stockage :
+
+[cols="2*"]
+|===
+| Composant | Version actuelle 
+
+
+| BIOS | 2.8.0 
+
+
+| iDRAC | 2.75.75.75 
+
+
+| Module d'identité | N41WC 1.02 
+
+
+| Adaptateur SAS | 16.00.01.00 
+
+
+| Alimentation | 1,3 
+
+
+| Dispositif de démarrage | M161225i 
+|===

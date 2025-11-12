@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_nodes_view_individual_node_details.html 
+sidebar: sidebar 
+keywords: nodes, view, details, vlan, mip, cip, sip, virtual id 
+summary: 'Vous pouvez consulter les détails de chaque nœud, tels que les étiquettes de service, les informations sur les disques et les graphiques d"utilisation et les statistiques des disques.  La page Nœuds de l"onglet Cluster comporte la colonne Version où vous pouvez consulter la version du logiciel de chaque nœud.' 
+---
+= Afficher les détails du nœud
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vous pouvez consulter les détails de chaque nœud, tels que les étiquettes de service, les informations sur les disques et les graphiques d'utilisation et les statistiques des disques.  La page Nœuds de l'onglet Cluster comporte la colonne Version où vous pouvez consulter la version du logiciel de chaque nœud.
+
+.Étapes
+. Cliquez sur *Cluster* > *Nœuds*.
+. Pour afficher les détails d'un nœud spécifique, cliquez sur l'icône *Actions* de ce nœud.
+. Cliquez sur *Afficher les détails*.
+. Examinez les détails du nœud :
++
+** *ID du nœud* : L’identifiant généré par le système pour le nœud.
+** *Nom du nœud* : Le nom d’hôte du nœud.
+** *Rôle du nœud* : Le rôle que joue le nœud dans le cluster. Valeurs possibles :
++
+*** Maître de cluster : le nœud qui effectue les tâches administratives à l’échelle du cluster et qui contient le MVIP et le SVIP.
+*** Nœud d'ensemble : un nœud participant au cluster.  Il y a soit 3, soit 5 nœuds d'ensemble selon la taille du cluster.
+*** Fibre Channel : un nœud du cluster.
+
+
+** *Type de nœud* : Le type de modèle du nœud.
+** *Disques actifs* : Le nombre de disques actifs dans le nœud.
+** *Utilisation des nœuds* : Le pourcentage d’utilisation des nœuds basé sur nodeHeat.  La valeur affichée correspond à recentPrimaryTotalHeat en pourcentage.  Disponible à partir d'Element 12.8.
+** *Adresse IP de gestion* : L’adresse IP de gestion (MIP) attribuée au nœud pour les tâches d’administration du réseau 1 GbE ou 10 GbE.
+** *Adresse IP du cluster* : L’adresse IP du cluster (CIP) attribuée au nœud utilisé pour la communication entre les nœuds du même cluster.
+** *Adresse IP de stockage* : L’adresse IP de stockage (SIP) attribuée au nœud utilisée pour la découverte du réseau iSCSI et tout le trafic réseau de données.
+** *ID du VLAN de gestion* : L’identifiant virtuel du réseau local de gestion.
+** *ID du VLAN de stockage* : L’identifiant virtuel du réseau local de stockage.
+** *Version* : La version du logiciel exécutée sur chaque nœud.
+** *Port de réplication* : Le port utilisé sur les nœuds pour la réplication à distance.
+** *Étiquette de service* : Numéro d’étiquette de service unique attribué au nœud.
+** *Domaine de protection personnalisé* : Le domaine de protection personnalisé attribué au nœud.
+
+
+
