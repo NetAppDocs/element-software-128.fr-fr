@@ -13,12 +13,13 @@ summary: 'Vous pouvez utiliser la méthode DisableEncryptionAtRest pour supprime
 [role="lead"]
 Vous pouvez utiliser le `DisableEncryptionAtRest` méthode pour supprimer le chiffrement qui était précédemment appliqué au cluster en utilisant la `EnableEncryptionAtRest` méthode.  Cette méthode de désactivation est asynchrone et renvoie une réponse avant que le chiffrement ne soit désactivé.  Vous pouvez utiliser le `GetClusterInfo` méthode permettant d'interroger le système pour savoir quand le processus est terminé.
 
+[NOTE]
+====
+* Cette méthode ne permet pas de désactiver le chiffrement logiciel au repos.  Pour désactiver le chiffrement logiciel au repos, vous devezlink:reference_element_api_createcluster.html["créer un nouveau cluster"] avec le chiffrement logiciel au repos désactivé.
+* Pour consulter l'état actuel du chiffrement au repos, du chiffrement logiciel au repos ou des deux sur le cluster, utilisez link:../api/reference_element_api_getclusterinfo.html["méthode d'obtention d'informations sur le cluster"]. Vous pouvez utiliser le `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["méthode pour obtenir des informations sur la manière dont le cluster chiffre les données au repos"].
 
-TIP: Pour consulter l'état actuel du chiffrement au repos et/ou du chiffrement logiciel au repos sur le cluster, utilisezlink:../api/reference_element_api_getclusterinfo.html["méthode d'obtention d'informations sur le cluster"] . Vous pouvez utiliser le `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["méthode pour obtenir des informations sur la manière dont le cluster chiffre les données au repos"].
 
-
-NOTE: Cette méthode ne permet pas de désactiver le chiffrement logiciel au repos.  Pour désactiver le chiffrement logiciel au repos, vous devezlink:reference_element_api_createcluster.html["créer un nouveau cluster"] avec le chiffrement logiciel au repos désactivé.
-
+====
 
 
 == Paramètres

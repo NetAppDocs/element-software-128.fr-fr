@@ -304,7 +304,7 @@ entries:
     url: "/api/reference_element_api_setloginsessioninfo.html"
   - title: Fermer
     url: "/api/reference_element_api_cluster_shutdown.html"
-- title: Méthodes de l'API de création de cluster
+- title: Méthodes API de création de cluster
   entries:
   - title: Vérifier le cluster proposé
     url: "/api/reference_element_api_checkproposedcluster.html"

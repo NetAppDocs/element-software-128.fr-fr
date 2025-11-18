@@ -67,7 +67,7 @@ link:../api/reference_element_api_addnodes.html["Découvrez les méthodes de l'A
 
 
 
-== Méthodes de l'API de création de cluster
+== Méthodes API de création de cluster
 
 Vous pouvez utiliser ces méthodes d'API pour créer un cluster de stockage.  Toutes ces méthodes doivent être utilisées sur le point de terminaison de l'API sur un seul nœud.
 
