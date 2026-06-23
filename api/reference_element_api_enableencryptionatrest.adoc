@@ -15,7 +15,7 @@ Vous pouvez utiliser le `EnableEncryptionAtRest` méthode permettant d'activer l
 
 [NOTE]
 ====
-* Pour consulter l'état actuel du chiffrement au repos et/ou du chiffrement logiciel au repos sur le cluster, utilisezlink:../api/reference_element_api_getclusterinfo["méthode d'obtention d'informations sur le cluster"^] . Vous pouvez utiliser le `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["méthode pour obtenir des informations sur la manière dont le cluster chiffre les données au repos"^].
+* Pour consulter l'état actuel du chiffrement au repos et/ou du chiffrement logiciel au repos sur le cluster, utilisez la link:../api/reference_element_api_getclusterinfo.html["méthode d'obtention d'informations sur le cluster"]. Vous pouvez utiliser la  `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["méthode pour obtenir des informations sur la manière dont le cluster chiffre les données au repos"].
 * Cette méthode ne permet pas le chiffrement logiciel au repos.  Cela ne peut être fait qu'en utilisant lelink:../api/reference_element_api_createcluster.html["méthode de création de cluster"^] avec `enableSoftwareEncryptionAtRest` défini à `true` .
 
 

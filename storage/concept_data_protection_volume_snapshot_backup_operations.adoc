@@ -13,7 +13,7 @@ summary: 'Vous pouvez utiliser la fonction de sauvegarde intégrée pour sauvega
 [role="lead"]
 Vous pouvez utiliser la fonction de sauvegarde intégrée pour sauvegarder un instantané de volume.  Vous pouvez sauvegarder des instantanés d'un cluster SolidFire sur un stockage d'objets externe ou sur un autre cluster SolidFire .  Lorsque vous sauvegardez un instantané sur un stockage d'objets externe, vous devez disposer d'une connexion à ce stockage d'objets autorisant les opérations de lecture/écriture.
 
-* link:task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store["Sauvegardez un instantané de volume sur un stockage d'objets Amazon S3"]
-* link:task_data_protection_back_up_a_volume_snapshot_to_openstack_swift["Sauvegardez un instantané de volume sur un stockage d'objets OpenStack Swift"]
-* link:task_data_protection_back_up_volume_to_solidfire["Sauvegardez un instantané de volume sur un cluster SolidFire"]
+* link:task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store.html["Sauvegardez un instantané de volume sur un stockage d'objets Amazon S3"]
+* link:task_data_protection_back_up_a_volume_snapshot_to_openstack_swift.html["Sauvegardez un instantané de volume sur un stockage d'objets OpenStack Swift"]
+* link:task_data_protection_back_up_volume_to_solidfire.html["Sauvegardez un instantané de volume sur un cluster SolidFire"]
 

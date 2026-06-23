@@ -287,7 +287,7 @@ Vous pouvez créer un clone d'un seul volume ou de plusieurs volumes pour réali
 Le cluster prend en charge jusqu'à deux demandes de clonage en cours par volume simultanément et jusqu'à huit opérations de clonage de volume actives simultanément.  Les requêtes dépassant ces limites sont mises en file d'attente pour un traitement ultérieur.
 
 
-NOTE: Les systèmes d'exploitation diffèrent dans leur manière de traiter les volumes clonés.  VMware ESXi traitera un volume cloné comme une copie de volume ou un volume instantané.  Ce volume constituera un périphérique disponible pour créer un nouveau datastore.  Pour plus d'informations sur le montage des volumes clonés et la gestion des LUN de snapshot, consultez la documentation VMware. https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-EEFEB765-A41F-4B6D-917C-BB9ABB80FC80.html["montage d'une copie de banque de données VMFS"] et https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-EBAB0D5A-3C77-4A9B-9884-3D4AD69E28DC.html["gestion des datastores VMFS dupliqués"] .
+NOTE: Les systèmes d'exploitation diffèrent dans leur gestion des volumes clonés. VMware ESXi considère un volume cloné comme une copie de volume ou un volume snapshot. Le volume sera un périphérique disponible pour créer un nouveau datastore. Pour plus d'informations sur le montage des volumes clonés et la gestion des LUN snapshot, consultez la link:https://techdocs.broadcom.com/["Documentation VMware"^] sur le montage d'une copie de datastore VMFS et la gestion des datastores VMFS dupliqués.
 
 
 IMPORTANT: Avant de tronquer un volume cloné en le clonant à une taille plus petite, assurez-vous de préparer les partitions de manière à ce qu'elles s'adaptent au volume plus petit.

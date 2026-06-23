@@ -15,7 +15,7 @@ La gestion des clés externes (EKM) assure une gestion sécurisée des clés d'a
 
 * link:task_system_manage_key_set_up_external_key_management.html["Mettre en place une gestion externe"]
 * link:task_system_manage_rekey_software_ear_master_key.html["Réinitialisation du chiffrement logiciel au repos, clé principale"]
-* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys["Récupérer les clés d'authentification inaccessibles ou invalides"]
+* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys.html["Récupérer les clés d'authentification inaccessibles ou invalides"]
 * link:concept_system_manage_key_external_key_management_api_commands.html["Commandes de l'API de gestion des clés externes"]
 
 
